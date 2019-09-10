@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/anxiety_border_qns"
+        android:backgroundTint="@android:color/white"
+        android:elevation="20dp">
+
+        <TextView
+            android:id="@+id/heading_view"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:background="@color/anxiety_orange"
+            android:text="ANXIETY QUESTIONAIRE"
+            android:textSize="30dp"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <TextView
+            android:id="@+id/question_view"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Do you ever find yourself having trouble breathing?"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp"/>
+
+        <CheckBox
+            android:layout_marginLeft="10dp"
+            android:buttonTint="@color/anxiety_orange"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:text="NEVER"
+            android:textSize="15dp"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <CheckBox
+            android:layout_marginLeft="10dp"
+            android:buttonTint="@color/anxiety_orange"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:text="SOMETIMES"
+            android:textSize="15dp"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <CheckBox
+            android:layout_marginLeft="10dp"
+            android:buttonTint="@color/anxiety_orange"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:text="MORE THAN USUAL"
+            android:textSize="15dp"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <CheckBox
+            android:layout_marginLeft="10dp"
+            android:buttonTint="@color/anxiety_orange"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:text="ALWAYS"
+            android:textSize="15dp"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <Button
+            android:id="@+id/next_btn6"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:textColor="@android:color/white"
+            android:background="@drawable/buttonselector"
+            android:backgroundTint="@color/anxiety_orange"
+            android:text="NEXT"/>
+
+    </LinearLayout>
+
+</LinearLayout>
