@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:drawable="@drawable/logo"
+        android:width="190dp"
+        android:height="190dp"
+        android:gravity="center"
+        android:elevation="20dp"
+        />
+
+    <item android:drawable="@drawable/logo_shadowed_boarder"
+        android:width="200dp"
+        android:height="200dp"
+        android:gravity="center"
+        android:id="@+id/logo_boarder"
+        android:elevation="20dp"/>
+
+
+
+
+
+</layer-list>

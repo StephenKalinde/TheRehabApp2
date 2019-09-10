@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:layout_height="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:background="@android:color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:id="@+id/heading_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="ABOUT ADDICTION"
+                android:textColor="@android:color/black"
+                android:textSize="25dp"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:id="@+id/sub_heading_definition"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="DEFINITION:"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_definition"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/addiction"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/sub_heading_view_2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Symptoms:"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Uncontrollably seeking drugs or means to engage in the habit forming."
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_3"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Neglecting everyday activities"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_4"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Relationship difficulties, lashing out at family or friends who are aware of your dependency"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_5"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Secrecy, hiding substance or behaviour"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_6"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Change in appearence, poor hygiene"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_7"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Unreasonable risk-taking, to access substance or activity and while engaging in it"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_8"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-An inability to stop using substance or activity regardless if its causing health or personal problems"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/sub_heading_symptoms"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Withdrawal Symptoms:"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Anxiety"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Fatigue"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_3"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Irritability"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_4"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Loss of appetite"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_5"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Nausea"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_6"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Vomiting"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_7"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Tremors"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/sub_heading_treatment"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Treatment:"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_8"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Behavioral Therapy"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_9"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Counselling"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_10"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Treating related psychological factors"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_11"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Medical devices to treat withdrawal"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"
+                tools:ignore="DuplicateIds" />
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_12"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Medication"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Ongoing care to reduce the risk of relapse"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:text="Continue"
+                android:textColor="@android:color/white"
+                android:background="@drawable/buttonselector"
+                android:backgroundTint="@color/addiction_blue"
+                android:id="@+id/continue_btn1"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

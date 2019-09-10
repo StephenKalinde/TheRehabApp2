@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#ffffff</color>
+    <color name="colorAccent">#ffffff</color>
+    <color name="facebookBlue">#3b5998</color>
+    <color name="googleRed">#db4437</color>
+    <color name="purple">#ff00ce</color>
+    <color name="app_purple">#ff00ce</color>
+    <color name="green">#006400</color>
+    <color name="btn_green">#70ad47</color>
+    <color name="btn_blue">#246cff</color>
+    <color name="background_gray">#bfbfbf</color>
+    <color name="eating_disorder_purple">#be55fa</color>
+    <color name="addiction_blue">#246cff</color>
+    <color name="anxiety_orange">#ffc000</color>
+    <color name="depression_green">#6aa84f</color>
+    <color name="exit_red">#ff0000</color>
+
+</resources>

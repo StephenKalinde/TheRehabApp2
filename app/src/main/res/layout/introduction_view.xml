@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo"
+            android:elevation="20dp"/>
+
+        <ImageView
+            android:src="@drawable/header_image"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <TextView
+        android:id="@+id/introduction_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="INTRODUCTION"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="30dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp"/>
+
+    <TextView
+        android:id="@+id/introduction_string"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/introduction"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <TextView
+        android:id="@+id/introduction_string_2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/sub_introduction"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <TextView
+        android:id="@+id/introduction_string_3"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/sub_introduction2"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <TextView
+        android:id="@+id/introduction_string_4"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/sub_introduction3"
+        android:textSize="20dp"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <Button
+        android:id="@+id/next_btn"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="NEXT"
+        android:textColor="@android:color/white"
+        android:background="@drawable/buttonselector"
+        android:backgroundTint="@color/btn_green"
+        android:elevation="20dp"
+        android:textStyle="bold"/>
+
+
+</LinearLayout>

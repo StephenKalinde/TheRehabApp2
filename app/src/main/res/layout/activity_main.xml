@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/welcomenotebgrnd"
+    android:id="@+id/welcome_note_view">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:text="LOGO HERE"
+        android:textColor="@android:color/black"
+        android:textSize="23dp"
+        android:elevation="20dp"
+        android:background="@drawable/logo_layer_list2"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
+    <TextView
+        android:id="@+id/app_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="THE REHAB"
+        android:textColor="@android:color/white"
+        android:elevation="20dp"
+        android:textSize="60dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/sub_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="WELCOMES YOU"
+        android:textColor="@android:color/white"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:elevation="20dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <TextView
+        android:id="@+id/sub_text_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="When I become we,"
+        android:textColor="@android:color/white"
+        android:textSize="30dp"
+        android:elevation="20dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/sub_text_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="illness becomes"
+        android:textColor="@android:color/white"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:elevation="20dp"/>
+
+    <TextView
+        android:id="@+id/sub_text_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="wellness"
+        android:textColor="@android:color/white"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:elevation="20dp"/>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <Button
+        android:id="@+id/enter_btn"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text="ENTER"
+        android:textColor="@android:color/white"
+        android:background="@drawable/buttonselector"
+        android:backgroundTint="@color/btn_green"
+        android:textStyle="bold"
+        android:elevation="20dp"/>
+
+</LinearLayout>

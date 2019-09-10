@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">TheRehabApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="facebook_app_id">597152227417864</string>
+    <string name="fb_login_protocol_scheme">fb597152227417864</string>
+    <string name="welcome_slogan">When I become we, illness becomes wellness</string>
+    <string name="introduction">Welcome to THE REHAB, A virtual platform which serves to through commitment and help create daily structure meditation.</string>
+    <string name="sub_introduction">THE REHAB grants you access manage day to day life and goal is to help you cope and Address deeper issues.</string>
+    <string name="sub_introduction2">We work independently and A support system, that is easily with mental health conditions.</string>
+    <string name="sub_introduction3">A support system ,that is easily accessible just a few clicks away.</string>
+    <string name="questionaire_string">Select one of the below questionnaires to assess whether you may be suffering  from any of the mental disorders</string>
+    <string name="depression_note">You seem to have symptoms that could resemble depression. Please note the following information</string>
+    <string name="depression_note2">This questionnaire is not a diagnosis and can not tell you if you have this disorder. The questionnaire only shows symptoms that may appear with this disorder. This questionnaire has no significance, whether you suffer from this disorder or not. Only a specialist or psychologist can make a reliable diagnosis.</string>
+    <string name ="depression_note1">You show little or no symptoms of depression. Please note the following information</string>
+    <string name="depression_note12">This questionnaire is not a diagnosis and can not tell you if you have this disorder. The questionnaire only shows symptoms that may appear with this disorder. This questionnaire has no significance, whether you suffer from this disorder or not. Only a specialist or psychologist can make a reliable diagnosis.</string>
+    <string name="depression">Major depressive disorder is a common and serious medical illness that negatively affects how you feel, the way you think and how you act. fortunately, it is also treatable.</string>
+    <string name="addiction_note">You seem to have symptoms that could resemble addiction. Please note the following information</string>
+    <string name="anxiety_note">You seem to have symptoms that could resemble anxiety. Please note the following information</string>
+    <string name="eating_disorder_note">You seem to have symptoms that could resemble eating disorder. Please note the following information</string>
+    <string name="eating_disorder">Eating disorders are a range of conditions characterized by abnormal or irregular eating habits and severe distress about body weight, size or shape.</string>
+    <string name="addiction">Addiction is the psychological and physical inability to stop a particular substance or activity, despite dire consequences such as psychological and physical harm</string>
+    <string name="anxiety">An action characterized by feelings of tension , worried thoughts and physical changes like increased blood pressure.</string>
+    <string name="paragraph_1">Thank you so much for subscribing to our application. We truly appreciate your support and interest. If you have any questions about THE REHAB please select our feedback page.</string>
+    <string name="paragraph_2">Our primary goal is to provide you with the best mental health care possible which is easy and efficient.</string>
+    <string name="paragraph_3">If you like to continue with the service that we provide , please click on the sign up below. Or if you do not wish to at this present tome please click on the exit tab. We look forward tp continuing A relationship with you in the future.</string>
+    <string name="paragraph_4">Thank you again for subscribing to THE REHAB.</string>
+    <string name="paragraph_5">Kind Regards:</string>
+    <string name="paragraph_6">THE REHAB</string>
+    <string name="about_string">THE REHAB and the REHAB CENTERS are teams of professional and qualified members who play an important role in assisting you or a loved one (clients) in getting through your treatment process, helping you through the hard times whilst you may still be living your day to day life. Our mental health and substance abuse clients will be highly supported by our teams.</string>
+    <string name="home_string">We are dedicated to providing the best possible care with our outpatient treatment programme</string>
+    <string name="home_string_1">"Our aim is to help mental health suffer all over the world, and build awareness all around. People in today's society would understand more about disorders and would seek help from young ages."</string>
+    <string name="home_string_2">This programme is to help make the change in your life, with your strength and our guidance we will fight for a better future.</string>
+    <string name="fingertips_string">We are here to give you a great and easy significance structure with helping to remove stigma and build awareness around the world</string>
+    <string name="fingertips_string_2">"People would be helped in today's society from a young age and they would be more understanding of mental health disorders. This programme opens yout doors to a better future , together wwe will make that change."</string>
+</resources>
