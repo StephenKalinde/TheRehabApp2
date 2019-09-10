@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:background="@android:color/black">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:elevation="20dp"
+        android:padding="5dp"
+        android:backgroundTint="@android:color/white"
+        android:background="@drawable/depression_qn_border">
+
+        <Space
+            android:id="@+id/top_space"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <TextView
+            android:id="@+id/page_heading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/top_space"
+            android:text="RESULTS"
+            android:textSize="30dp"
+            android:textColor="@android:color/black"/>
+
+        <Space
+            android:id="@+id/top_space2"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@id/page_heading"/>
+
+        <TextView
+            android:id="@+id/depression_heading"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="DEPRESSION"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
+            android:background="@drawable/buttonselector"
+            android:backgroundTint="@color/depression_green"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/top_space2"/>
+
+        <TextView
+            android:id="@+id/note_text"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="@string/depression_note"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:layout_below="@id/top_space2"/>
+
+        <ImageView
+            android:id="@+id/pic"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:src="@drawable/depression_pic"
+            android:background="@android:color/black"
+            android:layout_below="@id/depression_heading"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:id="@+id/mid_space"
+            android:layout_below="@id/pic"/>
+
+        <TextView
+            android:id="@+id/depression_note2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/depression_note2"
+            android:textSize="18dp"
+            android:textColor="@android:color/black"
+            android:layout_below="@id/mid_space"
+            android:layout_centerHorizontal="true"/>
+
+        <Space
+            android:id="@+id/mid_space2"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/depression_note2"/>
+
+        <Button
+            android:id="@+id/continue_btn1"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/mid_space2"
+            android:text="Continue"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/btn_green"
+            android:background="@drawable/buttonselector"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
