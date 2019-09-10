@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/addiction_border_qns"
+        android:backgroundTint="@android:color/white">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:id="@+id/addiction_heading_view"
+            android:background="@color/addiction_blue"
+            android:text="ADDICTION QUESTIONAIRE"
+            android:textSize="30dp"
+            android:textColor="@android:color/white"
+            android:textAlignment="center"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <TextView
+            android:id="@+id/question_text_view"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="Have you ever lost interest in activities or ambition as a result of your using?"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+
+        <CheckBox
+            android:layout_marginLeft="10dp"
+            android:buttonTint="@color/addiction_blue"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:text="NEVER"
+            android:textSize="15dp"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <CheckBox
+            android:layout_marginLeft="10dp"
+            android:buttonTint="@color/addiction_blue"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:text="SOMETIMES"
+            android:textSize="15dp"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <CheckBox
+            android:layout_marginLeft="10dp"
+            android:buttonTint="@color/addiction_blue"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:text="MORE THAN USUAL"
+            android:textSize="15dp"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <CheckBox
+            android:layout_marginLeft="10dp"
+            android:buttonTint="@color/addiction_blue"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_gravity="center"
+            android:text="ALWAYS"
+            android:textSize="15dp"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <Button
+            android:id="@+id/next_btn7"
+            android:layout_width="100dp"
+            android:background="@drawable/buttonselector"
+            android:backgroundTint="@color/addiction_blue"
+            android:textColor="@android:color/white"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:text="NEXT"/>
+
+    </LinearLayout>
+
+</LinearLayout>
