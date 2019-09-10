@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_gravity="center"
+    android:layout_height="match_parent"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:background="@android:color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:id="@+id/heading_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="ABOUT ANXIETY"
+                android:textColor="@android:color/black"
+                android:textSize="25dp"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:id="@+id/sub_heading_definition"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="DEFINITION:"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_definition"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/anxiety"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/sub_heading_definition_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FIGHT OR FLIGHT"
+                android:textSize="20dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textAlignment="center"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/sub_heading_definition_3"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Symptoms:"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Restlessness, and feelings of being on-edge"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Uncontrollable feeling of worry"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_3"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Increased irritability and concentration difficulties"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_4"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="-Sleep difficulties, such as problems in falling or staying asleep"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/sub_heading_definition_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="TYPES OF ANXIETY"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textAlignment="center"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/sub_heading_definition_5"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Generalized Anxiety Disorder:"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_5"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Excessive, long lasting anxiety and worries about non special life events , objects and situations."
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/sub_heading_view_2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Panic Disorder:"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_6"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Brief/Sudden attacks of intense terror and apprehension, shaking , confusion, dizziness, nausea and breathing difficulties."
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/sub_heading_view_3"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Specific Phobia:"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_7"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Irrational fear and avoidance of a particular object or situation"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/sub_heading_view_4"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Agoraphobia:"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_8"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Fear and avoidance of places, events or situation that mmay be difficult to escape if the person becomes trapped."
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/sub_heading_view_5"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Selective Mutism:"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_9"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Not being able to speak in certain places or contexts such as schools.(Extreme form of social phobia)"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_10"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Social Anxiety Disorder:"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text_symptoms_11"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Fear of negative judgement, public embarrassment , stage fright, fear of intimacy , anxiety around humiliation and rejection"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/sub_heading_view"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Seperation Anxiety Disorder:"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <TextView
+                android:id="@+id/sub_text"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Excessive fear of being seperated from home or attachment figure."
+                android:textSize="15dp"
+                android:textColor="@android:color/black"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:text="Continue"
+                android:textColor="@android:color/white"
+                android:background="@drawable/buttonselector"
+                android:backgroundTint="@color/anxiety_orange"
+                android:id="@+id/continue_btn"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
