@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/tcAndCs"
+    android:background="@android:color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo"
+            android:elevation="20dp"/>
+
+        <ImageView
+            android:src="@drawable/header_image"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"/>
+
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <TextView
+        android:id="@+id/heading_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="TERMS AND CONDITIONS"
+        android:textSize="30dp"
+        android:textColor="@android:color/black"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="380dp">
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/agree_btn"
+        android:layout_height="40dp"
+        android:layout_width="100dp"
+        android:text="Agree"
+        android:layout_gravity="center"
+        android:background="@drawable/buttonselector"
+        android:backgroundTint="@color/btn_green"
+        android:textColor="@android:color/white"/>
+
+
+</LinearLayout>
