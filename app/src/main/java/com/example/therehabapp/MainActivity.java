@@ -9,13 +9,13 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button nextBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        nextBtn= (Button) findViewById(R.id.enter_btn);
+        Button nextBtn= (Button)findViewById(R.id.enter_btn);
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override

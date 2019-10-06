@@ -37,7 +37,7 @@
                 android:layout_height="20dp"/>
 
             <TextView
-                android:id="@+id/sub_heading_definition"
+                android:id="@+id/sub_heading_view"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="DEFINITION:"
@@ -46,7 +46,7 @@
                 android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/sub_text_definition"
+                android:id="@+id/sub_text_1"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="@string/addiction"
@@ -127,7 +127,7 @@
                 android:layout_height="5dp"/>
 
             <TextView
-                android:id="@+id/sub_heading_symptoms"
+                android:id="@+id/sub_heading_view_3"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Withdrawal Symptoms:"
@@ -136,7 +136,7 @@
                 android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/sub_text_symptoms"
+                android:id="@+id/sub_text_9"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Anxiety"
@@ -144,7 +144,7 @@
                 android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/sub_text_symptoms_2"
+                android:id="@+id/sub_text_10"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Fatigue"
@@ -152,7 +152,7 @@
                 android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/sub_text_symptoms_3"
+                android:id="@+id/sub_text_11"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Irritability"
@@ -160,7 +160,7 @@
                 android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/sub_text_symptoms_4"
+                android:id="@+id/sub_text_12"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Loss of appetite"
@@ -168,7 +168,7 @@
                 android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/sub_text_symptoms_5"
+                android:id="@+id/sub_text_13"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Nausea"
@@ -176,7 +176,7 @@
                 android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/sub_text_symptoms_6"
+                android:id="@+id/sub_text_14"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Vomiting"
@@ -184,7 +184,7 @@
                 android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/sub_text_symptoms_7"
+                android:id="@+id/sub_text_15"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Tremors"
@@ -196,7 +196,7 @@
                 android:layout_height="5dp"/>
 
             <TextView
-                android:id="@+id/sub_heading_treatment"
+                android:id="@+id/sub_heading_view_4"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Treatment:"
@@ -205,7 +205,7 @@
                 android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/sub_text_symptoms_8"
+                android:id="@+id/sub_text_16"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Behavioral Therapy"
@@ -213,7 +213,7 @@
                 android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/sub_text_symptoms_9"
+                android:id="@+id/sub_text_17"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Counselling"
@@ -221,7 +221,7 @@
                 android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/sub_text_symptoms_10"
+                android:id="@+id/sub_text_18"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Treating related psychological factors"
@@ -229,7 +229,7 @@
                 android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/sub_text_symptoms_11"
+                android:id="@+id/sub_text_19"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Medical devices to treat withdrawal"
@@ -238,7 +238,7 @@
                 tools:ignore="DuplicateIds" />
 
             <TextView
-                android:id="@+id/sub_text_symptoms_12"
+                android:id="@+id/sub_text_20"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Medication"
@@ -246,7 +246,7 @@
                 android:textColor="@android:color/black"/>
 
             <TextView
-                android:id="@+id/sub_text"
+                android:id="@+id/sub_text_21"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Ongoing care to reduce the risk of relapse"

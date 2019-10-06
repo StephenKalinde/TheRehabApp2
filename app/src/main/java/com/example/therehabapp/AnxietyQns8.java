@@ -7,24 +7,27 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Introduction extends AppCompatActivity {
+public class AnxietyQns8 extends AppCompatActivity {
+
 
     private Button continueBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.introduction_view);
 
-        continueBtn = (Button) findViewById(R.id.next_btn);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.anxiety_qns_8);
+
+        continueBtn= (Button) findViewById(R.id.next_btn8);
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Introduction.this, SignUp.class ));
+                startActivity(new Intent(AnxietyQns8.this, AnxietyDiagnosis.class));
             }
         });
 
-    }
 
+
+    }
 }

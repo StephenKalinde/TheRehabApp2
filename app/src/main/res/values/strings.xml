@@ -11,7 +11,7 @@
     <string name="questionaire_string">Select one of the below questionnaires to assess whether you may be suffering  from any of the mental disorders</string>
     <string name="depression_note">You seem to have symptoms that could resemble depression. Please note the following information</string>
     <string name="depression_note2">This questionnaire is not a diagnosis and can not tell you if you have this disorder. The questionnaire only shows symptoms that may appear with this disorder. This questionnaire has no significance, whether you suffer from this disorder or not. Only a specialist or psychologist can make a reliable diagnosis.</string>
-    <string name ="depression_note1">You show little or no symptoms of depression. Please note the following information</string>
+    <string name="depression_note1">You show little or no symptoms of depression. Please note the following information</string>
     <string name="depression_note12">This questionnaire is not a diagnosis and can not tell you if you have this disorder. The questionnaire only shows symptoms that may appear with this disorder. This questionnaire has no significance, whether you suffer from this disorder or not. Only a specialist or psychologist can make a reliable diagnosis.</string>
     <string name="depression">Major depressive disorder is a common and serious medical illness that negatively affects how you feel, the way you think and how you act. fortunately, it is also treatable.</string>
     <string name="addiction_note">You seem to have symptoms that could resemble addiction. Please note the following information</string>

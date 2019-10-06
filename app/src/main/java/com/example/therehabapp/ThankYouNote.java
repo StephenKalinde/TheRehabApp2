@@ -7,24 +7,27 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Introduction extends AppCompatActivity {
+public class ThankYouNote extends AppCompatActivity {
 
-    private Button continueBtn;
+
+    private Button exitBtn, continueBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.introduction_view);
 
-        continueBtn = (Button) findViewById(R.id.next_btn);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.about_anxiety);
+
+        exitBtn = (Button) findViewById(R.id.exit_btn);
+        continueBtn = (Button) findViewById(R.id.continue_btn);
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Introduction.this, SignUp.class ));
+                startActivity(new Intent(ThankYouNote.this, ProfileSetup.class));
             }
         });
-
     }
+
 
 }

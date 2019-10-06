@@ -7,24 +7,21 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Introduction extends AppCompatActivity {
+public class TermsAndConditions extends AppCompatActivity {
 
-    private Button continueBtn;
-
+    private Button confirmBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.introduction_view);
+        setContentView(R.layout.terms_and_conditions);
 
-        continueBtn = (Button) findViewById(R.id.next_btn);
+        confirmBtn = (Button) findViewById(R.id.agree_btn);
 
-        continueBtn.setOnClickListener(new View.OnClickListener() {
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Introduction.this, SignUp.class ));
+                startActivity(new Intent(TermsAndConditions.this, QuestionaireOptions.class ));
             }
         });
-
     }
-
 }
