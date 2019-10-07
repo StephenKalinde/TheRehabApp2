@@ -7,24 +7,22 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class EatingDisorderQns  extends AppCompatActivity {
+public class AboutEatingDisorder extends AppCompatActivity {
 
     private Button nextBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.eating_disorder_qns);
+        setContentView(R.layout.about_eating_disorder);
 
-
-        nextBtn =(Button) findViewById(R.id.next_btn);
+        nextBtn =(Button) findViewById(R.id.continue_btn);
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(EatingDisorderQns.this, EatingDisorderQns2.class));
+                startActivity(new Intent(AboutEatingDisorder.this, ThankYouNote.class));
             }
         });
-
     }
 }
