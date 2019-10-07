@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TheRehabApp</string>
+    <string name="app_name">The Rehab</string>
     <string name="action_settings">Settings</string>
     <string name="facebook_app_id">597152227417864</string>
     <string name="fb_login_protocol_scheme">fb597152227417864</string>
@@ -32,4 +32,8 @@
     <string name="home_string_2">This programme is to help make the change in your life, with your strength and our guidance we will fight for a better future.</string>
     <string name="fingertips_string">We are here to give you a great and easy significance structure with helping to remove stigma and build awareness around the world</string>
     <string name="fingertips_string_2">"People would be helped in today's society from a young age and they would be more understanding of mental health disorders. This programme opens yout doors to a better future , together wwe will make that change."</string>
+    <string name="title_activity_bottom_nav_view">bottom_nav_view</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

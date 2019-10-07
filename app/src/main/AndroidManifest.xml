@@ -4,13 +4,31 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo_2"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AddictionDiagnosis"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".AddictionDiagnosis" />
+        <activity android:name=".Introduction"/>
+        <activity android:name=".SignUp"/>
+        <activity android:name=".Login"/>
+        <activity android:name=".TermsAndConditions"/>
+        <activity android:name=".QuestionaireOptions"/>
+        <activity android:name=".AnxietyQns"/>
+        <activity android:name=".AnxietyQns2"/>
+        <activity android:name=".AnxietyQns3"/>
+        <activity android:name=".AnxietyQns4"/>
+        <activity android:name=".AnxietyQns5"/>
+        <activity android:name=".AnxietyQns6"/>
+        <activity android:name=".AnxietyQns7"/>
+        <activity android:name=".AnxietyQns8"/>
+        <activity android:name=".AnxietyDiagnosis"/>
+        <activity android:name=".AboutAnxiety"/>
+        <activity android:name=".ThankYouNote"/>
+        <activity android:name=".ProfileSetup"/>
+        <activity android:name=".CarePacks"/>
+        <activity android:name=".WelcomeNote">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

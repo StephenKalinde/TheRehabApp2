@@ -19,7 +19,7 @@ public class SignUp extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.introduction_view);
+        setContentView(R.layout.sign_in_view);
 
         signUpBtn= (Button) findViewById(R.id.signUpConfirm);
         loginBtn= (Button) findViewById(R.id.login_btn);

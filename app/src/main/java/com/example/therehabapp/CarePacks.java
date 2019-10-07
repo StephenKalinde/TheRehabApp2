@@ -24,21 +24,21 @@ public class CarePacks extends AppCompatActivity {
         pack1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CarePacks.this, Home.class) );
+                startActivity(new Intent(CarePacks.this, TermsAndConditions.class) );
             }
         });
 
         pack2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CarePacks.this, Home.class) );
+                startActivity(new Intent(CarePacks.this, TermsAndConditions.class) );
             }
         });
 
         pack3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CarePacks.this, Home.class) );
+                startActivity(new Intent(CarePacks.this, TermsAndConditions.class) );
             }
         });
 
