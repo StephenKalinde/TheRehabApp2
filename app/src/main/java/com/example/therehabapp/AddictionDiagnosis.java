@@ -2,7 +2,9 @@ package com.example.therehabapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -26,6 +28,13 @@ public class AddictionDiagnosis extends AppCompatActivity {
         addictionHeading = (TextView) findViewById (R.id.heading_view);
         subText= (TextView) findViewById(R.id.sub_text);
         subText2= (TextView) findViewById(R.id.sub_text_2);
+
+        finishBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(AddictionDiagnosis.this, AboutAddiction.class));
+            }
+        });
 
     }
 }

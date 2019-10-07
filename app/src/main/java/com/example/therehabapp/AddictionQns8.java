@@ -16,7 +16,7 @@ public class AddictionQns8 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addiction_qns_8);
 
-        nextBtn=(Button) findViewById(R.id.next_btn8);
+        nextBtn =(Button) findViewById(R.id.next_btn8);
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
