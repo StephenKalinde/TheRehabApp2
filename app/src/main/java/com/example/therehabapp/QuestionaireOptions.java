@@ -16,10 +16,10 @@ public class QuestionaireOptions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questionaire_options);
 
-        addictionBtn= (Button) findViewById(R.id.addiction);
-        anxietyBtn= (Button) findViewById(R.id.anxiety);
-        eatingDisorderBtn=(Button) findViewById(R.id.eating_disorder);
-        depressionBtn= (Button) findViewById(R.id.depression);
+        addictionBtn= (Button) findViewById(R.id.addiction_btn);
+        anxietyBtn= (Button) findViewById(R.id.anxiety_btn);
+        eatingDisorderBtn=(Button) findViewById(R.id.eating_disorder_btn);
+        depressionBtn= (Button) findViewById(R.id.depression_btn);
 
         addictionBtn.setOnClickListener(new View.OnClickListener() {
             @Override

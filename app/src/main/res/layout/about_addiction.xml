@@ -265,7 +265,7 @@
                 android:textColor="@android:color/white"
                 android:background="@drawable/buttonselector"
                 android:backgroundTint="@color/addiction_blue"
-                android:id="@+id/continue_btn1"/>
+                android:id="@+id/continue_btn"/>
 
             <Space
                 android:layout_width="match_parent"

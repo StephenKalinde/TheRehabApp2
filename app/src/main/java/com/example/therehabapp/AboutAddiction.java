@@ -20,7 +20,7 @@ public class AboutAddiction extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_addiction);
 
-        continueBtn = (Button) findViewById(R.id.continue_btn1);
+        continueBtn = (Button) findViewById(R.id.continue_btn);
         heading = (TextView) findViewById(R.id.heading_view);
 
         subHeading = (TextView) findViewById(R.id.sub_heading_view);
@@ -49,10 +49,11 @@ public class AboutAddiction extends AppCompatActivity {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 startActivity(new Intent(AboutAddiction.this, ThankYouNote.class));
+
             }
         });
-
     }
 
 }

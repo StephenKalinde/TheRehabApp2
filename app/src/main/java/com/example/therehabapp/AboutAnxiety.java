@@ -19,11 +19,13 @@ public class AboutAnxiety extends AppCompatActivity {
 
         continueBtn = (Button) findViewById(R.id.continue_btn);
 
-        continueBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AboutAnxiety.this, ThankYouNote.class));
-            }
-        });
+       continueBtn.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+
+               startActivity(new Intent(AboutAnxiety.this, ThankYouNote.class));
+
+           }
+       });
     }
 }

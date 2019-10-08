@@ -96,7 +96,7 @@
             android:layout_height="50dp"/>
 
         <Button
-            android:id="@+id/finish_btn"
+            android:id="@+id/continue_btn"
             android:backgroundTint="@color/btn_green"
             android:background="@drawable/buttonselector"
             android:layout_width="100dp"

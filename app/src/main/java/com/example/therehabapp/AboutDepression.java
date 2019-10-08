@@ -7,23 +7,27 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class AboutDepression extends AppCompatActivity {
+public class AboutDepression extends AppCompatActivity
+{
 
-    private Button nextBtn;
+    private Button finishBtn;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.about_depression);
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.depression_qns);
 
-        nextBtn = (Button) findViewById(R.id.continue_btn);
+         finishBtn= (Button) findViewById(R.id.continue_btn_depression);
 
-        nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AboutDepression.this,ThankYouNote.class));
-            }
-        });
+         finishBtn.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
 
-    }
+                 startActivity(new Intent(AboutDepression.this, ThankYouNote.class));
+
+             }
+         });
+
+
+     }
 }

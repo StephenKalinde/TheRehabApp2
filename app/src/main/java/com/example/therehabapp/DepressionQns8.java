@@ -16,7 +16,7 @@ public class DepressionQns8 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.depression_qns_8);
 
-        nextBtn=(Button) findViewById(R.id.next_btn8);
+        nextBtn=(Button) findViewById(R.id.continue_btn);
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
 

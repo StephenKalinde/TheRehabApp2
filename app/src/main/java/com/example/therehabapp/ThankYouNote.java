@@ -7,27 +7,44 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class ThankYouNote extends AppCompatActivity {
+public class ThankYouNote extends AppCompatActivity
 
+{
 
-    private Button exitBtn, continueBtn;
+    private Button signUpBtn, exitBtn;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate (Bundle savedInstanceState)
+    {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.about_anxiety);
+        setContentView(R.layout.thank_you_note);
 
-        exitBtn = (Button) findViewById(R.id.exit_btn);
-        continueBtn = (Button) findViewById(R.id.continue_btn);
+        signUpBtn = (Button) findViewById(R.id.signUp_btn);
+        exitBtn =(Button) findViewById(R.id.exit_btn) ;
 
-        continueBtn.setOnClickListener(new View.OnClickListener() {
+        signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(ThankYouNote.this, ProfileSetup.class));
+
+                startActivity(new Intent (ThankYouNote.this, CarePacks.class));
+
             }
         });
+
+        exitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(new Intent (ThankYouNote.this, WelcomeNote.class));
+                finishAffinity();   // restart process
+
+            }
+        });
+
     }
 
 
 }
+
+

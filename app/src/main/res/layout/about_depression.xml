@@ -246,7 +246,7 @@
                 android:textColor="@android:color/white"
                 android:background="@drawable/buttonselector"
                 android:backgroundTint="@color/btn_green"
-                android:id="@+id/continue_btn"/>
+                android:id="@+id/continue_btn_depression"/>
 
             <Space
                 android:layout_width="match_parent"
