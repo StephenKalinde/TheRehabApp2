@@ -4,11 +4,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo_2"
+        android:icon="@mipmap/logo_22"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logo_22"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.CustomTheme">
+
         <activity android:name=".AddictionDiagnosis" />
         <activity android:name=".Introduction"/>
         <activity android:name=".SignUp"/>
@@ -57,7 +58,8 @@
         <activity android:name=".DepressionQns8"/>
         <activity android:name=".AboutDepression"/>
         <activity android:name=".DepressionDiagnosis"/>
-        <activity android:name=".WelcomeNote">
+        <activity android:name=".WelcomeNote"/>
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
