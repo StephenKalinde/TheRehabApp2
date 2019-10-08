@@ -15,7 +15,7 @@ public class AboutDepression extends AppCompatActivity
      @Override
      protected void onCreate(Bundle savedInstanceState) {
          super.onCreate(savedInstanceState);
-         setContentView(R.layout.depression_qns);
+         setContentView(R.layout.about_depression);
 
          finishBtn= (Button) findViewById(R.id.continue_btn_depression);
 
