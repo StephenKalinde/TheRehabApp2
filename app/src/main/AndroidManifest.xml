@@ -60,6 +60,9 @@
         <activity android:name=".DepressionDiagnosis"/>
         <activity android:name=".WelcomeNote"/>
         <activity android:name=".Home"/>
+        <activity android:name=".Inbox"/>
+        <activity android:name=".Gallery"/>
+        <activity android:name=".Journal"/>
         <activity android:name=".ThankYouNote">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

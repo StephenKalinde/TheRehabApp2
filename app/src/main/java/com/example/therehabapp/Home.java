@@ -1,5 +1,6 @@
 package com.example.therehabapp;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -13,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
 
@@ -67,6 +69,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToogle;
     private Toolbar mToolBar;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -93,6 +96,30 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
         mDrawerLayout.addDrawerListener(mToogle);
         mToogle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        navigationView=(NavigationView) findViewById(R.id.side_nav);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
+                switch(menuItem.getItemId())
+                {
+                    case R.id.inbox:
+                        startActivity(new Intent(Home.this, Inbox.class));
+                        break;
+
+                    case R.id.journal:
+                        startActivity(new Intent(Home.this, Journal.class));
+                        break;
+
+                    case R.id.gallery:
+                        startActivity(new Intent(Home.this, Gallery.class));
+                        break;
+                }
+
+                return false;
+            }
+        });
 
     }
 
