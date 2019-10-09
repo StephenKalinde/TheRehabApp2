@@ -14,6 +14,7 @@ public class WelcomeNote extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.transition.fade_in, R.transition.fade_out);
         setContentView(R.layout.welcome_note);
 
         enterBtn =(Button) findViewById(R.id.enter_btn);

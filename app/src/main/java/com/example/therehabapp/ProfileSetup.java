@@ -17,11 +17,14 @@ public class ProfileSetup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_setup);
 
-        continueBtn = (Button) findViewById(R.id.profile_submit_btn);
+        continueBtn = (Button) findViewById(R.id.submit_btn);
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //add db code here
+
                 startActivity(new Intent(ProfileSetup.this, CarePacks.class) );
             }
         });

@@ -27,7 +27,7 @@ public class ThankYouNote extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent (ThankYouNote.this, CarePacks.class));
+                startActivity(new Intent (ThankYouNote.this, ProfileSetup.class));
 
             }
         });

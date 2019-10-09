@@ -1,6 +1,7 @@
 package com.example.therehabapp;
 
 import android.content.Intent;
+import android.net.wifi.hotspot2.pps.HomeSp;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +16,7 @@ public class CarePacks extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.profile_setup);
+        setContentView(R.layout.care_pack_view);
 
         pack1= (Button) findViewById(R.id.btn_1);
         pack2= (Button) findViewById(R.id.btn_2);
@@ -24,21 +25,33 @@ public class CarePacks extends AppCompatActivity {
         pack1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CarePacks.this, TermsAndConditions.class) );
+
+                //add code here
+
+                //start activity
+                startActivity(new Intent(CarePacks.this, Home.class) );
             }
         });
 
         pack2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CarePacks.this, TermsAndConditions.class) );
+
+                // add code here
+
+                //start activity
+                startActivity(new Intent(CarePacks.this, Home.class) );
             }
         });
 
         pack3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(CarePacks.this, TermsAndConditions.class) );
+
+                // add code here
+
+                //start activity
+                startActivity(new Intent(CarePacks.this, Home.class) );
             }
         });
 
