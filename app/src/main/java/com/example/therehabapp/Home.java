@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -61,6 +64,10 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
         }
     };
 
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToogle;
+    private Toolbar mToolBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -76,6 +83,27 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.fragments_container,homeFragment,"FragmentName");
         fragmentTransaction.commit();
+
+        mToolBar=(Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(mToolBar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        mDrawerLayout= (DrawerLayout) findViewById(R.id.drawer_layout);
+        mToogle= new ActionBarDrawerToggle(this, mDrawerLayout,R.string.open, R.string.close);
+        mDrawerLayout.addDrawerListener(mToogle);
+        mToogle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        if(mToogle.onOptionsItemSelected(item)){
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
 
     }
 

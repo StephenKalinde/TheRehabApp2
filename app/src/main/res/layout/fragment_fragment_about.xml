@@ -4,23 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/header">
-
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/logo"
-            android:elevation="20dp"/>
-
-        <ImageView
-            android:src="@drawable/header_image"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"/>
-
-    </RelativeLayout>
+    <Space android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
 
     <Space
         android:layout_width="match_parent"
