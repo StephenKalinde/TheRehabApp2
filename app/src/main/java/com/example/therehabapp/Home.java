@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 
 import java.util.List;
 
@@ -67,6 +68,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
         setContentView(R.layout.home_view);
 
         BottomNavigationView bottomNav= (BottomNavigationView) findViewById(R.id.bottom_nav_bar);
+        bottomNav.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_SELECTED);
         bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
 
 
