@@ -2,6 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_dark">
+    android:background="@android:color/white">
+
+    <!-- toolbar here-->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/journal_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/app_purple" />
 
 </LinearLayout>

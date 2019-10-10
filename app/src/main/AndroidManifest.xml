@@ -26,7 +26,7 @@
         <activity android:name=".AnxietyQns8"/>
         <activity android:name=".AnxietyDiagnosis"/>
         <activity android:name=".AboutAnxiety"/>
-        <activity android:name=".SplashScreen"/>
+        <activity android:name=".ThankYouNote"/>
         <activity android:name=".ProfileSetup"/>
         <activity android:name=".CarePacks"/>
         <activity android:name=".AddictionQns"/>
@@ -63,7 +63,7 @@
         <activity android:name=".Inbox"/>
         <activity android:name=".Gallery"/>
         <activity android:name=".Journal"/>
-        <activity android:name=".ThankYouNote">
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
