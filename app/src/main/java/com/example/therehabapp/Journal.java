@@ -46,14 +46,10 @@ public class Journal extends AppCompatActivity {
         mToolbar=(Toolbar) findViewById(R.id.journal_toolbar);
         notesRecycler= (RecyclerView) findViewById(R.id.notes_recycler_view);
 
-
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Journal");
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
-        //myView.setText(myList.size());
 
         RecyclerView.LayoutManager mylayoutManager= new LinearLayoutManager(this);
         notesRecycler.setLayoutManager(mylayoutManager);
@@ -88,7 +84,6 @@ public class Journal extends AppCompatActivity {
             myList.add(note);
 
         }
-
 
     }
 
@@ -128,7 +123,7 @@ public class Journal extends AppCompatActivity {
 
         if(resultCode==RESULT_OK)
         {
-           // prepareNotes();
+           // add new listing to list then update recycleview
             File directory;
             directory = getFilesDir();
             File[] files = directory.listFiles();
@@ -136,7 +131,7 @@ public class Journal extends AppCompatActivity {
             String filename= files[files.length-1].getName();
             NoteBuilder note = new NoteBuilder(filename,OpenNote(filename));
             myList.add(note);
-            
+
             nAdapter.onActivityResult(requestCode,1);;
         }
 

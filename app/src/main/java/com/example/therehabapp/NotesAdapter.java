@@ -1,5 +1,4 @@
 package com.example.therehabapp;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,4 +65,5 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
     {
         this.notifyDataSetChanged();
     }
+
 }
