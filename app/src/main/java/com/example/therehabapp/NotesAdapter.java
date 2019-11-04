@@ -50,7 +50,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
     {
 
         NoteBuilder note= myList.get(position);
-        holder.title.setText(note.getTitle());
+        holder.title.setText(note.getTitle().substring(0,note.getTitle().length()-4));
         holder.date.setText(note.getDate());
 
     }
