@@ -33,10 +33,11 @@ public class NewNote extends AppCompatActivity {
         super.onCreate(savedInstance);
         setContentView(R.layout.new_note);
 
-        noteToolbar= (Toolbar) findViewById(R.id.note_toolbar);
-        notePad=(EditText) findViewById(R.id.note_pad);
+        //instantiation
+        noteToolbar = (Toolbar) findViewById(R.id.note_toolbar);
+        notePad =(EditText) findViewById(R.id.note_pad);
 
-        notePad.setText(Open());
+        //notePad.setText(Open());
 
         mDate= new Date();
         Date date= Calendar.getInstance().getTime();
@@ -46,6 +47,7 @@ public class NewNote extends AppCompatActivity {
         getSupportActionBar().setTitle(currentDate);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     @Override
@@ -55,8 +57,7 @@ public class NewNote extends AppCompatActivity {
 
             case android.R.id.home:
 
-                SaveNote(currentDate); //saveNote
-
+                SaveNote("Note_1.txt"); //saveNote when back button pressed
                 onBackPressed();
                 return true;
 
@@ -65,8 +66,6 @@ public class NewNote extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
-
-
 
     //saves notepad text
     private void SaveNote(String fileName)

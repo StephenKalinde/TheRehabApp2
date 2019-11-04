@@ -5,38 +5,36 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import java.util.List;
 
-public class NotesAdapter   {
-
+public class NotesAdapter extends RecyclerView.Adapter {
 
     private List<NoteBuilder> myList;
     private View itemView;
-
-
-
 
     public class MyViewHolder extends RecyclerView.ViewHolder
     {
 
         public TextView title;
-        public TextView content;
+        public TextView date;
+
         public MyViewHolder(View view)
         {
             super(view);
             title =(TextView) view.findViewById(R.id.title);
-            content=(TextView) view.findViewById(R.id.content);
+            date=(TextView) view.findViewById(R.id.date);
         }
 
     }
 
     public NotesAdapter(List<NoteBuilder> myList )
-    { this.myList=myList;}
+    {
+        this.myList=myList;
+    }
 
 
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent , int viewType)
@@ -46,15 +44,22 @@ public class NotesAdapter   {
         return new  MyViewHolder(itemView);
     }
 
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-    public void onBindViewHolder( MyViewHolder holder, int position)
-    {
-        NoteBuilder note= myList.get(position);
-        holder.title.setText(note.getTitle());
-        holder.content.setText(note.getContent());
     }
 
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position)
+    {
+
+        NoteBuilder note= myList.get(position);
+        holder.title.setText(note.getTitle());
+        holder.date.setText(note.getDate());
+
+    }
 
     public int getItemCount()
-    {return myList.size();}
+    {
+        return myList.size();
+    }
 }
