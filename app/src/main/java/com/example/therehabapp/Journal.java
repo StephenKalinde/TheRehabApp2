@@ -126,8 +126,17 @@ public class Journal extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
 
-        if(requestCode==1)
+        if(resultCode==RESULT_OK)
         {
+           // prepareNotes();
+            File directory;
+            directory = getFilesDir();
+            File[] files = directory.listFiles();
+
+            String filename= files[files.length-1].getName();
+            NoteBuilder note = new NoteBuilder(filename,OpenNote(filename));
+            myList.add(note);
+            
             nAdapter.onActivityResult(requestCode,1);;
         }
 

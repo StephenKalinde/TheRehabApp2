@@ -137,9 +137,7 @@ public class NewNote extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        Intent intent = new Intent();
-        intent.putExtra("id",1);
-        setResult(RESULT_OK,intent);
+        setResult(RESULT_OK);
         finish();
 
     }
