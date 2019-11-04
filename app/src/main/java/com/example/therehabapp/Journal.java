@@ -5,17 +5,14 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.widget.Toolbar;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
@@ -25,15 +22,15 @@ import java.util.List;
 
 public class Journal extends AppCompatActivity {
 
-
     private Toolbar mToolbar;
     private FloatingActionButton addNoteBtn;
 
-    private List<NoteBuilder> myList = new ArrayList<NoteBuilder>();
+    private List<NoteBuilder> myList ;
     private NoteBuilder noteBuilder;
 
     private NotesAdapter nAdapter;
     private RecyclerView notesRecycler;
+
 
     @Override
     protected void onCreate(Bundle savedInstance)
@@ -42,44 +39,56 @@ public class Journal extends AppCompatActivity {
         super.onCreate(savedInstance);
         setContentView(R.layout.journal_view);
 
+        myList= new ArrayList<NoteBuilder>();
+        prepareNotes(); //populates list with notes
+
         addNoteBtn=(FloatingActionButton) findViewById(R.id.add_note_btn);
         mToolbar=(Toolbar) findViewById(R.id.journal_toolbar);
+        notesRecycler= (RecyclerView) findViewById(R.id.notes_recycler_view);
+
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Journal");
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        notesRecycler= (RecyclerView) findViewById(R.id.notes_recycler_view);
+
+        //myView.setText(myList.size());
+
+        RecyclerView.LayoutManager mylayoutManager= new LinearLayoutManager(this);
+        notesRecycler.setLayoutManager(mylayoutManager);
+        notesRecycler.setItemAnimator(new DefaultItemAnimator());
 
         nAdapter= new NotesAdapter(myList);
-        RecyclerView.LayoutManager mlayoutManager= new LinearLayoutManager(getApplicationContext());
-        notesRecycler.setLayoutManager(mlayoutManager);
-        notesRecycler.setItemAnimator(new DefaultItemAnimator());
         notesRecycler.setAdapter(nAdapter);
-
-        prepareNotes();
 
         addNoteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Journal.this, NewNote.class));
+
+                Intent intent= new Intent(Journal.this, NewNote.class);
+                startActivityForResult(intent,1);
+
             }
         });
     }
 
     private void prepareNotes()
     {
+
         File directory;
         directory = getFilesDir();
         File[] files = directory.listFiles();
-        String theFile;
-        for(int i=1; i== files.length; i++)
+
+        for(int i = 0 ; i < files.length ; i++)
         {
-            theFile= "Note"+ i +".txt";
-            NoteBuilder note = new NoteBuilder(theFile,OpenNote(theFile));
+
+            String filename= files[i].getName();
+            NoteBuilder note = new NoteBuilder(filename,OpenNote(filename));
             myList.add(note);
+
         }
+
 
     }
 
@@ -113,11 +122,22 @@ public class Journal extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+
+        if(requestCode==1)
+        {
+            nAdapter.onActivityResult(requestCode,1);;
+        }
+
+    }
+
     private String OpenNote(String fileName)
     {
         String content="";
         StringBuilder buf = new StringBuilder();
-        
+
         try
         {
             InputStream in= openFileInput(fileName);
