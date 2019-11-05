@@ -1,6 +1,8 @@
 package com.example.therehabapp;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -23,10 +25,12 @@ public class NewNote extends AppCompatActivity {
     private String currentDate;
     private EditText notePad;
     private EditText title_view;
+    public static final String TAG= "NewNote";
 
     @Override
     protected void onCreate(Bundle savedInstance)
     {
+        Log.d(TAG,"create:");
         super.onCreate(savedInstance);
         setContentView(R.layout.new_note);
 
@@ -44,6 +48,8 @@ public class NewNote extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        CheckIntent();
+
     }
 
     @Override
@@ -53,6 +59,17 @@ public class NewNote extends AppCompatActivity {
 
             case android.R.id.home:
 
+                //if note note unchanged, don't save
+                /**if(title_view.getText().toString()== getIntent().getStringExtra("title") && notePad.getText().toString()==getIntent().getStringExtra("content"))
+                {
+                    onBackPressed();
+                    return true;
+                }
+
+                //if note changed ,
+                //add code here**/
+
+                //if new note
                 SaveNote(title_view.getText().toString());
                 onBackPressed();
                 return true;
@@ -136,9 +153,24 @@ public class NewNote extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        setResult(RESULT_OK);
-        finish();
 
+            setResult(RESULT_OK);
+            finish();
+
+    }
+
+    private void CheckIntent()
+    {
+
+        Log.d(TAG,"started note filling");
+
+        if(getIntent().hasExtra("title")&& getIntent().hasExtra("content"))
+        {
+
+            title_view.setText(getIntent().getStringExtra("title"));
+            notePad.setText(getIntent().getStringExtra("content"));
+
+        }
     }
 
 }

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,17 +19,14 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Journal extends AppCompatActivity {
+public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteListener {
 
     private Toolbar mToolbar;
     private FloatingActionButton addNoteBtn;
 
     private List<NoteBuilder> myList ;
-    private NoteBuilder noteBuilder;
-
     private NotesAdapter nAdapter;
     private RecyclerView notesRecycler;
-
 
     @Override
     protected void onCreate(Bundle savedInstance)
@@ -51,11 +47,10 @@ public class Journal extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        RecyclerView.LayoutManager mylayoutManager= new LinearLayoutManager(this);
-        notesRecycler.setLayoutManager(mylayoutManager);
+        RecyclerView.LayoutManager layoutManager= new LinearLayoutManager(this);
+        notesRecycler.setLayoutManager(layoutManager);
         notesRecycler.setItemAnimator(new DefaultItemAnimator());
-
-        nAdapter= new NotesAdapter(myList);
+        nAdapter= new NotesAdapter(myList, this);
         notesRecycler.setAdapter(nAdapter);
 
         addNoteBtn.setOnClickListener(new View.OnClickListener() {
@@ -67,13 +62,21 @@ public class Journal extends AppCompatActivity {
 
             }
         });
+
+        notesRecycler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
     }
 
     private void prepareNotes()
     {
 
-        File directory;
-        directory = getFilesDir();
+
+        File directory = getFilesDir();
         File[] files = directory.listFiles();
 
         for(int i = 0 ; i < files.length ; i++)
@@ -113,32 +116,37 @@ public class Journal extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
+
         getMenuInflater().inflate(R.menu.toolbar_menu,menu);
         return true;
+
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
+        File directory;
+        directory = getFilesDir();
+        File[] files = directory.listFiles();
 
         if(resultCode==RESULT_OK)
         {
-           // add new listing to list then update recycleview
-            File directory;
-            directory = getFilesDir();
-            File[] files = directory.listFiles();
+
+           // add new listing to list then update recycle view
 
             String filename= files[files.length-1].getName();
             NoteBuilder note = new NoteBuilder(filename,OpenNote(filename));
             myList.add(note);
 
-            nAdapter.onActivityResult(requestCode,1);;
+            nAdapter.onActivityResult(requestCode,1);
+
         }
 
     }
 
     private String OpenNote(String fileName)
     {
+
         String content="";
         StringBuilder buf = new StringBuilder();
 
@@ -147,15 +155,19 @@ public class Journal extends AppCompatActivity {
             InputStream in= openFileInput(fileName);
             if( in != null)
             {
+
                 InputStreamReader temp= new InputStreamReader(in);
                 BufferedReader reader = new BufferedReader(temp);
                 String str;
 
                 while((str= reader.readLine())!=null)
                 {
+
                     buf.append(str +"\n");
+
                 }
                 in.close();
+
             }
 
             content = buf.toString();
@@ -170,4 +182,14 @@ public class Journal extends AppCompatActivity {
         return content;
     }
 
+    @Override
+    public void onNoteClick(int position) {
+        // insert code to open new activity here
+
+        Intent intent = new Intent(this, NewNote.class);
+        intent.putExtra("title",myList.get(position).getTitle());
+        intent.putExtra("content",myList.get(position).getContent());
+        startActivity(intent);
+
+    }
 }

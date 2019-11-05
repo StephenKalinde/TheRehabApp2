@@ -11,27 +11,45 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
 
     private List<NoteBuilder> myList;
     private View itemView;
+    private OnNoteListener onNoteListener;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
 
         public TextView title;
         public TextView date;
+        public OnNoteListener onNoteListener;
 
-        public MyViewHolder(View view)
+        public MyViewHolder(View view, OnNoteListener onNoteListener)
         {
+
             super(view);
-            title =(TextView) view.findViewById(R.id.title);
-            date=(TextView) view.findViewById(R.id.date);
+            this.title =(TextView) view.findViewById(R.id.title);
+            this.date=(TextView) view.findViewById(R.id.date);
+            this.onNoteListener=onNoteListener;
+
+            view.setOnClickListener(this);
+
         }
 
+        @Override
+        public void onClick(View view) {
+            onNoteListener.onNoteClick(getAdapterPosition());
+        }
     }
 
-    public NotesAdapter(List<NoteBuilder> myList )
+    public interface OnNoteListener
+    {
+        void onNoteClick(int postition);
+    }
+
+
+    public NotesAdapter(List<NoteBuilder> myList, OnNoteListener onNoteListener )
     {
 
         super();
         this.myList=myList;
+        this.onNoteListener=onNoteListener;
 
     }
 
@@ -41,7 +59,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
 
         itemView= LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row, parent, false);
 
-        return new  MyViewHolder(itemView);
+        return new  MyViewHolder(itemView,onNoteListener);
 
     }
 
@@ -52,6 +70,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         NoteBuilder note= myList.get(position);
         holder.title.setText(note.getTitle().substring(0,note.getTitle().length()-4));
         holder.date.setText(note.getDate());
+
 
     }
 
