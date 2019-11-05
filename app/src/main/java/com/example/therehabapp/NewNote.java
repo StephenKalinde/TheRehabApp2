@@ -58,18 +58,6 @@ public class NewNote extends AppCompatActivity {
         switch (item.getItemId()){
 
             case android.R.id.home:
-
-                //if note note unchanged, don't save
-                /**if(title_view.getText().toString()== getIntent().getStringExtra("title") && notePad.getText().toString()==getIntent().getStringExtra("content"))
-                {
-                    onBackPressed();
-                    return true;
-                }
-
-                //if note changed ,
-                //add code here**/
-
-                //if new note
                 SaveNote(title_view.getText().toString());
                 onBackPressed();
                 return true;
@@ -154,8 +142,24 @@ public class NewNote extends AppCompatActivity {
     public void onBackPressed()
     {
 
+            //if new file
+        //if(getIntent().getStringExtra("boolean")==null){
+
+
             setResult(RESULT_OK);
             finish();
+
+       // }
+
+        //if file exists
+        //else{
+
+            //Intent intent = new Intent();
+           // intent.putExtra("filename",title_view.getText().toString());
+           // setResult(2);
+           // finish();
+
+       // }
 
     }
 

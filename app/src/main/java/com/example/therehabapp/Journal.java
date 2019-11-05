@@ -142,6 +142,21 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
 
         }
 
+      /**  if(resultCode==2)
+        {
+            //remove old file
+
+            String filename=data.getStringExtra("filename");
+            NoteBuilder note= new NoteBuilder(filename, OpenNote(filename));
+
+            File file= new File(directory,filename);
+            file.delete();
+
+            myList.add(note);
+            nAdapter.onActivityResult(requestCode,1);
+
+        } **/
+
     }
 
     private String OpenNote(String fileName)
@@ -187,7 +202,7 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
         // insert code to open new activity here
 
         Intent intent = new Intent(this, NewNote.class);
-        intent.putExtra("title",myList.get(position).getTitle());
+        intent.putExtra("title",myList.get(position).getTitle().substring(0,myList.get(position).getTitle().length()-4));
         intent.putExtra("content",myList.get(position).getContent());
         startActivity(intent);
 
