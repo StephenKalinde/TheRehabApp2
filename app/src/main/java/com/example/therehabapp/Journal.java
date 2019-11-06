@@ -159,6 +159,8 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
 
     }
 
+    /**Note handling**/
+
     private String OpenNote(String fileName)
     {
 
@@ -197,14 +199,33 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
         return content;
     }
 
+    private void DeleteNote(String filename)
+    {
+        File directory= getFilesDir();
+        File file= new File(directory, filename);
+        file.delete();
+    }
+
+
     @Override
     public void onNoteClick(int position) {
         // insert code to open new activity here
-
         Intent intent = new Intent(this, NewNote.class);
         intent.putExtra("title",myList.get(position).getTitle().substring(0,myList.get(position).getTitle().length()-4));
         intent.putExtra("content",myList.get(position).getContent());
         startActivity(intent);
 
+    }
+
+    @Override
+    public void onLongClick(int position) {
+        File directory = getFilesDir();
+        File[] files = directory.listFiles();
+        String filename= files[position].getName();
+
+        DeleteNote(filename);
+        myList.remove(position);
+        //prepareNotes();
+        nAdapter.notifyDataSetChanged();
     }
 }

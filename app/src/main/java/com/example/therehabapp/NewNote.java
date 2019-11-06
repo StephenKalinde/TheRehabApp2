@@ -93,7 +93,7 @@ public class NewNote extends AppCompatActivity {
     public boolean FileExists(String filename)
     {
 
-        File file = getBaseContext().getFileStreamPath(filename);
+        File file =getBaseContext().getFileStreamPath(filename);
         return ((File) file).exists();
 
     }
