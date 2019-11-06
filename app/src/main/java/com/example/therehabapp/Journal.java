@@ -2,9 +2,11 @@ package com.example.therehabapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -89,7 +91,7 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
         }
 
     }
-
+/**
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -122,6 +124,7 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
 
     }
 
+ **/
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
@@ -218,14 +221,38 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
     }
 
     @Override
-    public void onLongClick(int position) {
-        File directory = getFilesDir();
-        File[] files = directory.listFiles();
-        String filename= files[position].getName();
+    public void onLongClick(final int position) {
 
-        DeleteNote(filename);
-        myList.remove(position);
-        //prepareNotes();
-        nAdapter.notifyDataSetChanged();
+
+
+        PopupMenu popupMenu= new PopupMenu(this,notesRecycler.findViewHolderForAdapterPosition(position).itemView);
+        popupMenu.getMenuInflater().inflate(R.menu.toolbar_menu,popupMenu.getMenu());
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                int post=position;
+                switch (menuItem.getItemId()){
+
+                    case R.id.delete:
+                        File directory = getFilesDir();
+                        File[] files = directory.listFiles();
+                        String filename= files[post].getName();
+                        DeleteNote(filename);
+                        myList.remove(post);
+                        nAdapter.notifyDataSetChanged();
+                        break;
+
+                    case R.id.share:
+                        break;
+                }
+
+                return false;
+            }
+        });
+        popupMenu.show();
+
+
+
+
     }
 }
