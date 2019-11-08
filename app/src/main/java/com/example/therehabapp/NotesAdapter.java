@@ -1,7 +1,10 @@
 package com.example.therehabapp;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +21,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
 
         public TextView title;
         public TextView date;
+        public ImageButton actionBtn;
         public OnNoteListener onNoteListener;
 
         public MyViewHolder(View view, OnNoteListener onNoteListener)
@@ -26,10 +30,11 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
             super(view);
             this.title =(TextView) view.findViewById(R.id.title);
             this.date=(TextView) view.findViewById(R.id.date);
+            this.actionBtn=(ImageButton)view.findViewById(R.id.action_btn);
             this.onNoteListener=onNoteListener;
 
             view.setOnClickListener(this);
-            view.setOnLongClickListener(this);
+            actionBtn.setOnLongClickListener(this);
 
         }
 

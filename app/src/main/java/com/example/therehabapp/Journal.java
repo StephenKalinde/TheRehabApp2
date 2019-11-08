@@ -91,7 +91,7 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
         }
 
     }
-/**
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -100,20 +100,15 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
             case android.R.id.home:
                 onBackPressed();
                 return true;
-
-
-            //onclick menu items
-            case R.id.delete:
-                break;
-
-            case R.id.share:
-                break;
+                
 
         }
 
         return super.onOptionsItemSelected(item);
 
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -124,7 +119,7 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
 
     }
 
- **/
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
     {
