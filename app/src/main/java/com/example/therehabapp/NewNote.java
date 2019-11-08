@@ -39,12 +39,14 @@ public class NewNote extends AppCompatActivity {
         notePad =(EditText) findViewById(R.id.note_pad);
         title_view= (EditText) findViewById(R.id.title_view);
 
+        notePad.setCursorVisible(true);
+
         mDate= new Date();
         Date date= Calendar.getInstance().getTime();
         currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(date);
 
         setSupportActionBar(noteToolbar);
-        getSupportActionBar().setTitle(currentDate);
+        getSupportActionBar().setTitle("Note");
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

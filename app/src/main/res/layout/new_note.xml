@@ -12,13 +12,23 @@
         android:layout_height="?attr/actionBarSize"
         android:background="@color/app_purple"/>
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
     <EditText
         android:id="@+id/title_view"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:hint="Title..."/>
+        android:hint="Title..."
+        android:background="@drawable/notes_borders"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"/>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
 
     <EditText
         android:id="@+id/note_pad"
@@ -29,6 +39,11 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
-        android:background="@null"/>
+        android:background="@drawable/notes_borders"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:paddingBottom="2dp"
+        android:paddingTop="2dp"
+        android:textCursorDrawable="@null"/>
 
 </LinearLayout>

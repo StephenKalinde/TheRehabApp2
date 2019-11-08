@@ -100,7 +100,7 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
             case android.R.id.home:
                 onBackPressed();
                 return true;
-                
+
 
         }
 
