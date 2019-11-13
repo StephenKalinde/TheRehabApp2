@@ -65,18 +65,10 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
             }
         });
 
-        notesRecycler.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
     }
 
     private void prepareNotes()
     {
-
 
         File directory = getFilesDir();
         File[] files = directory.listFiles();
@@ -95,20 +87,18 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
+
         switch (item.getItemId()){
 
             case android.R.id.home:
                 onBackPressed();
                 return true;
 
-
         }
 
         return super.onOptionsItemSelected(item);
 
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -131,7 +121,6 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
         {
 
            // add new listing to list then update recycle view
-
             String filename= files[files.length-1].getName();
             NoteBuilder note = new NoteBuilder(filename,OpenNote(filename));
             myList.add(note);
@@ -139,21 +128,6 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
             nAdapter.onActivityResult(requestCode,1);
 
         }
-
-      /**  if(resultCode==2)
-        {
-            //remove old file
-
-            String filename=data.getStringExtra("filename");
-            NoteBuilder note= new NoteBuilder(filename, OpenNote(filename));
-
-            File file= new File(directory,filename);
-            file.delete();
-
-            myList.add(note);
-            nAdapter.onActivityResult(requestCode,1);
-
-        } **/
 
     }
 
@@ -218,8 +192,6 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
     @Override
     public void onLongClick(final int position) {
 
-
-
         PopupMenu popupMenu= new PopupMenu(this,notesRecycler.findViewHolderForAdapterPosition(position).itemView);
         popupMenu.getMenuInflater().inflate(R.menu.toolbar_menu,popupMenu.getMenu());
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -238,6 +210,7 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
                         break;
 
                     case R.id.share:
+                        //code here
                         break;
                 }
 
@@ -245,9 +218,6 @@ public class Journal extends AppCompatActivity implements NotesAdapter.OnNoteLis
             }
         });
         popupMenu.show();
-
-
-
 
     }
 }

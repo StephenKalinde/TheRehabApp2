@@ -1,9 +1,7 @@
 package com.example.therehabapp;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -45,8 +43,10 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
 
         @Override
         public boolean onLongClick(View view) {
+
             onNoteListener.onLongClick(getAdapterPosition());
             return  false;
+
         }
     }
 
@@ -56,9 +56,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
 
         void onLongClick(int position);
     }
-
-
-
 
     public NotesAdapter(List<NoteBuilder> myList, OnNoteListener onNoteListener )
     {
@@ -74,7 +71,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
     {
 
         itemView= LayoutInflater.from(parent.getContext()).inflate(R.layout.list_row, parent, false);
-
         return new  MyViewHolder(itemView,onNoteListener);
 
     }
@@ -86,7 +82,6 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         NoteBuilder note= myList.get(position);
         holder.title.setText(note.getTitle().substring(0,note.getTitle().length()-4));
         holder.date.setText(note.getDate());
-
 
     }
 

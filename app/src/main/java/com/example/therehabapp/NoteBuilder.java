@@ -6,14 +6,15 @@ public class NoteBuilder {
     private String content;
     private String date;
 
-    public NoteBuilder()
-    { }
+    public NoteBuilder(){ }
 
     public NoteBuilder(String title, String content, String date)
     {
+
         this.title=title;
         this.content=content;
         this.date=date;
+
     }
 
     public NoteBuilder(String title, String content)

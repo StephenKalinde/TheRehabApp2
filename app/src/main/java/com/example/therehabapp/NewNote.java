@@ -1,6 +1,5 @@
 package com.example.therehabapp;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -30,7 +29,8 @@ public class NewNote extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstance)
     {
-        Log.d(TAG,"create:");
+
+        //Log.d(TAG,"create:");
         super.onCreate(savedInstance);
         setContentView(R.layout.new_note);
 
@@ -76,6 +76,7 @@ public class NewNote extends AppCompatActivity {
 
         try
         {
+
             OutputStreamWriter out = new OutputStreamWriter(openFileOutput(filename+".txt", Context.MODE_PRIVATE));
             out.write(notePad.getText().toString());
             out.close();
@@ -144,24 +145,8 @@ public class NewNote extends AppCompatActivity {
     public void onBackPressed()
     {
 
-            //if new file
-        //if(getIntent().getStringExtra("boolean")==null){
-
-
             setResult(RESULT_OK);
             finish();
-
-       // }
-
-        //if file exists
-        //else{
-
-            //Intent intent = new Intent();
-           // intent.putExtra("filename",title_view.getText().toString());
-           // setResult(2);
-           // finish();
-
-       // }
 
     }
 
