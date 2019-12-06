@@ -6,33 +6,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="100dp"
+        android:id="@+id/header"
+        android:background="@drawable/header_image">
 
         <ImageView
+            android:id="@+id/logo"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@android:color/darker_gray"
             android:src="@drawable/logo"
-            android:textColor="@android:color/black"
             android:elevation="20dp"/>
 
         <TextView
-            android:background="@color/btn_green"
-            android:layout_width="match_parent"
-            android:layout_marginRight="50dp"
-            android:layout_height="100dp"
-            android:text="Registation Form"
-            android:textColor="@android:color/black"
-            android:textSize="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/logo"
+            android:layout_centerHorizontal="true"
+            android:text="THE REHAB"
             android:textStyle="bold"
-            android:paddingLeft="20dp"
-            android:paddingTop="10dp"
-            android:elevation="20dp"/>
+            android:textSize="30dp"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="30dp"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <Space
         android:layout_width="match_parent"

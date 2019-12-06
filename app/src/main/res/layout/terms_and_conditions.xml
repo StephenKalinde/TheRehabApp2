@@ -8,19 +8,16 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/header">
+        android:layout_height="100dp"
+        android:id="@+id/header"
+        android:background="@drawable/header_image">
 
         <ImageView
+            android:id="@+id/my_logo"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/logo"
-            android:elevation="20dp"/>
+            android:src="@drawable/logo"/>
 
-        <ImageView
-            android:src="@drawable/header_image"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"/>
 
     </RelativeLayout>
 

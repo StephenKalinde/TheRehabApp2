@@ -39,6 +39,13 @@ public class SignUp extends AppCompatActivity {
             }
         });
 
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent (SignUp.this, Login.class));
+            }
+        });
+
     }
 
 }
