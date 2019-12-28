@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:id="@+id/heading_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true">
@@ -21,7 +22,7 @@
         <Space
             android:id="@+id/space_1"
             android:layout_width="match_parent"
-            android:layout_height="10dp"
+            android:layout_height="5dp"
             android:layout_below="@+id/heading_view"/>
 
         <TextView
@@ -37,7 +38,7 @@
         <Space
             android:id="@+id/space_2"
             android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_height="15dp"
             android:layout_below="@+id/heading_view_2"/>
 
         <TextView
@@ -60,6 +61,247 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/heading_view_3"/>
 
-    </RelativeLayout>>
+    </RelativeLayout>
+
+    <!--header-->
+
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_below="@+id/heading_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="Start Step Work"
+            android:textColor="@android:color/black"
+            android:background="@drawable/planner_border"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="Day 1"
+            android:textColor="@android:color/black"
+            android:background="@drawable/planner_border"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="Day 2"
+            android:textColor="@android:color/black"
+            android:background="@drawable/planner_border"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="Day 3"
+            android:textColor="@android:color/black"
+            android:background="@drawable/planner_border"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="Day 4"
+            android:textColor="@android:color/black"
+            android:background="@drawable/planner_border"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="Day 5"
+            android:textColor="@android:color/black"
+            android:background="@drawable/planner_border"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="Day 6"
+            android:textColor="@android:color/black"
+            android:background="@drawable/planner_border"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="Day 7"
+            android:textColor="@android:color/black"
+            android:background="@drawable/planner_border"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="Time"
+            android:textColor="@android:color/black"
+            android:background="@drawable/planner_border"/>
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="Week 1"
+            android:textColor="@android:color/black"
+            android:background="@drawable/planner_border"/>
+
+    </LinearLayout>
+
+    <!--table-->
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_below="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="Wake up at a set time"
+                android:textColor="@android:color/black"
+                android:background="@drawable/planner_border"/>
+
+            <CheckBox
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/planner_border"/>
+
+            <CheckBox
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/planner_border"/>
+
+            <CheckBox
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/planner_border"/>
+
+            <CheckBox
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/planner_border"/>
+
+            <CheckBox
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/planner_border"/>
+
+            <CheckBox
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/planner_border"/>
+
+            <CheckBox
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/planner_border"/>
+
+            <EditText
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:textColor="@android:color/black"
+                android:background="@drawable/planner_border"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="Provides"
+                android:textColor="@android:color/black"
+                android:background="@drawable/planner_border"/>
+
+        </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="70dp"
+                    android:layout_height="match_parent"
+                    android:text="Wake up at a set time"
+                    android:textColor="@android:color/black"/>
+
+                <CheckBox
+                    android:layout_weight="1"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"/>
+
+                <CheckBox
+                    android:layout_weight="1"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"/>
+
+                <CheckBox
+                    android:layout_weight="1"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"/>
+
+                <CheckBox
+                    android:layout_weight="1"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"/>
+
+                <CheckBox
+                    android:layout_weight="1"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"/>
+
+                <CheckBox
+                    android:layout_weight="1"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"/>
+
+                <CheckBox
+                    android:layout_weight="1"
+                    android:layout_width="60dp"
+                    android:layout_height="50dp"/>
+
+                <EditText
+                    android:layout_weight="1"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:textColor="@android:color/black"/>
+
+                <TextView
+                    android:layout_weight="1"
+                    android:layout_width="60dp"
+                    android:layout_height="match_parent"
+                    android:text="Provides"
+                    android:textColor="@android:color/black"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+     </ScrollView>
 
 </RelativeLayout>
