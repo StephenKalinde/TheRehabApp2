@@ -26,7 +26,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //validation here 
+                //validation here
 
                 startActivity(new Intent(Login.this, Home.class ));
             }
