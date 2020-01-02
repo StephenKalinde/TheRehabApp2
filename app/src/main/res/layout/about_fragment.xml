@@ -439,6 +439,27 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"/>
 
+            <Space
+                android:id="@+id/space_24"
+                android:layout_height="20dp"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/about_view_14"/>
+
+            <ImageView
+                android:id="@+id/my_img_5"
+                android:layout_below="@+id/space_24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:src="@drawable/img_55"/>
+
+            <Space
+                android:id="@+id/space_25"
+                android:layout_height="20dp"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/about_view_14"/>
+
 
 
 
