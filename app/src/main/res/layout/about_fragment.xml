@@ -35,20 +35,21 @@
         android:layout_height="match_parent">
 
             <TextView
-            android:id="@+id/heading_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="ABOUT"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:textSize="25dp"/>
+                android:id="@+id/heading_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:text="ABOUT"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="25dp"/>
 
             <Space
-            android:id="@+id/space_1"
-            android:layout_below="@+id/heading_view_3"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"/>
+                android:id="@+id/space_1"
+                android:layout_below="@+id/heading_view"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
 
             <TextView
                 android:id="@+id/about_view"
@@ -138,10 +139,81 @@
                 android:layout_below="@+id/space_6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
                 android:text="OUTPATIENT PROGRAMME"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"/>
+
+            <Space
+                android:id="@+id/space_7"
+                android:layout_below="@+id/heading_view_2"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/about_view_5"
+                android:layout_below="@+id/space_7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_string_5"
+                android:textColor="@android:color/black"
+                android:textSize="16dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"/>
+
+            <Space
+                android:id="@+id/space_8"
+                android:layout_below="@+id/about_view_5"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/heading_view_3"
+                android:layout_below="@+id/space_8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="DAILY ROUTINE"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+
+            <Space
+                android:id="@+id/space_9"
+                android:layout_below="@+id/heading_view_3"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"/>
+
+            <TextView
+                android:id="@+id/about_view_6"
+                android:layout_below="@+id/space_9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/about_string_6"
+                android:textColor="@android:color/black"
+                android:textSize="16dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"/>
+
+            <Space
+                android:id="@+id/space_10"
+                android:layout_below="@+id/about_view_6"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <ImageView
+                android:id="@+id/my_img_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_below="@+id/space_10"
+                android:src="@drawable/img_22"/>
+
+            <>
+
+
 
     </RelativeLayout>
 
