@@ -481,7 +481,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="When I becomes we, illness becomes wellness"
-                    android:textSizee="15dp"
+                    android:textSize="15dp"
                     android:textColor="@android:color/black" />
 
                 <Space
