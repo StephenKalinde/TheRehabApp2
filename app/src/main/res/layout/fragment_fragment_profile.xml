@@ -1,14 +1,224 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentProfile">
+    android:layout_width="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        tools:context=".FragmentProfile">
 
-</FrameLayout>
+        <RelativeLayout
+            android:id="@+id/profile_image_layout"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@android:color/black">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="30dp"
+                android:elevation="10dp"
+                android:background="@drawable/profile_img_pic"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/user_name_view"
+            android:layout_below="@+id/profile_image_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="NAME HERE"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"/>
+
+        <EditText
+            android:id="@+id/status_share_view"
+            android:layout_below="@+id/user_name_view"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Share Your Thoughts"
+            android:textColor="@android:color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:background="@drawable/notes_borders"/>
+
+        <Button
+            android:id="@+id/submit_btn"
+            android:layout_below="@+id/status_share_view"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="5dp"
+            android:text="Share"
+            android:textColor="@android:color/white"
+            android:background="@color/depression_green"/>
+
+        <RelativeLayout
+            android:id="@+id/peers_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/submit_btn"
+            android:layout_height="80dp"
+            android:layout_marginTop="25dp">
+
+            <Button
+                android:id="@+id/peers_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/depression_green"/>
+
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:text="Peers"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:elevation="2dp"/>
+
+            <TextView
+                android:id="@+id/peers_notification_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2    >"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:elevation="2dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/messages_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/peers_btn_layout"
+            android:layout_height="80dp">
+
+            <Button
+                android:id="@+id/messages_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/depression_green"/>
+
+            <TextView
+                android:id="@+id/text_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:text="Messages"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:elevation="2dp"/>
+
+            <TextView
+                android:id="@+id/messages_notification_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2    >"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:elevation="2dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/requests_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/messages_btn_layout"
+            android:layout_height="80dp">
+
+            <Button
+                android:id="@+id/requests_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/depression_green"/>
+
+            <TextView
+                android:id="@+id/text_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:text="Requests"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:elevation="2dp"/>
+
+            <TextView
+                android:id="@+id/requests_notification_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2    >"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:elevation="2dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/notifications_btn_layout"
+            android:layout_width="match_parent"
+            android:layout_below="@+id/requests_btn_layout"
+            android:layout_height="80dp">
+
+            <Button
+                android:id="@+id/notifications_btn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/depression_green"/>
+
+            <TextView
+                android:id="@+id/text_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginLeft="15dp"
+                android:text="Notifications"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:elevation="2dp"/>
+
+            <TextView
+                android:id="@+id/notifications_notification_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2    >"
+                android:textColor="@android:color/white"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:elevation="2dp"/>
+
+        </RelativeLayout>
+
+        <!--name , quote, peers, messages, live chats, video chats , peer requests, notifications-->
+    </RelativeLayout>
+</ScrollView>
