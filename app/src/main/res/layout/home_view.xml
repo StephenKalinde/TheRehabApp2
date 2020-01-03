@@ -22,11 +22,6 @@
             android:background="@android:color/transparent"
             android:elevation="20dp">
 
-            <ImageView
-                android:layout_width="?attr/actionBarSize"
-                android:layout_height="?attr/actionBarSize"
-                android:src="@drawable/logo_2"
-                android:layout_gravity="center_horizontal"/>
 
         </androidx.appcompat.widget.Toolbar>
 
