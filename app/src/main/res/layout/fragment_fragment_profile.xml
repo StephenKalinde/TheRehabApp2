@@ -79,11 +79,11 @@
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="25dp"
                 android:text="Peers"
                 android:textColor="@android:color/white"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:elevation="2dp"/>
 
@@ -93,10 +93,10 @@
                 android:layout_height="wrap_content"
                 android:text="2    >"
                 android:textColor="@android:color/white"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginRight="30dp"
                 android:elevation="2dp"/>
 
@@ -118,11 +118,11 @@
                 android:id="@+id/text_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="25dp"
                 android:text="Messages"
                 android:textColor="@android:color/white"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:elevation="2dp"/>
 
@@ -132,10 +132,10 @@
                 android:layout_height="wrap_content"
                 android:text="2    >"
                 android:textColor="@android:color/white"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginRight="30dp"
                 android:elevation="2dp"/>
 
@@ -157,11 +157,11 @@
                 android:id="@+id/text_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="25dp"
                 android:text="Requests"
                 android:textColor="@android:color/white"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:elevation="2dp"/>
 
@@ -171,10 +171,10 @@
                 android:layout_height="wrap_content"
                 android:text="2    >"
                 android:textColor="@android:color/white"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginRight="30dp"
                 android:elevation="2dp"/>
 
@@ -196,11 +196,11 @@
                 android:id="@+id/text_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="25dp"
                 android:text="Notifications"
                 android:textColor="@android:color/white"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:elevation="2dp"/>
 
@@ -210,15 +210,13 @@
                 android:layout_height="wrap_content"
                 android:text="2    >"
                 android:textColor="@android:color/white"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:layout_marginRight="30dp"
                 android:elevation="2dp"/>
 
         </RelativeLayout>
-
-        <!--name , quote, peers, messages, live chats, video chats , peer requests, notifications-->
     </RelativeLayout>
 </ScrollView>
