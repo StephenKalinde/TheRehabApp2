@@ -12,6 +12,10 @@ public class CarePacks extends AppCompatActivity {
 
     private Button pack1, pack2, pack3;
 
+    private Button pack1Btn;
+    private Button pack2Btn;
+    private Button pack3Btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -22,7 +26,11 @@ public class CarePacks extends AppCompatActivity {
         pack2= (Button) findViewById(R.id.btn_2);
         pack3= (Button) findViewById(R.id.btn_3);
 
-        pack1.setOnClickListener(new View.OnClickListener() {
+        pack1Btn= (Button) findViewById(R.id.select_btn);
+        pack2Btn= (Button) findViewById(R.id.select_btn_2);
+        pack3Btn= (Button) findViewById(R.id.select_btn_3);
+
+        pack1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -33,7 +41,7 @@ public class CarePacks extends AppCompatActivity {
             }
         });
 
-        pack2.setOnClickListener(new View.OnClickListener() {
+        pack2Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -44,7 +52,7 @@ public class CarePacks extends AppCompatActivity {
             }
         });
 
-        pack3.setOnClickListener(new View.OnClickListener() {
+        pack3Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 

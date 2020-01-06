@@ -52,49 +52,103 @@
         android:layout_height="40dp"
         android:layout_below="@+id/text_view"/>
 
-    <Button
+    <RelativeLayout
+        android:id="@+id/care_pack_layout_1"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/care_pack_3"
-        android:layout_below="@id/space2"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:id="@+id/btn_1"
-        android:text="Care Pack 1-21 Days R0000"
-        android:textColor="@android:color/white"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/space2">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/care_pack_3"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/btn_1"
+            android:text="Care Pack 1-21 Days R0000"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:text="SELECT"
+            android:id="@+id/select_btn"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_alignParentLeft="true"
+            android:textColor="@android:color/white"
+            android:background="@color/depression_green"/>
+
+        </RelativeLayout>
 
     <Space
         android:id="@+id/space3"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:layout_below="@+id/btn_1"/>
+        android:layout_below="@+id/care_pack_layout_1"/>
 
-    <Button
+    <RelativeLayout
+        android:id="@+id/care_pack_layout_2"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="@drawable/care_pack_2"
-        android:layout_below="@+id/space3"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:id="@+id/btn_2"
-        android:text="Care Pack 2-28 Days R0000"
-        android:textColor="@android:color/white"/>
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/space3">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/care_pack_2"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:id="@+id/btn_2"
+            android:text="Care Pack 2-28 Days R0000"
+            android:textColor="@android:color/white"/>
+
+        <Button
+            android:text="SELECT"
+            android:id="@+id/select_btn_2"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_alignParentLeft="true"
+            android:textColor="@android:color/white"
+            android:background="@color/depression_green"/>
+
+    </RelativeLayout>
 
     <Space
         android:id="@+id/space4"
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:layout_below="@+id/btn_2"/>
+        android:layout_below="@+id/care_pack_layout_2"/>
 
-    <Button
+    <RelativeLayout
+        android:id="@+id/care_pack_layout_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/space4">
+
+        <Button
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/care_pack_1"
-        android:layout_below="@+id/space4"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:id="@+id/btn_3"
         android:text="Care Pack 3 -56 Day's R0000"
         android:textColor="@android:color/white"/>
+
+        <Button
+            android:text="SELECT"
+            android:id="@+id/select_btn_3"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="25dp"
+            android:layout_alignParentLeft="true"
+            android:textColor="@android:color/white"
+            android:background="@color/depression_green"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>
