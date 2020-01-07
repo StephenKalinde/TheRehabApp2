@@ -52,7 +52,10 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="footer_string">Privacy Policy - Clients/Patients Privacy Policy - Data Retention Policy - Health Care Policy - Medical Policy - Sage Pay Policy - Application Policy - Google</string>
-
+    <string name="pack_1_info_heading">3 WEEKS TO PRIMARY RECOVERY</string>
+    <string name="pack_1_info">The package offers you an intense 3 weeks of therapeutic sessions, lectures and support to manage yourself abilities doing step work 1, 2 and 3 of the 2 step program.</string>
+    <string name="pack_2_info">This package offers you an intense 4 weeks of therapeutic sessions, lectures and support to manage yourself abilities. Have a sponsor working with you and building a solid recovery foundation.</string>
+    <string name="pack_3_info">This package offers you a full 12 step program of therapy, lectures, connecting and activity to boost and stimulate your body and mind.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

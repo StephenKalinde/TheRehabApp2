@@ -55,7 +55,7 @@ public class CarePacks extends AppCompatActivity {
         myLayout = (FrameLayout) findViewById(R.id.care_pack_activity_view);
         //myLayout.getForeground().setAlpha(0);
 
-        pack1Btn.setOnClickListener(new View.OnClickListener() {
+        pack1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -66,7 +66,7 @@ public class CarePacks extends AppCompatActivity {
             }
         });
 
-        pack2Btn.setOnClickListener(new View.OnClickListener() {
+        pack2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -77,7 +77,7 @@ public class CarePacks extends AppCompatActivity {
             }
         });
 
-        pack3Btn.setOnClickListener(new View.OnClickListener() {
+        pack3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -90,7 +90,7 @@ public class CarePacks extends AppCompatActivity {
 
         /** show overlays on click of the pack info buttons**/
 
-        pack1.setOnClickListener(new View.OnClickListener() {
+        pack1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -120,6 +120,70 @@ public class CarePacks extends AppCompatActivity {
                 });
             }
         });
+
+        pack2Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popUpView = inflater.inflate(R.layout.pack_2_popup, null);
+
+                popupWindow = new PopupWindow(popUpView,LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+
+
+                if(Build.VERSION.SDK_INT>=21)
+                {
+                    popupWindow.setElevation(5.0f);
+                }
+
+                popupWindow.showAtLocation(myLayout, Gravity.CENTER, 0,0);
+                //myLayout.getForeground().setAlpha( 220);
+
+
+                popUpView.setOnTouchListener(new View.OnTouchListener(){
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event)
+                    {
+                        popupWindow.dismiss();
+                        //myLayout.getForeground().setAlpha(0);
+                        return true;
+                    }
+                });
+            }
+        });
+
+        pack3Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+                View popUpView = inflater.inflate(R.layout.pack_3_popup, null);
+
+                popupWindow = new PopupWindow(popUpView,LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+
+
+                if(Build.VERSION.SDK_INT>=21)
+                {
+                    popupWindow.setElevation(5.0f);
+                }
+
+                popupWindow.showAtLocation(myLayout, Gravity.CENTER, 0,0);
+                //myLayout.getForeground().setAlpha( 220);
+
+
+                popUpView.setOnTouchListener(new View.OnTouchListener(){
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event)
+                    {
+                        popupWindow.dismiss();
+                        //myLayout.getForeground().setAlpha(0);
+                        return true;
+                    }
+                });
+            }
+        });
+
+
 
 
     }
