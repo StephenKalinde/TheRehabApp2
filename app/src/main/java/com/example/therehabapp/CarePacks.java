@@ -55,7 +55,7 @@ public class CarePacks extends AppCompatActivity {
         myLayout = (FrameLayout) findViewById(R.id.care_pack_activity_view);
         //myLayout.getForeground().setAlpha(0);
 
-        pack1.setOnClickListener(new View.OnClickListener() {
+        pack1Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -66,7 +66,7 @@ public class CarePacks extends AppCompatActivity {
             }
         });
 
-        pack2.setOnClickListener(new View.OnClickListener() {
+        pack2Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -77,7 +77,7 @@ public class CarePacks extends AppCompatActivity {
             }
         });
 
-        pack3.setOnClickListener(new View.OnClickListener() {
+        pack3Btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -90,7 +90,7 @@ public class CarePacks extends AppCompatActivity {
 
         /** show overlays on click of the pack info buttons**/
 
-        pack1Btn.setOnClickListener(new View.OnClickListener() {
+        pack1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -105,11 +105,20 @@ public class CarePacks extends AppCompatActivity {
                     popupWindow.setElevation(5.0f);
                 }
 
+                Button closeBtn= (Button) popUpView.findViewById(R.id.close_btn_1);
+                closeBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        popupWindow.dismiss();
+                    }
+                });
+
                 popupWindow.showAtLocation(myLayout, Gravity.CENTER, 0,0);
                 //myLayout.getForeground().setAlpha( 220);
 
 
-                popUpView.setOnTouchListener(new View.OnTouchListener(){
+             /**   popUpView.setOnTouchListener(new View.OnTouchListener(){
                     @Override
                     public boolean onTouch(View v, MotionEvent event)
                     {
@@ -117,11 +126,11 @@ public class CarePacks extends AppCompatActivity {
                         //myLayout.getForeground().setAlpha(0);
                         return true;
                     }
-                });
+                }); **/
             }
         });
 
-        pack2Btn.setOnClickListener(new View.OnClickListener() {
+        pack2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -136,11 +145,20 @@ public class CarePacks extends AppCompatActivity {
                     popupWindow.setElevation(5.0f);
                 }
 
+                Button closeBtn= (Button) popUpView.findViewById(R.id.close_btn_2);
+                closeBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        popupWindow.dismiss();
+                    }
+                });
+
                 popupWindow.showAtLocation(myLayout, Gravity.CENTER, 0,0);
                 //myLayout.getForeground().setAlpha( 220);
 
 
-                popUpView.setOnTouchListener(new View.OnTouchListener(){
+               /** popUpView.setOnTouchListener(new View.OnTouchListener(){
                     @Override
                     public boolean onTouch(View v, MotionEvent event)
                     {
@@ -148,11 +166,11 @@ public class CarePacks extends AppCompatActivity {
                         //myLayout.getForeground().setAlpha(0);
                         return true;
                     }
-                });
+                }); **/
             }
         });
 
-        pack3Btn.setOnClickListener(new View.OnClickListener() {
+        pack3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -167,11 +185,20 @@ public class CarePacks extends AppCompatActivity {
                     popupWindow.setElevation(5.0f);
                 }
 
+                Button closeBtn= (Button) popUpView.findViewById(R.id.close_btn_3);
+                closeBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        popupWindow.dismiss();
+                    }
+                });
+
                 popupWindow.showAtLocation(myLayout, Gravity.CENTER, 0,0);
                 //myLayout.getForeground().setAlpha( 220);
 
 
-                popUpView.setOnTouchListener(new View.OnTouchListener(){
+               /** popUpView.setOnTouchListener(new View.OnTouchListener(){
                     @Override
                     public boolean onTouch(View v, MotionEvent event)
                     {
@@ -179,7 +206,7 @@ public class CarePacks extends AppCompatActivity {
                         //myLayout.getForeground().setAlpha(0);
                         return true;
                     }
-                });
+                }); **/
             }
         });
 
