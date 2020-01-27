@@ -19,12 +19,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SignUp extends AppCompatActivity {
 
-
      private Button signUpBtn;
      private Button loginBtn;
-     private EditText nameView, surnameView, cellNumberView, emailAddView, passwordView, confirmPasswordView;
+     public  EditText nameView, surnameView, cellNumberView, emailAddView, passwordView, confirmPasswordView;
      private FirebaseAuth mAuth;
      private static final String TAG="SignUpActivity";
+
+     private String name, surname, emailAdd, password, confirmPassword , cellNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,18 +44,12 @@ public class SignUp extends AppCompatActivity {
         passwordView= (EditText) findViewById(R.id.initPassword);
         confirmPasswordView = (EditText) findViewById(R.id.confirmPassword);
 
-        final String name = nameView.getText().toString();
-        final String surname = surnameView.getText().toString();
-        final String cellNumber = cellNumberView.getText().toString();
-        final String emailAdd= emailAddView.getText().toString();
-        final String password= passwordView.getText().toString();
-        final String confirmPassword= confirmPasswordView.getText().toString();
-
         signUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                CreateAccount(name,surname,cellNumber,emailAdd, password,confirmPassword);
+                //Toast.makeText(SignUp.this, nameView.getText().toString()+emailAddView.getText().toString(), Toast.LENGTH_LONG).show();
+                CreateAccount(nameView.getText().toString(),surnameView.getText().toString(),cellNumberView.getText().toString(),emailAddView.getText().toString(), passwordView.getText().toString(),confirmPasswordView.getText().toString());
             }
         });
 
@@ -64,7 +59,6 @@ public class SignUp extends AppCompatActivity {
                 startActivity(new Intent (SignUp.this, Login.class));
             }
         });
-
 
     }
 
@@ -79,7 +73,7 @@ public class SignUp extends AppCompatActivity {
 
     private void CreateAccount(String name, String surname , String cellNumber, String emailAdd, String password, String confirmPassword)
     {
-        if(password==confirmPassword)
+        if(password.equals(confirmPassword))
         {
             mAuth.createUserWithEmailAndPassword(emailAdd, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>(){
@@ -97,9 +91,15 @@ public class SignUp extends AppCompatActivity {
                                 Log.w(TAG,"createUserWithEmail: failure");
                                 Toast.makeText(SignUp.this, "Sign Up failed. Try Again.",Toast.LENGTH_LONG).show();
                             }
+
                         }
 
                     });
+        }
+
+        else{
+
+            Toast.makeText(SignUp.this, "Passwords do not match. Try Again.", Toast.LENGTH_LONG).show();
         }
     }
 
