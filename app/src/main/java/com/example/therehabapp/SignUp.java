@@ -51,13 +51,25 @@ public class SignUp extends AppCompatActivity {
 
                 //Toast.makeText(SignUp.this, nameView.getText().toString()+emailAddView.getText().toString(), Toast.LENGTH_LONG).show();
 
-                ProgressDialog progressDialogBox= new ProgressDialog(SignUp.this, R.style.MyDialogTheme);
-                progressDialogBox.setTitle("Sign Up");
-                progressDialogBox.setMessage("Signing Up...");
-                progressDialogBox.setCancelable(true);
-                progressDialogBox.show();
+                if(passwordView.getText().toString().equals(confirmPasswordView.getText().toString()))
+                {
 
-                CreateAccount(nameView.getText().toString(),surnameView.getText().toString(),cellNumberView.getText().toString(),emailAddView.getText().toString(), passwordView.getText().toString(),confirmPasswordView.getText().toString());
+                    ProgressDialog progressDialogBox= new ProgressDialog(SignUp.this, R.style.MyDialogTheme);
+                    progressDialogBox.setTitle("Sign Up");
+                    progressDialogBox.setMessage("Signing Up...");
+                    progressDialogBox.setCancelable(true);
+                    progressDialogBox.show();
+
+                    CreateAccount(nameView.getText().toString(),surnameView.getText().toString(),cellNumberView.getText().toString(),emailAddView.getText().toString(), passwordView.getText().toString(),confirmPasswordView.getText().toString());
+
+                }
+
+                else{
+
+                    Toast.makeText(SignUp.this, "Passwords Do not match. Try Again!", Toast.LENGTH_LONG).show();
+
+                }
+
             }
         });
 
@@ -81,8 +93,6 @@ public class SignUp extends AppCompatActivity {
 
     private void CreateAccount(String name, String surname , String cellNumber, String emailAdd, String password, String confirmPassword)
     {
-        if(password.equals(confirmPassword))
-        {
             mAuth.createUserWithEmailAndPassword(emailAdd, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>(){
                         @Override
@@ -103,12 +113,7 @@ public class SignUp extends AppCompatActivity {
                         }
 
                     });
-        }
 
-        else{
-
-            Toast.makeText(SignUp.this, "Passwords do not match. Try Again.", Toast.LENGTH_LONG).show();
-        }
     }
 
 }
