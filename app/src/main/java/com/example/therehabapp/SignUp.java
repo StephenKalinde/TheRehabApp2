@@ -1,5 +1,6 @@
 package com.example.therehabapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,6 +50,13 @@ public class SignUp extends AppCompatActivity {
             public void onClick(View view) {
 
                 //Toast.makeText(SignUp.this, nameView.getText().toString()+emailAddView.getText().toString(), Toast.LENGTH_LONG).show();
+
+                ProgressDialog progressDialogBox= new ProgressDialog(SignUp.this, R.style.MyDialogTheme);
+                progressDialogBox.setTitle("Sign Up");
+                progressDialogBox.setMessage("Signing Up...");
+                progressDialogBox.setCancelable(true);
+                progressDialogBox.show();
+
                 CreateAccount(nameView.getText().toString(),surnameView.getText().toString(),cellNumberView.getText().toString(),emailAddView.getText().toString(), passwordView.getText().toString(),confirmPasswordView.getText().toString());
             }
         });
