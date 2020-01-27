@@ -25,6 +25,7 @@ public class SignUp extends AppCompatActivity {
      public  EditText nameView, surnameView, cellNumberView, emailAddView, passwordView, confirmPasswordView;
      private FirebaseAuth mAuth;
      private static final String TAG="SignUpActivity";
+     private ProgressDialog progressDialogBox;
 
      private String name, surname, emailAdd, password, confirmPassword , cellNumber;
 
@@ -54,13 +55,14 @@ public class SignUp extends AppCompatActivity {
                 if(passwordView.getText().toString().equals(confirmPasswordView.getText().toString()))
                 {
 
-                    ProgressDialog progressDialogBox= new ProgressDialog(SignUp.this, R.style.MyDialogTheme);
-                    progressDialogBox.setTitle("Sign Up");
-                    progressDialogBox.setMessage("Signing Up...");
-                    progressDialogBox.setCancelable(true);
-                    progressDialogBox.show();
+                        progressDialogBox= new ProgressDialog(SignUp.this, R.style.MyDialogTheme);
+                        progressDialogBox.setTitle("Sign Up");
+                        progressDialogBox.setMessage("Signing Up...");
+                        progressDialogBox.setCancelable(true);
+                        progressDialogBox.show();
 
-                    CreateAccount(nameView.getText().toString(),surnameView.getText().toString(),cellNumberView.getText().toString(),emailAddView.getText().toString(), passwordView.getText().toString(),confirmPasswordView.getText().toString());
+                        CreateAccount(nameView.getText().toString(),surnameView.getText().toString(),cellNumberView.getText().toString(),emailAddView.getText().toString(), passwordView.getText().toString(),confirmPasswordView.getText().toString());
+
 
                 }
 
@@ -101,12 +103,14 @@ public class SignUp extends AppCompatActivity {
                             {
                                 Log.d(TAG, "createUserWithEmail: successful");
                                 FirebaseUser user =mAuth.getCurrentUser();
+                                progressDialogBox.cancel();
                                 Toast.makeText(SignUp.this, "Sign Up Successful!", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(SignUp.this, TermsAndConditions.class ));
                             }
 
                             else {
                                 Log.w(TAG,"createUserWithEmail: failure");
+                                progressDialogBox.cancel();
                                 Toast.makeText(SignUp.this, "Sign Up failed. Try Again.",Toast.LENGTH_LONG).show();
                             }
 
