@@ -76,7 +76,7 @@ public class Login extends AppCompatActivity {
                         else{
                             Log.w(TAG, "signInWithEmail: failure",task.getException());
                             progressDialogBox.cancel();
-                            Toast.makeText(Login.this, "Authentication failed.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(Login.this, "Authentication failed. Try again", Toast.LENGTH_LONG).show();
                         }
                     }
                 });
