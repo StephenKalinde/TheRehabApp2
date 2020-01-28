@@ -58,7 +58,7 @@ public class SignUp extends AppCompatActivity {
                         progressDialogBox= new ProgressDialog(SignUp.this, R.style.MyDialogTheme);
                         progressDialogBox.setTitle("Sign Up");
                         progressDialogBox.setMessage("Signing Up...");
-                        progressDialogBox.setCancelable(true);
+                        progressDialogBox.setCancelable(false);
                         progressDialogBox.show();
 
                         CreateAccount(nameView.getText().toString(),surnameView.getText().toString(),cellNumberView.getText().toString(),emailAddView.getText().toString(), passwordView.getText().toString(),confirmPasswordView.getText().toString());
