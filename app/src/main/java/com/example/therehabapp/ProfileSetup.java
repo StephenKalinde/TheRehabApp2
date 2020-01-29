@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,6 +22,7 @@ public class ProfileSetup extends AppCompatActivity {
 
     private Button continueBtn;
     private EditText nameView, surnameView, iDNumberView, dateOfBirthView, addressLine1View, addressLine2View, cityView, postalCodeView,homePhoneView, cellPhoneView, emailAddView;
+    private CheckBox hospitalisedNo, hospitalizedYes, addictionsNo, addictionsYes, smokingNo, smokingYes, criminalRecordNo, criminalRecordYes;
     private FirebaseDatabase db;
     private FirebaseAuth mAuth;
     @Override
@@ -43,20 +46,39 @@ public class ProfileSetup extends AppCompatActivity {
         cellPhoneView=(EditText)findViewById(R.id.cell_phone_view);
         emailAddView=(EditText)findViewById(R.id.email_view);
 
+        hospitalisedNo=(CheckBox)findViewById(R.id.check_box_no) ;
+        hospitalizedYes=(CheckBox)findViewById(R.id.check_box_yes);
+        addictionsNo=(CheckBox)findViewById(R.id.check_box_no2);
+        addictionsYes=(CheckBox)findViewById(R.id.check_box_yes2);
+        smokingNo= (CheckBox)findViewById(R.id.check_box_no3);
+        smokingYes= (CheckBox)findViewById(R.id.check_box_yes3);
+        criminalRecordNo= (CheckBox)findViewById(R.id.check_box_no4);
+        criminalRecordYes=(CheckBox)findViewById(R.id.check_box_yes4);
+
         continueBtn = (Button) findViewById(R.id.submit_btn);
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                ProgressDialog progressDialogBox = new ProgressDialog(ProfileSetup.this, R.style.MyDialogTheme);
-                progressDialogBox.setTitle("Saving...");
-                progressDialogBox.setCancelable(false);
-                progressDialogBox.show();
+                if((hospitalisedNo.isChecked()||hospitalizedYes.isChecked()) && (addictionsNo.isChecked()||addictionsYes.isChecked()) && (smokingNo.isChecked()||smokingYes.isChecked()) && (criminalRecordNo.isChecked()||criminalRecordYes.isChecked()))
+                {
 
-                SaveToDb();
+                    ProgressDialog progressDialogBox = new ProgressDialog(ProfileSetup.this, R.style.MyDialogTheme);
+                    progressDialogBox.setTitle("Saving...");
+                    progressDialogBox.setCancelable(false);
+                    progressDialogBox.show();
 
-                startActivity(new Intent(ProfileSetup.this, CarePacks.class) );
+                    SaveToDb();
+
+                    startActivity(new Intent(ProfileSetup.this, CarePacks.class) );
+
+                }
+                else{
+
+                    Toast.makeText(ProfileSetup.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });
