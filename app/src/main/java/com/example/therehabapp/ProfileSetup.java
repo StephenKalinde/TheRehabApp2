@@ -1,5 +1,6 @@
 package com.example.therehabapp;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -42,27 +43,37 @@ public class ProfileSetup extends AppCompatActivity {
         cellPhoneView=(EditText)findViewById(R.id.cell_phone_view);
         emailAddView=(EditText)findViewById(R.id.email_view);
 
-
-
         continueBtn = (Button) findViewById(R.id.submit_btn);
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                User userDetails= new User(nameView.getText().toString(), surnameView.getText().toString(), iDNumberView.getText().toString(),dateOfBirthView.getText().toString(), addressLine1View.getText().toString(), addressLine2View.getText().toString(), cityView.getText().toString(),postalCodeView.getText().toString(), homePhoneView.getText().toString(), cellPhoneView.getText().toString(), emailAddView.getText().toString());
-                Map<String ,User> map= new HashMap();
-                String user= mAuth.getUid();
-                map.put(user, userDetails);
+                ProgressDialog progressDialogBox = new ProgressDialog(ProfileSetup.this, R.style.MyDialogTheme);
+                progressDialogBox.setTitle("Saving...");
+                progressDialogBox.setCancelable(false);
+                progressDialogBox.show();
 
-                DatabaseReference dbRef= db.getReference("Users");
-                dbRef.setValue(map);
+                SaveToDb();
 
                 startActivity(new Intent(ProfileSetup.this, CarePacks.class) );
 
             }
         });
 
+    }
+
+    private void SaveToDb()
+    {
+        User userDetails= new User(nameView.getText().toString(), surnameView.getText().toString(), iDNumberView.getText().toString(),dateOfBirthView.getText().toString(), addressLine1View.getText().toString(), addressLine2View.getText().toString(), cityView.getText().toString(),postalCodeView.getText().toString(), homePhoneView.getText().toString(), cellPhoneView.getText().toString(), emailAddView.getText().toString());
+        Map<String ,User> map= new HashMap();
+        String user= mAuth.getUid();
+        map.put(user, userDetails);
+
+        DatabaseReference dbRefUsers= db.getReference("Users");
+        dbRefUsers.setValue(map);
+
+       // ProfileQuestions questions= new ProfileQuestions()
     }
 
 }
