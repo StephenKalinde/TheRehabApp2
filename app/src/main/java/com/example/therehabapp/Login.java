@@ -24,7 +24,7 @@ public class Login extends AppCompatActivity {
     private EditText emailAddView;
     private EditText passwordView;
     private FirebaseAuth mAuth;
-    private static final String TAG="LoginActivity";
+    private static final String TAG = "LoginActivity";
     private ProgressDialog progressDialogBox;
 
     protected void onCreate(Bundle savedInstanceState) {
