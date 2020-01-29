@@ -21,7 +21,7 @@ import java.util.Map;
 public class ProfileSetup extends AppCompatActivity {
 
     private Button continueBtn;
-    private EditText nameView, surnameView, iDNumberView, dateOfBirthView, addressLine1View, addressLine2View, cityView, postalCodeView,homePhoneView, cellPhoneView, emailAddView;
+    private EditText nameView, surnameView, iDNumberView, dateOfBirthView, addressLine1View, addressLine2View, cityView, postalCodeView,homePhoneView, cellPhoneView, emailAddView, physicianNameView, physicainNumberView, substancesView;
     private CheckBox hospitalisedNo, hospitalizedYes, addictionsNo, addictionsYes, smokingNo, smokingYes, criminalRecordNo, criminalRecordYes;
     private FirebaseDatabase db;
     private FirebaseAuth mAuth;
@@ -45,6 +45,9 @@ public class ProfileSetup extends AppCompatActivity {
         homePhoneView=(EditText)findViewById(R.id.home_phone_view);
         cellPhoneView=(EditText)findViewById(R.id.cell_phone_view);
         emailAddView=(EditText)findViewById(R.id.email_view);
+        physicianNameView=(EditText)findViewById(R.id.physician_view);
+        physicainNumberView=(EditText)findViewById(R.id.physician_view);
+        substancesView=(EditText)findViewById(R.id.substance_view);
 
         hospitalisedNo=(CheckBox)findViewById(R.id.check_box_no) ;
         hospitalizedYes=(CheckBox)findViewById(R.id.check_box_yes);
@@ -95,7 +98,31 @@ public class ProfileSetup extends AppCompatActivity {
         DatabaseReference dbRefUsers= db.getReference("Users");
         dbRefUsers.setValue(map);
 
-       // ProfileQuestions questions= new ProfileQuestions()
+        //saving profile questions
+        boolean hospitalized=false , addictions=false , smoking=false ,criminalRecord=false ;
+        if(hospitalizedYes.isChecked() == true)
+        {
+            hospitalized=true;
+        }
+        if(addictionsYes.isChecked() == true)
+        {
+            addictions=true;
+        }
+        if(smokingYes.isChecked() == true)
+        {
+            smoking=true;
+        }
+        if(criminalRecordYes.isChecked() == true)
+        {
+            criminalRecord=true;
+        }
+
+        ProfileQuestions profileQuestions = new ProfileQuestions(hospitalized,physicianNameView.getText().toString(),physicainNumberView.getText().toString(),addictions,substancesView.getText().toString(),smoking,criminalRecord);
+        Map<String , ProfileQuestions> map2= new HashMap<>();
+        map2.put(user,profileQuestions);
+
+        DatabaseReference dbRefQuestions= db.getReference("UserAnswers");
+        dbRefQuestions.setValue(map2);
     }
 
 }
