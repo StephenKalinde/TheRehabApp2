@@ -95,8 +95,8 @@ public class ProfileSetup extends AppCompatActivity {
         String user= mAuth.getUid();
         map.put(user, userDetails);
 
-        DatabaseReference dbRefUsers= db.getReference("Users");
-        dbRefUsers.setValue(map);
+        DatabaseReference dbRefUsers= db.getReference("Users/"+ user);
+        dbRefUsers.setValue(userDetails);
 
         //saving profile questions
         boolean hospitalized=false , addictions=false , smoking=false ,criminalRecord=false ;
@@ -121,8 +121,8 @@ public class ProfileSetup extends AppCompatActivity {
         Map<String , ProfileQuestions> map2= new HashMap<>();
         map2.put(user,profileQuestions);
 
-        DatabaseReference dbRefQuestions= db.getReference("UserAnswers");
-        dbRefQuestions.setValue(map2);
+        DatabaseReference dbRefQuestions= db.getReference("UserAnswers/"+ user);
+        dbRefQuestions.setValue(profileQuestions);
     }
 
 }
