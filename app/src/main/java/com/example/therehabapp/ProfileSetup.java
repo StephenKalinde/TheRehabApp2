@@ -78,6 +78,25 @@ public class ProfileSetup extends AppCompatActivity {
             }
         });
 
+        addictionsYes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(addictionsYes.isChecked()==true){
+                    addictionsNo.setChecked(false);
+                }
+            }
+        });
+
+        addictionsNo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(addictionsNo.isChecked()==true){
+                    addictionsYes.setChecked(false);
+                }
+            }
+        });
+
+
         continueBtn = (Button) findViewById(R.id.submit_btn);
 
         continueBtn.setOnClickListener(new View.OnClickListener() {
