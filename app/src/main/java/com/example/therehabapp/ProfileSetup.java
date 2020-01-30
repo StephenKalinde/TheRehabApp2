@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -57,6 +59,24 @@ public class ProfileSetup extends AppCompatActivity {
         smokingYes= (CheckBox)findViewById(R.id.check_box_yes3);
         criminalRecordNo= (CheckBox)findViewById(R.id.check_box_no4);
         criminalRecordYes=(CheckBox)findViewById(R.id.check_box_yes4);
+
+        hospitalizedYes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(hospitalizedYes.isChecked()==true){
+                    hospitalisedNo.setChecked(false);
+                }
+            }
+        });
+
+        hospitalisedNo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(hospitalisedNo.isChecked()==true){
+                    hospitalizedYes.setChecked(false);
+                }
+            }
+        });
 
         continueBtn = (Button) findViewById(R.id.submit_btn);
 
