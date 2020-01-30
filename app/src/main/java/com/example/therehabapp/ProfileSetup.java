@@ -96,6 +96,42 @@ public class ProfileSetup extends AppCompatActivity {
             }
         });
 
+        smokingYes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(smokingYes.isChecked()==true){
+                    smokingNo.setChecked(false);
+                }
+            }
+        });
+
+        smokingNo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(smokingNo.isChecked()==true){
+                    smokingYes.setChecked(false);
+                }
+            }
+        });
+
+        criminalRecordYes.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(criminalRecordYes.isChecked()==true){
+                    criminalRecordNo.setChecked(false);
+                }
+            }
+        });
+
+        criminalRecordNo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(criminalRecordNo.isChecked()==true){
+                    criminalRecordYes.setChecked(false);
+                }
+            }
+        });
+
 
         continueBtn = (Button) findViewById(R.id.submit_btn);
 
