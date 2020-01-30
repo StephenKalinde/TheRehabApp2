@@ -1,6 +1,7 @@
 package com.example.therehabapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 /**
@@ -62,11 +64,27 @@ public class FragmentProfile extends Fragment {
         }
     }
 
+    private Button messagesBtn;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_profile, container, false);
+
+        View myView = inflater.inflate(R.layout.fragment_fragment_profile, container, false);
+
+        messagesBtn = (Button) myView.findViewById(R.id.messages_btn);
+        messagesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(),Messages.class);
+                startActivity(intent);
+
+            }
+        });
+
+        return myView;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

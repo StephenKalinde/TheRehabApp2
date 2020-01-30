@@ -67,6 +67,9 @@
         <activity android:name=".Gallery"/>
         <activity android:name=".Journal"/>
         <activity android:name=".NewNote"/>
+        <activity android:name=".NewMessage"/>
+        <activity android:name=".Messages"/>
+        <activity android:name=".ContactsList"/>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
