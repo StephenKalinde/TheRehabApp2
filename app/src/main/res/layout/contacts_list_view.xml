@@ -11,13 +11,10 @@
         android:background="@color/app_purple"
         android:layout_marginTop="0dp"/>
 
-
-    <!--contacts list-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:clipToPadding="false"
+    <ListView
+        android:id="@+id/my_list_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/contacts_list_recycler_view"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/contacts_list_toolbar"/>
 
 

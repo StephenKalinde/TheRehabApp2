@@ -14,6 +14,8 @@ public class User {
     public String CellPhone;
     public String EmailAddress;
 
+    public User(){}
+
     public User(String name, String surname , String id, String dateOfBirth, String addressLine1, String addressLine2, String city , String postalCode, String homePhone, String cellPhone, String emailAddress)
     {
         Name= name;

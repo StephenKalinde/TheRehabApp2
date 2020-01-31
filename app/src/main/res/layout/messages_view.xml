@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-
 
     <!--toolbar here-->
     <androidx.appcompat.widget.Toolbar
@@ -26,14 +25,9 @@
                 android:layout_marginTop="5dp"/>
 
         </RelativeLayout>
+
     </androidx.appcompat.widget.Toolbar>
 
     <!-- all messages recycler view-->
-    <androidx.recyclerview.widget.RecyclerView
-        android:clipToPadding="false"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/notes_recycler_view"
-        android:layout_below="@+id/journal_toolbar"/>
 
 </RelativeLayout>
