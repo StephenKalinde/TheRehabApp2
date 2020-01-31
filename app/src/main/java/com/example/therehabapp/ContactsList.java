@@ -1,20 +1,14 @@
 package com.example.therehabapp;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Debug;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
-
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,7 +17,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class ContactsList extends AppCompatActivity {
+public class ContactsList extends AppCompatActivity{
 
     protected Toolbar mToolbar;
     private ArrayList<User> myArrayList;
@@ -49,6 +43,22 @@ public class ContactsList extends AppCompatActivity {
         getSupportActionBar().setTitle("Peers");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
+
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String userEmail= myArrayList.get(position).EmailAddress;
+                String userName= myArrayList.get(position).Name;
+
+                Intent intent = new Intent(ContactsList.this, NewMessage.class);
+
+                intent.putExtra("userEmail", userEmail);
+                intent.putExtra("userName", userName);
+
+                startActivity(intent);
+            }
+        });
 
     }
 
