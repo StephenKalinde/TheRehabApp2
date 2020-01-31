@@ -10,11 +10,13 @@ import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class Messages extends AppCompatActivity {
 
 
     private Toolbar myToolBar;
-    private ImageButton newMessage;
+    private FloatingActionButton newMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -23,7 +25,7 @@ public class Messages extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.messages_view);
 
-        newMessage= (ImageButton) findViewById(R.id.new_message_btn);
+        newMessage= (FloatingActionButton) findViewById(R.id.new_message_btn);
         myToolBar=(Toolbar)findViewById(R.id.messages_toolbar);
 
         setSupportActionBar(myToolBar);

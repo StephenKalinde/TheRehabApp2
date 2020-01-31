@@ -9,24 +9,18 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/app_purple"
-        android:layout_marginTop="0dp">
+        android:layout_marginTop="0dp"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
-
-            <ImageButton
-                android:id="@+id/new_message_btn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/outline_add_black_48dp"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp"/>
-
-        </RelativeLayout>
-
-    </androidx.appcompat.widget.Toolbar>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/new_message_btn"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:backgroundTint="@color/btn_green"
+        android:elevation="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"/>
 
     <!-- all messages recycler view-->
 
