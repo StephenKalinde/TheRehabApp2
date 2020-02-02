@@ -11,8 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.List;
 
@@ -22,6 +25,7 @@ public class PeersList  extends ArrayAdapter<User> {
     private List<User> userList;
     private DatabaseReference dbRef;
     private FirebaseAuth mAuth;
+    private String uid;
 
     public PeersList(Activity context, List<User> userList)
     {
@@ -29,7 +33,7 @@ public class PeersList  extends ArrayAdapter<User> {
         this.context= context;
         this.userList = userList;
         mAuth= FirebaseAuth.getInstance();
-        String uid= mAuth.getUid();
+        uid= mAuth.getUid();
 
         dbRef= FirebaseDatabase.getInstance().getReference("Peers/"+uid);
     }
@@ -55,8 +59,36 @@ public class PeersList  extends ArrayAdapter<User> {
             @Override
             public void onClick(View v) {
 
-                dbRef.push().setValue(myUser.EmailAddress);
-                addBtn.setText("Added");
+                if(addBtn.getText().equals("Add")) {
+                    dbRef.push().setValue(myUser.EmailAddress);
+                    addBtn.setText("Remove");
+                }
+                if(addBtn.getText().equals("Remove"))
+                {
+                    //remove from db here
+                    dbRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for(DataSnapshot user: dataSnapshot.getChildren())
+                            {
+                                String userEmail = user.getValue(String.class);
+
+                                if(myUser.EmailAddress.equals(userEmail))
+                                {
+                                    user.getRef().removeValue();
+                                    addBtn.setText("Add");
+
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+                }
             }
         });
 
