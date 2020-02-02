@@ -65,6 +65,7 @@ public class FragmentProfile extends Fragment {
     }
 
     private Button messagesBtn;
+    private Button peersBtn;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -73,6 +74,8 @@ public class FragmentProfile extends Fragment {
         View myView = inflater.inflate(R.layout.fragment_fragment_profile, container, false);
 
         messagesBtn = (Button) myView.findViewById(R.id.messages_btn);
+        peersBtn= (Button) myView.findViewById(R.id.peers_btn);
+
         messagesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,6 +83,14 @@ public class FragmentProfile extends Fragment {
                 Intent intent = new Intent(getActivity(),Messages.class);
                 startActivity(intent);
 
+            }
+        });
+
+        peersBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent= new Intent(getActivity(), AllPeers.class);
+                startActivity(intent);
             }
         });
 

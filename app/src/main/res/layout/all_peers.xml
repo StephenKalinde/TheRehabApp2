@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/all_peers_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/btn_green"
+        android:layout_marginTop="0dp"/>
+
+    <RelativeLayout
+        android:id="@+id/peers_search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@+id/all_peers_toolbar">
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:id="@+id/peers_search_box"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentLeft="true"
+            android:hint="Search..."/>
+
+        <Button
+            android:id="@+id/peers_search_btn"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="Search"/>
+
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/peers_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/peers_search_bar"/>
+
+
+</RelativeLayout>
