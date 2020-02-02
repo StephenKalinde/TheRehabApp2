@@ -25,6 +25,7 @@ public class AllPeers extends AppCompatActivity {
     private ListView peersListView;
     private ArrayList<User> allUserList;
     private ArrayList<User> usersFoundList;
+    private PeersList adapter;
 
     private DatabaseReference mRef;
 
@@ -62,7 +63,7 @@ public class AllPeers extends AppCompatActivity {
                 //allUserList= usersHandler.GetAllUsers();
 
                 GetAllUsers();
-
+                usersFoundList.clear();
                 for(User user: allUserList)
                 {
                     if(user.EmailAddress.equals(searchBox.getText().toString().trim()))
@@ -83,9 +84,9 @@ public class AllPeers extends AppCompatActivity {
                 else{
 
                     progressDialogBox.cancel();
-                    PeersList adapter = new PeersList(AllPeers.this,usersFoundList);
+
+                    adapter = new PeersList(AllPeers.this,usersFoundList);
                     peersListView.setAdapter(adapter);
-                    //peersListView.getAdapter().notify();
 
                 }
 
