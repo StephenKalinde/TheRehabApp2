@@ -17,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PeersList  extends ArrayAdapter<User> {
@@ -59,16 +61,66 @@ public class PeersList  extends ArrayAdapter<User> {
             @Override
             public void onClick(View v) {
 
-                if(addBtn.getText().equals("Add")) {
-                    dbRef.push().setValue(myUser.EmailAddress);
-                    addBtn.setText("Remove");
+                for (int i=0; i<1; i++) {
+                    if (addBtn.getText().equals("Add")) {
+
+                        dbRef.push().setValue(myUser.EmailAddress);
+                        addBtn.setText("Remove");
+                        break;
+
+                    }
+
+                    if (addBtn.getText().equals("Remove")) {
+                        dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                for(DataSnapshot user: dataSnapshot.getChildren())
+                                {
+                                    String userEmail = user.getValue(String.class);
+
+                                    if(myUser.EmailAddress.equals(userEmail))
+                                    {
+                                        user.getRef().removeValue();
+                                        addBtn.setText("Add");
+
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                        break;
+                    }
+
                 }
-                if(addBtn.getText().equals("Remove"))
+                /**if(addBtn.getText().equals("Remove"))
                 {
-                    //remove from db here
-                    dbRef.addValueEventListener(new ValueEventListener() {
+
+                    ArrayList<String> allPeersEmails;
+                    //get list of all peers for the respective
+                    allPeersEmails = GetAllUsers();
+                    //search for the respective user by user.EmailAddress
+                    for (int i = 0; i < allPeersEmails.size(); i++)
+                    {
+                        if(allPeersEmails.get(i).equals(myUser.EmailAddress))
+                        {
+
+                            int index= i;
+                            RemovePeer(index);
+
+                        }
+                    }
+
+                    addBtn.setText("Add");
+
+                    /**dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                             for(DataSnapshot user: dataSnapshot.getChildren())
                             {
                                 String userEmail = user.getValue(String.class);
@@ -86,12 +138,89 @@ public class PeersList  extends ArrayAdapter<User> {
                         public void onCancelled(@NonNull DatabaseError databaseError) {
 
                         }
+                    }); **/
+                    //remove from db here
+                  /**  dbRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for(DataSnapshot user: dataSnapshot.getChildren())
+                            {
+                                String userEmail = user.getValue(String.class);
+
+                                if(myUser.EmailAddress.equals(userEmail))
+                                {
+                                    user.getRef().removeValue();
+
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
                     });
 
-                }
+                } **/
             }
         });
 
         return listViewItem;
+    }
+
+    private ArrayList<String> GetAllUsers()
+    {
+        final ArrayList<String> peersList= new ArrayList<>();
+
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for( DataSnapshot peerSnapshot: dataSnapshot.getChildren())
+                {
+
+                    String peer= peerSnapshot.getValue(String.class);
+                    peersList.add(peer);
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+        return peersList;
+    }
+
+    private void RemovePeer(final int index)
+    {
+
+        dbRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                int count = 0;
+                for(DataSnapshot peerSnapshot: dataSnapshot.getChildren())
+                {
+                    if(index == count)
+                    {
+                        peerSnapshot.getRef().removeValue();
+                    }
+
+                    count++;
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 }
