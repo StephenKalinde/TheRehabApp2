@@ -16,8 +16,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,14 +26,18 @@ public class PeersList  extends ArrayAdapter<User> {
     private DatabaseReference dbRef;
     private FirebaseAuth mAuth;
     private String uid;
+    //private String Text;
 
-    public PeersList(Activity context, List<User> userList)
+    public PeersList(Activity context, List<User> userList/**,String Text**/)
     {
         super(context , R.layout.list_view_item, userList);
-        this.context= context;
+        this.context = context;
         this.userList = userList;
-        mAuth= FirebaseAuth.getInstance();
-        uid= mAuth.getUid();
+       //this.Text = Text;
+        mAuth = FirebaseAuth.getInstance();
+        uid = mAuth.getUid();
+
+
 
         dbRef= FirebaseDatabase.getInstance().getReference("Peers/"+uid);
     }
@@ -52,6 +54,11 @@ public class PeersList  extends ArrayAdapter<User> {
 
         final Button addBtn= (Button) listViewItem.findViewById(R.id.add_btn);
 
+       /** if(Text.equals("Remove"))
+        {
+            addBtn.setText(Text);
+        }**/
+
         final User myUser= userList.get(position);
 
         userNameView.setText(myUser.Name);
@@ -62,6 +69,7 @@ public class PeersList  extends ArrayAdapter<User> {
             public void onClick(View v) {
 
                 for (int i=0; i<1; i++) {
+
                     if (addBtn.getText().equals("Add")) {
 
                         dbRef.push().setValue(myUser.EmailAddress);

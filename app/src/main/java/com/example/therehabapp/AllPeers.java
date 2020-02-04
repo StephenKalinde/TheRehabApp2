@@ -25,6 +25,7 @@ public class AllPeers extends AppCompatActivity {
     private ListView peersListView;
     private ArrayList<User> allUserList;
     private ArrayList<User> usersFoundList;
+    private ArrayList<User> allUserList_1;
     private PeersList adapter;
 
     private DatabaseReference mRef;
@@ -47,7 +48,8 @@ public class AllPeers extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
 
         usersFoundList = new ArrayList<>();
-        allUserList = new ArrayList<>();
+
+        allUserList_1= new ArrayList<>();
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,12 +60,10 @@ public class AllPeers extends AppCompatActivity {
                 progressDialogBox.setMessage("Searching...");
                 progressDialogBox.setCancelable(false);
                 progressDialogBox.show();
-                //get all users
-                //UsersHandler usersHandler= new UsersHandler();
-                //allUserList= usersHandler.GetAllUsers();
 
-                GetAllUsers();
+                allUserList=GetAllUsers();
                 usersFoundList.clear();
+
                 for(User user: allUserList)
                 {
                     if(user.EmailAddress.equals(searchBox.getText().toString().trim()))
@@ -77,8 +77,10 @@ public class AllPeers extends AppCompatActivity {
 
                 if(usersFoundList.size() == 0)
                 {
+
                     progressDialogBox.cancel();
-                    Toast.makeText(AllPeers.this, "User Does not Exit", Toast.LENGTH_LONG);
+                    Toast.makeText(AllPeers.this, "User Does not Exit", Toast.LENGTH_LONG).show();
+
                 }
 
                 else{
@@ -87,28 +89,12 @@ public class AllPeers extends AppCompatActivity {
 
                     adapter = new PeersList(AllPeers.this,usersFoundList);
                     peersListView.setAdapter(adapter);
+                    Toast.makeText(AllPeers.this, "Search Done", Toast.LENGTH_SHORT).show();
 
                 }
 
             }
         });
-
-       /** peersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?>parent, View view, int position, long id) {
-
-                String userEmail= allUserList.get(position).EmailAddress;
-                String userName= allUserList.get(position).Name;
-
-                Intent intent = new Intent(AllPeers.this, ProfileView.class);
-
-                intent.putExtra("userEmail", userEmail);
-                intent.putExtra("userName", userName);
-
-                startActivity(intent);
-            }
-        }); **/
-
 
     }
 
@@ -116,21 +102,23 @@ public class AllPeers extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        PeersList adapter=new PeersList(AllPeers.this, usersFoundList);
+        usersFoundList=GetAllUsers();
+        PeersList adapter=new PeersList(AllPeers.this,usersFoundList/**,"Remove"**/);
         peersListView.setAdapter(adapter);
     }
 
-    private void GetAllUsers(){
+    private ArrayList<User> GetAllUsers(){
 
         mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                allUserList.clear();
+                allUserList_1.clear();
+
                 for(DataSnapshot usersSnapShot: dataSnapshot.getChildren())
                 {
                     User user= usersSnapShot.getValue(User.class);
-                    allUserList.add(user);
+                    allUserList_1.add(user);
                 }
 
             }
@@ -141,5 +129,6 @@ public class AllPeers extends AppCompatActivity {
             }
         });
 
+        return allUserList_1;
     }
 }
