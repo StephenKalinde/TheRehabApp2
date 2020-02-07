@@ -1,8 +1,10 @@
 package com.example.therehabapp;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -70,8 +72,6 @@ public class AllPeers extends AppCompatActivity {
                 progressDialogBox.setCancelable(false);
                 progressDialogBox.show();
 
-
-
                 ArrayList<User> peerFound = SearchUserByEmail(searchBox.getText().toString());
 
                 if(peerFound.size()>0)
@@ -95,6 +95,30 @@ public class AllPeers extends AppCompatActivity {
 
             }
         });
+
+        /**peersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                User myUser=null;
+
+                if(allPeersUserList.size()>0)
+                {
+                    myUser= allPeersUserList.get(position);
+                }
+
+                else{
+
+                    myUser = peerFound2.get(position);
+                }
+
+                Intent intent = new Intent(AllPeers.this, PeerProfile.class);
+                intent.putExtra("Username", myUser.Name).putExtra("UserEmail", myUser.EmailAddress);
+                intent.putExtra("UserCity",myUser.City);
+
+                startActivity(intent);
+            }
+        }); **/
     }
 
     @Override
@@ -156,34 +180,6 @@ public class AllPeers extends AppCompatActivity {
 
 
         return allPeersUserList;
-    }
-
-    private ArrayList<String> GetAllPeerEmails(){
-
-        final ArrayList<String> peersList = new ArrayList<>(); // new list
-
-        mRefPeers.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                for(DataSnapshot usersSnapShot: dataSnapshot.getChildren())
-                {
-
-                    String user= usersSnapShot.getValue(String.class);
-                    peersList.add(user); // +1 user
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        return peersList;
-
     }
 
     private ArrayList<User> SearchUserByEmail(String userSearch)

@@ -1,11 +1,13 @@
 package com.example.therehabapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -54,11 +56,6 @@ public class PeersList  extends ArrayAdapter<User> {
 
         final Button addBtn= (Button) listViewItem.findViewById(R.id.add_btn);
 
-       /** if(Text.equals("Remove"))
-        {
-            addBtn.setText(Text);
-        }**/
-
         final User myUser= userList.get(position);
 
         userNameView.setText(myUser.Name);
@@ -105,130 +102,13 @@ public class PeersList  extends ArrayAdapter<User> {
                     }
 
                 }
-                /**if(addBtn.getText().equals("Remove"))
-                {
 
-                    ArrayList<String> allPeersEmails;
-                    //get list of all peers for the respective
-                    allPeersEmails = GetAllUsers();
-                    //search for the respective user by user.EmailAddress
-                    for (int i = 0; i < allPeersEmails.size(); i++)
-                    {
-                        if(allPeersEmails.get(i).equals(myUser.EmailAddress))
-                        {
-
-                            int index= i;
-                            RemovePeer(index);
-
-                        }
-                    }
-
-                    addBtn.setText("Add");
-
-                    /**dbRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                            for(DataSnapshot user: dataSnapshot.getChildren())
-                            {
-                                String userEmail = user.getValue(String.class);
-
-                                if(myUser.EmailAddress.equals(userEmail))
-                                {
-                                    user.getRef().removeValue();
-                                    addBtn.setText("Add");
-
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    }); **/
-                    //remove from db here
-                  /**  dbRef.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            for(DataSnapshot user: dataSnapshot.getChildren())
-                            {
-                                String userEmail = user.getValue(String.class);
-
-                                if(myUser.EmailAddress.equals(userEmail))
-                                {
-                                    user.getRef().removeValue();
-
-                                }
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-
-                } **/
             }
         });
 
         return listViewItem;
     }
 
-    private ArrayList<String> GetAllUsers()
-    {
-        final ArrayList<String> peersList= new ArrayList<>();
-
-        dbRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                for( DataSnapshot peerSnapshot: dataSnapshot.getChildren())
-                {
-
-                    String peer= peerSnapshot.getValue(String.class);
-                    peersList.add(peer);
-
-                }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
 
-        return peersList;
-    }
-
-    private void RemovePeer(final int index)
-    {
-
-        dbRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                int count = 0;
-                for(DataSnapshot peerSnapshot: dataSnapshot.getChildren())
-                {
-                    if(index == count)
-                    {
-                        peerSnapshot.getRef().removeValue();
-                    }
-
-                    count++;
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-    }
 }

@@ -71,6 +71,7 @@
         <activity android:name=".Messages"/>
         <activity android:name=".ContactsList"/>
         <activity android:name=".AllPeers"/>
+        <activity android:name=".PeerProfile"/>
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
