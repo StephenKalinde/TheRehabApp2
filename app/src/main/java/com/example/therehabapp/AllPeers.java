@@ -27,6 +27,7 @@ public class AllPeers extends AppCompatActivity {
     private ListView peersListView;
 
     private ArrayList<User> allPeersUserList;
+    private ArrayList<User> userFoundList;
 
     private PeersList adapter;
 
@@ -47,6 +48,7 @@ public class AllPeers extends AppCompatActivity {
         mRefUsers = FirebaseDatabase.getInstance().getReference("Users");
 
         allPeersUserList = new ArrayList<>();
+        userFoundList = new ArrayList<>();
 
         mToolBar =(Toolbar) findViewById(R.id.all_peers_toolbar);
         searchBox=(EditText) findViewById(R.id.peers_search_box);
@@ -62,21 +64,20 @@ public class AllPeers extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                /**ProgressDialog progressDialogBox= new ProgressDialog(AllPeers.this, R.style.MyDialogTheme);
+                ProgressDialog progressDialogBox= new ProgressDialog(AllPeers.this, R.style.MyDialogTheme);
                 progressDialogBox.setTitle("Search");
                 progressDialogBox.setMessage("Searching...");
                 progressDialogBox.setCancelable(false);
-                progressDialogBox.show(); **/
+                progressDialogBox.show();
 
 
 
-                /**if(peerFound!=null)
+                ArrayList<User> peerFound = SearchUserByEmail(searchBox.getText().toString());
+
+                if(peerFound.size()>0)
                 {
 
-                    peersFoundList.clear();
-                    peersFoundList.add(peerFound);  //+ peer
-
-                    adapter = new PeersList(AllPeers.this,peersFoundList);
+                    adapter = new PeersList(AllPeers.this,peerFound);
                     peersListView.setAdapter(adapter);
 
                     progressDialogBox.cancel();
@@ -92,9 +93,8 @@ public class AllPeers extends AppCompatActivity {
 
                 }
 
-            }**/
-        }});
-
+            }
+        });
     }
 
     @Override
@@ -186,11 +186,12 @@ public class AllPeers extends AppCompatActivity {
 
     }
 
-    private User SearchUserByEmail(String userSearch)
+    private ArrayList<User> SearchUserByEmail(String userSearch)
     {
          String searchString = userSearch.trim();
 
-         ArrayList<User> allPeersList= GetAllPeers();
+         ArrayList<User> allPeersList= allPeersUserList;
+         userFoundList.clear();
 
          for(User myUser: allPeersList)
          {
@@ -199,16 +200,13 @@ public class AllPeers extends AppCompatActivity {
 
              if(userEmail.equals(searchString))
              {
-                 return myUser;
-             }
 
-             else{
-
-                 continue;
+                 userFoundList.add(myUser);
 
              }
+
          }
 
-        return null;
+        return userFoundList;
     }
 }
