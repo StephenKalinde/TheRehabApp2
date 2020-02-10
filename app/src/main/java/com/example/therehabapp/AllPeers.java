@@ -1,10 +1,8 @@
 package com.example.therehabapp;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -28,8 +26,8 @@ public class AllPeers extends AppCompatActivity {
     private Button searchBtn;
     private ListView peersListView;
 
-    private ArrayList<User> allPeersUserList;
-    private ArrayList<User> userFoundList;
+    private ArrayList<User> peerFound;
+    private ArrayList<String> peerStringList;
 
     private PeersList adapter;
 
@@ -49,8 +47,8 @@ public class AllPeers extends AppCompatActivity {
         mRefPeers = FirebaseDatabase.getInstance().getReference("Peers/"+uid);
         mRefUsers = FirebaseDatabase.getInstance().getReference("Users");
 
-        allPeersUserList = new ArrayList<>();
-        userFoundList = new ArrayList<>();
+        peerStringList= new ArrayList<>();
+
 
         mToolBar =(Toolbar) findViewById(R.id.all_peers_toolbar);
         searchBox=(EditText) findViewById(R.id.peers_search_box);
@@ -72,13 +70,14 @@ public class AllPeers extends AppCompatActivity {
                 progressDialogBox.setCancelable(false);
                 progressDialogBox.show();
 
-                ArrayList<User> peerFound = SearchUserByEmail(searchBox.getText().toString());
+                peerFound = SearchUserByEmail(searchBox.getText().toString());
 
                 if(peerFound.size()>0)
                 {
 
                     adapter = new PeersList(AllPeers.this,peerFound);
                     peersListView.setAdapter(adapter);
+
 
                     progressDialogBox.cancel();
                     Toast.makeText(AllPeers.this, "Search Done", Toast.LENGTH_SHORT).show();
@@ -96,20 +95,20 @@ public class AllPeers extends AppCompatActivity {
             }
         });
 
-        /**peersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       /** peersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 User myUser=null;
 
-                if(allPeersUserList.size()>0)
+                if(peerFound.size()>0)
                 {
-                    myUser= allPeersUserList.get(position);
+                    myUser = peerFound.get(position);
                 }
 
-                else{
-
-                    myUser = peerFound2.get(position);
+                else
+                {
+                    myUser= allPeersUserList.get(position);
                 }
 
                 Intent intent = new Intent(AllPeers.this, PeerProfile.class);
@@ -130,20 +129,27 @@ public class AllPeers extends AppCompatActivity {
 
     }
 
+
     private ArrayList<User> GetAllPeers()
     {
-        allPeersUserList.clear();
-        final ArrayList<String>  allPeersEmailList = new ArrayList<>();
 
+        peerStringList.clear();
+        ArrayList<User> peerUserList= new ArrayList<>();
+        ArrayList<User> allUsers= GetAllUsers();
+
+        //dbreef to peers and add to array
         mRefPeers.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for(DataSnapshot userSnapshot: dataSnapshot.getChildren())
+                for(DataSnapshot user: dataSnapshot.getChildren())
                 {
-                    String userEmail= userSnapshot.getValue(String.class);
-                    allPeersEmailList.add(userEmail);
+
+                    String userString = user.getValue(String.class);
+                    peerStringList.add(userString);
+
                 }
+
             }
 
             @Override
@@ -151,22 +157,40 @@ public class AllPeers extends AppCompatActivity {
 
             }
         });
+
+        Toast.makeText(AllPeers.this, ""+peerStringList.size(),Toast.LENGTH_LONG).show();
+
+        //convert user strings to user.class and place into arr
+
+        for(String userEmail : peerStringList)
+        {
+            for(int i= 0; i< allUsers.size(); i++)
+            {
+                if(userEmail.equals(allUsers.get(i).EmailAddress))
+                {
+                    peerUserList.add(allUsers.get(i));
+                }
+            }
+        }
+
+        return peerUserList;
+
+    }
+
+    private ArrayList<User> GetAllUsers()
+    {
+
+        final ArrayList<User> allUsers= new ArrayList<>();
 
         mRefUsers.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-
-                for(DataSnapshot userSnapShot: dataSnapshot.getChildren())
+                for(DataSnapshot user : dataSnapshot.getChildren())
                 {
-                    User user = userSnapShot.getValue(User.class);
-                    for(String email: allPeersEmailList)
-                    {
 
-                        if(email.equals(user.EmailAddress)){
-                            allPeersUserList.add(user);
-                        }
-                    }
+                    User myUser= user.getValue(User.class);
+                    allUsers.add(myUser);
 
                 }
 
@@ -178,31 +202,34 @@ public class AllPeers extends AppCompatActivity {
             }
         });
 
+        return allUsers;
 
-        return allPeersUserList;
     }
 
-    private ArrayList<User> SearchUserByEmail(String userSearch)
+    private ArrayList<User> SearchUserByEmail(String userEmail)
     {
-         String searchString = userSearch.trim();
 
-         ArrayList<User> allPeersList= allPeersUserList;
-         userFoundList.clear();
+        ArrayList<User> userFound= new ArrayList<>();
+        ArrayList<User> allUsers= GetAllUsers();
 
-         for(User myUser: allPeersList)
-         {
+        String searchString = userEmail.trim();
 
-             String userEmail= myUser.EmailAddress;
+        for(User user: allUsers)
+        {
 
-             if(userEmail.equals(searchString))
-             {
+            if(searchString.equals(user.EmailAddress))
+            {
 
-                 userFoundList.add(myUser);
+                userFound.add(user);
+                break;
 
-             }
+            }
 
-         }
+        }
 
-        return userFoundList;
+        return userFound;
+
     }
+
+
 }
