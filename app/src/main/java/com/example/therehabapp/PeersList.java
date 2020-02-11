@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -46,13 +48,14 @@ public class PeersList  extends ArrayAdapter<User> {
 
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         LayoutInflater inflater = context.getLayoutInflater();
         View listViewItem= inflater.inflate(R.layout.peers_list_view_item,null,true);
 
         TextView userNameView =(TextView)  listViewItem.findViewById(R.id.user_name_view);
         TextView userEmailView = (TextView) listViewItem.findViewById(R.id.user_email_view);
+        RelativeLayout myLayout= (RelativeLayout) listViewItem.findViewById(R.id.layout_view);
 
         final Button addBtn= (Button) listViewItem.findViewById(R.id.add_btn);
 
@@ -60,6 +63,20 @@ public class PeersList  extends ArrayAdapter<User> {
 
         userNameView.setText(myUser.Name);
         userEmailView.setText(myUser.EmailAddress);
+
+        myLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String userEmail= userList.get(position).EmailAddress;
+                String userName= userList.get(position).Name;
+
+                Intent intent = new Intent (getContext(), PeerProfile.class);
+                intent.putExtra("UserName",userName);
+                intent.putExtra("UserEmail",userEmail);
+                getContext().startActivity(intent);
+            }
+        });
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
