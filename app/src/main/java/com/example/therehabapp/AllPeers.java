@@ -2,8 +2,8 @@ package com.example.therehabapp;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -90,48 +90,8 @@ public class AllPeers extends AppCompatActivity {
 
                 }
 
-
             }
         });
-
-       /** peersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
-                if(peerFound.size()>0)
-                {
-                    Toast.makeText(AllPeers.this, ""+peerFound.get(position).EmailAddress,Toast.LENGTH_LONG).show();
-                }
-                else{
-                    Toast.makeText(AllPeers.this, ""+GetAllPeers().get(position).EmailAddress, Toast.LENGTH_LONG).show();
-                }
-            }
-        }); **/
-
-       /** peersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                User myUser=null;
-
-                if(peerFound.size()>0)
-                {
-                    myUser = peerFound.get(position);
-                }
-
-                else
-                {
-                    myUser= allPeersUserList.get(position);
-                }
-
-                Intent intent = new Intent(AllPeers.this, PeerProfile.class);
-                intent.putExtra("Username", myUser.Name).putExtra("UserEmail", myUser.EmailAddress);
-                intent.putExtra("UserCity",myUser.City);
-
-                startActivity(intent);
-            }
-        }); **/
     }
 
     @Override
@@ -241,6 +201,22 @@ public class AllPeers extends AppCompatActivity {
         }
 
         return userFound;
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+
+        switch (item.getItemId()){
+
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
 
     }
 
