@@ -27,7 +27,7 @@ public class AllPeers extends AppCompatActivity {
     private ListView peersListView;
 
     private ArrayList<User> peerFound;
-    private ArrayList<String> peerStringList;
+    private ArrayList<User> allUsersList;
 
     private PeersList adapter;
 
@@ -46,9 +46,6 @@ public class AllPeers extends AppCompatActivity {
 
         mRefPeers = FirebaseDatabase.getInstance().getReference("Peers/"+uid);
         mRefUsers = FirebaseDatabase.getInstance().getReference("Users");
-
-        peerStringList= new ArrayList<>();
-
 
         mToolBar =(Toolbar) findViewById(R.id.all_peers_toolbar);
         searchBox=(EditText) findViewById(R.id.peers_search_box);
@@ -129,15 +126,13 @@ public class AllPeers extends AppCompatActivity {
 
     }
 
-
     private ArrayList<User> GetAllPeers()
     {
 
-        peerStringList.clear();
-        ArrayList<User> peerUserList= new ArrayList<>();
-        ArrayList<User> allUsers= GetAllUsers();
+        final ArrayList<String> peerStringList= new ArrayList<>();
+        final ArrayList<User> peerUserList= new ArrayList<>();
+        final ArrayList<User> allUsers= GetAllUsers();
 
-        //dbreef to peers and add to array
         mRefPeers.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -150,6 +145,17 @@ public class AllPeers extends AppCompatActivity {
 
                 }
 
+                for(String userEmail : peerStringList)
+                {
+                    for(int i= 0; i< allUsers.size(); i++)
+                    {
+                        if(userEmail.equals(allUsers.get(i).EmailAddress))
+                        {
+                            peerUserList.add(allUsers.get(i));
+                        }
+                    }
+                }
+
             }
 
             @Override
@@ -158,20 +164,7 @@ public class AllPeers extends AppCompatActivity {
             }
         });
 
-        Toast.makeText(AllPeers.this, ""+peerStringList.size(),Toast.LENGTH_LONG).show();
 
-        //convert user strings to user.class and place into arr
-
-        for(String userEmail : peerStringList)
-        {
-            for(int i= 0; i< allUsers.size(); i++)
-            {
-                if(userEmail.equals(allUsers.get(i).EmailAddress))
-                {
-                    peerUserList.add(allUsers.get(i));
-                }
-            }
-        }
 
         return peerUserList;
 
@@ -202,6 +195,7 @@ public class AllPeers extends AppCompatActivity {
             }
         });
 
+        allUsersList=allUsers;
         return allUsers;
 
     }
@@ -210,18 +204,19 @@ public class AllPeers extends AppCompatActivity {
     {
 
         ArrayList<User> userFound= new ArrayList<>();
-        ArrayList<User> allUsers= GetAllUsers();
+        ArrayList<User> allUsers= allUsersList;
 
         String searchString = userEmail.trim();
 
-        for(User user: allUsers)
+
+        for(int i= 0; i< allUsers.size(); i++)
         {
 
-            if(searchString.equals(user.EmailAddress))
+            if(searchString.equals(allUsers.get(i).EmailAddress))
             {
 
-                userFound.add(user);
-                break;
+                userFound.add(allUsers.get(i));
+                return userFound;
 
             }
 
@@ -230,6 +225,5 @@ public class AllPeers extends AppCompatActivity {
         return userFound;
 
     }
-
 
 }
