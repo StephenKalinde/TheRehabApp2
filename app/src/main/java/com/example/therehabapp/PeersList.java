@@ -96,6 +96,12 @@ public class PeersList  extends ArrayAdapter<User> {
 
                         dbRef.push().setValue(myPeer);
 
+                        Peer thisPeer = new Peer(myEmailAddress,inboxId); //my reference to them as a peer
+
+                        DatabaseReference dbRefAlt= FirebaseDatabase.getInstance().getReference("Peers/"+myUser.UID);
+
+                        dbRefAlt.push().setValue(thisPeer);
+
                         addBtn.setText("Remove");
                         break;
 
@@ -115,15 +121,29 @@ public class PeersList  extends ArrayAdapter<User> {
                                         user.getRef().removeValue();
                                         addBtn.setText("Add");
                                     }
-                                    /**String userEmail = user.getValue(String.class);
+                                }
+                            }
 
-                                    if(myUser.EmailAddress.equals(userEmail))
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+                        DatabaseReference dbRefAlt= FirebaseDatabase.getInstance().getReference("Peers/"+myUser.UID);
+
+                        dbRefAlt.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                for(DataSnapshot user : dataSnapshot.getChildren())
+                                {
+                                    Peer myPeer = user.getValue(Peer.class);
+                                    if(myEmailAddress.equals(myPeer.EmailAddress))
                                     {
                                         user.getRef().removeValue();
-                                        addBtn.setText("Add");
-
+                                        //addBtn.setText("Add");
                                     }
-                                     **/
                                 }
                             }
 

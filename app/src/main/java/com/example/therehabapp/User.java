@@ -13,10 +13,11 @@ public class User {
     public String HomePhone;
     public String CellPhone;
     public String EmailAddress;
+    public String UID;
 
     public User(){}
 
-    public User(String name, String surname , String id, String dateOfBirth, String addressLine1, String addressLine2, String city , String postalCode, String homePhone, String cellPhone, String emailAddress)
+    public User(String name, String surname , String id, String dateOfBirth, String addressLine1, String addressLine2, String city , String postalCode, String homePhone, String cellPhone, String emailAddress, String uid)
     {
         Name= name;
         Surname=surname;
@@ -29,5 +30,6 @@ public class User {
         HomePhone= homePhone;
         CellPhone= cellPhone;
         EmailAddress= emailAddress;
+        UID=uid;
     }
 }

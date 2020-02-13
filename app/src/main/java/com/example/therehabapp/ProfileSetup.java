@@ -165,7 +165,7 @@ public class ProfileSetup extends AppCompatActivity {
 
     private void SaveToDb()
     {
-        User userDetails= new User(nameView.getText().toString(), surnameView.getText().toString(), iDNumberView.getText().toString(),dateOfBirthView.getText().toString(), addressLine1View.getText().toString(), addressLine2View.getText().toString(), cityView.getText().toString(),postalCodeView.getText().toString(), homePhoneView.getText().toString(), cellPhoneView.getText().toString(), emailAddView.getText().toString());
+        User userDetails= new User(nameView.getText().toString(), surnameView.getText().toString(), iDNumberView.getText().toString(),dateOfBirthView.getText().toString(), addressLine1View.getText().toString(), addressLine2View.getText().toString(), cityView.getText().toString(),postalCodeView.getText().toString(), homePhoneView.getText().toString(), cellPhoneView.getText().toString(), emailAddView.getText().toString(),mAuth.getUid());
         Map<String ,User> map= new HashMap();
         String user= mAuth.getUid();
         map.put(user, userDetails);
