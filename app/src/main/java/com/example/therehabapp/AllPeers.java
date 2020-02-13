@@ -29,6 +29,7 @@ public class AllPeers extends AppCompatActivity {
 
     private ArrayList<User> peerFound;
     private ArrayList<User> allUsersList;
+    private ArrayList<User> allMyPeersList;
 
     private PeersList adapter;
 
@@ -73,8 +74,30 @@ public class AllPeers extends AppCompatActivity {
                 if(peerFound.size()>0)
                 {
 
-                    adapter = new PeersList(AllPeers.this,peerFound);
-                    peersListView.setAdapter(adapter);
+                    boolean isPeer=false;
+
+                    for(int j=0 ; j< allMyPeersList.size(); j++)
+                    {
+                        if(allMyPeersList.get(j).EmailAddress.equals(peerFound.get(0).EmailAddress))
+                        {
+                            isPeer=true;
+                            break;
+                        }
+                    }
+
+                    if(isPeer==true)
+                    {
+
+                        adapter = new PeersList(AllPeers.this,peerFound,"Remove");
+                        peersListView.setAdapter(adapter);
+
+                    }
+
+                    else{
+
+                        adapter = new PeersList(AllPeers.this,peerFound,"Add");
+                        peersListView.setAdapter(adapter);
+                    }
 
 
                     progressDialogBox.cancel();
@@ -98,7 +121,9 @@ public class AllPeers extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        PeersList adapter=new PeersList(AllPeers.this,GetAllPeers());
+        allMyPeersList= GetAllPeers();
+
+        PeersList adapter=new PeersList(AllPeers.this,allMyPeersList,"Remove");
         peersListView.setAdapter(adapter);
         //peerFound.clear();
 
@@ -108,6 +133,7 @@ public class AllPeers extends AppCompatActivity {
     {
 
         final ArrayList<String> peerStringList= new ArrayList<>();
+        final ArrayList<Peer> peerPeerList = new ArrayList<>();
         final ArrayList<User> peerUserList= new ArrayList<>();
         final ArrayList<User> allUsers= GetAllUsers();
 
@@ -118,11 +144,27 @@ public class AllPeers extends AppCompatActivity {
                 for(DataSnapshot user: dataSnapshot.getChildren())
                 {
 
-                    String userString = user.getValue(String.class);
-                    peerStringList.add(userString);
+                    //String userString = user.getValue(String.class);
+                    //peerStringList.add(userString);
+
+                    Peer userPeer = user.getValue(Peer.class);
+                    peerPeerList.add(userPeer);
 
                 }
 
+                for(Peer user: peerPeerList)
+                {
+                    for(int i =0; i< allUsers.size(); i++){
+
+                        if(user.EmailAddress.equals(allUsers.get(i).EmailAddress))
+                        {
+                            peerUserList.add(allUsers.get(i));
+                        }
+
+                    }
+                }
+
+                /**
                 for(String userEmail : peerStringList)
                 {
                     for(int i= 0; i< allUsers.size(); i++)
@@ -134,6 +176,7 @@ public class AllPeers extends AppCompatActivity {
                     }
                 }
 
+                 **/
             }
 
             @Override

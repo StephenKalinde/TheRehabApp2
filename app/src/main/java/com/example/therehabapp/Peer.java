@@ -2,12 +2,15 @@ package com.example.therehabapp;
 
 public class Peer {
 
-    public String Email;
+    public String EmailAddress;
+    public String InboxId;
 
     public Peer(){}
 
-    public Peer(String Email)
+    public Peer(String EmailAddress, String InboxId)
+
     {
-        this.Email = Email;
+        this.EmailAddress = EmailAddress;
+        this.InboxId= InboxId;
     }
 }

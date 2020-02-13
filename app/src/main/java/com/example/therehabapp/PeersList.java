@@ -30,16 +30,18 @@ public class PeersList  extends ArrayAdapter<User> {
     private DatabaseReference dbRef;
     private FirebaseAuth mAuth;
     private String uid;
-    //private String Text;
+    private String myEmailAddress;
+    private String BtnText;
 
-    public PeersList(Activity context, List<User> userList/**,String Text**/)
+    public PeersList(Activity context, List<User> userList,String BtnText)
     {
         super(context , R.layout.list_view_item, userList);
         this.context = context;
         this.userList = userList;
-       //this.Text = Text;
+        this.BtnText = BtnText;
         mAuth = FirebaseAuth.getInstance();
         uid = mAuth.getUid();
+        myEmailAddress= mAuth.getCurrentUser().getEmail();
 
 
 
@@ -58,6 +60,7 @@ public class PeersList  extends ArrayAdapter<User> {
         RelativeLayout myLayout= (RelativeLayout) listViewItem.findViewById(R.id.layout_view);
 
         final Button addBtn= (Button) listViewItem.findViewById(R.id.add_btn);
+        addBtn.setText(BtnText);
 
         final User myUser= userList.get(position);
 
@@ -86,7 +89,13 @@ public class PeersList  extends ArrayAdapter<User> {
 
                     if (addBtn.getText().equals("Add")) {
 
-                        dbRef.push().setValue(myUser.EmailAddress);
+                        String userEmailAddress= myUser.EmailAddress;
+                        String inboxId= myEmailAddress+userEmailAddress;
+
+                        Peer myPeer = new Peer(userEmailAddress,inboxId);
+
+                        dbRef.push().setValue(myPeer);
+
                         addBtn.setText("Remove");
                         break;
 
@@ -99,7 +108,14 @@ public class PeersList  extends ArrayAdapter<User> {
 
                                 for(DataSnapshot user: dataSnapshot.getChildren())
                                 {
-                                    String userEmail = user.getValue(String.class);
+                                    Peer myPeer = user.getValue(Peer.class);
+
+                                    if(myUser.EmailAddress.equals(myPeer.EmailAddress))
+                                    {
+                                        user.getRef().removeValue();
+                                        addBtn.setText("Add");
+                                    }
+                                    /**String userEmail = user.getValue(String.class);
 
                                     if(myUser.EmailAddress.equals(userEmail))
                                     {
@@ -107,6 +123,7 @@ public class PeersList  extends ArrayAdapter<User> {
                                         addBtn.setText("Add");
 
                                     }
+                                     **/
                                 }
                             }
 
