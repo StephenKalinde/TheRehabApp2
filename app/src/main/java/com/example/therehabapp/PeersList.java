@@ -142,7 +142,6 @@ public class PeersList  extends ArrayAdapter<User> {
                                     if(myEmailAddress.equals(myPeer.EmailAddress))
                                     {
                                         user.getRef().removeValue();
-                                        //addBtn.setText("Add");
                                     }
                                 }
                             }

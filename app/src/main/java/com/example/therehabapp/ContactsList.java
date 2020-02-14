@@ -2,6 +2,7 @@ package com.example.therehabapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,6 +10,9 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -20,10 +24,20 @@ import java.util.ArrayList;
 public class ContactsList extends AppCompatActivity{
 
     protected Toolbar mToolbar;
-    private ArrayList<User> myArrayList;
+    private SwipeRefreshLayout myRefreshLayout;
+
+    private ArrayList<Peer> myArrayList;
+    private ArrayList<User> myUserPeerArrayList;
+    private ArrayList<User> allUsersList;
+    private ArrayList<User> allPeersList;
+
     private DatabaseReference dbRef;
+    private FirebaseAuth mAuth;
+    private DatabaseReference mRefUsers;
 
     private ListView myListView;
+
+    private static  String LOG = "Refresh";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,11 +47,32 @@ public class ContactsList extends AppCompatActivity{
         setContentView(R.layout.contacts_list_view);
 
         myArrayList= new ArrayList<>();
+        myUserPeerArrayList = new ArrayList<>();
 
-        dbRef= FirebaseDatabase.getInstance().getReference("Users");
+        mAuth= FirebaseAuth.getInstance();
+        String uid = mAuth.getUid();
+
+        dbRef= FirebaseDatabase.getInstance().getReference("Peers/"+uid);
+        mRefUsers= FirebaseDatabase.getInstance().getReference("Users");
 
         mToolbar =(Toolbar) findViewById(R.id.contacts_list_toolbar);
         myListView = (ListView) findViewById(R.id.my_list_view);
+        myRefreshLayout =(SwipeRefreshLayout) findViewById(R.id.refresh_layout);
+
+        myRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //Log.i(LOG_TAG, "refresh called");
+                //onStart();
+
+                UserList adapter = new UserList(ContactsList.this, allPeersList);
+                myListView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                myRefreshLayout.setRefreshing(false);
+            }
+        });
+
+
 
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("Peers");
@@ -48,8 +83,8 @@ public class ContactsList extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String userEmail= myArrayList.get(position).EmailAddress;
-                String userName= myArrayList.get(position).Name;
+                String userEmail= myUserPeerArrayList.get(position).EmailAddress;
+                String userName= myUserPeerArrayList.get(position).Name;
 
                 Intent intent = new Intent(ContactsList.this, NewMessage.class);
 
@@ -82,20 +117,46 @@ public class ContactsList extends AppCompatActivity{
     protected void onStart() {
         super.onStart();
 
+                allUsersList= GetAllUsers();
+                allPeersList = GetAllPeers();
+
+                UserList adapter = new UserList(ContactsList.this, allPeersList);
+                myListView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+
+    }
+
+    private ArrayList<User> GetAllPeers()
+    {
+
+        final ArrayList<Peer> peerPeerList = new ArrayList<>();
+        final ArrayList<User> peerUserList= new ArrayList<>();
+        final ArrayList<User> allUsers= GetAllUsers();
 
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                myArrayList.clear();
-                for(DataSnapshot userSnapshot: dataSnapshot.getChildren())
+                for(DataSnapshot user: dataSnapshot.getChildren())
                 {
-                    User myUser= userSnapshot.getValue(User.class);
-                    myArrayList.add(myUser);
+
+                    Peer userPeer = user.getValue(Peer.class);
+                    peerPeerList.add(userPeer);
+
                 }
 
-                UserList adapter = new UserList(ContactsList.this, myArrayList);
-                myListView.setAdapter(adapter);
+                for(Peer user: peerPeerList)
+                {
+                    for(int i =0; i< allUsers.size(); i++){
+
+                        if(user.EmailAddress.equals(allUsers.get(i).EmailAddress))
+                        {
+                            peerUserList.add(allUsers.get(i));
+                        }
+
+                    }
+                }
+
             }
 
             @Override
@@ -103,5 +164,42 @@ public class ContactsList extends AppCompatActivity{
 
             }
         });
+
+        return peerUserList;
+
     }
+
+
+    private ArrayList<User> GetAllUsers()
+    {
+
+        final ArrayList<User> allUsers= new ArrayList<>();
+
+        mRefUsers.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot user : dataSnapshot.getChildren())
+                {
+
+                    User myUser= user.getValue(User.class);
+                    allUsers.add(myUser);
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        allUsersList=allUsers;
+        return allUsers;
+
+    }
+
+
+
 }
