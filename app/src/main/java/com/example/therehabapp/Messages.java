@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -16,6 +18,8 @@ public class Messages extends AppCompatActivity {
 
     private Toolbar myToolBar;
     private FloatingActionButton newMessage;
+    private ListView messagesListView;
+    private SwipeRefreshLayout myRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -26,6 +30,8 @@ public class Messages extends AppCompatActivity {
 
         newMessage= (FloatingActionButton) findViewById(R.id.new_message_btn);
         myToolBar=(Toolbar)findViewById(R.id.messages_toolbar);
+        messagesListView=(ListView) findViewById(R.id.messages_list_view);
+        myRefreshLayout= (SwipeRefreshLayout) findViewById(R.id.messages_refresh_layout);
 
         setSupportActionBar(myToolBar);
         getSupportActionBar().setTitle("Messages");
