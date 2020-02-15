@@ -6,12 +6,21 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 
 public class Messages extends AppCompatActivity {
 
@@ -20,6 +29,13 @@ public class Messages extends AppCompatActivity {
     private FloatingActionButton newMessage;
     private ListView messagesListView;
     private SwipeRefreshLayout myRefreshLayout;
+    private String uid;
+
+    private DatabaseReference mThreadsRef;
+    private FirebaseAuth mAuth;
+
+    private ArrayList<String> threads;
+    private ArrayList<PeerMessage> messages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -32,6 +48,14 @@ public class Messages extends AppCompatActivity {
         myToolBar=(Toolbar)findViewById(R.id.messages_toolbar);
         messagesListView=(ListView) findViewById(R.id.messages_list_view);
         myRefreshLayout= (SwipeRefreshLayout) findViewById(R.id.messages_refresh_layout);
+
+        mAuth = FirebaseAuth.getInstance();
+        uid = mAuth.getUid();
+
+        mThreadsRef= FirebaseDatabase.getInstance().getReference("Messages/"+uid);
+
+        threads = new ArrayList<>();
+        messages = new ArrayList<>();
 
         setSupportActionBar(myToolBar);
         getSupportActionBar().setTitle("Messages");
@@ -48,6 +72,40 @@ public class Messages extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        GetAllThreads();
+
+        MessagesAdapter adapter =new MessagesAdapter(Messages.this,threads);
+        messagesListView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+    private void GetAllThreads()
+    {
+
+        mThreadsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot threadSnapshot: dataSnapshot.getChildren())
+                {
+
+                    String threadRef= threadSnapshot.getRef().toString();
+                    threads.add(threadRef);
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override

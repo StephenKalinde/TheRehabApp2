@@ -16,14 +16,14 @@ import java.util.List;
 public class MessagesAdapter extends ArrayAdapter {
 
     private Activity context;
-    private List<PeerMessage> messagesList;
+    private List<String> threadsList;
 
-    public MessagesAdapter(Activity context, List<PeerMessage> userList)
+    public MessagesAdapter(Activity context, List<String> userList)
     {
 
         super(context , R.layout.message_list_item, userList);
         this.context= context;
-        this.messagesList = userList;
+        this.threadsList = userList;
 
     }
 
@@ -39,12 +39,12 @@ public class MessagesAdapter extends ArrayAdapter {
         TextView peerNameView = (TextView) listViewItem.findViewById(R.id.peer_name_view);
         TextView messageTimeView= (TextView) listViewItem.findViewById(R.id.message_time_view);
 
-        PeerMessage peerMessage = messagesList.get(position);
+        String peerMessage = threadsList.get(position);
 
         /**set image resource from db here**/
-        messagePreviewView.setText(peerMessage.MessagePreview);
-        peerNameView.setText(peerMessage.PeerName);
-        messageTimeView.setText(peerMessage.DateTime);
+        //messagePreviewView.setText(peerMessage.MessagePreview);
+        peerNameView.setText(peerMessage);
+        //messageTimeView.setText(peerMessage.DateTime);
 
         return listViewItem;
 
