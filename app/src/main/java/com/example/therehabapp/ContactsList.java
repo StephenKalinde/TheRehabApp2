@@ -83,8 +83,8 @@ public class ContactsList extends AppCompatActivity{
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String userEmail= myUserPeerArrayList.get(position).EmailAddress;
-                String userName= myUserPeerArrayList.get(position).Name;
+                String userEmail= allPeersList.get(position).EmailAddress;
+                String userName= allPeersList.get(position).Name;
 
                 Intent intent = new Intent(ContactsList.this, NewMessage.class);
 
