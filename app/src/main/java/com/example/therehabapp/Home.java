@@ -62,7 +62,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                     break;
             }
 
-            return false;
+            return true;
         }
     };
 
