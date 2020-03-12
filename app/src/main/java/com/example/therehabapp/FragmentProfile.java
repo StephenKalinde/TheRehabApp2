@@ -5,12 +5,23 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import org.w3c.dom.Text;
 
 
 /**
@@ -32,6 +43,7 @@ public class FragmentProfile extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
 
     public FragmentProfile() {
         // Required empty public constructor
@@ -66,15 +78,39 @@ public class FragmentProfile extends Fragment {
 
     private Button messagesBtn;
     private Button peersBtn;
+    private TextView nameView;
+    private String userName;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
         View myView = inflater.inflate(R.layout.fragment_fragment_profile, container, false);
 
         messagesBtn = (Button) myView.findViewById(R.id.messages_btn);
         peersBtn= (Button) myView.findViewById(R.id.peers_btn);
+        nameView = (TextView) myView.findViewById(R.id.user_name_view);
+
+        final String myEmailAddress = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+        final String uid = FirebaseAuth.getInstance().getUid();
+
+        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("Users/"+uid+"/Name");
+
+        mRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                userName = dataSnapshot.getValue(String.class);
+
+                nameView.setText(userName);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         messagesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
