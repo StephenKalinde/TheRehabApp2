@@ -43,20 +43,12 @@ public class NewMessage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                SendMessage(messageEditView.getText().toString());
-                messageEditView.getText().clear();
+               /** send message here **/
             }
         });
 
     }
 
-    private void SendMessage(String message)
-    {
-
-        //db ref to thread
-           //push msg to thread and update listview
-
-    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
