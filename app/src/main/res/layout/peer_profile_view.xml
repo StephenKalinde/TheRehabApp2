@@ -50,31 +50,6 @@
             android:textStyle="bold"
             android:textColor="@android:color/black"/>
 
-            <EditText
-            android:id="@+id/status_share_view"
-            android:layout_below="@+id/user_name_view"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:hint="Share Your Thoughts"
-            android:textColor="@android:color/black"
-            android:textColorHint="@android:color/darker_gray"
-            android:background="@drawable/notes_borders"/>
-
-            <Button
-            android:id="@+id/submit_btn"
-            android:layout_below="@+id/status_share_view"
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="5dp"
-            android:text="Share"
-            android:textColor="@android:color/white"
-            android:background="@color/depression_green"/>
-
         </RelativeLayout>
 
     </ScrollView>
