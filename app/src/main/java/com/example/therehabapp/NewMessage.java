@@ -33,12 +33,8 @@ public class NewMessage extends AppCompatActivity {
         threadsListView = findViewById(R.id.thread_list_view);
         messageEditView = findViewById(R.id.message_edit_view);
         sendMessageBtn = findViewById(R.id.send_btn);
-        myTextView = findViewById(R.id.testing_view);
 
         String inboxId= getIntent().getStringExtra("inboxid");
-
-        myTextView.setText(inboxId);
-
         String nameTitle= getIntent().getStringExtra("userName");
 
         setSupportActionBar(mToolBar);
@@ -70,5 +66,10 @@ public class NewMessage extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 }

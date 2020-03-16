@@ -7,6 +7,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -88,8 +90,7 @@ public class ContactsList extends AppCompatActivity{
 
                 String myUid = mAuth.getUid();
 
-                MessagingProtocols messaging = new MessagingProtocols();
-                String inboxId=  messaging.QueryFolder(myUid,peerUid);
+                String inboxId= QueryFolder(myUid,peerUid);
 
                 Intent intent = new Intent(ContactsList.this, NewMessage.class);
 
@@ -205,6 +206,59 @@ public class ContactsList extends AppCompatActivity{
         return allUsers;
 
     }
+
+    private String InboxID="";
+
+    public String QueryFolder(final String uid1,final String uid2)
+    {
+
+        /**database refs for the inbox ids to each user **/
+
+        DatabaseReference uid1Ref =FirebaseDatabase.getInstance().getReference("InboxIDs/"+uid1);
+
+        final String combo1 =uid1+uid2;
+        final String combo2 = uid2+uid1;
+
+        uid1Ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot idSnapshot: dataSnapshot.getChildren())
+                {
+
+                    String inboxId = idSnapshot.getValue(String.class);
+
+                    // if the id in db is equal to uid1+uid2
+
+                    if(inboxId.equals(combo1))
+                    {
+
+                        InboxID = combo1; // inbox uid
+
+                    }
+
+                    //if the is in db is equal to uid2+uid1
+                    if(inboxId.equals(combo2))
+                    {
+
+                        InboxID= combo2;  //inbox uid
+
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        return InboxID;
+
+    }
+
+
 
 
 
