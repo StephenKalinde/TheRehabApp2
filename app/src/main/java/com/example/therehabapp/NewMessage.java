@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,6 +19,7 @@ public class NewMessage extends AppCompatActivity {
     private ListView threadsListView;
     private EditText messageEditView;
     private Button sendMessageBtn;
+    private TextView myTextView ;
 
     //private DatabaseReference myThreadRef
 
@@ -31,6 +33,11 @@ public class NewMessage extends AppCompatActivity {
         threadsListView = findViewById(R.id.thread_list_view);
         messageEditView = findViewById(R.id.message_edit_view);
         sendMessageBtn = findViewById(R.id.send_btn);
+        myTextView = findViewById(R.id.testing_view);
+
+        String inboxId= getIntent().getStringExtra("inboxid");
+
+        myTextView.setText(inboxId);
 
         String nameTitle= getIntent().getStringExtra("userName");
 

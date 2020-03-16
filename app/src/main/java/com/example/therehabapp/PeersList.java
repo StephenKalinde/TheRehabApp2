@@ -20,7 +20,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import java.util.ArrayList;
 import java.util.List;
 
 public class PeersList  extends ArrayAdapter<User> {
@@ -101,6 +100,20 @@ public class PeersList  extends ArrayAdapter<User> {
                         DatabaseReference dbRefAlt= FirebaseDatabase.getInstance().getReference("Peers/"+myUser.UID);
 
                         dbRefAlt.push().setValue(thisPeer);
+
+                        //create folder for inbox
+                        String myUid =FirebaseAuth.getInstance().getUid();
+                        String userUid = myUser.UID;
+
+                        String inboxID= myUid+userUid;
+
+                        //DatabaseReference dbInbox = FirebaseDatabase.getInstance().getReference("Inboxes/"+inboxID);
+
+                        DatabaseReference myDbInboxId = FirebaseDatabase.getInstance().getReference("InboxIDs/"+myUid);
+                        DatabaseReference userDbInboxId =FirebaseDatabase.getInstance().getReference("InboxIDs/"+userUid);
+
+                        myDbInboxId.push().setValue(inboxID);
+                        userDbInboxId.push().setValue(inboxID);
 
                         addBtn.setText("Remove");
                         break;

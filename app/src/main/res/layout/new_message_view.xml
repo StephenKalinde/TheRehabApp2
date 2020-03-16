@@ -17,6 +17,21 @@
         android:id="@+id/messages_refresh_layout"
         android:layout_below="@+id/chat_toolbar">
 
+        <RelativeLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VIEW"
+                android:layout_centerInParent="true"
+                android:textColor="@android:color/black"
+                android:textSize="50dp"
+                android:id="@+id/testing_view"/>
+
+        </RelativeLayout>
+
         <ListView
         android:id="@+id/thread_list_view"
         android:layout_width="match_parent"
