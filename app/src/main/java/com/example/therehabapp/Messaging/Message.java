@@ -6,6 +6,8 @@ public class Message {
     public String Date;
     public String Time;
 
+    public Message(){}
+
     public Message(String Message, String Date, String Time)
     {
 
