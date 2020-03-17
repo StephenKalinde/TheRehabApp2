@@ -6,14 +6,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.therehabapp.Messaging.Message;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +30,7 @@ public class NewMessage extends AppCompatActivity {
     private EditText messageEditView;
     private Button sendMessageBtn;
     private List<Message> myMessages;
+    private MessagesThread threadAdapter;
 
     private DatabaseReference myThreadRef;
 
@@ -48,8 +49,6 @@ public class NewMessage extends AppCompatActivity {
 
         String inboxId= getIntent().getStringExtra("inboxid");
         myThreadRef = FirebaseDatabase.getInstance().getReference("Inboxes/"+inboxId);
-
-
 
         String nameTitle= getIntent().getStringExtra("userName");
         setSupportActionBar(mToolBar);
@@ -98,10 +97,10 @@ public class NewMessage extends AppCompatActivity {
     protected void onStart() {
 
         super.onStart();
-        MessagesThread threadAdapter = new MessagesThread(this,GetThread());
+
+        threadAdapter = new MessagesThread(this,GetThread());
         threadsListView.setAdapter(threadAdapter);
-        //int len = GetThread().size() ;
-        //Toast.makeText(NewMessage.this, ""+len, Toast.LENGTH_LONG).show();
+        //threadAdapter.notifyDataSetChanged();
     }
 
     private List<Message> GetThread(){
@@ -117,7 +116,11 @@ public class NewMessage extends AppCompatActivity {
                   Message message = messageSnapshot.getValue(Message.class);
 
                   messages.add(message);
+
+
               }
+
+                threadAdapter.notifyDataSetChanged();
 
             }
 
