@@ -8,12 +8,13 @@ public class Message {
 
     public Message(){}
 
-    public Message(String Message, String Date, String Time)
+    public Message(String message, String date, String time)
     {
 
-        this.Message = Message;
-        this.Date = Date;
-        this.Time = Time;
+        Message = message;
+        Date = date;
+        Time = time;
+
     }
 
 }

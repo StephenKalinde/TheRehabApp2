@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class NewMessage extends AppCompatActivity {
@@ -39,7 +39,7 @@ public class NewMessage extends AppCompatActivity {
         super.onCreate(savedInstance);
         setContentView(R.layout.new_message_view);
 
-        myMessages = new ArrayList<Message>();
+        myMessages = new ArrayList<>();
 
         mToolBar= (Toolbar) findViewById(R.id.chat_toolbar);
         threadsListView = findViewById(R.id.thread_list_view);
@@ -72,6 +72,7 @@ public class NewMessage extends AppCompatActivity {
 
                 Message newMessage =new Message(messageEditView.getText().toString(),dateString,time);
                 myThreadRef.push().setValue(newMessage);
+                messageEditView.setText("");
             }
         });
 
@@ -95,16 +96,17 @@ public class NewMessage extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        super.onStart();
 
-        MessagesThread threadAdapter = new MessagesThread(this,GetThread());
+        super.onStart();
+        MessagesThread threadAdapter = new MessagesThread(this,TestMessages());
         threadsListView.setAdapter(threadAdapter);
-        //threadAdapter.notifyAll();
+        //int len = GetThread().size() ;
+        //Toast.makeText(NewMessage.this, ""+len, Toast.LENGTH_LONG).show();
     }
 
-    private ArrayList<Message> GetThread(){
+    private List<Message> GetThread(){
 
-        final ArrayList<Message> myMessages = new ArrayList<>();
+        final List<Message> messages = new ArrayList<>();
 
         myThreadRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -114,7 +116,7 @@ public class NewMessage extends AppCompatActivity {
               {
                   Message message = messageSnapshot.getValue(Message.class);
 
-                  myMessages.add(message);
+                  messages.add(message);
               }
 
             }
@@ -125,7 +127,22 @@ public class NewMessage extends AppCompatActivity {
             }
         });
 
-        return myMessages;
+        return messages;
+    }
+
+    private List<Message> TestMessages(){
+
+        List<Message> newMessages = new ArrayList<>();
+
+        Message msg_1=  new Message ("Hey man", "2020", "00.00");
+        Message msg_2=  new Message ("Nothing much", "2020", "00.01");
+        Message msg_3=  new Message ("What are you up to?", "2020", "00.03");
+
+        newMessages.add(msg_1);
+        newMessages.add(msg_2);
+        newMessages.add(msg_3);
+
+        return newMessages;
     }
 
 

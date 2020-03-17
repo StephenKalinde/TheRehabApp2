@@ -125,7 +125,6 @@ public class AllPeers extends AppCompatActivity {
 
         PeersList adapter=new PeersList(AllPeers.this,allMyPeersList,"Remove");
         peersListView.setAdapter(adapter);
-        //peerFound.clear();
 
     }
 

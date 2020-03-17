@@ -32,7 +32,7 @@ public class MessagesThread extends ArrayAdapter<Message> {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         LayoutInflater inflater = context.getLayoutInflater();
-        View myView= inflater.inflate(R.layout.message_list_item,null,true);
+        View myView= inflater.inflate(R.layout.message_item_view,null,true);
 
         TextView message_view_item= myView.findViewById(R.id.text_message_view);
         TextView time_view_item  = myView.findViewById(R.id.time_view);
