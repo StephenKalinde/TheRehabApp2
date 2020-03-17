@@ -98,7 +98,7 @@ public class NewMessage extends AppCompatActivity {
     protected void onStart() {
 
         super.onStart();
-        MessagesThread threadAdapter = new MessagesThread(this,TestMessages());
+        MessagesThread threadAdapter = new MessagesThread(this,GetThread());
         threadsListView.setAdapter(threadAdapter);
         //int len = GetThread().size() ;
         //Toast.makeText(NewMessage.this, ""+len, Toast.LENGTH_LONG).show();
