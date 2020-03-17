@@ -117,7 +117,6 @@ public class NewMessage extends AppCompatActivity {
 
                   messages.add(message);
 
-
               }
 
                 threadAdapter.notifyDataSetChanged();
