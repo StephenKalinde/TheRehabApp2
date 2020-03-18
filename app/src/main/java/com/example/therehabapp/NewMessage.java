@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.therehabapp.Messaging.Message;
 import com.google.firebase.database.ChildEventListener;
@@ -59,6 +60,11 @@ public class NewMessage extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        myMessages =GetThread();
+
+        threadAdapter = new MessagesThread(this,myMessages);
+        threadsListView.setAdapter(threadAdapter);
+
         sendMessageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,20 +103,53 @@ public class NewMessage extends AppCompatActivity {
 
     }
 
-    @Override
+   /** @Override
     protected void onStart() {
 
         super.onStart();
 
         threadAdapter = new MessagesThread(this,GetThread());
         threadsListView.setAdapter(threadAdapter);
-    }
+
+    }**/
 
     private List<Message> GetThread(){
 
         final List<Message> messages = new ArrayList<>();
 
-        myThreadRef.addValueEventListener(new ValueEventListener() {
+        myThreadRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                Message message = dataSnapshot.getValue(Message.class);
+
+                messages.add(message);
+                threadAdapter.notifyDataSetChanged();
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+       /** myThreadRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -122,15 +161,13 @@ public class NewMessage extends AppCompatActivity {
 
               }
 
-                threadAdapter.notifyDataSetChanged();
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        }); **/
 
         return messages;
     }

@@ -18,10 +18,12 @@
         android:layout_below="@+id/chat_toolbar"
         android:layout_above="@+id/bottom_layout">
 
+
         <ListView
-        android:id="@+id/thread_list_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            android:id="@+id/thread_list_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:transcriptMode="alwaysScroll"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

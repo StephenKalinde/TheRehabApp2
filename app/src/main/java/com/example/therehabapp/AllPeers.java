@@ -118,7 +118,7 @@ public class AllPeers extends AppCompatActivity {
         });
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
-
+        
     }
 
     @Override
