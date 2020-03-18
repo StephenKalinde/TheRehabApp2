@@ -1,8 +1,10 @@
 package com.example.therehabapp;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -75,6 +77,8 @@ public class NewMessage extends AppCompatActivity {
             }
         });
 
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
     }
 
     @Override
@@ -100,7 +104,6 @@ public class NewMessage extends AppCompatActivity {
 
         threadAdapter = new MessagesThread(this,GetThread());
         threadsListView.setAdapter(threadAdapter);
-        //threadAdapter.notifyDataSetChanged();
     }
 
     private List<Message> GetThread(){
@@ -131,21 +134,5 @@ public class NewMessage extends AppCompatActivity {
 
         return messages;
     }
-
-    private List<Message> TestMessages(){
-
-        List<Message> newMessages = new ArrayList<>();
-
-        Message msg_1=  new Message ("Hey man", "2020", "00.00");
-        Message msg_2=  new Message ("Nothing much", "2020", "00.01");
-        Message msg_3=  new Message ("What are you up to?", "2020", "00.03");
-
-        newMessages.add(msg_1);
-        newMessages.add(msg_2);
-        newMessages.add(msg_3);
-
-        return newMessages;
-    }
-
 
 }
