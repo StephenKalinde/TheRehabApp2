@@ -8,6 +8,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -75,11 +76,20 @@ public class NewMessage extends AppCompatActivity {
                 long millis = System.currentTimeMillis();
                 java.sql.Date date= new java.sql.Date(millis);
                 String dateString = date.toString();
-                String time= "00.00";
+
+                //Time
+                long mills =System.currentTimeMillis();
+                java.util.Date dateTime= new java.util.Date(mills);
+                String dateTimeString = dateTime.toString();
+
+                String time = dateTimeString.substring(11,16);
+
+                Toast.makeText(NewMessage.this, time, Toast.LENGTH_LONG).show();
 
                 Message newMessage =new Message(messageEditView.getText().toString(),dateString,time);
                 myThreadRef.push().setValue(newMessage);
                 messageEditView.setText("");
+
             }
         });
 
