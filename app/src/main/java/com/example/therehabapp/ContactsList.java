@@ -40,6 +40,8 @@ public class ContactsList extends AppCompatActivity{
 
     private ListView myListView;
 
+    private UserList adapter;
+
     private static  String LOG = "Refresh";
 
     @Override
@@ -127,7 +129,7 @@ public class ContactsList extends AppCompatActivity{
                 allUsersList= GetAllUsers();
                 allPeersList = GetAllPeers();
 
-                UserList adapter = new UserList(ContactsList.this, allPeersList);
+                adapter = new UserList(ContactsList.this, allPeersList);
                 myListView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
 
@@ -164,6 +166,8 @@ public class ContactsList extends AppCompatActivity{
                     }
                 }
 
+                adapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -194,12 +198,15 @@ public class ContactsList extends AppCompatActivity{
 
                 }
 
+                adapter.notifyDataSetChanged();
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
+
         });
 
         allUsersList=allUsers;
