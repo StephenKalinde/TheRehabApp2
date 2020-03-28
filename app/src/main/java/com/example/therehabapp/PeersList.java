@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -72,11 +71,14 @@ public class PeersList  extends ArrayAdapter<User> {
 
                 String userEmail= userList.get(position).EmailAddress;
                 String userName= userList.get(position).Name;
+                String userID=  userList.get(position).UID;
 
                 Intent intent = new Intent (getContext(), PeerProfile.class);
                 intent.putExtra("UserName",userName);
                 intent.putExtra("UserEmail",userEmail);
+                intent.putExtra("UserId",userID);
                 getContext().startActivity(intent);
+
             }
         });
 

@@ -11,14 +11,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.therehabapp.Messaging.Message;
+
 import java.util.List;
 
 public class MessagesAdapter extends ArrayAdapter {
 
     private Activity context;
-    private List<String> threadsList;
+    private List<Message> threadsList;
 
-    public MessagesAdapter(Activity context, List<String> userList)
+    public MessagesAdapter(Activity context, List<Message> userList)
     {
 
         super(context , R.layout.message_list_item, userList);
@@ -39,12 +41,12 @@ public class MessagesAdapter extends ArrayAdapter {
         TextView peerNameView = (TextView) listViewItem.findViewById(R.id.peer_name_view);
         TextView messageTimeView= (TextView) listViewItem.findViewById(R.id.message_time_view);
 
-        String peerMessage = threadsList.get(position);
+        Message peerMessage = threadsList.get(position);
 
         /**set image resource from db here**/
-        //messagePreviewView.setText(peerMessage.MessagePreview);
-        peerNameView.setText(peerMessage);
-        //messageTimeView.setText(peerMessage.DateTime);
+        messagePreviewView.setText(peerMessage.Message);
+        peerNameView.setText(peerMessage.UID);
+        messageTimeView.setText(peerMessage.Time);
 
         return listViewItem;
 

@@ -11,18 +11,13 @@
         android:background="@color/app_purple"
         android:layout_marginTop="0dp"/>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/messages_refresh_layout"
+
+    <ListView
+        android:id="@+id/messages_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/messages_toolbar">
+        android:layout_below="@+id/messages_toolbar"/>
 
-        <ListView
-            android:id="@+id/messages_list_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/new_message_btn"
@@ -35,6 +30,5 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"/>
 
-    <!-- all messages recycler view-->
 
 </RelativeLayout>

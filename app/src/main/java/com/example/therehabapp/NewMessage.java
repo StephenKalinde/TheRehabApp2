@@ -14,15 +14,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.therehabapp.Messaging.Message;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,9 +83,11 @@ public class NewMessage extends AppCompatActivity {
 
                 String time = dateTimeString.substring(11,16);
 
+                String uid = FirebaseAuth.getInstance().getUid();
+
                 Toast.makeText(NewMessage.this, time, Toast.LENGTH_LONG).show();
 
-                Message newMessage =new Message(messageEditView.getText().toString(),dateString,time);
+                Message newMessage =new Message(messageEditView.getText().toString(),dateString,time, uid);
                 myThreadRef.push().setValue(newMessage);
                 messageEditView.setText("");
 

@@ -135,7 +135,6 @@ public class AllPeers extends AppCompatActivity {
     private ArrayList<User> GetAllPeers()
     {
 
-        final ArrayList<String> peerStringList= new ArrayList<>();
         final ArrayList<Peer> peerPeerList = new ArrayList<>();
         final ArrayList<User> peerUserList= new ArrayList<>();
         final ArrayList<User> allUsers= GetAllUsers();
