@@ -33,6 +33,8 @@ public class Messages extends AppCompatActivity {
     private ListView messagesListView;
     private Button testingBtn;
 
+    private int count=0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -48,21 +50,22 @@ public class Messages extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setTitle("Messages");
 
-        final List<String> topMessages = GetTopMessages();
+        final List<String> inboxIds = GetInboxIds();
+        final List<Message> topMessages = GetTopMessages(inboxIds);
 
         testingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(Messages.this, ""+topMessages.size() ,Toast.LENGTH_LONG).show();
+                Toast.makeText(Messages.this, ""+inboxIds.size(),Toast.LENGTH_LONG).show();
+
             }
         });
 
     }
 
-    private List<String> GetTopMessages()
+    private List<String> GetInboxIds()
     {
-        final List<Message> myTopMessages = new ArrayList<>();
         final List<String> myInboxIds = new ArrayList<>();
 
         String myUid = FirebaseAuth.getInstance().getUid();
@@ -87,10 +90,50 @@ public class Messages extends AppCompatActivity {
             }
         });
 
-
-        /** testing **/
         return myInboxIds;
-        //return myTopMessages;
+    }
+
+    private List<Message> GetTopMessages(List<String> inboxIds)
+    {
+
+        final List<Message> myTopMessages = new ArrayList<>();
+        int len = inboxIds.size();
+        count= len;
+
+        for(int i=0; i<len; i++ )
+        {
+
+            String inboxId = inboxIds.get(i);
+            final List<Message> threadMessages = new ArrayList<>();
+
+            DatabaseReference threadRef = FirebaseDatabase.getInstance().getReference("Inboxes/"+inboxId);
+
+            threadRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    for(DataSnapshot messageSnapshot: dataSnapshot.getChildren())
+                    {
+
+                        Message myMessage = messageSnapshot.getValue(Message.class);
+                        threadMessages.add(myMessage);
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+            int lastIndex = threadMessages.size()-1;
+            Message lastMessage = threadMessages.get(lastIndex);
+
+            myTopMessages.add(lastMessage);
+
+        }
+        return myTopMessages;
     }
 
 
