@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,17 +23,15 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
+
 public class Messages extends AppCompatActivity {
 
 
     private Toolbar myToolBar;
     private FloatingActionButton newMessage;
     private ListView messagesListView;
-
-    private String uid;
-    private int size=1;
-
-    private DatabaseReference myInboxIDsRefs;
+    private Button testingBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,70 +40,44 @@ public class Messages extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.messages_view);
 
-        newMessage= (FloatingActionButton) findViewById(R.id.new_message_btn);
-        myToolBar=(Toolbar)findViewById(R.id.messages_toolbar);
-        messagesListView=(ListView) findViewById(R.id.messages_list_view);
-
-        uid = FirebaseAuth.getInstance().getUid();
-
-        FirebaseDatabase fbDb = FirebaseDatabase.getInstance();
-        myInboxIDsRefs = fbDb.getReference("InboxIDs/"+uid);
+        myToolBar = (Toolbar) findViewById(R.id.messages_toolbar);
+        testingBtn = (Button) findViewById(R.id.testing_btn);
 
         setSupportActionBar(myToolBar);
-        getSupportActionBar().setTitle("Messages");
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setTitle("Messages");
 
-        newMessage.setOnClickListener(new View.OnClickListener() {
+        final List<String> topMessages = GetTopMessages();
+
+        testingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Messages.this, ContactsList.class);
-                startActivity(intent);
-
+                Toast.makeText(Messages.this, ""+topMessages.size() ,Toast.LENGTH_LONG).show();
             }
         });
 
-        /**newMessage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Toast.makeText(Messages.this, ""+size, Toast.LENGTH_LONG).show();
-            }
-        }); **/
-
     }
 
-    @Override
-    protected void onStart() {
-
-        super.onStart();
-
-        ArrayList<Message> topMessages = GetTopMessages();
-
-        MessagesAdapter adapter = new MessagesAdapter(Messages.this, topMessages);
-        messagesListView.setAdapter(adapter);
-
-    }
-
-    int count =0;
-    private ArrayList<Message> GetTopMessages()
+    private List<String> GetTopMessages()
     {
-        //list for top messages and all my inboxids
-        final ArrayList<Message> myMessages = new ArrayList<>();
-        ArrayList<Message> myTopMessages = new ArrayList<>();
-        final ArrayList<String> myInboxIds = new ArrayList<>();
+        final List<Message> myTopMessages = new ArrayList<>();
+        final List<String> myInboxIds = new ArrayList<>();
 
+        String myUid = FirebaseAuth.getInstance().getUid();
+        DatabaseReference threadsRef = FirebaseDatabase.getInstance().getReference("InboxIDs/"+myUid);
 
-        //ref to get all my inbox ids;
-        myInboxIDsRefs.addValueEventListener(new ValueEventListener() {
+        threadsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for( DataSnapshot idDataSnapshot: dataSnapshot.getChildren()){
-                    String inboxId = idDataSnapshot.getValue(String.class);
-                    myInboxIds.add(inboxId);
-                    count++;
+                for(DataSnapshot idSnapShot: dataSnapshot.getChildren())
+                {
+
+                    String id = idSnapShot.getValue(String.class);
+                    myInboxIds.add(id);
+
                 }
             }
 
@@ -114,43 +87,10 @@ public class Messages extends AppCompatActivity {
             }
         });
 
-        size= count;
 
-        for(int i=0; i< myInboxIds.size();i++){
-
-            //form inbox ref
-            DatabaseReference myInboxRef = FirebaseDatabase.getInstance().getReference("Inboxes/"+myInboxIds.get(i));
-
-            //get all messages from ref
-            myInboxRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                    for(DataSnapshot messageSnapShot: dataSnapshot.getChildren())
-                    {
-                        Message message = messageSnapShot.getValue(Message.class);
-                        myMessages.add(message);
-                    }
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-
-            //add topmessages to the arraylist
-            int len = myMessages.size();
-            int lastMessageIndex = len -1;
-            Message lastMessage = myMessages.get(lastMessageIndex);
-            myTopMessages.add(lastMessage);
-
-            myMessages.clear();
-
-        }
-        return myTopMessages;
-
+        /** testing **/
+        return myInboxIds;
+        //return myTopMessages;
     }
 
 
