@@ -33,6 +33,11 @@ public class Messages extends AppCompatActivity {
     private ListView messagesListView;
     private Button testingBtn;
 
+    private ArrayList<String> inboxIds;
+    private ArrayList<Message> topMessages;
+
+    private int myLen;
+
     private int count=0;
 
     @Override
@@ -50,23 +55,32 @@ public class Messages extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setTitle("Messages");
 
-        final List<String> inboxIds = GetInboxIds();
-        final List<Message> topMessages = GetTopMessages(inboxIds);
-
         testingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(Messages.this, ""+inboxIds.size(),Toast.LENGTH_LONG).show();
+                Toast.makeText(Messages.this, ""+topMessages.size(),Toast.LENGTH_LONG).show();
 
             }
         });
 
     }
 
-    private List<String> GetInboxIds()
+    @Override
+    protected void onStart() {
+
+        super.onStart();
+
+        inboxIds = GetInboxIds();
+
+        topMessages = new ArrayList<>();
+        GetTopMessages();
+
+    }
+
+    private ArrayList<String> GetInboxIds()
     {
-        final List<String> myInboxIds = new ArrayList<>();
+        final ArrayList<String> myInboxIds = new ArrayList<>();
 
         String myUid = FirebaseAuth.getInstance().getUid();
         DatabaseReference threadsRef = FirebaseDatabase.getInstance().getReference("InboxIDs/"+myUid);
@@ -93,10 +107,9 @@ public class Messages extends AppCompatActivity {
         return myInboxIds;
     }
 
-    private List<Message> GetTopMessages(List<String> inboxIds)
+    private void GetTopMessages()
     {
 
-        final List<Message> myTopMessages = new ArrayList<>();
         int len = inboxIds.size();
         count= len;
 
@@ -130,13 +143,11 @@ public class Messages extends AppCompatActivity {
             int lastIndex = threadMessages.size()-1;
             Message lastMessage = threadMessages.get(lastIndex);
 
-            myTopMessages.add(lastMessage);
+            topMessages.add(lastMessage);
 
         }
-        return myTopMessages;
+
     }
-
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)

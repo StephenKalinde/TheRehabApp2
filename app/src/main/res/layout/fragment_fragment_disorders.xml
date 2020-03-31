@@ -53,7 +53,7 @@
         <Space
             android:id="@+id/space_1"
             android:layout_width="match_parent"
-            android:layout_height="5dp"
+            android:layout_height="4dp"
             android:layout_below="@+id/heading_view"/>
 
         <TextView
@@ -69,7 +69,7 @@
         <Space
             android:id="@+id/space_2"
             android:layout_width="match_parent"
-            android:layout_height="15dp"
+            android:layout_height="4dp"
             android:layout_below="@+id/heading_view_2"/>
 
         <TextView
@@ -107,6 +107,21 @@
             android:textColor="@android:color/black"
             android:layout_centerHorizontal="true"
             android:layout_below="@+id/heading_view_4"/>
+
+        <Space
+            android:layout_below="@+id/heading_view_5"
+            android:id="@+id/spacerx"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Week One"
+            android:textSize="15dp"
+            android:layout_below="@+id/spacerx"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/black"/>
 
     </RelativeLayout>
 
@@ -191,7 +206,6 @@
             android:textColor="@android:color/black"
             android:background="@drawable/planner_border"/>
 
-
     </LinearLayout>
 
     <!--table-->
@@ -261,7 +275,6 @@
                     android:layout_width="60dp"
                     android:layout_height="match_parent"
                     android:background="@drawable/planner_border"/>
-
 
             </LinearLayout>
 
