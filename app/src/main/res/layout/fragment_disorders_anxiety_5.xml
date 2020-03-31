@@ -676,7 +676,7 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Share group"
+                        android:text="Share story"
                         android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>

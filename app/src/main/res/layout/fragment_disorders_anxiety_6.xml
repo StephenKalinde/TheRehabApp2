@@ -76,7 +76,7 @@
                 android:id="@+id/heading_view_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Primary Recovery"
+                android:text="Secondary Recovery"
                 android:textSize="16dp"
                 android:textColor="@android:color/black"
                 android:layout_centerHorizontal="true"
@@ -89,7 +89,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_centerInParent="true"
-                android:text="Continue building and managing your recovery"
+                android:text="Fighting Your Fear"
                 android:textSize="16dp"
                 android:textColor="@android:color/black"
                 android:layout_centerHorizontal="true"
@@ -104,7 +104,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Week Two"
+                android:text="Week Six"
                 android:textSize="15dp"
                 android:layout_below="@+id/spacerx"
                 android:layout_centerHorizontal="true"
@@ -113,7 +113,6 @@
         </RelativeLayout>
 
         <!--header-->
-
         <LinearLayout
             android:id="@+id/header_layout"
             android:layout_below="@+id/heading_layout"
@@ -134,7 +133,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 8"
+                android:text="Day 36"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -143,7 +142,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 9"
+                android:text="Day 37"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -152,7 +151,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 10"
+                android:text="Day 38"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -161,7 +160,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 11"
+                android:text="Day 39"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -170,7 +169,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 12"
+                android:text="Day 40"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -179,7 +178,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 13"
+                android:text="Day 41"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -188,7 +187,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 14"
+                android:text="Day 42"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -467,7 +466,7 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Toolbox"
+                        android:text="Fighting Fear"
                         android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
@@ -476,7 +475,7 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Toolbox"
+                        android:text="Fighting Fear"
                         android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
@@ -485,7 +484,7 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Toolbox"
+                        android:text="Fighting Fear"
                         android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
@@ -494,7 +493,7 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Toolbox"
+                        android:text="Fighting Fear"
                         android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
@@ -503,7 +502,7 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Toolbox"
+                        android:text="Fighting Fear"
                         android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
@@ -677,7 +676,7 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Share store"
+                        android:text="Share story"
                         android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
