@@ -60,7 +60,7 @@
                 android:id="@+id/heading_view_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="DEPRESSION PROGRAMME"
+                android:text="ADDICTION PROGRAMME"
                 android:textSize="16dp"
                 android:textColor="@android:color/black"
                 android:layout_centerHorizontal="true"
@@ -76,7 +76,7 @@
                 android:id="@+id/heading_view_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tertiary Recovery"
+                android:text="Secondary Recovery"
                 android:textSize="16dp"
                 android:textColor="@android:color/black"
                 android:layout_centerHorizontal="true"
@@ -89,8 +89,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_centerInParent="true"
-                android:text="Build your self esteem"
-                android:textSize="16dp"
+                android:text="Focus to continue building solid recovery foundation"
+                android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/heading_view_3"/>
@@ -104,7 +104,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Week Nine"
+                android:text="Week Four"
                 android:textSize="15dp"
                 android:layout_below="@+id/spacerx"
                 android:layout_centerHorizontal="true"
@@ -133,7 +133,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 57"
+                android:text="Day 22"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -142,7 +142,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 58"
+                android:text="Day 23"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -151,7 +151,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 59"
+                android:text="Day 24"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -160,7 +160,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 60"
+                android:text="Day 25"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -169,7 +169,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 61"
+                android:text="Day 26"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -178,7 +178,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 62"
+                android:text="Day 27"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -187,7 +187,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 63"
+                android:text="Day 28"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -466,8 +466,8 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Self Esteem"
-                        android:textSize="10dp"
+                        android:text="Courage And Hope"
+                        android:textSize="9dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
@@ -475,8 +475,8 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Self Esteem"
-                        android:textSize="10dp"
+                        android:text="Courage And Hope"
+                        android:textSize="9dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
@@ -484,8 +484,8 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Self Esteem"
-                        android:textSize="10dp"
+                        android:text="Courage And Hope"
+                        android:textSize="9dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
@@ -493,8 +493,8 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Self Esteem"
-                        android:textSize="10dp"
+                        android:text="Courage And Hope"
+                        android:textSize="9dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
@@ -502,8 +502,8 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Self Esteem"
-                        android:textSize="10dp"
+                        android:text="Courage And Hope"
+                        android:textSize="9dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
