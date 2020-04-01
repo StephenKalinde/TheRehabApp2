@@ -60,7 +60,7 @@
                 android:id="@+id/heading_view_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ANXIETY PROGRAMME"
+                android:text="DEPRESSION PROGRAMME"
                 android:textSize="16dp"
                 android:textColor="@android:color/black"
                 android:layout_centerHorizontal="true"
