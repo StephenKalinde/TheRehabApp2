@@ -1,0 +1,1064 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:id="@+id/header"
+            android:background="@drawable/header_image">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/logo"
+                android:elevation="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/logo"
+                android:layout_centerHorizontal="true"
+                android:text="THE REHAB"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:textColor="@android:color/white"
+                android:layout_marginLeft="30dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/heading_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header">
+
+            <TextView
+                android:id="@+id/heading_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="12 STEPS TO FREEDOM"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_centerHorizontal="true" />
+
+            <Space
+                android:id="@+id/space_1"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_below="@+id/heading_view"/>
+
+            <TextView
+                android:id="@+id/heading_view_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EATING DISORDER PROGRAMME"
+                android:textSize="16dp"
+                android:textColor="@android:color/black"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/space_1"/>
+
+            <Space
+                android:id="@+id/space_2"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_below="@+id/heading_view_2"/>
+
+            <TextView
+                android:id="@+id/heading_view_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tertiary Recovery"
+                android:textSize="16dp"
+                android:textColor="@android:color/black"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/space_2"/>
+
+            <TextView
+                android:id="@+id/heading_view_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_centerInParent="true"
+                android:text="Self Reflection"
+                android:textSize="16dp"
+                android:textColor="@android:color/black"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/heading_view_3"/>
+
+            <Space
+                android:layout_below="@+id/heading_view_4"
+                android:id="@+id/spacerx"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Week Twelve"
+                android:textSize="15dp"
+                android:layout_below="@+id/spacerx"
+                android:layout_centerHorizontal="true"
+                android:textColor="@android:color/black"/>
+
+        </RelativeLayout>
+
+        <!--header-->
+        <LinearLayout
+            android:id="@+id/header_layout"
+            android:layout_below="@+id/heading_layout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="Continue Step Work"
+                android:textSize="11dp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/planner_border"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="Day 78"
+                android:textSize="12dp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/planner_border"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="Day 79"
+                android:textSize="12dp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/planner_border"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="Day 80"
+                android:textSize="12dp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/planner_border"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="Day 81"
+                android:textSize="12dp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/planner_border"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="Day 82"
+                android:textSize="12dp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/planner_border"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="Day 83"
+                android:textSize="12dp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/planner_border"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="Day 84"
+                android:textSize="12dp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/planner_border"/>
+
+        </LinearLayout>
+
+        <!--table-->
+        <ScrollView
+            android:id="@+id/scroll_view"
+            android:layout_below="@+id/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <!-- wake up -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Wake up at a set time"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                </LinearLayout>
+
+                <!-- exercise -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Exercise 3 to 5 times a week"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                </LinearLayout>
+
+                <!-- meditation -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Do meditation and daily reading"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                </LinearLayout>
+
+                <!-- breakfast -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Breakfast"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                </LinearLayout>
+
+                <!-- group session -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Group Session"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Discipline And Reflection"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Discipline And Reflection"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Discipline And Reflection"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Discipline And Reflection"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Discipline And Reflection"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                </LinearLayout>
+
+                <!-- lectures -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Lectures"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Topics of the disease"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Topics of the disease"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Topics of the disease"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Topics of the disease"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Topics of the disease"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                </LinearLayout>
+
+                <!-- lunch -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Lunch"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                </LinearLayout>
+
+                <!-- group session -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Group Session"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Share story"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Share group"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Share group"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Share group"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                </LinearLayout>
+
+                <!-- counselling session -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Counselling Session"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"
+                        android:text="Session"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                </LinearLayout>
+
+                <!-- written work -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Written Work"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                </LinearLayout>
+
+                <!-- dinner -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Dinner"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <CheckBox
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                </LinearLayout>
+
+                <!-- fellowship meeting -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Do 3 to 4 Fellowship meetings per week"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:text="Meeting"
+                        android:textSize="10dp"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:text="Meeting"
+                        android:textSize="10dp"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:text="Meeting"
+                        android:textSize="10dp"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                </LinearLayout>
+
+                <!--lights out -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Lights Out"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <EditText
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <EditText
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <EditText
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <EditText
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <EditText
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <EditText
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <EditText
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+</ScrollView>
