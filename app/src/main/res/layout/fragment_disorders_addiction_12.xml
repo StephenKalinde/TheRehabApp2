@@ -76,7 +76,7 @@
                 android:id="@+id/heading_view_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Primary Recovery"
+                android:text="Tertiary Recovery"
                 android:textSize="16dp"
                 android:textColor="@android:color/black"
                 android:layout_centerHorizontal="true"
@@ -89,8 +89,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_centerInParent="true"
-                android:text="Acceptance and Surrender"
-                android:textSize="16dp"
+                android:text="If you don't have a sport or activity, start working on one"
+                android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/heading_view_3"/>
@@ -102,11 +102,13 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_centerInParent="true"
-                android:text="Stop giving into addiction"
-                android:textSize="16dp"
+                android:text="Keep using the twelve guidelines in your life"
+                android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/heading_view_4"/>
+
+
 
             <Space
                 android:layout_below="@+id/heading_view_5"
@@ -117,7 +119,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Week One"
+                android:text="Week Twelve"
                 android:textSize="15dp"
                 android:layout_below="@+id/spacerx"
                 android:layout_centerHorizontal="true"
@@ -126,7 +128,6 @@
         </RelativeLayout>
 
         <!--header-->
-
         <LinearLayout
             android:id="@+id/header_layout"
             android:layout_below="@+id/heading_layout"
@@ -138,7 +139,16 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Start Step Work"
+                android:text="Continue Step Work"
+                android:textSize="11dp"
+                android:textColor="@android:color/black"
+                android:background="@drawable/planner_border"/>
+
+            <TextView
+                android:layout_weight="1"
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:text="Day 78"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -147,7 +157,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 1"
+                android:text="Day 79"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -156,7 +166,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 2"
+                android:text="Day 80"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -165,7 +175,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 3"
+                android:text="Day 81"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -174,7 +184,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 4"
+                android:text="Day 82"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -183,7 +193,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 5"
+                android:text="Day 83"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -192,16 +202,7 @@
                 android:layout_weight="1"
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
-                android:text="Day 6"
-                android:textSize="12dp"
-                android:textColor="@android:color/black"
-                android:background="@drawable/planner_border"/>
-
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="60dp"
-                android:layout_height="match_parent"
-                android:text="Day 7"
+                android:text="Day 84"
                 android:textSize="12dp"
                 android:textColor="@android:color/black"
                 android:background="@drawable/planner_border"/>
@@ -219,6 +220,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
+
+                <!-- wake up -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -278,6 +281,8 @@
 
                 </LinearLayout>
 
+                <!-- exercise -->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -335,6 +340,8 @@
                         android:background="@drawable/planner_border"/>
 
                 </LinearLayout>
+
+                <!-- meditation -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -394,6 +401,8 @@
 
                 </LinearLayout>
 
+                <!-- breakfast -->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -452,6 +461,8 @@
 
                 </LinearLayout>
 
+                <!-- group session -->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -470,7 +481,7 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Acceptance And Surrender"
+                        android:text="Discipline"
                         android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
@@ -479,7 +490,7 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Acceptance And Surrender"
+                        android:text="And Self Reflection"
                         android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
@@ -488,7 +499,7 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Acceptance And Surrender"
+                        android:text="Discipline"
                         android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
@@ -497,7 +508,7 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Acceptance And Surrender"
+                        android:text="And Self Reflection"
                         android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
@@ -506,7 +517,7 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Acceptance And Surrender"
+                        android:text="Discipline"
                         android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
@@ -524,6 +535,8 @@
                         android:background="@drawable/planner_border"/>
 
                 </LinearLayout>
+
+                <!-- lectures -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -543,8 +556,8 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Topics relating to disease"
-                        android:textSize="11dp"
+                        android:text="Topics of the disease"
+                        android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
@@ -552,8 +565,8 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Topics relating to disease"
-                        android:textSize="11dp"
+                        android:text="Topics of the disease"
+                        android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
@@ -561,8 +574,8 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Topics relating to disease"
-                        android:textSize="11dp"
+                        android:text="Topics of the disease"
+                        android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
@@ -570,8 +583,8 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Topics relating to disease"
-                        android:textSize="11dp"
+                        android:text="Topics of the disease"
+                        android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
@@ -579,8 +592,8 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
-                        android:text="Topics relating to disease"
-                        android:textSize="11dp"
+                        android:text="Topics of the disease"
+                        android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
@@ -597,6 +610,8 @@
                         android:background="@drawable/planner_border"/>
 
                 </LinearLayout>
+
+                <!-- lunch -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -656,6 +671,8 @@
 
                 </LinearLayout>
 
+                <!-- group session -->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -675,7 +692,7 @@
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
                         android:text="Share story"
-                        android:textSize="12dp"
+                        android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
@@ -684,7 +701,7 @@
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
                         android:text="Share group"
-                        android:textSize="12dp"
+                        android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
@@ -699,7 +716,7 @@
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
                         android:text="Share group"
-                        android:textSize="12dp"
+                        android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
@@ -708,7 +725,7 @@
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
                         android:text="Share group"
-                        android:textSize="12dp"
+                        android:textSize="10dp"
                         android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
@@ -725,6 +742,75 @@
                         android:background="@drawable/planner_border"/>
 
                 </LinearLayout>
+
+                <!-- counselling session -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:text="Counselling Session"
+                        android:textSize="12dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"
+                        android:text="Session"
+                        android:textSize="10dp"
+                        android:textColor="@android:color/black"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                    <TextView
+                        android:layout_weight="1"
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/planner_border"/>
+
+                </LinearLayout>
+
+                <!-- written work -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -784,6 +870,8 @@
 
                 </LinearLayout>
 
+                <!-- dinner -->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -842,6 +930,8 @@
 
                 </LinearLayout>
 
+                <!-- fellowship meeting -->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -876,9 +966,9 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
                         android:text="Meeting"
                         android:textSize="10dp"
-                        android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
                     <TextView
@@ -892,9 +982,9 @@
                         android:layout_weight="1"
                         android:layout_width="60dp"
                         android:layout_height="match_parent"
+                        android:textColor="@android:color/black"
                         android:text="Meeting"
                         android:textSize="10dp"
-                        android:textColor="@android:color/black"
                         android:background="@drawable/planner_border"/>
 
                     <TextView
@@ -912,6 +1002,8 @@
                         android:background="@drawable/planner_border"/>
 
                 </LinearLayout>
+
+                <!--lights out -->
 
                 <LinearLayout
                     android:layout_width="match_parent"
