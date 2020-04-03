@@ -281,7 +281,7 @@
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
                         android:layout_gravity="center"
-                        android:layout_marginLeft="10dp"/>
+                        android:layout_marginLeft="5dp"/>
 
                     <Space
                         android:layout_width="match_parent"

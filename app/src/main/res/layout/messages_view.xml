@@ -18,12 +18,12 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/messages_toolbar"/> -->
 
-    <Button
+    <!--<Button
         android:id="@+id/testing_btn"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:text="testing"
-        android:layout_below="@+id/messages_toolbar"/>
+        android:layout_below="@+id/messages_toolbar"/> -->
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/new_message_btn"

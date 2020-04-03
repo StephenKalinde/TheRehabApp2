@@ -48,21 +48,30 @@ public class Messages extends AppCompatActivity {
         setContentView(R.layout.messages_view);
 
         myToolBar = (Toolbar) findViewById(R.id.messages_toolbar);
-        testingBtn = (Button) findViewById(R.id.testing_btn);
+        //testingBtn = (Button) findViewById(R.id.testing_btn);
+        newMessage = (FloatingActionButton) findViewById(R.id.new_message_btn);
 
         setSupportActionBar(myToolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setTitle("Messages");
 
-        testingBtn.setOnClickListener(new View.OnClickListener() {
+        /**testingBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Toast.makeText(Messages.this, ""+topMessages.size(),Toast.LENGTH_LONG).show();
 
             }
+        }); **/
+        newMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(Messages.this, ContactsList.class));
+            }
         });
+
 
     }
 
