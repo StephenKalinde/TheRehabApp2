@@ -27,6 +27,9 @@ public class ProfileSetup extends AppCompatActivity {
     private CheckBox hospitalisedNo, hospitalizedYes, addictionsNo, addictionsYes, smokingNo, smokingYes, criminalRecordNo, criminalRecordYes;
     private FirebaseDatabase db;
     private FirebaseAuth mAuth;
+
+    private String diagnosis;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -35,6 +38,8 @@ public class ProfileSetup extends AppCompatActivity {
 
         db = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
+
+        diagnosis = getIntent().getStringExtra("Diagnosis");
 
         nameView= (EditText) findViewById(R.id.first_name_view);
         surnameView=(EditText) findViewById(R.id.surname_view);
@@ -149,6 +154,8 @@ public class ProfileSetup extends AppCompatActivity {
 
                     SaveToDb();
 
+                    SaveDiagnosisToDb();
+
                     startActivity(new Intent(ProfileSetup.this, CarePacks.class) );
 
                 }
@@ -198,6 +205,15 @@ public class ProfileSetup extends AppCompatActivity {
 
         DatabaseReference dbRefQuestions= db.getReference("UserAnswers/"+ user);
         dbRefQuestions.setValue(profileQuestions);
+    }
+
+    private void SaveDiagnosisToDb()
+    {
+        String uid = mAuth.getUid() ;
+
+        DatabaseReference diagnosisRef = db.getReference("Diagnoses/"+uid);
+
+        diagnosisRef.push().setValue(diagnosis);
     }
 
 }

@@ -4,11 +4,22 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -29,10 +40,15 @@ public class FragmentDisorders extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private int layout;
+
     private OnFragmentInteractionListener mListener;
 
-    public FragmentDisorders() {
-        // Required empty public constructor
+    public FragmentDisorders() { }
+
+    public FragmentDisorders(int layoutId){
+
+        this.layout= layoutId;
     }
 
     /**
@@ -65,8 +81,11 @@ public class FragmentDisorders extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragment_disorders, container, false);
+
+
+        return inflater.inflate(layout, container, false);
+
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -106,5 +125,32 @@ public class FragmentDisorders extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private int GetLayout(String diagnosis)
+    {
+        int layout =R.layout.fragment_fragment_disorders;
+
+        if(diagnosis.equals("Depression"))
+        {
+            layout= R.layout.fragment_disorders_depression_1;
+        }
+
+        if(diagnosis.equals("Eating Disorders"))
+        {
+            layout= R.layout.fragment_disorders_eating_1;
+        }
+
+        if(diagnosis.equals("Anxiety"))
+        {
+            layout= R.layout.fragment_fragment_disorders;
+        }
+
+        if(diagnosis.equals("Addiction"))
+        {
+            layout= R.layout.fragment_disorders_addiction_1;
+        }
+
+        return layout;
     }
 }

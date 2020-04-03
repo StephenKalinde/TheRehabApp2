@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -13,8 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -22,6 +25,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -43,7 +49,6 @@ public class FragmentProfile extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
-
 
     public FragmentProfile() {
         // Required empty public constructor
@@ -78,6 +83,7 @@ public class FragmentProfile extends Fragment {
 
     private Button messagesBtn;
     private Button peersBtn;
+    private Button requestsBtn;
     private TextView nameView;
     private String userName;
 
@@ -89,6 +95,7 @@ public class FragmentProfile extends Fragment {
 
         messagesBtn = (Button) myView.findViewById(R.id.messages_btn);
         peersBtn= (Button) myView.findViewById(R.id.peers_btn);
+        requestsBtn = (Button) myView.findViewById(R.id.requests_btn);
         nameView = (TextView) myView.findViewById(R.id.user_name_view);
 
         final String myEmailAddress = FirebaseAuth.getInstance().getCurrentUser().getEmail();
@@ -127,6 +134,20 @@ public class FragmentProfile extends Fragment {
             public void onClick(View v) {
                 Intent intent= new Intent(getActivity(), AllPeers.class);
                 startActivity(intent);
+            }
+        });
+
+        requestsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                /**DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Diagnoses/"+uid);
+                final String[] myArray = new String[1];
+
+
+                String valueHolder = myArray[0]; **/
+                //Toast.makeText(getActivity(),diagnosis,Toast.LENGTH_SHORT).show();
+
             }
         });
 

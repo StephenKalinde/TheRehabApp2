@@ -4,9 +4,9 @@
     <string name="facebook_app_id">597152227417864</string>
     <string name="fb_login_protocol_scheme">fb597152227417864</string>
     <string name="welcome_slogan">When I become we, illness becomes wellness</string>
-    <string name="introduction">Welcome to THE REHAB, A virtual platform which serves to through commitment and help create daily structure meditation.</string>
-    <string name="sub_introduction">THE REHAB grants you access manage day to day life and goal is to help you cope and Address deeper issues.</string>
-    <string name="sub_introduction2">We work independently and A support system, that is easily with mental health conditions.</string>
+    <string name="introduction">Welcome to THE REHAB, A virtual platform which serves to help create daily structure through commitment and meditation.</string>
+    <string name="sub_introduction">THE REHAB grants you access to a variety of highly qualified professionals whose primary goal is to help you cope and manage day to day life and Address deeper issues.</string>
+    <string name="sub_introduction2">We work independently and alongside clinical centers to support and rehabilitate sufferers with mental health conditions.</string>
     <string name="sub_introduction3">A support system ,that is easily accessible just a few clicks away.</string>
     <string name="questionaire_string">Select one of the below questionnaires to assess whether you may be suffering  from any of the mental disorders</string>
     <string name="depression_note">You seem to have symptoms that could resemble depression. Please note the following information</string>
@@ -60,4 +60,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="courage_hope">Courage And Hope</string>
+    <string name="home_string_24">We want to inform society about mental disorders so that they can identify the red flags and therefore seek help earlier than later</string>
+    <string name="feedback_string">Outpatient programme has helped me in some of my hardest times, being able to share my story and having the support of an outpatient gave me hope knowing im not alone.</string>
+    <string name="jacque_testimony">I will forever be thankful because what outpatient has given me is a second chance to life so i can be with with my family again and I could never be more happy and blessed than what I am now.</string>
+    <string name="kim_string">I am so grateful for the outpatient programme and to have the people that care and support me through it all. Depression is not an easy road to be on but having my loved ones and the team support has really been my stepping stone </string>
 </resources>

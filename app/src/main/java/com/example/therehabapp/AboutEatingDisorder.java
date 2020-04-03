@@ -21,7 +21,11 @@ public class AboutEatingDisorder extends AppCompatActivity {
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AboutEatingDisorder.this, ThankYouNote.class));
+
+                Intent intent =new Intent(AboutEatingDisorder.this, ThankYouNote.class);
+                intent.putExtra("Diagnosis", "Eating Disorders");
+
+                startActivity(intent);
             }
         });
     }

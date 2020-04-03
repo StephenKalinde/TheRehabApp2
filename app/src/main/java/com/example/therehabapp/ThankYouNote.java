@@ -20,6 +20,9 @@ public class ThankYouNote extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.thank_you_note);
 
+        final String diagnosis = getIntent().getStringExtra("Diagnosis");
+
+
         signUpBtn = (Button) findViewById(R.id.signUp_btn);
         exitBtn =(Button) findViewById(R.id.exit_btn) ;
 
@@ -27,7 +30,10 @@ public class ThankYouNote extends AppCompatActivity
             @Override
             public void onClick(View view) {
 
-                startActivity(new Intent (ThankYouNote.this, ProfileSetup.class));
+                Intent intent = new Intent (ThankYouNote.this, ProfileSetup.class);
+                intent.putExtra("Diagnosis", diagnosis);
+
+                startActivity(intent);
 
             }
         });

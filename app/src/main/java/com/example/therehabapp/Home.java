@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,7 +16,15 @@ import androidx.fragment.app.FragmentTransaction;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Home extends AppCompatActivity implements FragmentHome.OnFragmentInteractionListener ,FragmentAbout.OnFragmentInteractionListener, FragmentDisorders.OnFragmentInteractionListener,FragmentHappenings.OnFragmentInteractionListener, FragmentProfile.OnFragmentInteractionListener {
@@ -41,7 +50,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                     break;
 
                 case R.id.nav_disorders:
-                    FragmentDisorders fragmentDisorders= new FragmentDisorders();
+                    FragmentDisorders fragmentDisorders= new FragmentDisorders(myLayout);
                     FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction3.replace(R.id.fragments_container,fragmentDisorders,"FragmentName");
                     fragmentTransaction3.commit();
@@ -71,6 +80,8 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     private Toolbar mToolBar;
     private NavigationView navigationView;
 
+    private int myLayout= R.layout.fragment_fragment_disorders;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -80,7 +91,6 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
         BottomNavigationView bottomNav= (BottomNavigationView) findViewById(R.id.bottom_nav_bar);
         bottomNav.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_SELECTED);
         bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
-
 
         FragmentHome homeFragment= new FragmentHome();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -138,4 +148,6 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+
 }
