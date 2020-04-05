@@ -11,11 +11,9 @@
         android:layout_height="30dp"/>
 
     <ImageView
-
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center"
-        android:text="LOGO HERE"
         android:textColor="@android:color/black"
         android:textSize="23dp"
         android:elevation="20dp"
@@ -31,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="THE REHAB"
+        android:fontFamily="@font/yantramanav"
         android:textColor="@android:color/white"
         android:elevation="20dp"
         android:textSize="60dp"
@@ -42,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="WELCOMES YOU"
+        android:fontFamily="@font/yantramanav"
         android:textColor="@android:color/white"
         android:textSize="35dp"
         android:textStyle="bold"
@@ -57,6 +57,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="When I become we,"
+        android:fontFamily="@font/handlee"
         android:textColor="@android:color/white"
         android:textSize="30dp"
         android:elevation="20dp"
@@ -68,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="illness becomes"
+        android:fontFamily="@font/handlee"
         android:textColor="@android:color/white"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -79,6 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="wellness"
+        android:fontFamily="@font/handlee"
         android:textColor="@android:color/white"
         android:textSize="30dp"
         android:textStyle="bold"
