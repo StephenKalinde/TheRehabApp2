@@ -31,7 +31,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="TERMS AND CONDITIONS"
-        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:fontFamily="@font/yantramanav"
         android:textColor="@android:color/black"/>
 
     <ScrollView
@@ -48,6 +50,7 @@
         android:layout_gravity="center"
         android:background="@drawable/buttonselector"
         android:backgroundTint="@color/btn_green"
+        android:fontFamily="@font/yantramanav"
         android:textColor="@android:color/white"/>
 
 

@@ -1,90 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
     android:padding="10dp"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <TextView
-        android:id="@+id/optionsTextView"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="@string/questionaire_string"
-        android:textColor="@android:color/black"
-        android:textSize="15dp"
-        android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/optionsTextView"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/questionaire_string"
+            android:textColor="@android:color/black"
+            android:textSize="15dp"
+            android:fontFamily="@font/yantramanav"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"/>
 
-    <Button
-        android:id="@+id/anxiety_btn"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/optionsTextView"
-        android:backgroundTint="@color/anxiety_orange"
-        android:text="Anxiety"/>
+        <Space
+            android:id="@+id/space"
+            android:layout_below="@+id/optionsTextView"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
 
-    <Button
-        android:id="@+id/depression_btn"
-        android:layout_width="160dp"
-        android:layout_height="wrap_content"
-        android:text="Depression"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/optionsTextView"
-        android:backgroundTint="@color/btn_green"/>
+        <Button
+            android:id="@+id/anxiety_btn"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/space"
+            android:backgroundTint="@color/anxiety_orange"
+            android:text="Anxiety"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentLeft="true"/>
 
-    <ImageView
-        android:elevation="20dp"
-        android:id="@+id/anxiety_pic"
-        android:layout_width="175dp"
-        android:layout_height="150dp"
-        android:text="pic here"
-        android:background="@drawable/anxiety_pic"
-        android:layout_below="@id/anxiety_btn"/>
+        <Button
+            android:id="@+id/depression_btn"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="Depression"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/space"
+            android:backgroundTint="@color/btn_green"
+            android:layout_marginRight="15dp"/>
 
-    <ImageView
-        android:id="@+id/depression_pic"
-        android:layout_width="160dp"
-        android:layout_height="340dp"
-        android:background="@drawable/depression_pic"
-        android:layout_below="@id/depression_btn"
-        android:layout_alignParentRight="true"
-        android:elevation="20dp"/>
+        <Space
+            android:id="@+id/space_2"
+            android:layout_below="@+id/anxiety_btn"
+            android:layout_width="match_parent"
+            android:layout_height="15dp"/>
 
-    <Button
-        android:id="@+id/addiction_btn"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
-        android:text="Addiction"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@id/anxiety_pic"
-        android:backgroundTint="@color/addiction_blue"
-        />
+        <ImageView
+            android:elevation="20dp"
+            android:id="@+id/anxiety_pic"
+            android:layout_width="175dp"
+            android:layout_height="150dp"
+            android:text="pic here"
+            android:background="@drawable/anxiety_pic"
+            android:layout_below="@id/space_2"
+            android:layout_marginLeft="15dp"/>
 
-    <ImageView
-        android:id="@+id/addiction_pic"
-        android:layout_width="175dp"
-        android:layout_height="143dp"
-        android:background="@drawable/addiction_pic"
-        android:layout_below="@+id/addiction_btn"
-        android:elevation="20dp"/>
+        <ImageView
+            android:id="@+id/depression_pic"
+            android:layout_width="160dp"
+            android:layout_height="300dp"
+            android:background="@drawable/depression_pic"
+            android:layout_below="@id/space_2"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:elevation="20dp"/>
 
-    <Button
-        android:id="@+id/eating_disorder_btn"
-        android:layout_width="175dp"
-        android:layout_height="wrap_content"
-        android:text="eating disorder"
-        android:layout_below="@id/addiction_pic"
-        android:layout_centerInParent="true"
-        android:backgroundTint="@color/eating_disorder_purple"/>
+        <Space
+            android:layout_width="175dp"
+            android:layout_height="15dp"
+            android:id="@+id/space_3"
+            android:layout_below="@+id/anxiety_pic"/>
 
-    <ImageView
-        android:id="@+id/eating_disorder_pic"
-        android:layout_width="175dp"
-        android:layout_height="110dp"
-        android:background="@drawable/eating_disorder_pic"
-        android:layout_centerInParent="true"
-        android:layout_below="@+id/eating_disorder_btn"
-        android:elevation="20dp"/>
+        <Button
+            android:id="@+id/addiction_btn"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="Addiction"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:layout_below="@id/space_3"
+            android:backgroundTint="@color/addiction_blue"/>
 
-</RelativeLayout>
+        <Space
+            android:layout_width="175dp"
+            android:layout_height="15dp"
+            android:id="@+id/space_4"
+            android:layout_below="@+id/addiction_btn"/>
+
+        <ImageView
+            android:id="@+id/addiction_pic"
+            android:layout_width="175dp"
+            android:layout_height="143dp"
+            android:background="@drawable/addiction_pic"
+            android:layout_marginLeft="15dp"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/space_4"
+            android:elevation="20dp"/>
+
+        <Space
+            android:layout_width="175dp"
+            android:layout_height="15dp"
+            android:id="@+id/space_5"
+            android:layout_below="@+id/depression_pic"/>
+
+        <Button
+            android:id="@+id/eating_disorder_btn"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:text="eating disorder"
+            android:layout_below="@+id/space_5"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:backgroundTint="@color/eating_disorder_purple"/>
+
+        <Space
+            android:id="@+id/space_6"
+            android:layout_width="160dp"
+            android:layout_height="15dp"
+            android:layout_below="@+id/eating_disorder_btn"/>
+
+        <ImageView
+            android:id="@+id/eating_disorder_pic"
+            android:layout_width="160dp"
+            android:layout_height="110dp"
+            android:background="@drawable/eating_disorder_pic"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:layout_below="@+id/space_6"
+            android:elevation="20dp"/>
+
+    </RelativeLayout>
+
+</ScrollView>
