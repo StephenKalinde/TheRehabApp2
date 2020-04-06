@@ -21,18 +21,20 @@
             android:id="@+id/heading_view"
             android:background="@color/depression_green"
             android:text="DEPRESSION QUESTIONAIRE"
+            android:fontFamily="@font/yantramanav"
             android:textSize="30dp"
             android:textColor="@android:color/white"
             android:textAlignment="center"/>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="40dp"/>
+            android:layout_height="30dp"/>
 
         <TextView
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Do you find yourself feeling sad throughout the day?"
+            android:fontFamily="@font/yantramanav"
             android:textStyle="bold"
             android:layout_gravity="center"
             android:textSize="20dp"
@@ -50,6 +52,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="NEVER"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
@@ -63,6 +66,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="SOMETIMES"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
@@ -76,6 +80,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="MORE THAN USUAL"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
@@ -89,11 +94,12 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="ALWAYS"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="40dp"/>
 
         <Button
             android:id="@+id/next_btn3"
@@ -103,6 +109,7 @@
             android:backgroundTint="@color/btn_green"
             android:layout_gravity="center"
             android:text="NEXT"
+            android:fontFamily="@font/yantramanav"
             android:textColor="@android:color/white"/>
 
     </LinearLayout>
