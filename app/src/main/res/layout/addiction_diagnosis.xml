@@ -27,6 +27,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/top_space"
             android:text="RESULTS"
+            android:fontFamily="@font/yantramanav"
             android:textSize="30dp"
             android:textColor="@android:color/black"/>
 
@@ -42,6 +43,7 @@
             android:layout_width="140dp"
             android:layout_height="wrap_content"
             android:text="ADDICTION"
+            android:fontFamily="@font/yantramanav"
             android:textStyle="bold"
             android:textAlignment="center"
             android:textColor="@android:color/black"
@@ -57,15 +59,16 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="@string/addiction_note"
+            android:fontFamily="@font/yantramanav"
             android:textColor="@android:color/black"
             android:textSize="18dp"
             android:layout_below="@id/top_space2"/>
 
-        <TextView
+        <ImageView
             android:id="@+id/pic"
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:background="@android:color/black"
+            android:src="@drawable/addiction_pic"
             android:layout_below="@+id/heading_view_2"/>
 
         <Space
@@ -79,6 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/depression_note2"
+            android:fontFamily="@font/yantramanav"
             android:textSize="18dp"
             android:textColor="@android:color/black"
             android:layout_below="@id/mid_space"
@@ -96,6 +100,7 @@
             android:layout_height="40dp"
             android:layout_below="@id/mid_space2"
             android:text="Continue"
+            android:fontFamily="@font/yantramanav"
             android:layout_centerHorizontal="true"
             android:background="@drawable/buttonselector"
             android:backgroundTint="@color/btn_blue"

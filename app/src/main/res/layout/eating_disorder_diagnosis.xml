@@ -27,6 +27,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/top_space"
             android:text="RESULTS"
+            android:fontFamily="@font/yantramanav"
             android:textSize="30dp"
             android:textColor="@android:color/black"/>
 
@@ -42,6 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="EATING DISORDER"
+            android:fontFamily="@font/yantramanav"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:background="@drawable/buttonselector"
@@ -57,6 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="@string/eating_disorder_note"
+            android:fontFamily="@font/yantramanav"
             android:textColor="@android:color/black"
             android:textSize="18dp"
             android:layout_below="@id/top_space2"/>
@@ -65,8 +68,7 @@
             android:id="@+id/pic"
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:src="@drawable/depression_pic"
-            android:background="@android:color/black"
+            android:src="@drawable/eating_disorder_pic"
             android:layout_below="@+id/heading_view"/>
 
         <Space
@@ -80,6 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/depression_note2"
+            android:fontFamily="@font/yantramanav"
             android:textSize="18dp"
             android:textColor="@android:color/black"
             android:layout_below="@id/mid_space"
@@ -97,6 +100,7 @@
             android:layout_height="40dp"
             android:layout_below="@id/mid_space2"
             android:text="Continue"
+            android:fontFamily="@font/yantramanav"
             android:textColor="@android:color/white"
             android:backgroundTint="@color/eating_disorder_purple"
             android:background="@drawable/buttonselector"

@@ -13,7 +13,9 @@
         android:elevation="20dp"
         android:padding="5dp"
         android:backgroundTint="@android:color/white"
-        android:background="@drawable/anxiety_border_qns">
+        android:background="@drawable/anxiety_border_qns"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
 
         <Space
             android:id="@+id/top_space"
@@ -27,6 +29,7 @@
             android:layout_centerHorizontal="true"
             android:layout_below="@id/top_space"
             android:text="RESULTS"
+            android:fontFamily="@font/yantramanav"
             android:textSize="30dp"
             android:textColor="@android:color/black"/>
 
@@ -42,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="ANXIETY"
+            android:fontFamily="@font/yantramanav"
             android:textAlignment="center"
             android:textColor="@android:color/black"
             android:background="@drawable/buttonselector"
@@ -57,6 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:text="@string/anxiety_note"
+            android:fontFamily="@font/yantramanav"
             android:textColor="@android:color/black"
             android:textSize="18dp"
             android:layout_below="@id/top_space2"/>
@@ -65,8 +70,7 @@
             android:id="@+id/pic"
             android:layout_width="150dp"
             android:layout_height="100dp"
-            android:src="@drawable/depression_pic"
-            android:background="@android:color/black"
+            android:src="@drawable/anxiety_results"
             android:layout_below="@+id/anxiety_heading"/>
 
         <Space
@@ -80,6 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/depression_note2"
+            android:fontFamily="@font/yantramanav"
             android:textSize="18dp"
             android:textColor="@android:color/black"
             android:layout_below="@id/mid_space"
@@ -97,6 +102,7 @@
             android:layout_height="40dp"
             android:layout_below="@id/mid_space2"
             android:text="Continue"
+            android:fontFamily="@font/yantramanav"
             android:textColor="@android:color/white"
             android:backgroundTint="@color/anxiety_orange"
             android:background="@drawable/buttonselector"
