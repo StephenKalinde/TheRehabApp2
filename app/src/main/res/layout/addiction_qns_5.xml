@@ -20,6 +20,7 @@
             android:id="@+id/addiction_heading_view"
             android:background="@color/addiction_blue"
             android:text="ADDICTION QUESTIONAIRE"
+            android:fontFamily="@font/yantramanav"
             android:textSize="30dp"
             android:textColor="@android:color/white"
             android:textAlignment="center"/>
@@ -33,15 +34,15 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Have you ever gotten into any financial or legal difficulty due to your use?"
+            android:fontFamily="@font/yantramanav"
             android:layout_gravity="center"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:textColor="@android:color/black"
-            />
+            android:textColor="@android:color/black"/>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="40dp"/>
 
         <CheckBox
             android:layout_marginLeft="10dp"
@@ -50,6 +51,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="NEVER"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
@@ -63,6 +65,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="SOMETIMES"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
@@ -76,6 +79,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="MORE THAN USUAL"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
@@ -89,6 +93,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="ALWAYS"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
@@ -101,6 +106,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:text="NEXT"
+            android:fontFamily="@font/yantramanav"
             android:backgroundTint="@color/addiction_blue"
             android:textColor="@android:color/white"
             android:background="@drawable/buttonselector"/>

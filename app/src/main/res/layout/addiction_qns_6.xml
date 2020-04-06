@@ -20,6 +20,7 @@
             android:id="@+id/addiction_heading_view"
             android:background="@color/addiction_blue"
             android:text="ADDICTION QUESTIONAIRE"
+            android:fontFamily="@font/yantramanav"
             android:textSize="30dp"
             android:textColor="@android:color/white"
             android:textAlignment="center"/>
@@ -34,13 +35,14 @@
             android:layout_height="wrap_content"
             android:textStyle="bold"
             android:text="Do you often get irritable and frustrated if you are unable to satisfy your urge?"
+            android:fontFamily="@font/yantramanav"
             android:layout_gravity="center"
             android:textSize="20dp"
             android:textColor="@android:color/black"/>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            android:layout_height="40dp"/>
 
         <CheckBox
             android:layout_marginLeft="10dp"
@@ -49,6 +51,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="NEVER"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
@@ -62,6 +65,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="SOMETIMES"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
@@ -75,6 +79,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="MORE THAN USUAL"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
@@ -88,6 +93,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="ALWAYS"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
@@ -102,7 +108,8 @@
             android:background="@drawable/buttonselector"
             android:backgroundTint="@color/addiction_blue"
             android:textColor="@android:color/white"
-            android:text="NEXT"/>
+            android:text="NEXT"
+            android:fontFamily="@font/yantramanav"/>
 
     </LinearLayout>
 

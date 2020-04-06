@@ -20,6 +20,7 @@
             android:id="@+id/addiction_heading_view"
             android:background="@color/addiction_blue"
             android:text="ADDICTION QUESTIONAIRE"
+            android:fontFamily="@font/yantramanav"
             android:textSize="30dp"
             android:textColor="@android:color/white"
             android:textAlignment="center"/>
@@ -33,6 +34,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="Have you ever felt the need to hide your use from anyone else?"
+            android:fontFamily="@font/yantramanav"
             android:layout_gravity="center"
             android:textStyle="bold"
             android:textSize="20dp"
@@ -40,7 +42,7 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            android:layout_height="40dp"/>
 
         <CheckBox
             android:layout_marginLeft="10dp"
@@ -49,6 +51,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="NEVER"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
@@ -62,6 +65,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="SOMETIMES"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
@@ -75,6 +79,7 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="MORE THAN USUAL"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
@@ -88,11 +93,12 @@
             android:layout_height="25dp"
             android:layout_gravity="center"
             android:text="ALWAYS"
+            android:fontFamily="@font/yantramanav"
             android:textSize="15dp"/>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="50dp"/>
+            android:layout_height="30dp"/>
 
         <Button
             android:id="@+id/next_btn3"
@@ -102,6 +108,7 @@
             android:background="@drawable/buttonselector"
             android:backgroundTint="@color/addiction_blue"
             android:text="NEXT"
+            android:fontFamily="@font/yantramanav"
             android:textColor="@android:color/white"/>
 
     </LinearLayout>
