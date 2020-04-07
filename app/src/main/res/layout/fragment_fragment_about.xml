@@ -28,6 +28,7 @@
                 android:layout_toRightOf="@+id/logo"
                 android:layout_centerHorizontal="true"
                 android:text="THE REHAB"
+
                 android:textStyle="bold"
                 android:textSize="30dp"
                 android:textColor="@android:color/white"
@@ -50,6 +51,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center"
                     android:text="ABOUT"
+                    android:fontFamily="@font/yantramanav"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:textSize="25dp"/>
@@ -66,6 +68,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_string"
+                    android:fontFamily="@font/yantramanav"
                     android:textColor="@android:color/black"
                     android:textAlignment="center"
                     android:textSize="16dp"
@@ -84,6 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_string_2"
+                    android:fontFamily="@font/yantramanav"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
@@ -117,6 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_string_3"
+                    android:fontFamily="@font/yantramanav"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
@@ -135,6 +140,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_string_4"
+                    android:fontFamily="@font/yantramanav"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
@@ -154,6 +160,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="OUTPATIENT PROGRAMME"
+                    android:fontFamily="@font/yantramanav"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"/>
@@ -170,6 +177,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_string_5"
+                    android:fontFamily="@font/yantramanav"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
@@ -189,6 +197,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="DAILY ROUTINE"
+                    android:fontFamily="@font/yantramanav"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"/>
@@ -205,6 +214,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_string_6"
+                    android:fontFamily="@font/yantramanav"
                     android:textColor="@android:color/black"
                     android:textAlignment="center"
                     android:textSize="16dp"
@@ -239,6 +249,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="OUR SUPPORT SYSTEM"
+                    android:fontFamily="@font/yantramanav"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"/>
@@ -255,6 +266,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_string_7"
+                    android:fontFamily="@font/yantramanav"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
@@ -267,6 +279,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_string_8"
+                    android:fontFamily="@font/yantramanav"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
@@ -301,6 +314,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="OUTSIDE SUPPORT SYSTEM"
+                    android:fontFamily="@font/yantramanav"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"/>
@@ -317,6 +331,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_string_9"
+                    android:fontFamily="@font/yantramanav"
                     android:textColor="@android:color/black"
                     android:textAlignment="center"
                     android:textSize="16dp"
@@ -336,6 +351,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="SELF MOTIVATION AND COMMITMENT"
+                    android:fontFamily="@font/yantramanav"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
@@ -354,6 +370,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_string_10"
+                    android:fontFamily="@font/yantramanav"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
@@ -373,6 +390,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:text="HOW FAR LONG"
+                    android:fontFamily="@font/yantramanav"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"/>
@@ -389,6 +407,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_string_11"
+                    android:fontFamily="@font/yantramanav"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
                     android:textAlignment="center"
@@ -422,6 +441,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_string_12"
+                    android:fontFamily="@font/yantramanav"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
@@ -440,6 +460,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_string_13"
+                    android:fontFamily="@font/yantramanav"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
                     android:layout_marginLeft="25dp"
@@ -457,6 +478,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/about_string_14"
+                    android:fontFamily="@font/yantramanav"
                     android:textColor="@android:color/black"
                     android:textSize="16dp"
                     android:layout_marginLeft="25dp"
@@ -496,6 +518,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="THE REHAB"
+                        android:fontFamily="@font/yantramanav"
                         android:textSize="25dp"
                         android:textColor="@android:color/black"
                         android:textStyle="bold"/>
@@ -503,7 +526,8 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="When I becomes we, illness becomes wellness"
+                        android:text="When I becomes we, illness becomes wellness."
+                        android:fontFamily="@font/yantramanav"
                         android:textSize="15dp"
                         android:textColor="@android:color/black" />
 
@@ -515,21 +539,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Contact: "
-                        android:textSize="20dp"
+                        android:fontFamily="@font/yantramanav"
+                        android:textSize="15dp"
                         android:textColor="@android:color/black"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Email: "
-                        android:textSize="20dp"
+                        android:fontFamily="@font/yantramanav"
+                        android:textSize="15dp"
                         android:textColor="@android:color/black"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Website: "
-                        android:textSize="20dp"
+                        android:fontFamily="@font/yantramanav"
+                        android:textSize="15dp"
                         android:textColor="@android:color/black"/>
 
                     <Space
@@ -540,13 +567,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/footer_string"
-                        android:textSize="20dp"
+                        android:fontFamily="@font/yantramanav"
+                        android:textSize="15dp"
                         android:textColor="@android:color/black"/>
 
                 </LinearLayout>
-
-
-
 
             </RelativeLayout>
 
