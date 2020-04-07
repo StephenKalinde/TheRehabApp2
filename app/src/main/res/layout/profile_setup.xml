@@ -25,6 +25,7 @@
             android:layout_toRightOf="@+id/logo"
             android:layout_centerHorizontal="true"
             android:text="THE REHAB"
+            android:fontFamily="@font/yantramanav"
             android:textStyle="bold"
             android:textSize="30dp"
             android:textColor="@android:color/white"
@@ -52,8 +53,9 @@
                 android:backgroundTint="@color/app_purple"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:fontFamily="@font/yantramanav"
                 android:layout_centerHorizontal="true"/>
 
             <EditText
@@ -61,8 +63,9 @@
                 android:hint="Enter First Name..."
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:fontFamily="@font/yantramanav"
                 android:layout_below="@id/surname_view"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/black"
@@ -73,11 +76,12 @@
                 android:hint="Enter ID Number ..."
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_below="@+id/first_name_view"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/black"
+                android:fontFamily="@font/yantramanav"
                 android:backgroundTint="@color/app_purple"/>
 
             <EditText
@@ -85,11 +89,12 @@
                 android:hint="Enter Date Of Birth (yyyy-mm-dd) ..."
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_below="@+id/id_number_view"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/black"
+                android:fontFamily="@font/yantramanav"
                 android:backgroundTint="@color/app_purple"/>
 
             <Space
@@ -102,8 +107,9 @@
                 android:id="@+id/address_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
-                android:layout_marginLeft="28dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:fontFamily="@font/yantramanav"
                 android:text="Residential Address"
                 android:textColor="@android:color/black"
                 android:layout_below="@+id/space1"/>
@@ -111,10 +117,11 @@
             <EditText
                 android:id="@+id/address_line_view"
                 android:hint="Address Line 1 ..."
+                android:fontFamily="@font/yantramanav"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_below="@+id/address_text_view"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/black"
@@ -125,8 +132,9 @@
                 android:hint="Address Line 2 ..."
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:fontFamily="@font/yantramanav"
                 android:layout_below="@+id/address_line_view"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/black"
@@ -137,8 +145,9 @@
                 android:hint="City ..."
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:fontFamily="@font/yantramanav"
                 android:layout_below="@+id/address_line_view2"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/black"
@@ -149,8 +158,9 @@
                 android:hint="Postal Code ..."
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:fontFamily="@font/yantramanav"
                 android:layout_below="@+id/address_city_view"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/black"
@@ -161,8 +171,9 @@
                 android:hint="Home Phone ..."
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:fontFamily="@font/yantramanav"
                 android:layout_below="@+id/address_postal_code_view"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/black"
@@ -171,10 +182,11 @@
             <EditText
                 android:id="@+id/cell_phone_view"
                 android:hint="Cell Phone ..."
+                android:fontFamily="@font/yantramanav"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_below="@+id/home_phone_view"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/black"
@@ -183,10 +195,11 @@
             <EditText
                 android:id="@+id/email_view"
                 android:hint="Email ..."
+                android:fontFamily="@font/yantramanav"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_below="@+id/cell_phone_view"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/black"
@@ -202,9 +215,10 @@
                     android:id="@+id/qn_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:text="Have You Ever Been Hospitalized for a disorder or Attended Rehabilitation program In The Past?"
+                    android:fontFamily="@font/yantramanav"
                     android:textColor="@android:color/black"
                     android:textSize="15dp"/>
 
@@ -214,7 +228,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_below="@+id/qn_view"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_alignParentLeft="true"
                     android:buttonTint="@color/btn_green"/>
 
@@ -223,7 +237,7 @@
                     android:text="No"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_below="@+id/qn_view"
                     android:layout_toRightOf="@+id/check_box_yes"
                     android:buttonTint="@color/btn_green"/>
@@ -235,11 +249,12 @@
                 android:hint="Physician Or Therapist Name ..."
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_below="@+id/qn_container"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/black"
+                android:fontFamily="@font/yantramanav"
                 android:backgroundTint="@color/app_purple"/>
 
             <EditText
@@ -247,11 +262,12 @@
                 android:hint="Physician Or Therapist Number ..."
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_below="@+id/physician_view"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/black"
+                android:fontFamily="@font/yantramanav"
                 android:backgroundTint="@color/app_purple"/>
 
             <RelativeLayout
@@ -264,19 +280,21 @@
                     android:id="@+id/qn_view2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:text="Any Adddictions?"
+                    android:fontFamily="@font/yantramanav"
                     android:textColor="@android:color/black"
                     android:textSize="15dp"/>
 
                 <CheckBox
                     android:id="@+id/check_box_yes2"
                     android:text="Yes"
+                    android:fontFamily="@font/yantramanav"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_below="@+id/qn_view2"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_alignParentLeft="true"
                     android:buttonTint="@color/btn_green"/>
 
@@ -285,7 +303,8 @@
                     android:text="No"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="30dp"
+                    android:fontFamily="@font/yantramanav"
                     android:layout_below="@+id/qn_view2"
                     android:layout_toRightOf="@+id/check_box_yes2"
                     android:buttonTint="@color/btn_green"/>
@@ -295,9 +314,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/check_box_no2"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:text="Smoking?"
+                    android:fontFamily="@font/yantramanav"
                     android:textColor="@android:color/black"
                     android:textSize="15dp"/>
 
@@ -307,7 +327,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_below="@+id/qn_view3"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="30dp"
+                    android:fontFamily="@font/yantramanav"
                     android:layout_alignParentLeft="true"
                     android:buttonTint="@color/btn_green"/>
 
@@ -316,7 +337,8 @@
                     android:text="No"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="30dp"
+                    android:fontFamily="@font/yantramanav"
                     android:layout_below="@+id/qn_view3"
                     android:layout_toRightOf="@+id/check_box_yes2"
                     android:buttonTint="@color/btn_green"/>
@@ -326,10 +348,11 @@
             <EditText
                 android:id="@+id/substance_view"
                 android:hint="If Yes, What Substance?"
+                android:fontFamily="@font/yantramanav"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:layout_below="@+id/qn_container2"
                 android:layout_centerHorizontal="true"
                 android:textColor="@android:color/black"
@@ -345,9 +368,10 @@
                     android:id="@+id/qn_view4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="25dp"
-                    android:layout_marginRight="25dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
                     android:text="Any Criminal Record?"
+                    android:fontFamily="@font/yantramanav"
                     android:textColor="@android:color/black"
                     android:textSize="15dp"/>
 
@@ -357,16 +381,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
                     android:layout_below="@+id/qn_view4"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_alignParentLeft="true"
+                    android:fontFamily="@font/yantramanav"
                     android:buttonTint="@color/btn_green"/>
 
                 <CheckBox
                     android:id="@+id/check_box_no4"
                     android:text="No"
+                    android:fontFamily="@font/yantramanav"
                     android:layout_width="wrap_content"
                     android:layout_height="20dp"
-                    android:layout_marginLeft="25dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_below="@+id/qn_view4"
                     android:layout_toRightOf="@+id/check_box_yes4"
                     android:buttonTint="@color/btn_green"/>
@@ -384,6 +410,7 @@
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="Submit"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/white"
                 android:layout_below="@+id/space"
                 android:layout_centerHorizontal="true"

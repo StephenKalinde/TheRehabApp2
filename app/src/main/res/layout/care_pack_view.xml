@@ -48,6 +48,7 @@
         android:layout_height="15dp"
         android:layout_centerHorizontal="true"
         android:text="Select A Care Pack Of Your Choice"
+        android:fontFamily="@font/yantramanav"
         android:textStyle="bold"
         android:textColor="@android:color/black"
         android:layout_below="@+id/space"/>
@@ -62,6 +63,8 @@
         android:id="@+id/care_pack_layout_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
         android:layout_below="@+id/space2">
 
         <Button
@@ -72,11 +75,13 @@
             android:layout_marginRight="20dp"
             android:id="@+id/btn_1"
             android:text="Package - 3 Weeks R0000"
+            android:fontFamily="@font/yantramanav"
             android:textSize="12dp"
             android:textColor="@android:color/white"/>
 
         <Button
             android:text="SELECT"
+            android:fontFamily="@font/yantramanav"
             android:id="@+id/select_btn"
             android:layout_width="50dp"
             android:layout_height="40dp"
@@ -98,6 +103,8 @@
         android:id="@+id/care_pack_layout_2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_below="@+id/space3">
 
         <Button
@@ -108,11 +115,13 @@
             android:layout_marginRight="20dp"
             android:id="@+id/btn_2"
             android:text="Package - 4 Weeks R0000"
+            android:fontFamily="@font/yantramanav"
             android:textSize="12dp"
             android:textColor="@android:color/white"/>
 
         <Button
             android:text="SELECT"
+            android:fontFamily="@font/yantramanav"
             android:id="@+id/select_btn_2"
             android:layout_width="50dp"
             android:layout_height="40dp"
@@ -134,6 +143,8 @@
         android:id="@+id/care_pack_layout_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_below="@+id/space4">
 
         <Button
@@ -144,11 +155,13 @@
             android:layout_marginRight="20dp"
             android:id="@+id/btn_3"
             android:text="Package - 12 Weeks R0000"
+            android:fontFamily="@font/yantramanav"
             android:textSize="12dp"
             android:textColor="@android:color/white"/>
 
         <Button
             android:text="SELECT"
+            android:fontFamily="@font/yantramanav"
             android:id="@+id/select_btn_3"
             android:layout_width="50dp"
             android:layout_height="40dp"
