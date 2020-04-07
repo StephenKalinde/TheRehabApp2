@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_gravity="center"
     android:layout_height="match_parent"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
     android:background="@android:color/white">
 
     <ScrollView
@@ -28,6 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="ABOUT EATING DISORDER"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"
                 android:textSize="25dp"/>
 
@@ -40,6 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Eating Disorder:"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"/>
@@ -50,6 +52,7 @@
                 android:layout_width="wrap_content"
                 android:text="@string/eating_disorder"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <Space
@@ -61,6 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Emotional And Behavioral Symptoms:"
+                android:fontFamily="@font/yantramanav"
                 android:textStyle="bold"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
@@ -70,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Frequent dieting"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -78,6 +83,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Preoccupation with weight, food, calories, carbohydrates and fat grams"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -86,6 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Refusal to eat certain foods"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -94,6 +101,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Discomfort eating around others"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -102,6 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Food rituals(eats only particular food or food group)"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -110,6 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Skipping meals"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -118,6 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Constantly checking for perceived plans in mirror"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -126,6 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Extreme mood swings"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -139,6 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_gravity="center"
                 android:text="Different Eating Disorders"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"/>
@@ -152,6 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Binge eating disorder:"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"/>
@@ -161,6 +175,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Eats large amounts in a short period of time"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -173,6 +188,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Anorexia nervosa:"
+                android:fontFamily="@font/yantramanav"
                 android:textStyle="bold"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
@@ -182,6 +198,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Eats very little"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -194,6 +211,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Bulimia nervosa:"
+                android:fontFamily="@font/yantramanav"
                 android:textStyle="bold"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
@@ -203,6 +221,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Eats a lot and rids themselves of food"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -215,6 +234,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Pica:"
+                android:fontFamily="@font/yantramanav"
                 android:textStyle="bold"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
@@ -224,6 +244,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Eats non-food items"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -237,6 +258,7 @@
                 android:layout_width="wrap_content"
                 android:text="Rumination disorder:"
                 android:textStyle="bold"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -245,6 +267,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Regurgitate food"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -257,6 +280,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Avoidant/Restrictive food intake disorder:"
+                android:fontFamily="@font/yantramanav"
                 android:textStyle="bold"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
@@ -266,6 +290,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Lack of interest in food"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -278,6 +303,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Eating disorders are a variety of mental health disorders"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -290,6 +316,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:text="Continue"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/white"
                 android:background="@drawable/buttonselector"
                 android:backgroundTint="@color/eating_disorder_purple"

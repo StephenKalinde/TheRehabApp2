@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_gravity="center"
     android:layout_height="match_parent"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
     android:background="@android:color/white">
 
     <ScrollView
@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="ABOUT ADDICTION"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"
                 android:textSize="25dp"/>
 
@@ -41,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="DEFINITION:"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"/>
@@ -51,6 +53,7 @@
                 android:layout_width="wrap_content"
                 android:text="@string/addiction"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <Space
@@ -62,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="Symptoms:"
+                android:fontFamily="@font/yantramanav"
                 android:textStyle="bold"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
@@ -72,6 +76,7 @@
                 android:layout_width="wrap_content"
                 android:text="-Uncontrollably seeking drugs or means to engage in the habit forming."
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <TextView
@@ -80,6 +85,7 @@
                 android:layout_width="wrap_content"
                 android:text="-Neglecting everyday activities"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <TextView
@@ -88,6 +94,7 @@
                 android:layout_width="wrap_content"
                 android:text="-Relationship difficulties, lashing out at family or friends who are aware of your dependency"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <TextView
@@ -96,6 +103,7 @@
                 android:layout_width="wrap_content"
                 android:text="-Secrecy, hiding substance or behaviour"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <TextView
@@ -104,6 +112,7 @@
                 android:layout_width="wrap_content"
                 android:text="-Change in appearence, poor hygiene"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <TextView
@@ -112,6 +121,7 @@
                 android:layout_width="wrap_content"
                 android:text="-Unreasonable risk-taking, to access substance or activity and while engaging in it"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <TextView
@@ -120,6 +130,7 @@
                 android:layout_width="wrap_content"
                 android:text="-An inability to stop using substance or activity regardless if its causing health or personal problems"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <Space
@@ -132,6 +143,7 @@
                 android:layout_width="wrap_content"
                 android:text="Withdrawal Symptoms:"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textStyle="bold"
                 android:textColor="@android:color/black"/>
 
@@ -140,6 +152,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Anxiety"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -148,6 +161,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Fatigue"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -157,6 +171,7 @@
                 android:layout_width="wrap_content"
                 android:text="-Irritability"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <TextView
@@ -165,6 +180,7 @@
                 android:layout_width="wrap_content"
                 android:text="-Loss of appetite"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <TextView
@@ -172,6 +188,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Nausea"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -180,6 +197,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Vomiting"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -189,6 +207,7 @@
                 android:layout_width="wrap_content"
                 android:text="-Tremors"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <Space
@@ -201,6 +220,7 @@
                 android:layout_width="wrap_content"
                 android:text="Treatment:"
                 android:textStyle="bold"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -210,6 +230,7 @@
                 android:layout_width="wrap_content"
                 android:text="-Behavioral Therapy"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <TextView
@@ -217,6 +238,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Counselling"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -226,6 +248,7 @@
                 android:layout_width="wrap_content"
                 android:text="-Treating related psychological factors"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <TextView
@@ -234,6 +257,7 @@
                 android:layout_width="wrap_content"
                 android:text="-Medical devices to treat withdrawal"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"
                 tools:ignore="DuplicateIds" />
 
@@ -242,6 +266,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
                 android:text="-Medication"
+                android:fontFamily="@font/yantramanav"
                 android:textSize="15dp"
                 android:textColor="@android:color/black"/>
 
@@ -251,6 +276,7 @@
                 android:layout_width="wrap_content"
                 android:text="-Ongoing care to reduce the risk of relapse"
                 android:textSize="15dp"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/black"/>
 
             <Space
@@ -262,6 +288,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:text="Continue"
+                android:fontFamily="@font/yantramanav"
                 android:textColor="@android:color/white"
                 android:background="@drawable/buttonselector"
                 android:backgroundTint="@color/addiction_blue"
