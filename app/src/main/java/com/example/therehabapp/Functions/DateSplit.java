@@ -5,6 +5,7 @@ public class DateSplit {
     public int Day;
     public int Month;
     public int Year;
+    public int Week;
 
     public DateSplit(){}
 
@@ -23,6 +24,17 @@ public class DateSplit {
         this.Day = day;
         this.Month =month;
         this.Year =year;
+
+    }
+
+    public String toString()
+    {
+        return ""+Day+"/"+Month+"/"+Year;
+    }
+
+    public void SetWeek(int week){
+
+        this.Week = week;
 
     }
 
