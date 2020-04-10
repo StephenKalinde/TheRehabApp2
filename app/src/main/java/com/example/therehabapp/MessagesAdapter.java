@@ -18,9 +18,9 @@ import java.util.List;
 public class MessagesAdapter extends ArrayAdapter {
 
     private Activity context;
-    private List<Message> threadsList;
+    private List<String> threadsList;
 
-    public MessagesAdapter(Activity context, List<Message> userList)
+    public MessagesAdapter(Activity context, List<String> userList)
     {
 
         super(context , R.layout.message_list_item, userList);
@@ -34,6 +34,7 @@ public class MessagesAdapter extends ArrayAdapter {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         LayoutInflater inflater = context.getLayoutInflater();
+        /**
         View listViewItem= inflater.inflate(R.layout.message_list_item,null,true);
 
         ImageView profileImage= (ImageView) listViewItem.findViewById(R.id.peer_pic_view);
@@ -43,12 +44,19 @@ public class MessagesAdapter extends ArrayAdapter {
 
         Message peerMessage = threadsList.get(position);
 
-        /**set image resource from db here**/
+        //set image resource from db here
         messagePreviewView.setText(peerMessage.Message);
         peerNameView.setText(peerMessage.UID);
         messageTimeView.setText(peerMessage.Time);
 
-        return listViewItem;
+        return listViewItem; **/
+
+        View item  = inflater.inflate(R.layout.testing_view,null,true);
+        TextView myText = (TextView) item.findViewById(R.id.bros_up);
+
+        myText.setText(threadsList.get(position));
+
+        return item;
 
     }
 }

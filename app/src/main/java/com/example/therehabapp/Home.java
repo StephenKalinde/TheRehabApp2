@@ -3,6 +3,8 @@ package com.example.therehabapp;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Debug;
+import android.util.Log;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -24,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,11 +85,17 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
     private int myLayout= R.layout.fragment_fragment_disorders;
 
+    private DatabaseReference dbRef;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_view);
+
+        String uid = FirebaseAuth.getInstance().getUid();
+        dbRef = FirebaseDatabase.getInstance().getReference("Diagnoses/" + uid);
 
         BottomNavigationView bottomNav= (BottomNavigationView) findViewById(R.id.bottom_nav_bar);
         bottomNav.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_SELECTED);
@@ -134,6 +143,76 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     }
 
     @Override
+    protected void onStart() {
+
+        super.onStart();
+
+        SeekLayout();
+
+    }
+
+    private void SeekLayout()
+    {
+
+        dbRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                String diagnosis = dataSnapshot.getValue(String.class);
+                SetLayout(diagnosis);
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    private void SetLayout(String diagnosis)
+    {
+
+        if(diagnosis.equals("Depression"))
+        {
+
+            myLayout = R.layout.fragment_disorders_depression_1;
+
+        }
+
+        if(diagnosis.equals("Eating Disorder"))
+        {
+
+            myLayout = R.layout.fragment_disorders_eating_1;
+
+        }
+
+        if(diagnosis.equals("Addiction"))
+        {
+
+            myLayout = R.layout.fragment_disorders_addiction_1;
+
+        }
+
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
         if(mToogle.onOptionsItemSelected(item)){
@@ -148,6 +227,5 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     public void onFragmentInteraction(Uri uri) {
 
     }
-
 
 }

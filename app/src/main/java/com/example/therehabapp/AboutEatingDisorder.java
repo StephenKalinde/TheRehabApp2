@@ -23,7 +23,7 @@ public class AboutEatingDisorder extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent intent =new Intent(AboutEatingDisorder.this, ThankYouNote.class);
-                intent.putExtra("Diagnosis", "Eating Disorders");
+                intent.putExtra("Diagnosis", "Eating Disorder");
 
                 startActivity(intent);
             }
