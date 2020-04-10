@@ -1,6 +1,7 @@
 package com.example.therehabapp;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Messages extends AppCompatActivity {
 
@@ -37,12 +39,16 @@ public class Messages extends AppCompatActivity {
     private DatabaseReference inboxesRef;
     private String uid;
 
+    private int count;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.messages_view);
+
+        count = 0;
 
         uid = FirebaseAuth.getInstance().getUid();
         idRef = FirebaseDatabase.getInstance().getReference("InboxIDs/"+uid);
@@ -64,10 +70,10 @@ public class Messages extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(Messages.this, ""+count,Toast.LENGTH_LONG).show();
+                //Toast.makeText(Messages.this, ""+count,Toast.LENGTH_LONG).show();
 
-                /**Intent intent = new Intent(Messages.this, ContactsList.class);
-                startActivity(intent); **/
+                Intent intent = new Intent(Messages.this, ContactsList.class);
+                startActivity(intent);
 
             }
         });
@@ -79,13 +85,16 @@ public class Messages extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        FillInboxIds();
-        FillTopMessages(inboxIds);
+       // FillInboxIds();
+        //FillTopMessages(inboxIds);
 
     }
 
+
     private void FillInboxIds()
     {
+
+        final List<String> inboxIds = new ArrayList<>();
 
         idRef.addChildEventListener(new ChildEventListener() {
             @Override
@@ -117,10 +126,44 @@ public class Messages extends AppCompatActivity {
             }
         });
 
+        count= inboxIds.size();
+
+        for(String id: inboxIds)
+        {
+
+            count++;
+            final ArrayList<Message> list = new ArrayList<>();
+
+            DatabaseReference dbRef = FirebaseDatabase.getInstance().getReference("Inboxes/"+id);
+            dbRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                    for(DataSnapshot messageShot: dataSnapshot.getChildren())
+                    {
+
+                        Message message = messageShot.getValue(Message.class);
+                        list.add(message);
+
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+            int lastIndex = list.size()-1;
+            Message topMessage = list.get(lastIndex);
+            topMessages.add(topMessage);
+
+        }
+
     }
 
-    int count =0;
-    private void FillTopMessages(ArrayList<String> idslist)
+    private void FillTopMessages(List<String> idslist)
     {
 
 
