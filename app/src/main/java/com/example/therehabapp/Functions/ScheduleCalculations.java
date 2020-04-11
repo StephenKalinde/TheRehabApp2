@@ -207,4 +207,40 @@ public class ScheduleCalculations {
         return log;
     }
 
+    /**
+     returns boolean stating whether date1 is before or after date2 */
+    public boolean CompareDates(DateSplit date1, DateSplit date2)
+    {
+
+        boolean isBefore = false;
+
+        if(date1.Year < date2.Year)
+        {
+            isBefore = true;
+        }
+
+        if(date1.Year == date2.Year)
+        {
+
+            if(date1.Month < date2.Month)
+            {
+                isBefore = true;
+            }
+
+            if(date1.Month == date2.Month)
+            {
+
+                if(date1.Day < date2.Day)
+                {
+                    isBefore = true;
+                }
+
+            }
+
+        }
+
+        return isBefore;
+
+    }
+
 }
