@@ -89,6 +89,8 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     private int myLayout= R.layout.fragment_fragment_disorders;
 
     private DatabaseReference dbRef;
+    //current week start variable
+    DateSplit currentWeekStart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -150,6 +152,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
         super.onStart();
 
+        currentWeekStart = new DateSplit();
         SeekLayout();
 
     }
@@ -157,12 +160,36 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     private void SeekLayout()
     {
 
-        /** dbRef.addChildEventListener(new ChildEventListener() {
+        long millis = System.currentTimeMillis();
+        java.sql.Date date= new java.sql.Date(millis);
+        String dateString = date.toString();
+        DateSplit currentDate = new DateSplit(dateString);
+
+        DateSplit[] scheduleLog = GetSchedule();
+
+        ScheduleCalculations calc = new ScheduleCalculations();
+
+        //compare current date to each dateSplit
+        for(int i=0; i<scheduleLog.length;i++)
+        {
+
+            if(calc.CompareDates(currentDate,scheduleLog[i+1])==true && calc.CompareDates(scheduleLog[i],currentDate)==true) //if current date is between 2 weeks
+            {
+
+                currentWeekStart = scheduleLog[i];
+                break;
+            }
+
+        }
+
+        //SetLayout("Addiction",currentWeekStart);
+
+        dbRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                 String diagnosis = dataSnapshot.getValue(String.class);
-                SetLayout(diagnosis);
+                SetLayout(diagnosis,currentWeekStart);
 
             }
 
@@ -185,36 +212,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        }); **/
-
-        //get current date
-        long millis = System.currentTimeMillis();
-        java.sql.Date date= new java.sql.Date(millis);
-        String dateString = date.toString();
-        DateSplit currentDate = new DateSplit(dateString);
-
-        //get schedule
-        DateSplit[] scheduleLog = GetSchedule();
-
-        //current week start variable
-        DateSplit currentWeekStart = new DateSplit();
-
-        ScheduleCalculations calc = new ScheduleCalculations();
-
-        //compare current date to each dateSplit
-        for(int i=0; i<scheduleLog.length;i++)
-        {
-
-            if(calc.CompareDates(currentDate,scheduleLog[i+1])==true && calc.CompareDates(scheduleLog[i],currentDate)==true) //if current date is between 2 weeks
-            {
-
-                currentWeekStart = scheduleLog[i];
-                break;
-            }
-
-        }
-
-        SetLayout("Addiction",currentWeekStart);
+        });
 
     }
 
@@ -454,6 +452,18 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
     }
 
+    /**
+     * returns the returns DateSplit[] from db
+     */
+    public DateSplit[] GetSchedule()
+    {
+        DateSplit[] myScheduleArray = new DateSplit[12];
+
+
+
+        return myScheduleArray;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
@@ -469,19 +479,5 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     public void onFragmentInteraction(Uri uri) {
 
     }
-
-
-    /**
-     * returns the returns DateSplit[] from db
-     */
-    public DateSplit[] GetSchedule()
-    {
-        DateSplit[] myScheduleArray = new DateSplit[12];
-
-
-
-        return myScheduleArray;
-    }
-
 
 }
