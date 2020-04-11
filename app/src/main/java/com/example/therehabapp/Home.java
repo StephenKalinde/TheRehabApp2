@@ -15,6 +15,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.therehabapp.Functions.DateSplit;
+import com.example.therehabapp.Functions.ScheduleCalculations;
+import com.example.therehabapp.Functions.ScheduleLog;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.android.material.navigation.NavigationView;
@@ -154,7 +157,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     private void SeekLayout()
     {
 
-        dbRef.addChildEventListener(new ChildEventListener() {
+        /** dbRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
@@ -182,31 +185,270 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        }); **/
+
+        //get current date
+        long millis = System.currentTimeMillis();
+        java.sql.Date date= new java.sql.Date(millis);
+        String dateString = date.toString();
+        DateSplit currentDate = new DateSplit(dateString);
+
+        //get schedule
+        DateSplit[] scheduleLog = GetSchedule();
+
+        //current week start variable
+        DateSplit currentWeekStart = new DateSplit();
+
+        ScheduleCalculations calc = new ScheduleCalculations();
+
+        //compare current date to each dateSplit
+        for(int i=0; i<scheduleLog.length;i++)
+        {
+
+            if(calc.CompareDates(currentDate,scheduleLog[i+1])==true && calc.CompareDates(scheduleLog[i],currentDate)==true) //if current date is between 2 weeks
+            {
+
+                currentWeekStart = scheduleLog[i];
+                break;
+            }
+
+        }
+
+        SetLayout("Addiction",currentWeekStart);
 
     }
 
-    private void SetLayout(String diagnosis)
+    private void SetLayout(String diagnosis,DateSplit weekStartDate)
     {
+
+        int week = weekStartDate.Week;
 
         if(diagnosis.equals("Depression"))
         {
 
-            myLayout = R.layout.fragment_disorders_depression_1;
+            //switch statements
+            switch (week)
+            {
+                case 1:
+                    myLayout = R.layout.fragment_disorders_depression_1;
+                    break;
+
+                case 2:
+                    myLayout = R.layout.fragment_disorders_depression_2;
+                    break;
+
+                case 3:
+                    myLayout = R.layout.fragment_disorders_depression_3;
+                    break;
+
+                case 4:
+                    myLayout = R.layout.fragment_disorders_depression_4;
+                    break;
+
+                case 5:
+                    myLayout = R.layout.fragment_disorders_depression_5;
+                    break;
+
+                case 6:
+                    myLayout = R.layout.fragment_disorders_depression_6;
+                    break;
+
+                case 7:
+                    myLayout = R.layout.fragment_disorders_depression_7;
+                    break;
+
+                case 8:
+                    myLayout = R.layout.fragment_disorders_depression_8;
+                    break;
+
+                case 9:
+                    myLayout = R.layout.fragment_disorders_depression_9;
+                    break;
+
+                case 10:
+                    myLayout = R.layout.fragment_disorders_depression_10;
+                    break;
+
+                case 11:
+                    myLayout = R.layout.fragment_disorders_depression_11;
+                    break;
+
+                case 12:
+                    myLayout = R.layout.fragment_disorders_depression_12;
+                    break;
+            }
+
 
         }
 
         if(diagnosis.equals("Eating Disorder"))
         {
 
-            myLayout = R.layout.fragment_disorders_eating_1;
+            switch (week)
+            {
+                case 1:
+                    myLayout = R.layout.fragment_disorders_eating_1;
+                    break;
+
+                case 2:
+                    myLayout = R.layout.fragment_disorders_eating_2;
+                    break;
+
+                case 3:
+                    myLayout = R.layout.fragment_disorders_eating_3;
+                    break;
+
+                case 4:
+                    myLayout = R.layout.fragment_disorders_eating_4;
+                    break;
+
+                case 5:
+                    myLayout = R.layout.fragment_disorders_eating_5;
+                    break;
+
+                case 6:
+                    myLayout = R.layout.fragment_disorders_eating_6;
+                    break;
+
+                case 7:
+                    myLayout = R.layout.fragment_disorders_eating_7;
+                    break;
+
+                case 8:
+                    myLayout = R.layout.fragment_disorders_eating_8;
+                    break;
+
+                case 9:
+                    myLayout = R.layout.fragment_disorders_eating_9;
+                    break;
+
+                case 10:
+                    myLayout = R.layout.fragment_disorders_eating_10;
+                    break;
+
+                case 11:
+                    myLayout = R.layout.fragment_disorders_eating_11;
+                    break;
+
+                case 12:
+                    myLayout = R.layout.fragment_disorders_eating_12;
+                    break;
+            }
+
 
         }
 
         if(diagnosis.equals("Addiction"))
         {
 
-            myLayout = R.layout.fragment_disorders_addiction_1;
+            switch (week)
+            {
+                case 1:
+                    myLayout = R.layout.fragment_disorders_addiction_1;
+                    break;
+
+                case 2:
+                    myLayout = R.layout.fragment_disorders_addiction_2;
+                    break;
+
+                case 3:
+                    myLayout = R.layout.fragment_disorders_addiction_3;
+                    break;
+
+                case 4:
+                    myLayout = R.layout.fragment_disorders_addiction_4;
+                    break;
+
+                case 5:
+                    myLayout = R.layout.fragment_disorders_addiction_5;
+                    break;
+
+                case 6:
+                    myLayout = R.layout.fragment_disorders_addiction_6;
+                    break;
+
+                case 7:
+                    myLayout = R.layout.fragment_disorders_addiction_7;
+                    break;
+
+                case 8:
+                    myLayout = R.layout.fragment_disorders_addiction_8;
+                    break;
+
+                case 9:
+                    myLayout = R.layout.fragment_disorders_addiction_9;
+                    break;
+
+                case 10:
+                    myLayout = R.layout.fragment_disorders_addiction_10;
+                    break;
+
+                case 11:
+                    myLayout = R.layout.fragment_disorders_addiction_11;
+                    break;
+
+                case 12:
+                    myLayout = R.layout.fragment_disorders_addiction_12;
+                    break;
+            }
+
+
+        }
+
+        if(diagnosis.equals("Anxiety"))
+        {
+
+            switch (week)
+            {
+                case 1:
+                    myLayout = R.layout.fragment_fragment_disorders;
+                    break;
+
+                case 2:
+                    myLayout = R.layout.fragment_disorders_anxiety_2;
+                    break;
+
+                case 3:
+                    myLayout = R.layout.fragment_disorders_anxiety_3;
+                    break;
+
+                case 4:
+                    myLayout = R.layout.fragment_disorders_anxiety_4;
+                    break;
+
+                case 5:
+                    myLayout = R.layout.fragment_disorders_anxiety_5;
+                    break;
+
+                case 6:
+                    myLayout = R.layout.fragment_disorders_anxiety_6;
+                    break;
+
+                case 7:
+                    myLayout = R.layout.fragment_disorders_anxiety_7;
+                    break;
+
+                case 8:
+                    myLayout = R.layout.fragment_disorders_anxiety_8;
+                    break;
+
+                case 9:
+                    myLayout = R.layout.fragment_disorders_anxiety_9;
+                    break;
+
+                case 10:
+                    myLayout = R.layout.fragment_disorders_anxiety_10;
+                    break;
+
+                case 11:
+                    myLayout = R.layout.fragment_disorders_anxiety_11;
+                    break;
+
+                case 12:
+                    myLayout = R.layout.fragment_disorders_anxiety_12;
+                    break;
+            }
+
 
         }
 
@@ -227,5 +469,19 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+
+    /**
+     * returns the returns DateSplit[] from db
+     */
+    public DateSplit[] GetSchedule()
+    {
+        DateSplit[] myScheduleArray = new DateSplit[12];
+
+
+
+        return myScheduleArray;
+    }
+
 
 }

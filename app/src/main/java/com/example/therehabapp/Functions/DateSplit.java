@@ -23,6 +23,14 @@ public class DateSplit {
 
     }
 
+    public DateSplit(String date)
+    {
+        String[] dateArray = date.split("-");
+        this.Year = Integer.parseInt(dateArray[0]);
+        this.Month = Integer.parseInt(dateArray[1]);
+        this.Day = Integer.parseInt(dateArray[2]);
+    }
+
     public DateSplit(int day, int month, int year)
     {
 
