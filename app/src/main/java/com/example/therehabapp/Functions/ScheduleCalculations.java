@@ -1,9 +1,9 @@
+/**
+ * Author Tarisai Stephen Kalinde (www.stephdev.co.za)**/
+
 package com.example.therehabapp.Functions;
 
-public class WeekCalculations {
-
-    /**
-     * Author Tarisai Stephen Kalinde (www.stephdev.co.za)**/
+public class ScheduleCalculations {
 
     private String Date;
     private int Day;
@@ -16,7 +16,7 @@ public class WeekCalculations {
 
     /**
      * empty constructor*/
-    public WeekCalculations()
+    public ScheduleCalculations()
     {
 
         dateArray = new DateSplit[12];
@@ -25,7 +25,7 @@ public class WeekCalculations {
 
     /**
      * constructor that takes in date string*/
-    public WeekCalculations(String date){
+    public ScheduleCalculations(String date){
 
         this.Date = date;
         Split();
@@ -57,7 +57,7 @@ public class WeekCalculations {
      fills date array + returns null */
     private DateSplit Calculate(int day, int month, int year,int week)
     {
-        //25, 1
+
         if (week>=12)
         {
             return null;
@@ -70,7 +70,7 @@ public class WeekCalculations {
 
         }
 
-        //define constraints
+        //constraints
         int monthLong = 31;
         int monthStd = 30;
         int monthFebLong = 29;
@@ -80,16 +80,16 @@ public class WeekCalculations {
         if(month== 1 || month == 3 || month==5 || month==7 || month==8 || month == 10 || month==12)
         {
 
-            day = day + 7;  //32
+            day = day + 7;
 
-            if( day > monthLong)  //true
+            if( day > monthLong)
             {
 
-                int newDay = day-monthLong; // 32 -31 = 1
-                day = newDay;      // 1
-                month++;  // 04
+                int newDay = day-monthLong;
+                day = newDay;
+                month++;
 
-                if(month > 12)  //false
+                if(month > 12)
                 {
 
                     year++;
@@ -98,8 +98,6 @@ public class WeekCalculations {
                 }
 
             }
-
-            //System.out.println(""+ day);
 
             week++;
             DateSplit dateSplit = new DateSplit(day,month,year);
@@ -125,8 +123,6 @@ public class WeekCalculations {
 
             }
 
-            //System.out.println(""+ day);
-
             week++;
             DateSplit dateSplit = new DateSplit(day,month,year);
 
@@ -150,8 +146,6 @@ public class WeekCalculations {
 
             }
 
-            //System.out.println(""+ day);
-
             week++;
             DateSplit dateSplit = new DateSplit(day,month,year);
 
@@ -174,8 +168,6 @@ public class WeekCalculations {
                 month++;
 
             }
-
-            //System.out.println(""+ day);
 
             week++;
             DateSplit dateSplit = new DateSplit(day,month,year);

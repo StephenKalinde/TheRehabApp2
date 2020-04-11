@@ -1,3 +1,8 @@
+/**
+ * Author Tarisai Stephen Kalinde (www.stephdev.co.za)
+ *
+ * Schedule log for programme from the start date**/
+
 package com.example.therehabapp.Functions;
 
 public class ScheduleLog

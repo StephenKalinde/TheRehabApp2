@@ -19,6 +19,12 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.therehabapp.Functions.ScheduleCalculations;
+import com.example.therehabapp.Functions.ScheduleLog;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class CarePacks extends AppCompatActivity {
 
     private Button pack1, pack2, pack3;
@@ -34,11 +40,19 @@ public class CarePacks extends AppCompatActivity {
 
     private PopupWindow popupWindow;
 
+    private DatabaseReference mRefCarePack ;
+    private DatabaseReference mRefScheduleLog;
+    private String uid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.care_pack_view);
+
+        uid = FirebaseAuth.getInstance().getUid();
+        mRefCarePack = FirebaseDatabase.getInstance().getReference("CarePacks/"+uid);
+        mRefScheduleLog = FirebaseDatabase.getInstance().getReference("ScheduleLogs/"+uid);
 
         mContext= getApplicationContext();
 
@@ -59,9 +73,16 @@ public class CarePacks extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //add code here
+                long millis = System.currentTimeMillis();
+                java.sql.Date date= new java.sql.Date(millis);
+                String dateString = date.toString();
 
-                //start activity
+                ScheduleCalculations scheduleCalc = new ScheduleCalculations(dateString);
+                ScheduleLog log = scheduleCalc.GetScheduleLog();
+
+                mRefCarePack.push().setValue("Pack 1");
+                mRefScheduleLog.push().setValue(log);
+
                 startActivity(new Intent(CarePacks.this, Home.class) );
             }
         });
@@ -70,10 +91,18 @@ public class CarePacks extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                // add code here
+                long millis = System.currentTimeMillis();
+                java.sql.Date date= new java.sql.Date(millis);
+                String dateString = date.toString();
 
-                //start activity
+                ScheduleCalculations scheduleCalc = new ScheduleCalculations(dateString);
+                ScheduleLog log = scheduleCalc.GetScheduleLog();
+
+                mRefCarePack.push().setValue("Pack 2");
+                mRefScheduleLog.push().setValue(log);
+
                 startActivity(new Intent(CarePacks.this, Home.class) );
+
             }
         });
 
@@ -81,9 +110,16 @@ public class CarePacks extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                // add code here
+                long millis = System.currentTimeMillis();
+                java.sql.Date date= new java.sql.Date(millis);
+                String dateString = date.toString();
 
-                //start activity
+                ScheduleCalculations scheduleCalc = new ScheduleCalculations(dateString);
+                ScheduleLog log = scheduleCalc.GetScheduleLog();
+
+                mRefCarePack.push().setValue("Pack 3");
+                mRefScheduleLog.push().setValue(log);
+
                 startActivity(new Intent(CarePacks.this, Home.class) );
             }
         });
