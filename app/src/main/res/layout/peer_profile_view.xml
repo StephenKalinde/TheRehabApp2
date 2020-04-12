@@ -46,6 +46,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"
             android:text="NAME HERE"
+            android:fontFamily="@font/yantramanav"
             android:textSize="30dp"
             android:textStyle="bold"
             android:textColor="@android:color/black"/>

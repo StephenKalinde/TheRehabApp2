@@ -2,6 +2,7 @@ package com.example.therehabapp;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -54,6 +55,8 @@ public class AllPeers extends AppCompatActivity {
         searchBox=(EditText) findViewById(R.id.peers_search_box);
         searchBtn=(Button) findViewById(R.id.peers_search_btn);
         peersListView=(ListView) findViewById(R.id.peers_list_view);
+
+        searchBox.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
 
         setSupportActionBar(mToolBar);
         getSupportActionBar().setTitle("Peers");
@@ -156,6 +159,7 @@ public class AllPeers extends AppCompatActivity {
 
                 for(Peer user: peerPeerList)
                 {
+
                     for(int i =0; i< allUsers.size(); i++){
 
                         if(user.EmailAddress.equals(allUsers.get(i).EmailAddress))

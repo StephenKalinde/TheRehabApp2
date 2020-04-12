@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Debug;
+import android.os.health.ServiceHealthStats;
 import android.util.Log;
 import android.view.MenuItem;
 
@@ -88,9 +89,16 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
     private int myLayout= R.layout.fragment_fragment_disorders;
 
+    private FirebaseDatabase firebaseDb;
     private DatabaseReference dbRef;
-    //current week start variable
-    DateSplit currentWeekStart;
+    private DatabaseReference logsRef;
+    private FirebaseAuth auth;
+    private String uid;
+
+    private DateSplit currentWeekStart;
+    private ScheduleLog log;
+
+    DateSplit[] myScheduleArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -99,8 +107,15 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_view);
 
-        String uid = FirebaseAuth.getInstance().getUid();
-        dbRef = FirebaseDatabase.getInstance().getReference("Diagnoses/" + uid);
+        log = new ScheduleLog();
+        myScheduleArray = new DateSplit[12];
+
+        firebaseDb = FirebaseDatabase.getInstance();
+
+        auth= FirebaseAuth.getInstance();
+        uid = auth.getUid();
+        dbRef = firebaseDb.getReference("Diagnoses/" + uid);
+        logsRef = firebaseDb.getReference("ScheduleLogs/"+ uid);
 
         BottomNavigationView bottomNav= (BottomNavigationView) findViewById(R.id.bottom_nav_bar);
         bottomNav.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_SELECTED);
@@ -142,6 +157,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                 }
 
                 return false;
+
             }
         });
 
@@ -152,7 +168,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
         super.onStart();
 
-        currentWeekStart = new DateSplit();
+        //currentWeekStart = new DateSplit();
         SeekLayout();
 
     }
@@ -165,22 +181,24 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
         String dateString = date.toString();
         DateSplit currentDate = new DateSplit(dateString);
 
-        DateSplit[] scheduleLog = GetSchedule();
+        //DateSplit[] scheduleLog = GetSchedule();
 
         ScheduleCalculations calc = new ScheduleCalculations();
 
+        /**
         //compare current date to each dateSplit
         for(int i=0; i<scheduleLog.length;i++)
         {
 
-            if(calc.CompareDates(currentDate,scheduleLog[i+1])==true && calc.CompareDates(scheduleLog[i],currentDate)==true) //if current date is between 2 weeks
+            if(calc.CompareDates(currentDate,myScheduleArray[i+1])==true && calc.CompareDates(myScheduleArray[i],currentDate)==true) //if current date is between 2 weeks
             {
 
-                currentWeekStart = scheduleLog[i];
+                currentWeekStart = myScheduleArray[i];
                 break;
+
             }
 
-        }
+        } **/
 
         //SetLayout("Addiction",currentWeekStart);
 
@@ -189,7 +207,8 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                 String diagnosis = dataSnapshot.getValue(String.class);
-                SetLayout(diagnosis,currentWeekStart);
+                SetLayout(diagnosis);
+                //SetLayout(diagnosis,currentWeekStart);
 
             }
 
@@ -216,17 +235,18 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
     }
 
-    private void SetLayout(String diagnosis,DateSplit weekStartDate)
+    private void SetLayout(String diagnosis)
     {
 
-        int week = weekStartDate.Week;
+       // int week = weekStartDate.Week;
 
         if(diagnosis.equals("Depression"))
         {
-
+            myLayout = R.layout.fragment_disorders_depression_1;
             //switch statements
-            switch (week)
+            /**switch (week)
             {
+
                 case 1:
                     myLayout = R.layout.fragment_disorders_depression_1;
                     break;
@@ -274,15 +294,17 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                 case 12:
                     myLayout = R.layout.fragment_disorders_depression_12;
                     break;
-            }
 
+            } **/
 
         }
 
         if(diagnosis.equals("Eating Disorder"))
         {
 
-            switch (week)
+            myLayout = R.layout.fragment_disorders_eating_1;
+
+            /**switch (week)
             {
                 case 1:
                     myLayout = R.layout.fragment_disorders_eating_1;
@@ -331,7 +353,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                 case 12:
                     myLayout = R.layout.fragment_disorders_eating_12;
                     break;
-            }
+            } **/
 
 
         }
@@ -339,7 +361,8 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
         if(diagnosis.equals("Addiction"))
         {
 
-            switch (week)
+            myLayout = R.layout.fragment_disorders_addiction_1;
+            /**switch (week)
             {
                 case 1:
                     myLayout = R.layout.fragment_disorders_addiction_1;
@@ -388,12 +411,12 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                 case 12:
                     myLayout = R.layout.fragment_disorders_addiction_12;
                     break;
-            }
+            } **/
 
 
         }
 
-        if(diagnosis.equals("Anxiety"))
+       /** if(diagnosis.equals("Anxiety"))
         {
 
             switch (week)
@@ -448,20 +471,52 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
             }
 
 
-        }
+        } **/
 
     }
 
     /**
      * returns the returns DateSplit[] from db
      */
+
     public DateSplit[] GetSchedule()
     {
-        DateSplit[] myScheduleArray = new DateSplit[12];
+
+        logsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot logSnapshot: dataSnapshot.getChildren())
+                {
+
+                    ScheduleLog log = logSnapshot.getValue(ScheduleLog.class) ;
+
+                    myScheduleArray[0] =log.week1;
+                    myScheduleArray[1] =log.week2;
+                    myScheduleArray[2] =log.week3;
+                    myScheduleArray[3] =log.week4;
+                    myScheduleArray[4] =log.week5;
+                    myScheduleArray[5] =log.week6;
+                    myScheduleArray[6] =log.week7;
+                    myScheduleArray[7] =log.week8;
+                    myScheduleArray[8] =log.week9;
+                    myScheduleArray[9] =log.week10;
+                    myScheduleArray[10] =log.week11;
+                    myScheduleArray[11] =log.week12;
 
 
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         return myScheduleArray;
+
     }
 
     @Override

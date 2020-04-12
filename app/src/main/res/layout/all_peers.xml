@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/all_peers_toolbar"
@@ -10,27 +11,58 @@
         android:background="@color/btn_green"
         android:layout_marginTop="0dp"/>
 
+
+    <Space
+        android:id="@+id/space_11"
+        android:layout_width="match_parent"
+        android:layout_height="15dp"
+        android:layout_below="@+id/all_peers_toolbar"/>
+
     <RelativeLayout
         android:id="@+id/peers_search_bar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/all_peers_toolbar">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/space_11"
+        android:background="@android:color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/linear_layout_22">
 
         <EditText
-            android:layout_width="300dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:id="@+id/peers_search_box"
             android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"
             android:layout_alignParentLeft="true"
-            android:hint="Search..."/>
+            android:hint="Enter Email"
+            android:paddingLeft="15dp"
+            android:background="@drawable/searchbox_background"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/yantramanav"
+            android:layout_weight="1"/>
 
         <Button
             android:id="@+id/peers_search_btn"
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:text="Search"/>
+            android:layout_marginLeft="5dp"
+            android:text="Search"
+            android:fontFamily="@font/yantramanav"
+            android:background="@drawable/search_btn_background"
+            android:layout_weight="4"/>
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_below="@+id/linear_layout_22"/>
 
     </RelativeLayout>
 
@@ -38,7 +70,8 @@
         android:id="@+id/peers_list_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/peers_search_bar"/>
+        android:layout_below="@+id/peers_search_bar"
+        android:background="@android:color/white"/>
 
 
 </RelativeLayout>

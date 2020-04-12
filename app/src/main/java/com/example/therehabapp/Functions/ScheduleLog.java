@@ -9,6 +9,9 @@ public class ScheduleLog
 {
 
     public DateSplit week1;
+    public DateSplit week10;
+    public DateSplit week11;
+    public DateSplit week12;
     public DateSplit week2;
     public DateSplit week3;
     public DateSplit week4;
@@ -17,9 +20,6 @@ public class ScheduleLog
     public DateSplit week7;
     public DateSplit week8;
     public DateSplit week9;
-    public DateSplit week10;
-    public DateSplit week11;
-    public DateSplit week12;
 
     public ScheduleLog(){}
 
@@ -51,4 +51,7 @@ public class ScheduleLog
         week12.Week =12;
     }
 
+
+
 }
+

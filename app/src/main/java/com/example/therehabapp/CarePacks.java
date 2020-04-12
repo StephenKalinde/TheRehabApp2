@@ -19,6 +19,7 @@ import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.therehabapp.Functions.DateSplit;
 import com.example.therehabapp.Functions.ScheduleCalculations;
 import com.example.therehabapp.Functions.ScheduleLog;
 import com.google.firebase.auth.FirebaseAuth;
@@ -153,16 +154,6 @@ public class CarePacks extends AppCompatActivity {
                 popupWindow.showAtLocation(myLayout, Gravity.CENTER, 0,0);
                 //myLayout.getForeground().setAlpha( 220);
 
-
-             /**   popUpView.setOnTouchListener(new View.OnTouchListener(){
-                    @Override
-                    public boolean onTouch(View v, MotionEvent event)
-                    {
-                        popupWindow.dismiss();
-                        //myLayout.getForeground().setAlpha(0);
-                        return true;
-                    }
-                }); **/
             }
         });
 
@@ -227,6 +218,7 @@ public class CarePacks extends AppCompatActivity {
                     public void onClick(View v) {
 
                         popupWindow.dismiss();
+
                     }
                 });
 
