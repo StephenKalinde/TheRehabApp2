@@ -175,8 +175,7 @@ public class PeersList  extends ArrayAdapter<User> {
         });
 
         return listViewItem;
+
     }
-
-
 
 }

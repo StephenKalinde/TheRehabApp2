@@ -23,7 +23,8 @@
             android:id="@+id/thread_list_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:transcriptMode="alwaysScroll"/>
+            android:transcriptMode="alwaysScroll"
+            android:scrollbars="none"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

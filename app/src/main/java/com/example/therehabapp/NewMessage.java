@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.therehabapp.Messaging.Message;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,7 @@ public class NewMessage extends AppCompatActivity {
     protected Toolbar mToolBar;
     private ListView threadsListView;
     private EditText messageEditView;
+    private SwipeRefreshLayout myRefreshLayout;
     private Button sendMessageBtn;
     private List<Message> myMessages;
     private MessagesThread threadAdapter;
@@ -49,6 +52,7 @@ public class NewMessage extends AppCompatActivity {
         threadsListView = findViewById(R.id.thread_list_view);
         messageEditView = findViewById(R.id.message_edit_view);
         sendMessageBtn = findViewById(R.id.send_btn);
+        myRefreshLayout = findViewById(R.id.messages_refresh_layout);
 
         String inboxId= getIntent().getStringExtra("inboxid");
         myThreadRef = FirebaseDatabase.getInstance().getReference("Inboxes/"+inboxId);
@@ -62,14 +66,26 @@ public class NewMessage extends AppCompatActivity {
 
         myMessages =GetThread();
 
-        threadAdapter = new MessagesThread(this,myMessages);
-        threadsListView.setAdapter(threadAdapter);
+        /**threadAdapter = new MessagesThread(this,myMessages);
+        threadsListView.setAdapter(threadAdapter); **/
+
+        myRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //Log.i(LOG_TAG, "refresh called");
+                //onStart();
+
+                threadAdapter = new MessagesThread(NewMessage.this,myMessages);
+                threadsListView.setAdapter(threadAdapter);
+                threadAdapter.notifyDataSetChanged();
+                myRefreshLayout.setRefreshing(false);
+
+            }
+        });
 
         sendMessageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-               /** send message here **/
 
                //Date
                 long millis = System.currentTimeMillis();
@@ -160,27 +176,9 @@ public class NewMessage extends AppCompatActivity {
             }
         });
 
-       /** myThreadRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-              for(DataSnapshot messageSnapshot: dataSnapshot.getChildren())
-              {
-                  Message message = messageSnapshot.getValue(Message.class);
-
-                  messages.add(message);
-
-              }
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        }); **/
 
         return messages;
+
     }
 
 }

@@ -1,35 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="250dp" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp">
 
-    <TextView
-        android:id="@+id/text_message_view"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:id="@+id/message_holder_view"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textSize="18dp"
+        android:orientation="vertical"
+        android:background="@drawable/message_background"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginRight="10dp">
 
-    <TextView
-        android:id="@+id/time_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
-        android:textSize="16dp"
-        android:textColor="@android:color/black"
-        android:layout_below="@+id/text_message_view"/>
+        <TextView
+            android:id="@+id/text_message_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"
+            android:fontFamily="@font/yantramanav"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
 
-    <TextView
-        android:id="@+id/date_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="15dp"
-        android:textSize="16dp"
-        android:textColor="@android:color/black"
-        android:layout_below="@+id/text_message_view"/>
+        <TextView
+            android:id="@+id/time_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/yantramanav"
+            android:layout_marginTop="15dp"
+            android:textSize="14dp"
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/text_message_view"/>
+
+        <TextView
+            android:id="@+id/date_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="14dp"
+            android:fontFamily="@font/yantramanav"
+            android:textColor="@android:color/black"
+            android:layout_below="@+id/text_message_view"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>
