@@ -64,7 +64,10 @@ public class NewMessage extends AppCompatActivity {
 
         myMessages =GetThread();
 
-        myRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        threadAdapter = new MessagesThread(NewMessage.this,myMessages);
+        threadsListView.setAdapter(threadAdapter);
+
+        /**myRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
 
@@ -74,7 +77,7 @@ public class NewMessage extends AppCompatActivity {
                 myRefreshLayout.setRefreshing(false);
 
             }
-        });
+        }); **/
 
         sendMessageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,8 +96,6 @@ public class NewMessage extends AppCompatActivity {
                 String time = dateTimeString.substring(11,16);
 
                 String uid = FirebaseAuth.getInstance().getUid();
-
-                Toast.makeText(NewMessage.this, time, Toast.LENGTH_LONG).show();
 
                 Message newMessage =new Message(messageEditView.getText().toString(),dateString,time, uid);
                 myThreadRef.push().setValue(newMessage);
