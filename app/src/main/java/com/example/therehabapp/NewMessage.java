@@ -1,6 +1,5 @@
 package com.example.therehabapp;
 
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,7 +22,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,14 +64,9 @@ public class NewMessage extends AppCompatActivity {
 
         myMessages =GetThread();
 
-        /**threadAdapter = new MessagesThread(this,myMessages);
-        threadsListView.setAdapter(threadAdapter); **/
-
         myRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                //Log.i(LOG_TAG, "refresh called");
-                //onStart();
 
                 threadAdapter = new MessagesThread(NewMessage.this,myMessages);
                 threadsListView.setAdapter(threadAdapter);
@@ -130,16 +123,6 @@ public class NewMessage extends AppCompatActivity {
 
     }
 
-   /** @Override
-    protected void onStart() {
-
-        super.onStart();
-
-        threadAdapter = new MessagesThread(this,GetThread());
-        threadsListView.setAdapter(threadAdapter);
-
-    }**/
-
     private List<Message> GetThread(){
 
         final List<Message> messages = new ArrayList<>();
@@ -175,7 +158,6 @@ public class NewMessage extends AppCompatActivity {
 
             }
         });
-
 
         return messages;
 
