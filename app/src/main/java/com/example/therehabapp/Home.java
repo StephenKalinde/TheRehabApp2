@@ -143,17 +143,19 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
                 switch(menuItem.getItemId())
                 {
-                    case R.id.inbox:
-                        startActivity(new Intent(Home.this, Inbox.class));
+
+                    case R.id.faq:
+                        //startActivity(new Intent(Home.this, Inbox.class));
+                        break;
+
+                    case R.id.gallery:
+                        //startActivity(new Intent(Home.this, Gallery.class));
                         break;
 
                     case R.id.journal:
                         startActivity(new Intent(Home.this, Journal.class));
                         break;
 
-                    case R.id.gallery:
-                        startActivity(new Intent(Home.this, Gallery.class));
-                        break;
                 }
 
                 return false;
