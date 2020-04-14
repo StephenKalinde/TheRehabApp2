@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.messaging.FirebaseMessaging;
+
 public class SplashScreen extends AppCompatActivity {
 
     private final int SPLASH_SCREEN_LENGTH = 5000;

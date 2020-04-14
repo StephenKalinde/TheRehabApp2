@@ -37,6 +37,8 @@ public class NewMessage extends AppCompatActivity {
     private MessagesThread threadAdapter;
 
     private DatabaseReference myThreadRef;
+    private DatabaseReference topMessageRef;
+    private String inboxId;
 
     @Override
     protected void onCreate(Bundle savedInstance){
@@ -52,8 +54,9 @@ public class NewMessage extends AppCompatActivity {
         sendMessageBtn = findViewById(R.id.send_btn);
         myRefreshLayout = findViewById(R.id.messages_refresh_layout);
 
-        String inboxId= getIntent().getStringExtra("inboxid");
+        inboxId= getIntent().getStringExtra("inboxid");
         myThreadRef = FirebaseDatabase.getInstance().getReference("Inboxes/"+inboxId);
+        topMessageRef = FirebaseDatabase.getInstance().getReference("TopMessages/"+inboxId);
 
         String nameTitle= getIntent().getStringExtra("userName");
         setSupportActionBar(mToolBar);
@@ -99,6 +102,10 @@ public class NewMessage extends AppCompatActivity {
 
                 Message newMessage =new Message(messageEditView.getText().toString(),dateString,time, uid);
                 myThreadRef.push().setValue(newMessage);
+
+                TopMessage topMessage = new TopMessage(messageEditView.getText().toString(), dateString,time, uid, inboxId);
+                topMessageRef.setValue(topMessage);
+
                 messageEditView.setText("");
 
             }

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <TextView
+        android:id="@+id/uid"
+        android:text="dfuufgugu"
+        android:layout_marginLeft="20dp"
+        android:fontFamily="@font/yantramanav"
+        android:layout_marginTop="5dp"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <TextView
+        android:id="@+id/time_view"
+        android:layout_width="wrap_content"
+        android:fontFamily="@font/yantramanav"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="5dp"
+        android:text="22:00"
+        android:textSize="20dp"
+        android:textColor="@android:color/black"
+        android:layout_alignRight="@+id/uid"/>
+
+    <TextView
+        android:id="@+id/message_view"
+        android:layout_below="@+id/uid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hey man, this is blah blah blah blah blah blah"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="20dp"
+        android:fontFamily="@font/yantramanav"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="5dp"/>
+
+</RelativeLayout>
