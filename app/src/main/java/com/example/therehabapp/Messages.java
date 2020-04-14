@@ -1,7 +1,9 @@
 package com.example.therehabapp;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -25,7 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
-public class Messages extends AppCompatActivity {
+public class Messages extends AppCompatActivity{
 
     private ListView threadsListView;
     private FloatingActionButton newMessageBtn;
@@ -39,6 +41,8 @@ public class Messages extends AppCompatActivity {
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference inboxIdsRef;
     private String uid;
+
+    private ProgressDialog progressDialogBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -61,6 +65,8 @@ public class Messages extends AppCompatActivity {
         threadsListView = (ListView) findViewById(R.id.threads_list_view);
         newMessageBtn = (FloatingActionButton) findViewById(R.id.new_message_btn);
 
+        GetInboxIds();
+
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Messages");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -82,7 +88,18 @@ public class Messages extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        GetInboxIds();
+        progressDialogBox = new ProgressDialog(Messages.this, R.style.MyDialogTheme);
+        progressDialogBox.setTitle("Messages");
+        progressDialogBox.setMessage("Loading...");
+        progressDialogBox.setCancelable(false);
+        progressDialogBox.show();
+
+
+
+        progressDialogBox.cancel();
+
+        Log.d("TopMessages: Size= ",""+topMessages.size());
+
         /**for(String id: inboxIDs)
         {
 
@@ -93,7 +110,6 @@ public class Messages extends AppCompatActivity {
 
         //set Adapter here
     }
-
 
     private void GetInboxIds()
     {
@@ -142,32 +158,31 @@ public class Messages extends AppCompatActivity {
 
     }
 
-    private void ProcessTopMessages(String inboxId)
+    private synchronized void ProcessTopMessages(String inboxId)
     {
 
         DatabaseReference topMessageRef = firebaseDatabase.getReference("TopMessages/"+inboxId);
+        final ArrayList<TopMessage> tpMsgs = new ArrayList<>();
 
         topMessageRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 TopMessage message = dataSnapshot.getValue(TopMessage.class);
-                topMessages.add(message);
-
-                if(!message.equals(null))
-                {
-
-                    Log.d("InboxIds top",message.Message);
-
-                }
+                tpMsgs.add(message);
+                Log.d("TopMessages: Size= ",""+ message.Message);
 
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {}
 
-            }
         });
+
+        Log.d("TopMessages: Size= ",""+ tpMsgs.size());
+
+        topMessages = tpMsgs;
 
     }
 
@@ -187,4 +202,5 @@ public class Messages extends AppCompatActivity {
 
     }
 
+    /*** have to wait for TopMessage objects to fully load before adding to list tpMsgs (await) **/
 }
