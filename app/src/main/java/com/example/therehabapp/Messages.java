@@ -23,24 +23,22 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class Messages extends AppCompatActivity {
 
-    private ListView messagesListView;
+    private ListView threadsListView;
     private FloatingActionButton newMessageBtn;
     private Toolbar toolbar;
 
-    private ArrayList<String> inboxIds;
+    private ArrayList<String> inboxIDs;
+    private ArrayList<String> inboxIDs2;
     private ArrayList<TopMessage> topMessages;
 
-    private DatabaseReference idRef;
-    private DatabaseReference inboxesRef;
+    private FirebaseAuth auth;
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference inboxIdsRef;
     private String uid;
-
-    private int count;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -49,39 +47,28 @@ public class Messages extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.messages_view);
 
-        count = 0;
-
-        uid = FirebaseAuth.getInstance().getUid();
-        FirebaseDatabase instance= FirebaseDatabase.getInstance();
-        idRef =instance.getReference("InboxIDs/"+uid);
-        inboxesRef = instance.getReference("Inboxes/"+uid);
-
-        inboxIds = new ArrayList<>();
+        inboxIDs = new ArrayList<>();
+        inboxIDs2 = new ArrayList<>();
         topMessages = new ArrayList<>();
 
-        messagesListView = (ListView) findViewById(R.id.messages_list_view);
-        newMessageBtn = (FloatingActionButton) findViewById(R.id.new_message_btn);
+        auth = FirebaseAuth.getInstance();
+        uid= auth.getUid();
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        inboxIdsRef = firebaseDatabase.getReference("InboxIDs/"+uid);
+
         toolbar = (Toolbar) findViewById(R.id.messages_toolbar);
+        threadsListView = (ListView) findViewById(R.id.threads_list_view);
+        newMessageBtn = (FloatingActionButton) findViewById(R.id.new_message_btn);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Messages");
-        getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        GetTopMessages();
-
-        Log.d("ID LOGG" ,""+inboxIds.size());
-        Log.d("Top Message LOGG" ,""+topMessages.size());
-        //Log.d("TESTING LOG",""+topMessageList.size());
-        TopMessagesAdapter adapter = new TopMessagesAdapter(Messages.this, topMessages);
-        messagesListView.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         newMessageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                //Toast.makeText(Messages.this, ""+count,Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(Messages.this, ContactsList.class);
                 startActivity(intent);
@@ -89,62 +76,88 @@ public class Messages extends AppCompatActivity {
             }
         });
 
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        //FillInboxIds();
-        //FillTopMessages(inboxIds);
-
-    }
-
-    //get topMessages
-    private void GetTopMessages()
-    {
-
-        FillInboxIds();  //inbox ids
-
-         //top messages file
-
-        for(String inboxId : inboxIds)
+        GetInboxIds();
+        /**for(String id: inboxIDs)
         {
 
-            DatabaseReference topMsgRef = FirebaseDatabase.getInstance().getReference("TopMessages/" + inboxId);  // topmsgs ref path
+            TopMessage topMessage = GetTopMessage(id);
+            topMessages.add(topMessage);
 
-            topMsgRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    TopMessage topMessage = dataSnapshot.getValue(TopMessage.class);
-                    topMessages.add(topMessage);
-                }
+        } **/
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-
-        }
+        //set Adapter here
+    }
 
 
+    private void GetInboxIds()
+    {
+
+        final ArrayList<String> inboxIds = new ArrayList<>();
+        Log.d("InboxIds BEFORE",""+inboxIds.size());
+
+        inboxIdsRef.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                String id = dataSnapshot.getValue(String.class);
+                //inboxIDs2.add(id);
+                //inboxIds.add(id);
+
+                ProcessTopMessages(id);
+                //Log.d("InboxIds ID",""+id);
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        //Log.d("InboxIds AFTER",""+inboxIds.size());
+        //Log.d("InboxIds 2222",""+ inboxIDs2.size());
+
+//        return inboxIds;
 
     }
 
-    private void FillInboxIds()
+    private void ProcessTopMessages(String inboxId)
     {
 
-        idRef.addValueEventListener(new ValueEventListener() {
+        DatabaseReference topMessageRef = firebaseDatabase.getReference("TopMessages/"+inboxId);
+
+        topMessageRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for(DataSnapshot snapshot: dataSnapshot.getChildren())
+                TopMessage message = dataSnapshot.getValue(TopMessage.class);
+                topMessages.add(message);
+
+                if(!message.equals(null))
                 {
 
-                    String id = snapshot.getValue(String.class);
-                    inboxIds.add(id);
+                    Log.d("InboxIds top",message.Message);
 
                 }
 
@@ -156,9 +169,7 @@ public class Messages extends AppCompatActivity {
             }
         });
 
-
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
@@ -175,4 +186,5 @@ public class Messages extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
+
 }

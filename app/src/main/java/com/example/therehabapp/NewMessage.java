@@ -39,6 +39,7 @@ public class NewMessage extends AppCompatActivity {
     private DatabaseReference myThreadRef;
     private DatabaseReference topMessageRef;
     private String inboxId;
+    private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstance){
@@ -55,6 +56,7 @@ public class NewMessage extends AppCompatActivity {
         myRefreshLayout = findViewById(R.id.messages_refresh_layout);
 
         inboxId= getIntent().getStringExtra("inboxid");
+        uid = FirebaseAuth.getInstance().getUid();
         myThreadRef = FirebaseDatabase.getInstance().getReference("Inboxes/"+inboxId);
         topMessageRef = FirebaseDatabase.getInstance().getReference("TopMessages/"+inboxId);
 
@@ -69,6 +71,7 @@ public class NewMessage extends AppCompatActivity {
 
         threadAdapter = new MessagesThread(NewMessage.this,myMessages);
         threadsListView.setAdapter(threadAdapter);
+        threadAdapter.notifyDataSetChanged();
 
         /**myRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -97,8 +100,6 @@ public class NewMessage extends AppCompatActivity {
                 String dateTimeString = dateTime.toString();
 
                 String time = dateTimeString.substring(11,16);
-
-                String uid = FirebaseAuth.getInstance().getUid();
 
                 Message newMessage =new Message(messageEditView.getText().toString(),dateString,time, uid);
                 myThreadRef.push().setValue(newMessage);
