@@ -65,8 +65,6 @@ public class Messages extends AppCompatActivity{
         threadsListView = (ListView) findViewById(R.id.threads_list_view);
         newMessageBtn = (FloatingActionButton) findViewById(R.id.new_message_btn);
 
-        GetInboxIds();
-
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Messages");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -94,39 +92,38 @@ public class Messages extends AppCompatActivity{
         progressDialogBox.setCancelable(false);
         progressDialogBox.show();
 
+        CallData2(new FirebaseCallBack2() {
+            @Override
+            public void onCallBack(ArrayList<TopMessage> messages) {
 
+                Log.d("Array Size: ",""+messages.size());
+                Log.d("Array: ",messages.toString());
+            }
+        });
 
         progressDialogBox.cancel();
-
-        Log.d("TopMessages: Size= ",""+topMessages.size());
-
-        /**for(String id: inboxIDs)
-        {
-
-            TopMessage topMessage = GetTopMessage(id);
-            topMessages.add(topMessage);
-
-        } **/
 
         //set Adapter here
     }
 
-    private void GetInboxIds()
+    /**private void GetInboxIds()
     {
-
-        final ArrayList<String> inboxIds = new ArrayList<>();
-        Log.d("InboxIds BEFORE",""+inboxIds.size());
 
         inboxIdsRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                 String id = dataSnapshot.getValue(String.class);
-                //inboxIDs2.add(id);
-                //inboxIds.add(id);
+                CallData(new FirebaseCallBack() {
+                    @Override
+                    public void onCallBack(TopMessage topMsg) {
 
-                ProcessTopMessages(id);
-                //Log.d("InboxIds ID",""+id);
+                        Log.d("TopMessages: Size= ",""+topMsg.Message);
+
+                        topMessages.add(topMsg);
+
+                    }
+                },id);
 
             }
 
@@ -151,26 +148,20 @@ public class Messages extends AppCompatActivity{
             }
         });
 
-        //Log.d("InboxIds AFTER",""+inboxIds.size());
-        //Log.d("InboxIds 2222",""+ inboxIDs2.size());
-
-//        return inboxIds;
+        Log.d("TopMessages: Size= ",""+topMessages.size());
 
     }
 
-    private synchronized void ProcessTopMessages(String inboxId)
+    private void ProcessTopMessages(String inboxId)
     {
 
-        DatabaseReference topMessageRef = firebaseDatabase.getReference("TopMessages/"+inboxId);
-        final ArrayList<TopMessage> tpMsgs = new ArrayList<>();
+        final DatabaseReference topMessageRef = firebaseDatabase.getReference("TopMessages/"+inboxId);
 
         topMessageRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                TopMessage message = dataSnapshot.getValue(TopMessage.class);
-                tpMsgs.add(message);
-                Log.d("TopMessages: Size= ",""+ message.Message);
+                msg = dataSnapshot.getValue(TopMessage.class);
 
             }
 
@@ -180,11 +171,7 @@ public class Messages extends AppCompatActivity{
 
         });
 
-        Log.d("TopMessages: Size= ",""+ tpMsgs.size());
-
-        topMessages = tpMsgs;
-
-    }
+    } **/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
@@ -202,5 +189,70 @@ public class Messages extends AppCompatActivity{
 
     }
 
-    /*** have to wait for TopMessage objects to fully load before adding to list tpMsgs (await) **/
+
+    private void CallData(final FirebaseCallBack firebaseCallBack, String inboxId)
+    {
+
+        final DatabaseReference topMessageRef = firebaseDatabase.getReference("TopMessages/"+inboxId);
+
+        topMessageRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                TopMessage msg = dataSnapshot.getValue(TopMessage.class);
+                firebaseCallBack.onCallBack(msg);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {}
+
+        });
+
+    }
+
+    private void CallData2(final FirebaseCallBack2 firebaseCallBack2)
+    {
+        final ArrayList<TopMessage> topMsgs = new ArrayList<>();
+
+        inboxIdsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot idSnapshot: dataSnapshot.getChildren())
+                {
+
+                    String id = idSnapshot.getValue(String.class);
+                    CallData(new FirebaseCallBack() {
+                        @Override
+                        public void onCallBack(TopMessage topMsg) {
+
+                            Log.d("TopMessages: Size= ",""+topMsg.Message);
+
+                            topMsgs.add(topMsg);
+
+
+                        }
+                    },id);
+
+                }
+                Log.d("TopMessages:--- ",""+topMsgs.toString());
+                firebaseCallBack2.onCallBack(topMsgs);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+    }
+
+    private interface FirebaseCallBack{ void onCallBack(TopMessage topMsg);}
+
+    private interface FirebaseCallBack2{ void onCallBack(ArrayList<TopMessage> messages);}
 }
