@@ -96,8 +96,9 @@ public class Messages extends AppCompatActivity{
             @Override
             public void onCallBack(ArrayList<TopMessage> messages) {
 
-                Log.d("Array Size: ",""+messages.size());
-                Log.d("Array: ",messages.toString());
+                //Log.d("Array Size: ",""+messages.size());
+                //Log.d("Array: ",messages.toString());
+
             }
         });
 
@@ -194,12 +195,16 @@ public class Messages extends AppCompatActivity{
     {
 
         final DatabaseReference topMessageRef = firebaseDatabase.getReference("TopMessages/"+inboxId);
+        Log.d("Debug: InboxId",inboxId);
 
         topMessageRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 TopMessage msg = dataSnapshot.getValue(TopMessage.class);
+
+                Log.d("Debug: TopMessage",msg.Message);
+
                 firebaseCallBack.onCallBack(msg);
 
             }
@@ -214,7 +219,8 @@ public class Messages extends AppCompatActivity{
 
     private void CallData2(final FirebaseCallBack2 firebaseCallBack2)
     {
-        final ArrayList<TopMessage> topMsgs = new ArrayList<>();
+
+        final ArrayList<String> inboxIdsList = new ArrayList<>();
 
         inboxIdsRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -224,28 +230,47 @@ public class Messages extends AppCompatActivity{
                 {
 
                     String id = idSnapshot.getValue(String.class);
-                    CallData(new FirebaseCallBack() {
-                        @Override
-                        public void onCallBack(TopMessage topMsg) {
 
-                            Log.d("TopMessages: Size= ",""+topMsg.Message);
+                    synchronized (this){
 
-                            topMsgs.add(topMsg);
-
-
-                        }
-                    },id);
+                        inboxIdsList.add(id);
+                    }
 
                 }
-                Log.d("TopMessages:--- ",""+topMsgs.toString());
+
+                Log.d("Debug: InboxListSize",""+inboxIdsList.size());
+
+                final ArrayList<TopMessage> topMsgs = new ArrayList<>();
+                for(String id : inboxIdsList)
+                {
+
+
+                        CallData(new FirebaseCallBack() {
+                            @Override
+                            public void onCallBack(TopMessage topMsg) {
+
+                                Log.d("Debug: TopMessagesCORE",topMsg.Message);
+
+                                    topMsgs.add(topMsg);  //////////problem here
+
+                            }
+                        },id);
+
+                }
+
+                Log.d("Debug: TopMessagesSize",""+topMsgs.size());
                 firebaseCallBack2.onCallBack(topMsgs);
+
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+
+
             }
+
         });
 
 
