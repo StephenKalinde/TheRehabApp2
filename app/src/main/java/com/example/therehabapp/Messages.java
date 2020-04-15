@@ -202,7 +202,6 @@ public class Messages extends AppCompatActivity{
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 TopMessage msg = dataSnapshot.getValue(TopMessage.class);
-
                 Log.d("Debug: TopMessage",msg.Message);
 
                 firebaseCallBack.onCallBack(msg);
@@ -214,6 +213,8 @@ public class Messages extends AppCompatActivity{
             {}
 
         });
+
+
 
     }
 
@@ -241,9 +242,10 @@ public class Messages extends AppCompatActivity{
                 Log.d("Debug: InboxListSize",""+inboxIdsList.size());
 
                 final ArrayList<TopMessage> topMsgs = new ArrayList<>();
+                final ArrayList<String> testingArr = new ArrayList<>();
+
                 for(String id : inboxIdsList)
                 {
-
 
                         CallData(new FirebaseCallBack() {
                             @Override
@@ -251,7 +253,7 @@ public class Messages extends AppCompatActivity{
 
                                 Log.d("Debug: TopMessagesCORE",topMsg.Message);
 
-                                    topMsgs.add(topMsg);  //////////problem here
+                                topMsgs.add(topMsg);  //////////problem here
 
                             }
                         },id);
