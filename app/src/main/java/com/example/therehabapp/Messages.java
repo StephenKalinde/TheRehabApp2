@@ -26,6 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
 
 public class Messages extends AppCompatActivity{
 
@@ -92,15 +93,12 @@ public class Messages extends AppCompatActivity{
         progressDialogBox.setCancelable(false);
         progressDialogBox.show();
 
-        CallData2(new FirebaseCallBack2() {
-            @Override
-            public void onCallBack(ArrayList<TopMessage> messages) {
+        //retrieve topMessage
 
-                //Log.d("Array Size: ",""+messages.size());
-                //Log.d("Array: ",messages.toString());
 
-            }
-        });
+        Log.d("Debugg: FinalList",""+GetTopMessages().size());
+
+        //adapter here and set
 
         progressDialogBox.cancel();
 
@@ -190,38 +188,12 @@ public class Messages extends AppCompatActivity{
 
     }
 
-
-    private void CallData(final FirebaseCallBack firebaseCallBack, String inboxId)
+    private synchronized ArrayList<TopMessage> GetTopMessages ()
     {
 
-        final DatabaseReference topMessageRef = firebaseDatabase.getReference("TopMessages/"+inboxId);
-        Log.d("Debug: InboxId",inboxId);
 
-        topMessageRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                TopMessage msg = dataSnapshot.getValue(TopMessage.class);
-                Log.d("Debug: TopMessage",msg.Message);
-
-                firebaseCallBack.onCallBack(msg);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {}
-
-        });
-
-
-
-    }
-
-    private void CallData2(final FirebaseCallBack2 firebaseCallBack2)
-    {
-
-        final ArrayList<String> inboxIdsList = new ArrayList<>();
+        final ArrayList<TopMessage> topMessagesList = new ArrayList<>();
+        //topMessages.clear();
 
         inboxIdsRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -231,38 +203,20 @@ public class Messages extends AppCompatActivity{
                 {
 
                     String id = idSnapshot.getValue(String.class);
+                    Log.d("Debugg: idGet",id);
 
-                    synchronized (this){
+                    TopMessage topMessage = GetTopMessage(id); //await this process
 
-                        inboxIdsList.add(id);
-                    }
+                    Log.d("Debugg: TopMessageOutCo",topMessage.Message);
 
-                }
+                    topMessagesList.add(topMessage);
+                    //topMessagesList.add(topMessage);
 
-                Log.d("Debug: InboxListSize",""+inboxIdsList.size());
 
-                final ArrayList<TopMessage> topMsgs = new ArrayList<>();
-                final ArrayList<String> testingArr = new ArrayList<>();
-
-                for(String id : inboxIdsList)
-                {
-
-                        CallData(new FirebaseCallBack() {
-                            @Override
-                            public void onCallBack(TopMessage topMsg) {
-
-                                Log.d("Debug: TopMessagesCORE",topMsg.Message);
-
-                                topMsgs.add(topMsg);  //////////problem here
-
-                            }
-                        },id);
 
                 }
 
-                Log.d("Debug: TopMessagesSize",""+topMsgs.size());
-                firebaseCallBack2.onCallBack(topMsgs);
-
+                //done.countDown();
 
             }
 
@@ -276,10 +230,44 @@ public class Messages extends AppCompatActivity{
         });
 
 
+       // Log.d("Debugg: TopMessageLstOt",""+topMessagesList.size());
+        return topMessagesList;
 
     }
 
-    private interface FirebaseCallBack{ void onCallBack(TopMessage topMsg);}
 
-    private interface FirebaseCallBack2{ void onCallBack(ArrayList<TopMessage> messages);}
+    private TopMessage GetTopMessage(String inboxId)
+    {
+
+        final DatabaseReference topMessageRef = firebaseDatabase.getReference("TopMessages/"+inboxId);
+        final ArrayList<TopMessage> topMessageCarry = new ArrayList<>();
+
+        topMessageRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                TopMessage topMessage = dataSnapshot.getValue(TopMessage.class);
+                Log.d("Debugg: TopMessageGet",topMessage.Message);
+                topMessageCarry.add(topMessage);
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError)
+            {}
+
+        });
+
+        TopMessage myTopMessage= new TopMessage();
+        myTopMessage.Message="Hey";
+        myTopMessage.InboxID="dgrbbbr";
+        myTopMessage.Date="Now";
+        myTopMessage.UID="myUser";
+        myTopMessage.Time="11:30";
+        Log.d("Debugg: TopMessageOut",myTopMessage.Message);
+        return myTopMessage;
+
+    }
+
 }

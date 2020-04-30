@@ -22,9 +22,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.google.firebase.internal.FirebaseAppHelper.getToken;
 
 public class NewMessage extends AppCompatActivity {
 
@@ -73,18 +77,6 @@ public class NewMessage extends AppCompatActivity {
         threadsListView.setAdapter(threadAdapter);
         threadAdapter.notifyDataSetChanged();
 
-        /**myRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-
-                threadAdapter = new MessagesThread(NewMessage.this,myMessages);
-                threadsListView.setAdapter(threadAdapter);
-                threadAdapter.notifyDataSetChanged();
-                myRefreshLayout.setRefreshing(false);
-
-            }
-        }); **/
-
         sendMessageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,6 +98,15 @@ public class NewMessage extends AppCompatActivity {
 
                 TopMessage topMessage = new TopMessage(messageEditView.getText().toString(), dateString,time, uid, inboxId);
                 topMessageRef.setValue(topMessage);
+
+                //FCM
+                RemoteMessage.Builder remoteMessageBuilder = new RemoteMessage.Builder(inboxId);
+                remoteMessageBuilder.addData("message",newMessage.Message);
+                remoteMessageBuilder.addData("uid",newMessage.UID);
+
+                RemoteMessage remoteMessage = remoteMessageBuilder.build();
+
+                FirebaseMessaging.getInstance().send(remoteMessage);
 
                 messageEditView.setText("");
 
@@ -144,6 +145,7 @@ public class NewMessage extends AppCompatActivity {
 
                 messages.add(message);
                 threadAdapter.notifyDataSetChanged();
+                //FirebaseMessaging.getInstance().subscribeToTopic();
 
             }
 

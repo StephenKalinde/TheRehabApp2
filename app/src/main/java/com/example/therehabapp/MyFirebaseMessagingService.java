@@ -10,6 +10,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private String TAG ="MyFirebase";
 
     @Override
+    public void onMessageReceived(RemoteMessage remoteMessage) {
+        super.onMessageReceived(remoteMessage);
+
+        Log.d(TAG, "Message data payload: ");
+
+    }
+
+    @Override
     public void onNewToken(String token) {
 
         Log.d(TAG, "Refreshed token: " + token);

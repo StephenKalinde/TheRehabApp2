@@ -1,6 +1,6 @@
 package com.example.therehabapp;
 
-public class TopMessage {
+public class TopMessage{
 
     public String Message;
     public String Date;

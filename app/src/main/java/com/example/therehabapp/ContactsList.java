@@ -180,7 +180,6 @@ public class ContactsList extends AppCompatActivity{
 
     }
 
-
     private ArrayList<User> GetAllUsers()
     {
 
@@ -264,9 +263,5 @@ public class ContactsList extends AppCompatActivity{
         return InboxID;
 
     }
-
-
-
-
 
 }
