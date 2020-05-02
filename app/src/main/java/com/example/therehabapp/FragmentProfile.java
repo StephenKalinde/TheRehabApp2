@@ -50,10 +50,18 @@ public class FragmentProfile extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private ArrayList<String> inboxIdsList;
+    private ArrayList<TopMessage> topMessagesList;
+
     private OnFragmentInteractionListener mListener;
 
-    public FragmentProfile() {
-        // Required empty public constructor
+    public FragmentProfile(){}
+
+    public FragmentProfile(ArrayList<String> inboxIdsList) {
+
+        this.inboxIdsList = inboxIdsList;
+        topMessagesList = GetTopMessages(inboxIdsList);
+
     }
 
     /**
@@ -121,20 +129,9 @@ public class FragmentProfile extends Fragment {
         requestsBtn = (Button) myView.findViewById(R.id.requests_btn);
         nameView = (TextView) myView.findViewById(R.id.user_name_view);
 
-        CallData2(new FirebaseCallBack2() {
-            @Override
-            public void onCallBack(ArrayList<TopMessage> messages) {
+        DatabaseReference userNameRef = FirebaseDatabase.getInstance().getReference("Users/"+uid+"/Name");
 
-                topMessages = messages;
-
-            }
-        });
-
-        Log.d("DEBUG ZZZZ : ",""+topMessages.size());
-
-        DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("Users/"+uid+"/Name");
-
-        mRef.addValueEventListener(new ValueEventListener() {
+        userNameRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -150,12 +147,14 @@ public class FragmentProfile extends Fragment {
             }
         });
 
+        //ArrayList<String> inboxIdsList= GetInboxIds();
+
         messagesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(),Messages.class);
-                //intent.putExtra("Arr",topMessages);
+                intent.putExtra("key",topMessagesList);
                 startActivity(intent);
 
             }
@@ -180,97 +179,52 @@ public class FragmentProfile extends Fragment {
 
     }
 
-    private void CallData(final FirebaseCallBack firebaseCallBack, String inboxId)
+
+    /**
+     * Get TopMessages
+     */
+    private ArrayList<TopMessage> GetTopMessages(ArrayList<String> idsList)
     {
+        final ArrayList<TopMessage> topMessagesArr = new ArrayList<>();
 
-        final DatabaseReference topMessageRef = firebaseDatabase.getReference("TopMessages/"+inboxId);
-        Log.d("Debug: InboxId",inboxId);
+        for(int i =0 ; i<idsList.size();i++)
+        {
 
-        topMessageRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            String id = idsList.get(i);
+            DatabaseReference topMsgRef = FirebaseDatabase.getInstance().getReference("TopMessages/"+id);
+            topMsgRef.addChildEventListener(new ChildEventListener() {
+                @Override
+                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                TopMessage msg = dataSnapshot.getValue(TopMessage.class);
-                Log.d("Debug: TopMessage",msg.Message);
-
-                firebaseCallBack.onCallBack(msg);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {}
-
-        });
-
-
-
-    }
-
-    private void CallData2(final FirebaseCallBack2 firebaseCallBack2)
-    {
-
-        final ArrayList<String> inboxIdsList = new ArrayList<>();
-
-        inboxIdsRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                for(DataSnapshot idSnapshot: dataSnapshot.getChildren())
-                {
-
-                    String id = idSnapshot.getValue(String.class);
-
-                    synchronized (this){
-
-                        inboxIdsList.add(id);
-                    }
+                    TopMessage topMessage = dataSnapshot.getValue(TopMessage.class);
+                    topMessagesArr.add(topMessage);
 
                 }
 
-                Log.d("Debug: InboxListSize",""+inboxIdsList.size());
-
-                final ArrayList<TopMessage> topMsgs = new ArrayList<>();
-                final ArrayList<String> testingArr = new ArrayList<>();
-
-                for(String id : inboxIdsList)
-                {
-
-                    CallData(new FirebaseCallBack() {
-                        @Override
-                        public void onCallBack(TopMessage topMsg) {
-
-                            Log.d("Debug: TopMessagesCORE",topMsg.Message);
-
-                            topMsgs.add(topMsg);  //////////problem here
-
-                        }
-                    },id);
+                @Override
+                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                 }
 
-                Log.d("Debug: TopMessagesSize",""+topMsgs.size());
-                firebaseCallBack2.onCallBack(topMsgs);
+                @Override
+                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
+                }
 
-            }
+                @Override
+                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
 
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                }
+            });
+        }
 
-            }
-
-        });
-
-
-
+        return topMessagesArr;
     }
-
-    private interface FirebaseCallBack{ void onCallBack(TopMessage topMsg);}
-
-    private interface FirebaseCallBack2{ void onCallBack(ArrayList<TopMessage> messages);}
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

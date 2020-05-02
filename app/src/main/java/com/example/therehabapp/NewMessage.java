@@ -1,5 +1,10 @@
 package com.example.therehabapp;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -7,12 +12,13 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.therehabapp.Messaging.Message;
@@ -28,7 +34,6 @@ import com.google.firebase.messaging.RemoteMessage;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.google.firebase.internal.FirebaseAppHelper.getToken;
 
 public class NewMessage extends AppCompatActivity {
 
@@ -44,6 +49,7 @@ public class NewMessage extends AppCompatActivity {
     private DatabaseReference topMessageRef;
     private String inboxId;
     private String uid;
+    private String CHANNEL_ID="default";
 
     @Override
     protected void onCreate(Bundle savedInstance){
@@ -118,6 +124,15 @@ public class NewMessage extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+
+        super.onStart();
+
+        //create notification channel
+        CreateChannel();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
 
@@ -145,7 +160,25 @@ public class NewMessage extends AppCompatActivity {
 
                 messages.add(message);
                 threadAdapter.notifyDataSetChanged();
-                //FirebaseMessaging.getInstance().subscribeToTopic();
+
+
+                /**
+                 * if the uid of the message is not the same as the current uid (im the recipient), show notification
+                 */
+
+                if(uid.equals(message.UID)) {
+
+                    NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+                            .setSmallIcon(R.drawable.logo)
+                            .setContentTitle("New Message")
+                            .setContentText(message.Message)
+                            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+                    NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+
+                    notificationManagerCompat.notify(100,notification.build());
+
+                }
 
             }
 
@@ -171,6 +204,30 @@ public class NewMessage extends AppCompatActivity {
         });
 
         return messages;
+
+    }
+
+    /**
+     * creates a channel for the notifications
+     */
+
+    private void CreateChannel()
+    {
+
+        if(Build.VERSION.SDK_INT >= 26)
+        {
+
+            String channelName = "messages_channel";
+            String description = "This Is My Notification Channel";
+            int importance =  NotificationManager.IMPORTANCE_DEFAULT;
+
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,channelName,importance);
+            channel.setDescription(description);
+
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+
+        }
 
     }
 

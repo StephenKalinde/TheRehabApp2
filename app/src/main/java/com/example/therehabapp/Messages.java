@@ -1,32 +1,24 @@
 package com.example.therehabapp;
 
-
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import com.example.therehabapp.Messaging.Message;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
-import java.util.concurrent.CountDownLatch;
 
 public class Messages extends AppCompatActivity{
 
@@ -36,7 +28,7 @@ public class Messages extends AppCompatActivity{
 
     private ArrayList<String> inboxIDs;
     private ArrayList<String> inboxIDs2;
-    private ArrayList<TopMessage> topMessages;
+    private ArrayList<TopMessage> topMessagesX;
 
     private FirebaseAuth auth;
     private FirebaseDatabase firebaseDatabase;
@@ -54,7 +46,8 @@ public class Messages extends AppCompatActivity{
 
         inboxIDs = new ArrayList<>();
         inboxIDs2 = new ArrayList<>();
-        topMessages = new ArrayList<>();
+
+        //
 
         auth = FirebaseAuth.getInstance();
         uid= auth.getUid();
@@ -93,84 +86,10 @@ public class Messages extends AppCompatActivity{
         progressDialogBox.setCancelable(false);
         progressDialogBox.show();
 
-        //retrieve topMessage
-
-
-        Log.d("Debugg: FinalList",""+GetTopMessages().size());
-
-        //adapter here and set
-
         progressDialogBox.cancel();
 
         //set Adapter here
     }
-
-    /**private void GetInboxIds()
-    {
-
-        inboxIdsRef.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                String id = dataSnapshot.getValue(String.class);
-                CallData(new FirebaseCallBack() {
-                    @Override
-                    public void onCallBack(TopMessage topMsg) {
-
-                        Log.d("TopMessages: Size= ",""+topMsg.Message);
-
-                        topMessages.add(topMsg);
-
-                    }
-                },id);
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        Log.d("TopMessages: Size= ",""+topMessages.size());
-
-    }
-
-    private void ProcessTopMessages(String inboxId)
-    {
-
-        final DatabaseReference topMessageRef = firebaseDatabase.getReference("TopMessages/"+inboxId);
-
-        topMessageRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                msg = dataSnapshot.getValue(TopMessage.class);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError)
-            {}
-
-        });
-
-    } **/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
@@ -191,9 +110,7 @@ public class Messages extends AppCompatActivity{
     private synchronized ArrayList<TopMessage> GetTopMessages ()
     {
 
-
         final ArrayList<TopMessage> topMessagesList = new ArrayList<>();
-        //topMessages.clear();
 
         inboxIdsRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -234,7 +151,6 @@ public class Messages extends AppCompatActivity{
         return topMessagesList;
 
     }
-
 
     private TopMessage GetTopMessage(String inboxId)
     {

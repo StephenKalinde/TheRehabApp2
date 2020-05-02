@@ -95,6 +95,8 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     private FirebaseAuth auth;
     private String uid;
 
+    private ArrayList<String> inboxIdsList;
+
     private DateSplit currentWeekStart;
     private ScheduleLog log;
 
@@ -109,6 +111,8 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
         log = new ScheduleLog();
         myScheduleArray = new DateSplit[12];
+
+        inboxIdsList = new ArrayList<>();
 
         firebaseDb = FirebaseDatabase.getInstance();
 
@@ -169,6 +173,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     protected void onStart() {
 
         super.onStart();
+        GetInboxIds();
 
         //currentWeekStart = new DateSplit();
         SeekLayout();
@@ -474,6 +479,32 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
 
         } **/
+
+    }
+
+    private void GetInboxIds()
+    {
+
+        DatabaseReference inboxIdsRef = FirebaseDatabase.getInstance().getReference("InboxIDs/"+uid);
+        inboxIdsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for(DataSnapshot inboxIdShot: dataSnapshot.getChildren())
+                {
+
+                    String id = inboxIdShot.getValue(String.class);
+                    inboxIdsList.add(id);
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
