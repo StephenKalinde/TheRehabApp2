@@ -3,7 +3,9 @@ package com.example.therehabapp;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -19,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
+import androidx.core.app.TaskStackBuilder;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.therehabapp.Messaging.Message;
@@ -34,7 +37,6 @@ import com.google.firebase.messaging.RemoteMessage;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class NewMessage extends AppCompatActivity {
 
     protected Toolbar mToolBar;
@@ -47,9 +49,14 @@ public class NewMessage extends AppCompatActivity {
 
     private DatabaseReference myThreadRef;
     private DatabaseReference topMessageRef;
-    private String inboxId;
     private String uid;
+
+    private String inboxId;
+    private String userEmail;
+    private String nameTitle;
+
     private String CHANNEL_ID="default";
+    private int NOTIFICATION_ID =100;
 
     @Override
     protected void onCreate(Bundle savedInstance){
@@ -65,12 +72,14 @@ public class NewMessage extends AppCompatActivity {
         sendMessageBtn = findViewById(R.id.send_btn);
         myRefreshLayout = findViewById(R.id.messages_refresh_layout);
 
+        userEmail = getIntent().getStringExtra("userEmail");
+
         inboxId= getIntent().getStringExtra("inboxid");
         uid = FirebaseAuth.getInstance().getUid();
         myThreadRef = FirebaseDatabase.getInstance().getReference("Inboxes/"+inboxId);
         topMessageRef = FirebaseDatabase.getInstance().getReference("TopMessages/"+inboxId);
 
-        String nameTitle= getIntent().getStringExtra("userName");
+        nameTitle= getIntent().getStringExtra("userName");
         setSupportActionBar(mToolBar);
         getSupportActionBar().setTitle(nameTitle);
 
@@ -161,22 +170,35 @@ public class NewMessage extends AppCompatActivity {
                 messages.add(message);
                 threadAdapter.notifyDataSetChanged();
 
-
                 /**
                  * if the uid of the message is not the same as the current uid (im the recipient), show notification
                  */
 
-                if(uid.equals(message.UID)) {
+                if(!uid.equals(message.UID)){
 
+                    Intent intent = new Intent(getApplicationContext(),NewMessage.class);
+                    intent.putExtra("userEmail",userEmail);
+                    intent.putExtra("userName",nameTitle);
+                    intent.putExtra("inboxid",inboxId);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                    TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(getApplicationContext());
+                    taskStackBuilder.addNextIntentWithParentStack(intent);
+
+                    PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
+
+                    //notification builder
                     NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
                             .setSmallIcon(R.drawable.logo)
                             .setContentTitle("New Message")
                             .setContentText(message.Message)
-                            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                            .setContentIntent(pendingIntent)
+                            .setAutoCancel(true);
 
+                    //show notification
                     NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
-
-                    notificationManagerCompat.notify(100,notification.build());
+                    notificationManagerCompat.notify(NOTIFICATION_ID,notification.build());
 
                 }
 

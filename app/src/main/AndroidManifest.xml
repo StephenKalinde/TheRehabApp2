@@ -67,9 +67,12 @@
         <activity android:name=".Gallery"/>
         <activity android:name=".Journal"/>
         <activity android:name=".NewNote"/>
-        <activity android:name=".NewMessage"/>
-        <activity android:name=".Messages"/>
-        <activity android:name=".ContactsList"/>
+        <activity android:name=".NewMessage"
+            android:parentActivityName=".ContactsList"/>
+        <activity android:name=".Messages"
+            android:parentActivityName=".Home"/>
+        <activity android:name=".ContactsList"
+            android:parentActivityName=".Messages"/>
         <activity android:name=".AllPeers"/>
         <activity android:name=".PeerProfile"/>
         <activity android:name=".SplashScreen">
