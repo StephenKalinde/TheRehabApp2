@@ -86,11 +86,7 @@ public class NewMessage extends AppCompatActivity {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        myMessages =GetThread();
-
-        threadAdapter = new MessagesThread(NewMessage.this,myMessages);
-        threadsListView.setAdapter(threadAdapter);
-        threadAdapter.notifyDataSetChanged();
+        //myMessages.clear();
 
         sendMessageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,8 +133,13 @@ public class NewMessage extends AppCompatActivity {
 
         super.onStart();
 
-        //create notification channel
+        myMessages =GetThread();
+        threadAdapter = new MessagesThread(NewMessage.this,myMessages);
+        threadsListView.setAdapter(threadAdapter);
+        threadAdapter.notifyDataSetChanged();
+
         CreateChannel();
+
     }
 
     @Override
@@ -166,8 +167,8 @@ public class NewMessage extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                 Message message = dataSnapshot.getValue(Message.class);
-
                 messages.add(message);
+
                 threadAdapter.notifyDataSetChanged();
 
                 /**
@@ -226,6 +227,11 @@ public class NewMessage extends AppCompatActivity {
         });
 
         return messages;
+
+    }
+
+    private void NotificationListener()
+    {
 
     }
 
