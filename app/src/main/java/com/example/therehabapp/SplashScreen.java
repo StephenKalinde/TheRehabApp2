@@ -4,12 +4,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class SplashScreen extends AppCompatActivity {
 
     private final int SPLASH_SCREEN_LENGTH = 5000;
 
+    private FirebaseAuth firebaseAuth;
+    private FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,10 +21,21 @@ public class SplashScreen extends AppCompatActivity {
 
        new Handler().postDelayed(new Runnable(){
            @Override
-           public void run(){
-               Intent mainIntent= new Intent(SplashScreen.this, WelcomeNote.class);
-               SplashScreen.this.startActivity(mainIntent);
-               SplashScreen.this.finish();
+           public void run() {
+
+               firebaseAuth = FirebaseAuth.getInstance();
+               user = firebaseAuth.getCurrentUser();
+
+               if (user != null) {
+                   startActivity(new Intent(SplashScreen.this, Home.class));
+                   finishAffinity();
+               }
+
+               else{
+                    Intent mainIntent = new Intent(SplashScreen.this, WelcomeNote.class);
+                    SplashScreen.this.startActivity(mainIntent);
+                    SplashScreen.this.finish();
+               }
            }
        },SPLASH_SCREEN_LENGTH);
 

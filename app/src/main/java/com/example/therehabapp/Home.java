@@ -7,6 +7,7 @@ import android.os.Debug;
 import android.os.health.ServiceHealthStats;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -149,11 +150,15 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                 {
 
                     case R.id.faq:
-                        //startActivity(new Intent(Home.this, Inbox.class));
+
+                        Toast.makeText(Home.this,"Option Not Available At The Moment",Toast.LENGTH_LONG).show();
                         break;
 
-                    case R.id.gallery:
-                        //startActivity(new Intent(Home.this, Gallery.class));
+                    case R.id.sign_out:
+
+                        auth.signOut();
+                        startActivity(new Intent(Home.this,SignUp.class));
+                        finishAffinity();
                         break;
 
                     case R.id.journal:

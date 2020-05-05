@@ -10,8 +10,8 @@
         android:title="Journal"/>
 
     <item
-        android:id="@+id/gallery"
-        android:title="Gallery"/>
+        android:id="@+id/sign_out"
+        android:title="Sign Out"/>
 
 
 </menu>
