@@ -20,6 +20,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.therehabapp.Functions.DateSplit;
 import com.example.therehabapp.Functions.ScheduleCalculations;
 import com.example.therehabapp.Functions.ScheduleLog;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.android.material.navigation.NavigationView;
@@ -30,6 +32,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.Console;
 import java.util.ArrayList;
@@ -122,6 +125,29 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
         dbRef = firebaseDb.getReference("Diagnoses/" + uid);
         logsRef = firebaseDb.getReference("ScheduleLogs/"+ uid);
 
+        //subscribe to topic uid
+        FirebaseMessaging.getInstance().subscribeToTopic(uid).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if(task.isSuccessful())
+                {
+
+                    Toast.makeText(Home.this, "Welcome To The Rehab", Toast.LENGTH_SHORT).show();
+
+                }
+
+                else{
+
+                    Log.d("TheRehabError: ",task.getException().toString());
+                    Toast.makeText(Home.this, "Device not connected to a network", Toast.LENGTH_SHORT).show();
+
+                }
+
+            }
+
+        });
+
         BottomNavigationView bottomNav= (BottomNavigationView) findViewById(R.id.bottom_nav_bar);
         bottomNav.setLabelVisibilityMode(LabelVisibilityMode.LABEL_VISIBILITY_SELECTED);
         bottomNav.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
@@ -162,6 +188,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                         break;
 
                     case R.id.journal:
+
                         startActivity(new Intent(Home.this, Journal.class));
                         break;
 

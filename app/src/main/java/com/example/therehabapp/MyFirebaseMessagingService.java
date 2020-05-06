@@ -7,7 +7,7 @@ import com.google.firebase.messaging.RemoteMessage;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
-    private String TAG ="MyFirebase";
+    private String TAG = "MyFirebase";
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -28,6 +28,5 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         //sendRegistrationToServer(token);
 
     }
-
 
 }

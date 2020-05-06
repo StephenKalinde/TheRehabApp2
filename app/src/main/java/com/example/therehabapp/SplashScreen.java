@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 public class SplashScreen extends AppCompatActivity {
@@ -40,4 +41,6 @@ public class SplashScreen extends AppCompatActivity {
        },SPLASH_SCREEN_LENGTH);
 
     }
+
+
 }

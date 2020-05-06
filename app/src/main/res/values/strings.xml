@@ -64,4 +64,5 @@
     <string name="feedback_string">Outpatient programme has helped me in some of my hardest times, being able to share my story and having the support of an outpatient gave me hope knowing im not alone.</string>
     <string name="jacque_testimony">I will forever be thankful because what outpatient has given me is a second chance to life so i can be with with my family again and I could never be more happy and blessed than what I am now.</string>
     <string name="kim_string">I am so grateful for the outpatient programme and to have the people that care and support me through it all. Depression is not an easy road to be on but having my loved ones and the team support has really been my stepping stone </string>
+    <string name="default_notification_channel_id">This is my default channel</string>
 </resources>

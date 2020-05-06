@@ -110,14 +110,7 @@ public class NewMessage extends AppCompatActivity {
                 TopMessage topMessage = new TopMessage(messageEditView.getText().toString(), dateString,time, uid, inboxId);
                 topMessageRef.setValue(topMessage);
 
-                //FCM
-                RemoteMessage.Builder remoteMessageBuilder = new RemoteMessage.Builder(inboxId);
-                remoteMessageBuilder.addData("message",newMessage.Message);
-                remoteMessageBuilder.addData("uid",newMessage.UID);
-
-                RemoteMessage remoteMessage = remoteMessageBuilder.build();
-
-                FirebaseMessaging.getInstance().send(remoteMessage);
+                //FCM TO CLOUDSTORE
 
                 messageEditView.setText("");
 
@@ -175,7 +168,7 @@ public class NewMessage extends AppCompatActivity {
                  * if the uid of the message is not the same as the current uid (im the recipient), show notification
                  */
 
-                if(!uid.equals(message.UID)){
+                /**if(!uid.equals(message.UID)){
 
                     Intent intent = new Intent(getApplicationContext(),NewMessage.class);
                     intent.putExtra("userEmail",userEmail);
@@ -201,12 +194,14 @@ public class NewMessage extends AppCompatActivity {
                     NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
                     notificationManagerCompat.notify(NOTIFICATION_ID,notification.build());
 
-                }
+                } **/
 
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+
 
             }
 
@@ -224,6 +219,7 @@ public class NewMessage extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
+
         });
 
         return messages;

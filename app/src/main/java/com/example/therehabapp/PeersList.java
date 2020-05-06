@@ -92,27 +92,27 @@ public class PeersList  extends ArrayAdapter<User> {
 
                         String userEmailAddress= myUser.EmailAddress;
                         String inboxId= myEmailAddress+userEmailAddress;
+                        String myUid =  myUser.UID;
 
-                        Peer myPeer = new Peer(userEmailAddress,inboxId);
+                        Peer myPeer = new Peer(userEmailAddress,inboxId,myUid);
 
                         dbRef.push().setValue(myPeer);
 
-                        Peer thisPeer = new Peer(myEmailAddress,inboxId); //my reference to them as a peer
+                        Peer thisPeer = new Peer(myEmailAddress,inboxId,uid); //my reference to them as a peer
 
-                        DatabaseReference dbRefAlt= FirebaseDatabase.getInstance().getReference("Peers/"+myUser.UID);
+                        //DatabaseReference dbRefAlt= FirebaseDatabase.getInstance().getReference("Peers/"+myUser.UID);
+                        DatabaseReference requestsRef= FirebaseDatabase.getInstance().getReference("Requests"+ myUser.UID);
 
-                        dbRefAlt.push().setValue(thisPeer);
+                        //dbRefAlt.push().setValue(thisPeer);
+                        requestsRef.push().setValue(thisPeer);
 
                         //create folder for inbox
-                        String myUid =FirebaseAuth.getInstance().getUid();
-                        String userUid = myUser.UID;
-
-                        String inboxID= myUid+userUid;
+                        String inboxID= uid + myUid;
 
                         //DatabaseReference dbInbox = FirebaseDatabase.getInstance().getReference("Inboxes/"+inboxID);
 
-                        DatabaseReference myDbInboxId = FirebaseDatabase.getInstance().getReference("InboxIDs/"+myUid);
-                        DatabaseReference userDbInboxId =FirebaseDatabase.getInstance().getReference("InboxIDs/"+userUid);
+                        DatabaseReference myDbInboxId = FirebaseDatabase.getInstance().getReference("InboxIDs/"+uid);
+                        DatabaseReference userDbInboxId =FirebaseDatabase.getInstance().getReference("InboxIDs/"+myUid);
 
                         myDbInboxId.push().setValue(inboxID);
                         userDbInboxId.push().setValue(inboxID);
