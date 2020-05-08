@@ -53,6 +53,7 @@ public class NewMessage extends AppCompatActivity {
 
     private String inboxId;
     private String userEmail;
+    private String destinationUID;
     private String nameTitle;
 
     private String CHANNEL_ID="default";
@@ -73,6 +74,7 @@ public class NewMessage extends AppCompatActivity {
         myRefreshLayout = findViewById(R.id.messages_refresh_layout);
 
         userEmail = getIntent().getStringExtra("userEmail");
+        destinationUID = getIntent().getStringExtra("destinationUID");
 
         inboxId= getIntent().getStringExtra("inboxid");
         uid = FirebaseAuth.getInstance().getUid();
@@ -104,13 +106,21 @@ public class NewMessage extends AppCompatActivity {
 
                 String time = dateTimeString.substring(11,16);
 
-                Message newMessage =new Message(messageEditView.getText().toString(),dateString,time, uid);
+                Message newMessage =new Message(messageEditView.getText().toString(),dateString,time, uid,destinationUID);
                 myThreadRef.push().setValue(newMessage);
 
                 TopMessage topMessage = new TopMessage(messageEditView.getText().toString(), dateString,time, uid, inboxId);
                 topMessageRef.setValue(topMessage);
 
                 //FCM TO CLOUDSTORE
+                RemoteMessage.Builder remoteMessage = new RemoteMessage.Builder(uid);
+                remoteMessage.addData("content",newMessage.Message);
+                remoteMessage.addData("time",newMessage.Time);
+                remoteMessage.addData("uid",newMessage.UID);
+                remoteMessage.addData("date",newMessage.Date);
+
+                RemoteMessage message = remoteMessage.build();
+                FirebaseMessaging.getInstance().send(message);
 
                 messageEditView.setText("");
 

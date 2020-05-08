@@ -46,6 +46,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
             switch(menuItem.getItemId())
             {
+
                 case R.id.nav_home:
                     FragmentHome homeFragment= new FragmentHome();
                     FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
@@ -80,6 +81,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                     fragmentTransaction5.replace(R.id.fragments_container,happeningsFragment,"FragmentName");
                     fragmentTransaction5.commit();
                     break;
+
             }
 
             return true;
@@ -96,6 +98,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     private FirebaseDatabase firebaseDb;
     private DatabaseReference dbRef;
     private DatabaseReference logsRef;
+    private DatabaseReference inboxesRef;
     private FirebaseAuth auth;
     private String uid;
 
@@ -125,7 +128,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
         dbRef = firebaseDb.getReference("Diagnoses/" + uid);
         logsRef = firebaseDb.getReference("ScheduleLogs/"+ uid);
 
-        //subscribe to topic uid
+        //subscribe to topic {uid}
         FirebaseMessaging.getInstance().subscribeToTopic(uid).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
@@ -133,19 +136,17 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                 if(task.isSuccessful())
                 {
 
-                    Toast.makeText(Home.this, "Welcome To The Rehab", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Home.this, "Welcome To The Rehab",Toast.LENGTH_SHORT).show();
 
                 }
 
                 else{
 
-                    Log.d("TheRehabError: ",task.getException().toString());
-                    Toast.makeText(Home.this, "Device not connected to a network", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Home.this, "",Toast.LENGTH_LONG).show();
 
                 }
 
             }
-
         });
 
         BottomNavigationView bottomNav= (BottomNavigationView) findViewById(R.id.bottom_nav_bar);
@@ -182,6 +183,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
                     case R.id.sign_out:
 
+                        FirebaseMessaging.getInstance().unsubscribeFromTopic(uid);
                         auth.signOut();
                         startActivity(new Intent(Home.this,SignUp.class));
                         finishAffinity();
@@ -205,9 +207,8 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     protected void onStart() {
 
         super.onStart();
-        GetInboxIds();
 
-        //currentWeekStart = new DateSplit();
+        GetInboxIds();
         SeekLayout();
 
     }
@@ -568,7 +569,6 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                     myScheduleArray[9] =log.week10;
                     myScheduleArray[10] =log.week11;
                     myScheduleArray[11] =log.week12;
-
 
                 }
 

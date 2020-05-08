@@ -99,6 +99,7 @@ public class ContactsList extends AppCompatActivity{
                 intent.putExtra("userEmail", userEmail);
                 intent.putExtra("userName", userName);
                 intent.putExtra("inboxid",inboxId);
+                intent.putExtra("destinationUID",peerUid);
 
                 startActivity(intent);
             }
