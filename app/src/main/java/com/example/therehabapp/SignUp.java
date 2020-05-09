@@ -18,6 +18,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class SignUp extends AppCompatActivity {
 
@@ -25,8 +28,10 @@ public class SignUp extends AppCompatActivity {
      private Button loginBtn;
      public  EditText nameView, surnameView, cellNumberView, emailAddView, passwordView, confirmPasswordView;
      private FirebaseAuth mAuth;
+
      private static final String TAG="SignUpActivity";
      private ProgressDialog progressDialogBox;
+     private String uid;
 
      private String name, surname, emailAdd, password, confirmPassword , cellNumber;
 
@@ -97,15 +102,6 @@ public class SignUp extends AppCompatActivity {
 
     }
 
-    /**@Override
-    public void onStart()
-    {
-        super.onStart();
-        //check if user os signed (non-null) and updater UI accordingly.
-        FirebaseUser currentUser =mAuth.getCurrentUser();
-        updateUI(currentUser);
-    }**/
-
     private void CreateAccount(String name, String surname , String cellNumber, String emailAdd, String password, String confirmPassword)
     {
             mAuth.createUserWithEmailAndPassword(emailAdd, password)
@@ -116,6 +112,8 @@ public class SignUp extends AppCompatActivity {
                             {
                                 Log.d(TAG, "createUserWithEmail: successful");
                                 FirebaseUser user =mAuth.getCurrentUser();
+                                uid = user.getUid();
+                                initFCM();
                                 progressDialogBox.cancel();
                                 Toast.makeText(SignUp.this, "Sign Up Successful!", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(SignUp.this, TermsAndConditions.class ));
@@ -132,5 +130,41 @@ public class SignUp extends AppCompatActivity {
                     });
 
     }
+
+    private void initFCM()
+    {
+
+        String token = FirebaseInstanceId.getInstance().getToken();
+        Log.d("DebuggMe: ",token);
+        sendRegistrationTokenToServer(token);
+    }
+
+    //save fcm token to server
+    private void sendRegistrationTokenToServer(String token)
+    {
+
+        DatabaseReference tokenRef = FirebaseDatabase.getInstance().getReference("Tokens/"+uid);
+        tokenRef.setValue(token).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if(task.isSuccessful())
+                {
+
+                    Log.d("DebuggMe: ","Token saved successfully");
+
+                }
+
+                else{
+
+                    Log.d("DebuggMe: "," Token failed to save");
+
+                }
+
+            }
+        });
+
+    }
+
 
 }

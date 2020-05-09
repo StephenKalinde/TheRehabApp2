@@ -17,6 +17,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class Login extends AppCompatActivity {
 
@@ -26,6 +29,7 @@ public class Login extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private static final String TAG = "LoginActivity";
     private ProgressDialog progressDialogBox;
+    private String uid;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +73,8 @@ public class Login extends AppCompatActivity {
                         {
                             Log.d(TAG, "signInWithEmail:  success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            uid = user.getUid();
+                            initFCM();
                             progressDialogBox.cancel();
                             Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG);
                             startActivity(new Intent(Login.this, Home.class));
@@ -81,4 +87,40 @@ public class Login extends AppCompatActivity {
                     }
                 });
     }
+
+    private void initFCM()
+    {
+
+        String token = FirebaseInstanceId.getInstance().getToken();
+        Log.d("DebuggMe: ",token);
+        sendRegistrationTokenToServer(token);
+    }
+
+    //save fcm token to server
+    private void sendRegistrationTokenToServer(String token)
+    {
+
+        DatabaseReference tokenRef = FirebaseDatabase.getInstance().getReference("Tokens/"+uid);
+        tokenRef.setValue(token).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+                if(task.isSuccessful())
+                {
+
+                    Log.d("DebuggMe: ","Token saved successfully");
+
+                }
+
+                else{
+
+                    Log.d("DebuggMe: "," Token failed to save");
+
+                }
+
+            }
+        });
+
+    }
+
 }
