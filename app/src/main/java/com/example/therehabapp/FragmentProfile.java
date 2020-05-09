@@ -94,6 +94,7 @@ public class FragmentProfile extends Fragment {
     private Button messagesBtn;
     private Button peersBtn;
     private Button requestsBtn;
+    private Button journalBtn;
     private TextView nameView;
     private String userName;
 
@@ -127,6 +128,7 @@ public class FragmentProfile extends Fragment {
         messagesBtn = (Button) myView.findViewById(R.id.messages_btn);
         peersBtn= (Button) myView.findViewById(R.id.peers_btn);
         requestsBtn = (Button) myView.findViewById(R.id.requests_btn);
+        journalBtn = (Button) myView.findViewById(R.id.my_journal_btn);
         nameView = (TextView) myView.findViewById(R.id.user_name_view);
 
         DatabaseReference userNameRef = FirebaseDatabase.getInstance().getReference("Users/"+uid+"/Name");
@@ -172,6 +174,15 @@ public class FragmentProfile extends Fragment {
             @Override
             public void onClick(View v) {
 
+            }
+        });
+
+        journalBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(),Journal.class);
+                startActivity(intent);
             }
         });
 

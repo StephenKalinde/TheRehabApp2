@@ -56,9 +56,6 @@ public class NewMessage extends AppCompatActivity {
     private String destinationUID;
     private String nameTitle;
 
-    private String CHANNEL_ID="default";
-    private int NOTIFICATION_ID =100;
-
     @Override
     protected void onCreate(Bundle savedInstance){
 
@@ -112,15 +109,6 @@ public class NewMessage extends AppCompatActivity {
                 TopMessage topMessage = new TopMessage(messageEditView.getText().toString(), dateString,time, uid, inboxId);
                 topMessageRef.setValue(topMessage);
 
-                //FCM TO CLOUDSTORE
-                RemoteMessage.Builder remoteMessage = new RemoteMessage.Builder(uid);
-                remoteMessage.addData("content",newMessage.Message);
-                remoteMessage.addData("time",newMessage.Time);
-                remoteMessage.addData("uid",newMessage.UID);
-                remoteMessage.addData("date",newMessage.Date);
-
-                RemoteMessage message = remoteMessage.build();
-                FirebaseMessaging.getInstance().send(message);
 
                 messageEditView.setText("");
 
@@ -140,8 +128,6 @@ public class NewMessage extends AppCompatActivity {
         threadAdapter = new MessagesThread(NewMessage.this,myMessages);
         threadsListView.setAdapter(threadAdapter);
         threadAdapter.notifyDataSetChanged();
-
-        CreateChannel();
 
     }
 
@@ -233,35 +219,6 @@ public class NewMessage extends AppCompatActivity {
         });
 
         return messages;
-
-    }
-
-    private void NotificationListener()
-    {
-
-    }
-
-    /**
-     * creates a channel for the notifications
-     */
-
-    private void CreateChannel()
-    {
-
-        if(Build.VERSION.SDK_INT >= 26)
-        {
-
-            String channelName = "messages_channel";
-            String description = "This Is My Notification Channel";
-            int importance =  NotificationManager.IMPORTANCE_DEFAULT;
-
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID,channelName,importance);
-            channel.setDescription(description);
-
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
-
-        }
 
     }
 

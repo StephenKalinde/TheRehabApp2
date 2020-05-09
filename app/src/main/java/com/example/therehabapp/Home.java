@@ -189,11 +189,6 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                         finishAffinity();
                         break;
 
-                    case R.id.journal:
-
-                        startActivity(new Intent(Home.this, Journal.class));
-                        break;
-
                 }
 
                 return false;

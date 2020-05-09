@@ -6,10 +6,6 @@
         android:title="FAQ"/>
 
     <item
-        android:id="@+id/journal"
-        android:title="Journal"/>
-
-    <item
         android:id="@+id/sign_out"
         android:title="Sign Out"/>
 

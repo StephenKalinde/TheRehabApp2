@@ -13,10 +13,34 @@
         android:background="@drawable/header_image">
 
         <ImageView
-            android:id="@+id/my_logo"
+            android:id="@+id/logo"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/logo"/>
+            android:src="@drawable/logo"
+            android:elevation="20dp"/>
+
+        <TextView
+            android:id="@+id/title_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/logo"
+            android:layout_centerHorizontal="true"
+            android:text="THE REHAB"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:textColor="@android:color/white"
+            android:layout_marginLeft="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/logo"
+            android:layout_below="@+id/title_view"
+            android:textSize="12dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/white"
+            android:text="When I become we , illness becomes wellness"/>
 
 
     </RelativeLayout>
