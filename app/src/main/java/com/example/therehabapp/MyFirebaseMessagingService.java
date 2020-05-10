@@ -21,8 +21,10 @@ import java.util.Map;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
-    private int BROADCAST_NOTIFICATION_ID =1;
-    private int NOTIFICATION_ID = 100;
+    private int BROADCAST_NOTIFICATION_ID = 1;
+    private int NOTIFICATION_ID_MSG = 100;
+    private int NOTIFICATION_ID_REQUEST = 150;
+
     private String CHANNEL_ID= "default";
 
     @Override
@@ -30,45 +32,76 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         super.onMessageReceived(remoteMessage);
 
         Map<String, String> messageData = remoteMessage.getData();
-        String myUID = messageData.get("topic");
-        String title = messageData.get("title");
         String data_type = messageData.get("data_type");
-        String senderUID = messageData.get("senderUID");
-        String senderName = messageData.get("senderName");
 
-        //tests
-        Log.d("DebuggMe: Title", title);
-        Log.d("DebuggMe: Data Type", data_type);
-        Log.d("DebuggMe: Topic", myUID);
-        Log.d("DebuggMe: Sender UID", senderUID);
-        Log.d("DebuggMe: Sender UID", senderName);
+        /** Handling for incoming messages*/
 
-        CreateChannel();
+        if(data_type.equals("direct_message")) {
 
-        Intent intent = new Intent(getApplicationContext(),Messages.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            String myUID = messageData.get("topic");
+            String title = messageData.get("title");
+            String senderUID = messageData.get("senderUID");
+            String senderName = messageData.get("senderName");
 
-        TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(getApplicationContext());
-        taskStackBuilder.addNextIntentWithParentStack(intent);
+            CreateNewMessageChannel();
 
-        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
+            Intent intent = new Intent(getApplicationContext(), Messages.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-         //notification builder
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
-         .setSmallIcon(R.drawable.logo)
-         .setContentTitle(title)
-         .setContentText("New Message From " +senderName)
-         .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-         .setContentIntent(pendingIntent)
-         .setAutoCancel(true);
+            TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(getApplicationContext());
+            taskStackBuilder.addNextIntentWithParentStack(intent);
 
-         //show notification
-        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
-        notificationManagerCompat.notify(NOTIFICATION_ID,notificationBuilder.build());
+            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
+
+            //notification builder
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+                    .setSmallIcon(R.drawable.logo)
+                    .setContentTitle(title)
+                    .setContentText("New Message From " + senderName)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true);
+
+            //show notification
+            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+            notificationManagerCompat.notify(NOTIFICATION_ID_MSG, notificationBuilder.build());
+
+        }
+
+        if(data_type.equals("request"))
+        {
+
+            String title = messageData.get("title");
+            String inboxId = messageData.get("inboxId");
+            String peerEmail = messageData.get("peerEmail");
+            CreateNewMessageChannel();
+
+            Intent intent = new Intent(getApplicationContext(), AllPeers.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+            TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(getApplicationContext());
+            taskStackBuilder.addNextIntentWithParentStack(intent);
+
+            PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
+
+            //notification builder
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
+                    .setSmallIcon(R.drawable.logo)
+                    .setContentTitle(title)
+                    .setContentText(peerEmail)
+                    .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                    .setContentIntent(pendingIntent)
+                    .setAutoCancel(true);
+
+            //show notification
+            NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
+            notificationManagerCompat.notify(NOTIFICATION_ID_REQUEST, notificationBuilder.build());
+
+        }
 
     }
 
-    private void CreateChannel() {
+    private void CreateNewMessageChannel() {
 
         if (Build.VERSION.SDK_INT >= 26) {
 

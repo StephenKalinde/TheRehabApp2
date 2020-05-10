@@ -101,11 +101,12 @@ public class PeersList  extends ArrayAdapter<User> {
                         Peer thisPeer = new Peer(myEmailAddress,inboxId,uid); //my reference to them as a peer
 
                         //DatabaseReference dbRefAlt= FirebaseDatabase.getInstance().getReference("Peers/"+myUser.UID);
-                        DatabaseReference requestsRef= FirebaseDatabase.getInstance().getReference("Requests"+ myUser.UID);
+                        DatabaseReference requestsRef= FirebaseDatabase.getInstance().getReference("Requests/"+ myUser.UID);
 
-                        //dbRefAlt.push().setValue(thisPeer);
+                        //sends request
                         requestsRef.push().setValue(thisPeer);
 
+                        /**
                         //create folder for inbox
                         String inboxID= uid + myUid;
 
@@ -115,7 +116,7 @@ public class PeersList  extends ArrayAdapter<User> {
                         DatabaseReference userDbInboxId =FirebaseDatabase.getInstance().getReference("InboxIDs/"+myUid);
 
                         myDbInboxId.push().setValue(inboxID);
-                        userDbInboxId.push().setValue(inboxID);
+                        userDbInboxId.push().setValue(inboxID);  **/
 
                         addBtn.setText("Remove");
                         break;
