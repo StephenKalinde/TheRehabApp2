@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -31,6 +32,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.RemoteMessage;
 
@@ -54,7 +56,8 @@ public class NewMessage extends AppCompatActivity {
     private String inboxId;
     private String userEmail;
     private String destinationUID;
-    private String nameTitle;
+    private String peerName;
+    private String myName;
 
     @Override
     protected void onCreate(Bundle savedInstance){
@@ -78,9 +81,9 @@ public class NewMessage extends AppCompatActivity {
         myThreadRef = FirebaseDatabase.getInstance().getReference("Inboxes/"+inboxId);
         topMessageRef = FirebaseDatabase.getInstance().getReference("TopMessages/"+inboxId);
 
-        nameTitle= getIntent().getStringExtra("userName");
+        peerName= getIntent().getStringExtra("userName");
         setSupportActionBar(mToolBar);
-        getSupportActionBar().setTitle(nameTitle);
+        getSupportActionBar().setTitle(peerName);
 
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -103,12 +106,11 @@ public class NewMessage extends AppCompatActivity {
 
                 String time = dateTimeString.substring(11,16);
 
-                Message newMessage =new Message(messageEditView.getText().toString(),dateString,time, uid,destinationUID);
+                Message newMessage =new Message(messageEditView.getText().toString(),dateString,time, uid,destinationUID,myName);
                 myThreadRef.push().setValue(newMessage);
 
                 TopMessage topMessage = new TopMessage(messageEditView.getText().toString(), dateString,time, uid, inboxId);
                 topMessageRef.setValue(topMessage);
-
 
                 messageEditView.setText("");
 
@@ -124,6 +126,7 @@ public class NewMessage extends AppCompatActivity {
 
         super.onStart();
 
+        FindMyName();
         myMessages =GetThread();
         threadAdapter = new MessagesThread(NewMessage.this,myMessages);
         threadsListView.setAdapter(threadAdapter);
@@ -219,6 +222,29 @@ public class NewMessage extends AppCompatActivity {
         });
 
         return messages;
+
+    }
+
+    private void FindMyName()
+    {
+
+        DatabaseReference myNameRef = FirebaseDatabase.getInstance().getReference("Users/"+uid+"/Name");
+
+        myNameRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                myName = dataSnapshot.getValue(String.class);
+                Log.d("DebuggMe: ",myName);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
     }
 
