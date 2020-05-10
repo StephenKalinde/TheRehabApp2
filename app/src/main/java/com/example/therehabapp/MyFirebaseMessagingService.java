@@ -57,7 +57,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
          .setSmallIcon(R.drawable.logo)
          .setContentTitle(title)
-         .setContentText("New Message From: " +senderName)
+         .setContentText("New Message From " +senderName)
          .setPriority(NotificationCompat.PRIORITY_DEFAULT)
          .setContentIntent(pendingIntent)
          .setAutoCancel(true);
