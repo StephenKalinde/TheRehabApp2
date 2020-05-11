@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Debug;
+import android.os.Handler;
 import android.os.health.ServiceHealthStats;
 import android.util.Log;
 import android.view.MenuItem;
+import android.webkit.DateSorter;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -36,7 +39,9 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.Console;
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Home extends AppCompatActivity implements FragmentHome.OnFragmentInteractionListener ,FragmentAbout.OnFragmentInteractionListener, FragmentDisorders.OnFragmentInteractionListener,FragmentHappenings.OnFragmentInteractionListener, FragmentProfile.OnFragmentInteractionListener {
@@ -98,14 +103,12 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
     private FirebaseDatabase firebaseDb;
     private DatabaseReference dbRef;
-    private DatabaseReference logsRef;
     private DatabaseReference inboxesRef;
     private FirebaseAuth auth;
     private String uid;
 
     private ArrayList<String> inboxIdsList;
 
-    private DateSplit currentWeekStart;
     private ScheduleLog log;
 
     DateSplit[] myScheduleArray;
@@ -127,7 +130,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
         auth= FirebaseAuth.getInstance();
         uid = auth.getUid();
         dbRef = firebaseDb.getReference("Diagnoses/" + uid);
-        logsRef = firebaseDb.getReference("ScheduleLogs/"+ uid);
+
 
         //subscribe to topic {uid}
         FirebaseMessaging.getInstance().subscribeToTopic(uid).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -205,46 +208,20 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
         super.onStart();
 
         GetInboxIds();
-        SeekLayout();
+
+        GetSchedule();
 
     }
 
-    private void SeekLayout()
+    private void SeekLayout(final int logWeek)
     {
-
-        long millis = System.currentTimeMillis();
-        java.sql.Date date= new java.sql.Date(millis);
-        String dateString = date.toString();
-        DateSplit currentDate = new DateSplit(dateString);
-
-        //DateSplit[] scheduleLog = GetSchedule();
-
-        ScheduleCalculations calc = new ScheduleCalculations();
-
-        /**
-        //compare current date to each dateSplit
-        for(int i=0; i<scheduleLog.length;i++)
-        {
-
-            if(calc.CompareDates(currentDate,myScheduleArray[i+1])==true && calc.CompareDates(myScheduleArray[i],currentDate)==true) //if current date is between 2 weeks
-            {
-
-                currentWeekStart = myScheduleArray[i];
-                break;
-
-            }
-
-        } **/
-
-        //SetLayout("Addiction",currentWeekStart);
 
         dbRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                 String diagnosis = dataSnapshot.getValue(String.class);
-                SetLayout(diagnosis);
-                //SetLayout(diagnosis,currentWeekStart);
+                SetLayout(diagnosis,logWeek);
 
             }
 
@@ -271,16 +248,13 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
     }
 
-    private void SetLayout(String diagnosis)
+    private void SetLayout(String diagnosis,int logWeek)
     {
-
-       // int week = weekStartDate.Week;
 
         if(diagnosis.equals("Depression"))
         {
-            myLayout = R.layout.fragment_disorders_depression_1;
-            //switch statements
-            /**switch (week)
+
+            switch (logWeek)
             {
 
                 case 1:
@@ -331,16 +305,14 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                     myLayout = R.layout.fragment_disorders_depression_12;
                     break;
 
-            } **/
+            }
 
         }
 
         if(diagnosis.equals("Eating Disorder"))
         {
 
-            myLayout = R.layout.fragment_disorders_eating_1;
-
-            /**switch (week)
+            switch (logWeek)
             {
                 case 1:
                     myLayout = R.layout.fragment_disorders_eating_1;
@@ -389,16 +361,14 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                 case 12:
                     myLayout = R.layout.fragment_disorders_eating_12;
                     break;
-            } **/
-
+            }
 
         }
 
         if(diagnosis.equals("Addiction"))
         {
 
-            myLayout = R.layout.fragment_disorders_addiction_1;
-            /**switch (week)
+            switch (logWeek)
             {
                 case 1:
                     myLayout = R.layout.fragment_disorders_addiction_1;
@@ -447,15 +417,14 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                 case 12:
                     myLayout = R.layout.fragment_disorders_addiction_12;
                     break;
-            } **/
-
+            }
 
         }
 
-       /** if(diagnosis.equals("Anxiety"))
+        if(diagnosis.equals("Anxiety"))
         {
 
-            switch (week)
+            switch (logWeek)
             {
                 case 1:
                     myLayout = R.layout.fragment_fragment_disorders;
@@ -506,8 +475,7 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
                     break;
             }
 
-
-        } **/
+        }
 
     }
 
@@ -537,36 +505,29 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
     }
 
-    //initialise firebase token
-
-    /**
-     * returns the returns DateSplit[] from db
-     */
-
-    public DateSplit[] GetSchedule()
+    public void GetSchedule()
     {
+
+        String myUID = FirebaseAuth.getInstance().getUid();
+        DatabaseReference logsRef = FirebaseDatabase.getInstance().getReference("ScheduleLogs/"+ myUID);
 
         logsRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                for(DataSnapshot logSnapshot: dataSnapshot.getChildren())
+                for(DataSnapshot shot: dataSnapshot.getChildren())
                 {
 
-                    ScheduleLog log = logSnapshot.getValue(ScheduleLog.class) ;
+                    ScheduleLog log = shot.getValue(ScheduleLog.class);
 
-                    myScheduleArray[0] =log.week1;
-                    myScheduleArray[1] =log.week2;
-                    myScheduleArray[2] =log.week3;
-                    myScheduleArray[3] =log.week4;
-                    myScheduleArray[4] =log.week5;
-                    myScheduleArray[5] =log.week6;
-                    myScheduleArray[6] =log.week7;
-                    myScheduleArray[7] =log.week8;
-                    myScheduleArray[8] =log.week9;
-                    myScheduleArray[9] =log.week10;
-                    myScheduleArray[10] =log.week11;
-                    myScheduleArray[11] =log.week12;
+                    //get current date
+                    long millis = System.currentTimeMillis();
+                    java.sql.Date date= new java.sql.Date(millis);
+                    String currentDateString= date.toString();
+                    DateSplit dateSplit = new DateSplit(currentDateString);
+
+                    //set layout
+                    int logWeek = FindSchedule(log,dateSplit);
+                    SeekLayout(logWeek);
 
                 }
 
@@ -578,7 +539,59 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
             }
         });
 
-        return myScheduleArray;
+
+    }
+
+    private int FindSchedule(ScheduleLog log,DateSplit dateSplit)
+    {
+
+        int week =0;     //current log week init
+
+        //order log
+        DateSplit[] orderedLog = new DateSplit[12];
+        orderedLog[0]=log.week1;
+        orderedLog[1]=log.week2;
+        orderedLog[2]=log.week3;
+        orderedLog[3]=log.week4;
+        orderedLog[4]=log.week5;
+        orderedLog[5]=log.week6;
+        orderedLog[6]=log.week7;
+        orderedLog[7]=log.week8;
+        orderedLog[8]=log.week9;
+        orderedLog[9]=log.week10;
+        orderedLog[10]=log.week11;
+        orderedLog[11]=log.week12;
+
+        //compare current date to log.week{i} && log.week{i+1}
+        for(int i = 0; i < 12; i++)
+        {
+
+            if( i <= 10) {   //avoid index array out of bounds
+
+                ScheduleCalculations calculations = new ScheduleCalculations();
+                boolean isBefore = calculations.CompareDates(dateSplit, orderedLog[i + 1]);   //current date is before logweek i+1
+                boolean isAfter = calculations.CompareDates(orderedLog[i], dateSplit);      //current date is after logweek i
+
+                if (isBefore == true && isAfter == true) {
+
+                    week= i+1;
+                    break;
+
+                }
+
+            }
+
+            else {
+
+                week =0;
+
+            }
+
+        }
+
+        //return int of current schedule
+
+        return week;
 
     }
 
@@ -586,7 +599,9 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     public boolean onOptionsItemSelected(MenuItem item)
     {
         if(mToogle.onOptionsItemSelected(item)){
+
             return true;
+
         }
 
         return super.onOptionsItemSelected(item);

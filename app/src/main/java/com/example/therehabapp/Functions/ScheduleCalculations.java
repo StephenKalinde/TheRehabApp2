@@ -208,7 +208,7 @@ public class ScheduleCalculations {
     }
 
     /**
-     returns boolean stating whether date1 is before or after date2 */
+     returns boolean stating whether date1 is before date2 */
     public boolean CompareDates(DateSplit date1, DateSplit date2)
     {
 
