@@ -67,6 +67,7 @@
         <activity android:name=".Gallery"/>
         <activity android:name=".Journal"/>
         <activity android:name=".NewNote"/>
+        <activity android:name=".PeerRequests"/>
         <activity android:name=".NewMessage"
             android:parentActivityName=".ContactsList"/>
         <activity android:name=".Messages"

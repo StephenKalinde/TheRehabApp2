@@ -174,6 +174,9 @@ public class FragmentProfile extends Fragment {
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(getActivity(),PeerRequests.class);
+                startActivity(intent);
+
             }
         });
 

@@ -47,8 +47,6 @@ public class Messages extends AppCompatActivity{
         inboxIDs = new ArrayList<>();
         inboxIDs2 = new ArrayList<>();
 
-        //
-
         auth = FirebaseAuth.getInstance();
         uid= auth.getUid();
 

@@ -76,7 +76,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             String peerEmail = messageData.get("peerEmail");
             CreateNewMessageChannel();
 
-            Intent intent = new Intent(getApplicationContext(), AllPeers.class);
+            Intent intent = new Intent(getApplicationContext(), PeerRequests.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
             TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(getApplicationContext());
