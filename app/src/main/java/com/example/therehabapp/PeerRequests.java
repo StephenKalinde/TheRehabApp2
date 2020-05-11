@@ -2,6 +2,7 @@ package com.example.therehabapp;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -50,6 +51,23 @@ public class PeerRequests extends AppCompatActivity {
         adapter = new RequestAdapter(PeerRequests.this,peerRequests);
         requestListView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+
+        switch (item.getItemId()){
+
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+
+        }
+
+        return super.onOptionsItemSelected(item);
 
     }
 
