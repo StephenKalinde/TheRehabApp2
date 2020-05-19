@@ -3,6 +3,7 @@ package com.example.therehabapp;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -86,6 +87,27 @@ public class Messages extends AppCompatActivity{
     @Override
     protected void onStart() {
         super.onStart();
+
+        //start progress dialogue
+        final ProgressDialog progressDialogBox = new ProgressDialog(Messages.this, R.style.MyDialogTheme);
+        progressDialogBox.setTitle("Loading...");
+        progressDialogBox.setCancelable(false);
+        progressDialogBox.show();
+
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+
+                //adapter
+                MessagesAdapter  adapter = new MessagesAdapter(Messages.this,threadsMessasges);
+                threadsListView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+
+                progressDialogBox.cancel();
+
+            }
+        },3000);
+
 
     }
 

@@ -13,19 +13,20 @@ import androidx.annotation.Nullable;
 
 import com.example.therehabapp.Messaging.Message;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MessagesAdapter extends ArrayAdapter {
 
     private Activity context;
-    private List<String> threadsList;
+    private ArrayList<Message> messagesList;
 
-    public MessagesAdapter(Activity context, List<String> userList)
+    public MessagesAdapter(Activity context, ArrayList<Message> messagesList)
     {
 
-        super(context , R.layout.message_list_item, userList);
+        super(context , R.layout.message_list_item, messagesList);
         this.context= context;
-        this.threadsList = userList;
+        this.messagesList = messagesList;
 
     }
 
@@ -34,8 +35,18 @@ public class MessagesAdapter extends ArrayAdapter {
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
         LayoutInflater inflater = context.getLayoutInflater();
-        /**
         View listViewItem= inflater.inflate(R.layout.message_list_item,null,true);
+        TextView messagePreviewView =(TextView)  listViewItem.findViewById(R.id.message_preview_view);
+        TextView peerNameView = (TextView) listViewItem.findViewById(R.id.peer_name_view);
+        TextView messageTimeView= (TextView) listViewItem.findViewById(R.id.message_time_view);
+
+        Message message = messagesList.get(position);
+        messagePreviewView.setText(message.Message);
+        peerNameView.setText(message.SenderName);
+        messageTimeView.setText(message.Time);
+
+        /**
+
 
         ImageView profileImage= (ImageView) listViewItem.findViewById(R.id.peer_pic_view);
         TextView messagePreviewView =(TextView)  listViewItem.findViewById(R.id.message_preview_view);
@@ -51,12 +62,7 @@ public class MessagesAdapter extends ArrayAdapter {
 
         return listViewItem; **/
 
-        View item  = inflater.inflate(R.layout.testing_view,null,true);
-        TextView myText = (TextView) item.findViewById(R.id.bros_up);
-
-        myText.setText(threadsList.get(position));
-
-        return item;
+        return listViewItem;
 
     }
 }

@@ -2,22 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="120dp">
 
-    <ImageView
+   <!-- <ImageView
         android:id="@+id/peer_pic_view"
         android:layout_height="100dp"
         android:layout_width="100dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:background="@android:color/black"/>
+        android:background="@android:color/black"/>   -->
 
     <TextView
         android:id="@+id/peer_name_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/peer_pic_view"
         android:textColor="@android:color/black"
-        android:textSize="30dp"
+        android:textSize="25dp"
         android:text="MY Text"
+        android:fontFamily="@font/yantramanav"
         android:textStyle="bold"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="15dp"/>
@@ -26,12 +26,12 @@
         android:id="@+id/message_preview_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/peer_pic_view"
         android:textColor="@android:color/black"
         android:textSize="20dp"
         android:text="My Preview"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/yantramanav"
+        android:layout_below="@+id/peer_name_view"
+        android:layout_marginBottom="15dp"
         android:layout_marginLeft="15dp"/>
 
     <TextView
@@ -39,6 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:fontFamily="@font/yantramanav"
         android:textColor="@android:color/black"
         android:textSize="20dp"
         android:text="00.00"
