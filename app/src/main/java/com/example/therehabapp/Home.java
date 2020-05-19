@@ -251,6 +251,8 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
     private void SetLayout(String diagnosis,int logWeek)
     {
 
+        /** NB:set case 0: statements for all diagnoses **/
+
         if(diagnosis.equals("Depression"))
         {
 

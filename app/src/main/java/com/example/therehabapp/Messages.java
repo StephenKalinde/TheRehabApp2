@@ -6,17 +6,25 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.textclassifier.ConversationActions;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import com.example.therehabapp.Messaging.Message;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
@@ -28,7 +36,7 @@ public class Messages extends AppCompatActivity{
 
     private ArrayList<String> inboxIDs;
     private ArrayList<String> inboxIDs2;
-    private ArrayList<TopMessage> topMessagesX;
+    private ArrayList<Message> threadsMessasges;
 
     private FirebaseAuth auth;
     private FirebaseDatabase firebaseDatabase;
@@ -42,6 +50,8 @@ public class Messages extends AppCompatActivity{
     {
 
         super.onCreate(savedInstanceState);
+        threadsMessasges = new ArrayList<>();
+        GetTopMessages();
         setContentView(R.layout.messages_view);
 
         inboxIDs = new ArrayList<>();
@@ -51,7 +61,6 @@ public class Messages extends AppCompatActivity{
         uid= auth.getUid();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
-        inboxIdsRef = firebaseDatabase.getReference("InboxIDs/"+uid);
 
         toolbar = (Toolbar) findViewById(R.id.messages_toolbar);
         threadsListView = (ListView) findViewById(R.id.threads_list_view);
@@ -78,15 +87,6 @@ public class Messages extends AppCompatActivity{
     protected void onStart() {
         super.onStart();
 
-        progressDialogBox = new ProgressDialog(Messages.this, R.style.MyDialogTheme);
-        progressDialogBox.setTitle("Messages");
-        progressDialogBox.setMessage("Loading...");
-        progressDialogBox.setCancelable(false);
-        progressDialogBox.show();
-
-        progressDialogBox.cancel();
-
-        //set Adapter here
     }
 
     @Override
@@ -105,65 +105,60 @@ public class Messages extends AppCompatActivity{
 
     }
 
-    private synchronized ArrayList<TopMessage> GetTopMessages ()
+    private void GetTopMessages ()
     {
 
-        final ArrayList<TopMessage> topMessagesList = new ArrayList<>();
-
-        inboxIdsRef.addValueEventListener(new ValueEventListener() {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        String myUid = mAuth.getUid();
+        DatabaseReference inboxIdsRef = FirebaseDatabase.getInstance().getReference("InboxIDs/"+myUid);
+        inboxIdsRef.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                for(DataSnapshot idSnapshot: dataSnapshot.getChildren())
-                {
+                String id = dataSnapshot.getValue(String.class);            //inbox id
+                FillTopMessage(id);
 
-                    String id = idSnapshot.getValue(String.class);
-                    Log.d("Debugg: idGet",id);
+            }
 
-                    TopMessage topMessage = GetTopMessage(id); //await this process
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                    Log.d("Debugg: TopMessageOutCo",topMessage.Message);
+            }
 
-                    topMessagesList.add(topMessage);
-                    //topMessagesList.add(topMessage);
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
 
+            }
 
-
-                }
-
-                //done.countDown();
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-
-
             }
-
         });
-
-
-       // Log.d("Debugg: TopMessageLstOt",""+topMessagesList.size());
-        return topMessagesList;
 
     }
 
-    private TopMessage GetTopMessage(String inboxId)
+    private void FillTopMessage(String inboxId)
     {
 
-        final DatabaseReference topMessageRef = firebaseDatabase.getReference("TopMessages/"+inboxId);
-        final ArrayList<TopMessage> topMessageCarry = new ArrayList<>();
-
-        topMessageRef.addValueEventListener(new ValueEventListener() {
+        Query messagesQuery = firebaseDatabase.getReference("Inboxes/"+inboxId).orderByKey().limitToLast(1); //thread firebase instance
+        messagesQuery.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                TopMessage topMessage = dataSnapshot.getValue(TopMessage.class);
-                Log.d("Debugg: TopMessageGet",topMessage.Message);
-                topMessageCarry.add(topMessage);
+                for(DataSnapshot messageSnapShot: dataSnapshot.getChildren())
+                {
 
+                    Message message = messageSnapShot.getValue(Message.class);
+                    Log.d("Debugger :",""+message.Message);
+                    threadsMessasges.add(message);
+
+                }
 
             }
 
@@ -172,15 +167,6 @@ public class Messages extends AppCompatActivity{
             {}
 
         });
-
-        TopMessage myTopMessage= new TopMessage();
-        myTopMessage.Message="Hey";
-        myTopMessage.InboxID="dgrbbbr";
-        myTopMessage.Date="Now";
-        myTopMessage.UID="myUser";
-        myTopMessage.Time="11:30";
-        Log.d("Debugg: TopMessageOut",myTopMessage.Message);
-        return myTopMessage;
 
     }
 
