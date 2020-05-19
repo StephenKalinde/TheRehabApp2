@@ -8,10 +8,11 @@ public class Message {
     public String UID;
     public String SenderName;
     public String DestinationUID;
+    public String InboxId;
 
     public Message(){}
 
-    public Message(String message, String date, String time, String uid, String destinationUID, String senderName)
+    public Message(String message, String date, String time, String uid, String destinationUID, String senderName,String inboxId)
     {
 
         Message = message;
@@ -20,6 +21,7 @@ public class Message {
         UID = uid;
         DestinationUID = destinationUID;
         SenderName =senderName;
+        InboxId = inboxId;
 
     }
 

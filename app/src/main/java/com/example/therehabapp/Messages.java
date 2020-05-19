@@ -4,13 +4,10 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.textclassifier.ConversationActions;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,17 +31,9 @@ public class Messages extends AppCompatActivity{
     private ListView threadsListView;
     private FloatingActionButton newMessageBtn;
     private Toolbar toolbar;
-
-    private ArrayList<String> inboxIDs;
-    private ArrayList<String> inboxIDs2;
     private ArrayList<Message> threadsMessasges;
 
-    private FirebaseAuth auth;
     private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference inboxIdsRef;
-    private String uid;
-
-    private ProgressDialog progressDialogBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -53,13 +42,8 @@ public class Messages extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         threadsMessasges = new ArrayList<>();
         GetTopMessages();
+
         setContentView(R.layout.messages_view);
-
-        inboxIDs = new ArrayList<>();
-        inboxIDs2 = new ArrayList<>();
-
-        auth = FirebaseAuth.getInstance();
-        uid= auth.getUid();
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -82,15 +66,22 @@ public class Messages extends AppCompatActivity{
             }
         });
 
+        threadsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                //open inbox for thread at position {position}
+            }
+        });
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        //start progress dialogue
         final ProgressDialog progressDialogBox = new ProgressDialog(Messages.this, R.style.MyDialogTheme);
-        progressDialogBox.setTitle("Loading...");
+        progressDialogBox.setTitle("Loading");
         progressDialogBox.setCancelable(false);
         progressDialogBox.show();
 
@@ -98,7 +89,6 @@ public class Messages extends AppCompatActivity{
             @Override
             public void run() {
 
-                //adapter
                 MessagesAdapter  adapter = new MessagesAdapter(Messages.this,threadsMessasges);
                 threadsListView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
@@ -177,7 +167,6 @@ public class Messages extends AppCompatActivity{
                 {
 
                     Message message = messageSnapShot.getValue(Message.class);
-                    Log.d("Debugger :",""+message.Message);
                     threadsMessasges.add(message);
 
                 }

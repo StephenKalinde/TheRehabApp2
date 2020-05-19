@@ -12,6 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.therehabapp.Messaging.Message;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,30 +43,59 @@ public class MessagesAdapter extends ArrayAdapter {
         LayoutInflater inflater = context.getLayoutInflater();
         View listViewItem= inflater.inflate(R.layout.message_list_item,null,true);
         TextView messagePreviewView =(TextView)  listViewItem.findViewById(R.id.message_preview_view);
-        TextView peerNameView = (TextView) listViewItem.findViewById(R.id.peer_name_view);
+        final TextView peerNameView = (TextView) listViewItem.findViewById(R.id.peer_name_view);
         TextView messageTimeView= (TextView) listViewItem.findViewById(R.id.message_time_view);
 
         Message message = messagesList.get(position);
+
+        final String senderName =message.SenderName;
+        final String destUID = message.DestinationUID;
+
         messagePreviewView.setText(message.Message);
-        peerNameView.setText(message.SenderName);
         messageTimeView.setText(message.Time);
+        //get Destination name
 
-        /**
+        String myUid = FirebaseAuth.getInstance().getUid();
 
+        DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users/"+myUid+"/Name/");
+        usersRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String name = dataSnapshot.getValue(String.class);
 
-        ImageView profileImage= (ImageView) listViewItem.findViewById(R.id.peer_pic_view);
-        TextView messagePreviewView =(TextView)  listViewItem.findViewById(R.id.message_preview_view);
-        TextView peerNameView = (TextView) listViewItem.findViewById(R.id.peer_name_view);
-        TextView messageTimeView= (TextView) listViewItem.findViewById(R.id.message_time_view);
+                if(name.equals(senderName))
+                {
 
-        Message peerMessage = threadsList.get(position);
+                    DatabaseReference destUserRef =FirebaseDatabase.getInstance().getReference("Users/" + destUID+"/Name/");
+                    destUserRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-        //set image resource from db here
-        messagePreviewView.setText(peerMessage.Message);
-        peerNameView.setText(peerMessage.UID);
-        messageTimeView.setText(peerMessage.Time);
+                            String nameToView = dataSnapshot.getValue(String.class);
+                            peerNameView.setText(nameToView);
 
-        return listViewItem; **/
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+                }
+
+                else{
+
+                    peerNameView.setText(senderName);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         return listViewItem;
 

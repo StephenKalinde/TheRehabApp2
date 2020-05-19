@@ -106,7 +106,7 @@ public class NewMessage extends AppCompatActivity {
 
                 String time = dateTimeString.substring(11,16);
 
-                Message newMessage =new Message(messageEditView.getText().toString(),dateString,time, uid,destinationUID,myName);
+                Message newMessage =new Message(messageEditView.getText().toString(),dateString,time, uid,destinationUID,myName,inboxId);
                 myThreadRef.push().setValue(newMessage);
 
                 TopMessage topMessage = new TopMessage(messageEditView.getText().toString(), dateString,time, uid, inboxId);
