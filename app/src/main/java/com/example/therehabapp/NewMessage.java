@@ -1,16 +1,8 @@
 package com.example.therehabapp;
 
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,9 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.core.app.TaskStackBuilder;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.therehabapp.Messaging.Message;
@@ -35,11 +24,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class NewMessage extends AppCompatActivity {
 
@@ -146,7 +132,9 @@ public class NewMessage extends AppCompatActivity {
                 threadsListView.setAdapter(threadAdapter);
                 threadAdapter.notifyDataSetChanged();
 
+
                 progressDialogBox.cancel();
+
 
             }
         },1500);
