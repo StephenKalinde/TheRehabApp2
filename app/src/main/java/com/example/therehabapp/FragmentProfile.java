@@ -29,7 +29,9 @@ import java.io.Serializable;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -117,6 +119,7 @@ public class FragmentProfile extends Fragment {
         inboxIDs = new ArrayList<>();
         inboxIDs = new ArrayList<>();
         topMessages = new ArrayList<>();
+        Map<String,String> holder = new HashMap<>();
 
         auth = FirebaseAuth.getInstance();
         uid = auth.getUid();
@@ -138,7 +141,6 @@ public class FragmentProfile extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 userName = dataSnapshot.getValue(String.class);
-
                 nameView.setText(userName);
 
             }
@@ -155,8 +157,10 @@ public class FragmentProfile extends Fragment {
             @Override
             public void onClick(View v) {
 
+                String myName = nameView.getText().toString();
                 Intent intent = new Intent(getActivity(),Messages.class);
                 intent.putExtra("key",topMessagesList);
+                intent.putExtra("myName",myName);
                 startActivity(intent);
 
             }

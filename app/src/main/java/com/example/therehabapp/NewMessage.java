@@ -4,10 +4,12 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -46,7 +48,7 @@ public class NewMessage extends AppCompatActivity {
     private EditText messageEditView;
     private SwipeRefreshLayout myRefreshLayout;
     private Button sendMessageBtn;
-    private List<Message> myMessages;
+    private ArrayList<Message> myMessages;
     private MessagesThread threadAdapter;
 
     private DatabaseReference myThreadRef;
@@ -54,7 +56,6 @@ public class NewMessage extends AppCompatActivity {
     private String uid;
 
     private String inboxId;
-    private String userEmail;
     private String destinationUID;
     private String peerName;
     private String myName;
@@ -63,9 +64,25 @@ public class NewMessage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstance){
 
         super.onCreate(savedInstance);
+
+        /** initialising data structures and variables**/
+        myMessages = new ArrayList<>();
+
+        destinationUID = getIntent().getStringExtra("destinationUID");
+        inboxId= getIntent().getStringExtra("inboxid");
+        peerName= getIntent().getStringExtra("userName");
+
+        /**setting activity view **/
         setContentView(R.layout.new_message_view);
 
-        myMessages = new ArrayList<>();
+        /**pre sending database queries **/
+        uid = FirebaseAuth.getInstance().getUid();
+        myThreadRef = FirebaseDatabase.getInstance().getReference("Inboxes/"+inboxId);
+        topMessageRef = FirebaseDatabase.getInstance().getReference("TopMessages/"+inboxId);
+        FindMyName();
+        GetThread();
+
+        /**setting views **/
 
         mToolBar= (Toolbar) findViewById(R.id.chat_toolbar);
         threadsListView = findViewById(R.id.thread_list_view);
@@ -73,22 +90,12 @@ public class NewMessage extends AppCompatActivity {
         sendMessageBtn = findViewById(R.id.send_btn);
         myRefreshLayout = findViewById(R.id.messages_refresh_layout);
 
-        userEmail = getIntent().getStringExtra("userEmail");
-        destinationUID = getIntent().getStringExtra("destinationUID");
-
-        inboxId= getIntent().getStringExtra("inboxid");
-        uid = FirebaseAuth.getInstance().getUid();
-        myThreadRef = FirebaseDatabase.getInstance().getReference("Inboxes/"+inboxId);
-        topMessageRef = FirebaseDatabase.getInstance().getReference("TopMessages/"+inboxId);
-
-        peerName= getIntent().getStringExtra("userName");
         setSupportActionBar(mToolBar);
         getSupportActionBar().setTitle(peerName);
-
         getSupportActionBar().setDisplayShowTitleEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //myMessages.clear();
+        /**send button onclick listener **/
 
         sendMessageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +113,7 @@ public class NewMessage extends AppCompatActivity {
 
                 String time = dateTimeString.substring(11,16);
 
-                Message newMessage =new Message(messageEditView.getText().toString(),dateString,time, uid,destinationUID,myName,inboxId);
+                Message newMessage =new Message(messageEditView.getText().toString(),dateString,time, uid,destinationUID,myName,inboxId,peerName);
                 myThreadRef.push().setValue(newMessage);
 
                 TopMessage topMessage = new TopMessage(messageEditView.getText().toString(), dateString,time, uid, inboxId);
@@ -126,11 +133,23 @@ public class NewMessage extends AppCompatActivity {
 
         super.onStart();
 
-        FindMyName();
-        myMessages =GetThread();
-        threadAdapter = new MessagesThread(NewMessage.this,myMessages);
-        threadsListView.setAdapter(threadAdapter);
-        threadAdapter.notifyDataSetChanged();
+        final ProgressDialog progressDialogBox = new ProgressDialog(NewMessage.this, R.style.MyDialogTheme);
+        progressDialogBox.setTitle("Loading");
+        progressDialogBox.setCancelable(false);
+        progressDialogBox.show();
+
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+
+                threadAdapter = new MessagesThread(NewMessage.this,myMessages);
+                threadsListView.setAdapter(threadAdapter);
+                threadAdapter.notifyDataSetChanged();
+
+                progressDialogBox.cancel();
+
+            }
+        },1500);
 
     }
 
@@ -150,50 +169,14 @@ public class NewMessage extends AppCompatActivity {
 
     }
 
-    private List<Message> GetThread(){
-
-        final List<Message> messages = new ArrayList<>();
+    private void GetThread(){
 
         myThreadRef.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
                 Message message = dataSnapshot.getValue(Message.class);
-                messages.add(message);
-
-                threadAdapter.notifyDataSetChanged();
-
-                /**
-                 * if the uid of the message is not the same as the current uid (im the recipient), show notification
-                 */
-
-                /**if(!uid.equals(message.UID)){
-
-                    Intent intent = new Intent(getApplicationContext(),NewMessage.class);
-                    intent.putExtra("userEmail",userEmail);
-                    intent.putExtra("userName",nameTitle);
-                    intent.putExtra("inboxid",inboxId);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-
-                    TaskStackBuilder taskStackBuilder = TaskStackBuilder.create(getApplicationContext());
-                    taskStackBuilder.addNextIntentWithParentStack(intent);
-
-                    PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, 0);
-
-                    //notification builder
-                    NotificationCompat.Builder notification = new NotificationCompat.Builder(getApplicationContext(), CHANNEL_ID)
-                            .setSmallIcon(R.drawable.logo)
-                            .setContentTitle("New Message")
-                            .setContentText(message.Message)
-                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                            .setContentIntent(pendingIntent)
-                            .setAutoCancel(true);
-
-                    //show notification
-                    NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(getApplicationContext());
-                    notificationManagerCompat.notify(NOTIFICATION_ID,notification.build());
-
-                } **/
+                myMessages.add(message);
 
             }
 
@@ -221,8 +204,6 @@ public class NewMessage extends AppCompatActivity {
 
         });
 
-        return messages;
-
     }
 
     private void FindMyName()
@@ -235,7 +216,7 @@ public class NewMessage extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 myName = dataSnapshot.getValue(String.class);
-                Log.d("DebuggMe: ",myName);
+                //Log.d("DebuggMe: ",myName);
 
             }
 

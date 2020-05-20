@@ -35,6 +35,8 @@ public class Messages extends AppCompatActivity{
 
     private FirebaseDatabase firebaseDatabase;
 
+    private String myName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -44,6 +46,8 @@ public class Messages extends AppCompatActivity{
         GetTopMessages();
 
         setContentView(R.layout.messages_view);
+
+        myName = getIntent().getStringExtra("myName");
 
         firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -71,6 +75,33 @@ public class Messages extends AppCompatActivity{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 //open inbox for thread at position {position}
+                Message message = threadsMessasges.get(position);
+                String userEmail ="";
+                String senderName = message.SenderName;
+                String inboxId = message.InboxId;
+                String peerUid = message.UID;
+                String destinationName =message.DestinationName;
+
+                Intent intent = new Intent (Messages.this,NewMessage.class);
+                intent.putExtra("userEmail", userEmail);
+                intent.putExtra("inboxid",inboxId);
+                intent.putExtra("destinationUID",peerUid);
+
+                if(myName.equals(senderName))
+                {
+
+                    intent.putExtra("userName", destinationName);
+
+                }
+
+                else{
+
+                    intent.putExtra("useName",senderName);
+
+                }
+
+
+                startActivity(intent);
             }
         });
 
