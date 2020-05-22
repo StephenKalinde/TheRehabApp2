@@ -6,12 +6,16 @@
     android:background="@android:color/black"
     android:padding="15dp">
 
-    <LinearLayout
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="@drawable/anxiety_border_qns"
+        android:backgroundTint="@android:color/white">
+
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/anxiety_border_qns"
-        android:backgroundTint="@android:color/white"
         android:elevation="20dp">
 
         <TextView
@@ -32,9 +36,12 @@
 
         <TextView
             android:id="@+id/question_view"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:text="How often would you say you get annoyed or irritable?"
+            android:textAlignment="center"
             android:fontFamily="@font/yantramanav"
             android:textStyle="bold"
             android:layout_gravity="center"
@@ -113,5 +120,7 @@
             android:fontFamily="@font/yantramanav"/>
 
     </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

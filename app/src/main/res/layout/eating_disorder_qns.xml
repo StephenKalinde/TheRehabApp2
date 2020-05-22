@@ -32,8 +32,11 @@
 
         <TextView
             android:id="@+id/question_view"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:textAlignment="center"
             android:text="Are you satisfied with your eating patterns?"
             android:fontFamily="@font/yantramanav"
             android:textStyle="bold"
@@ -107,6 +110,10 @@
             android:background="@drawable/buttonselector"
             android:backgroundTint="@color/eating_disorder_purple"
             android:text="NEXT"/>
+
+        <Space
+            android:layout_height="10dp"
+            android:layout_width="match_parent"/>
 
     </LinearLayout>
 
