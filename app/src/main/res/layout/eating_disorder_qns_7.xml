@@ -6,108 +6,114 @@
     android:background="@android:color/black"
     android:padding="15dp">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
         android:backgroundTint="@android:color/white"
-        android:background="@drawable/eating_disorder_border_qns"
-        android:elevation="20dp">
+        android:background="@drawable/eating_disorder_border_qns">
 
-        <TextView
-            android:id="@+id/heading_view"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:background="@color/eating_disorder_purple"
-            android:text="EATING DISORDER QUESTIONAIRE"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="30dp"
-            android:textColor="@android:color/white"
-            android:textAlignment="center"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:elevation="20dp">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            <TextView
+                android:id="@+id/heading_view"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="@color/eating_disorder_purple"
+                android:text="EATING DISORDER QUESTIONAIRE"
+                android:fontFamily="@font/yantramanav"
+                android:textSize="30dp"
+                android:textColor="@android:color/white"
+                android:textAlignment="center"/>
 
-        <TextView
-            android:id="@+id/question_view"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:text="How often do you think you are over weight?"
-            android:fontFamily="@font/yantramanav"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textSize="20dp"
-            android:textColor="@android:color/black"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="40dp"/>
+            <TextView
+                android:id="@+id/question_view"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:text="How often do you think you are over weight?"
+                android:fontFamily="@font/yantramanav"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:textColor="@android:color/black"/>
 
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:text="NEVER"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="15dp"
-            android:buttonTint="@color/eating_disorder_purple"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:text="NEVER"
+                android:fontFamily="@font/yantramanav"
+                android:textSize="15dp"
+                android:buttonTint="@color/eating_disorder_purple"/>
 
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:text="SOMETIMES"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="15dp"
-            android:buttonTint="@color/eating_disorder_purple"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:text="SOMETIMES"
+                android:fontFamily="@font/yantramanav"
+                android:textSize="15dp"
+                android:buttonTint="@color/eating_disorder_purple"/>
 
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:text="MORE THAN USUAL"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="15dp"
-            android:buttonTint="@color/eating_disorder_purple"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:text="MORE THAN USUAL"
+                android:fontFamily="@font/yantramanav"
+                android:textSize="15dp"
+                android:buttonTint="@color/eating_disorder_purple"/>
 
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:text="ALWAYS"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="15dp"
-            android:buttonTint="@color/eating_disorder_purple"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:text="ALWAYS"
+                android:fontFamily="@font/yantramanav"
+                android:textSize="15dp"
+                android:buttonTint="@color/eating_disorder_purple"/>
 
-        <Button
-            android:id="@+id/next_btn7"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:textColor="@android:color/white"
-            android:fontFamily="@font/yantramanav"
-            android:background="@drawable/buttonselector"
-            android:backgroundTint="@color/eating_disorder_purple"
-            android:text="NEXT"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/next_btn7"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:fontFamily="@font/yantramanav"
+                android:background="@drawable/buttonselector"
+                android:backgroundTint="@color/eating_disorder_purple"
+                android:text="NEXT"/>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
