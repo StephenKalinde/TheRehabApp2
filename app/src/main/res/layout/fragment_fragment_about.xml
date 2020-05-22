@@ -361,6 +361,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:textAlignment="center"
                     android:text="SELF MOTIVATION AND COMMITMENT"
                     android:fontFamily="@font/yantramanav"
                     android:textSize="20dp"
@@ -523,7 +524,8 @@
                     android:layout_marginLeft="25dp"
                     android:background="@android:color/darker_gray"
                     android:orientation="vertical"
-                    android:layout_below="@+id/space_25">
+                    android:layout_below="@+id/space_25"
+                    android:paddingLeft="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"

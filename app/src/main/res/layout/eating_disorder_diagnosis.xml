@@ -6,106 +6,118 @@
     android:padding="15dp"
     android:background="@android:color/black">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:elevation="20dp"
-        android:padding="5dp"
         android:backgroundTint="@android:color/white"
         android:background="@drawable/eating_disorder_border_qns">
 
-        <Space
-            android:id="@+id/top_space"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            android:layout_height="match_parent"
+            android:elevation="20dp"
+            android:padding="5dp">
 
-        <TextView
-            android:id="@+id/page_heading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/top_space"
-            android:text="RESULTS"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="30dp"
-            android:textColor="@android:color/black"/>
+            <Space
+                android:id="@+id/top_space"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
 
-        <Space
-            android:id="@+id/top_space2"
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_below="@id/page_heading"/>
+            <TextView
+                android:id="@+id/page_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/top_space"
+                android:text="RESULTS"
+                android:fontFamily="@font/yantramanav"
+                android:textSize="30dp"
+                android:textColor="@android:color/black"/>
 
-        <TextView
-            android:id="@+id/heading_view"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="EATING DISORDER"
-            android:fontFamily="@font/yantramanav"
-            android:textAlignment="center"
-            android:textColor="@android:color/black"
-            android:background="@drawable/buttonselector"
-            android:backgroundTint="@color/eating_disorder_purple"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@id/top_space2"/>
+            <Space
+                android:id="@+id/top_space2"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@id/page_heading"/>
 
-        <TextView
-            android:id="@+id/sub_text"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:text="@string/eating_disorder_note"
-            android:fontFamily="@font/yantramanav"
-            android:textColor="@android:color/black"
-            android:textSize="18dp"
-            android:layout_below="@id/top_space2"/>
+            <TextView
+                android:id="@+id/heading_view"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="EATING DISORDER"
+                android:fontFamily="@font/yantramanav"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:background="@drawable/buttonselector"
+                android:backgroundTint="@color/eating_disorder_purple"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/top_space2"/>
 
-        <ImageView
-            android:id="@+id/pic"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:src="@drawable/eating_disorder_pic"
-            android:layout_below="@+id/heading_view"/>
+            <TextView
+                android:id="@+id/sub_text"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:textAlignment="center"
+                android:text="@string/eating_disorder_note"
+                android:fontFamily="@font/yantramanav"
+                android:textColor="@android:color/black"
+                android:textSize="18dp"
+                android:layout_below="@id/top_space2"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:id="@+id/mid_space"
-            android:layout_below="@id/pic"/>
+            <ImageView
+                android:id="@+id/pic"
+                android:layout_width="130dp"
+                android:layout_height="100dp"
+                android:src="@drawable/eating_disorder_pic"
+                android:layout_below="@+id/heading_view"/>
 
-        <TextView
-            android:id="@+id/sub_text_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/depression_note2"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="18dp"
-            android:textColor="@android:color/black"
-            android:layout_below="@id/mid_space"
-            android:layout_centerHorizontal="true"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:id="@+id/mid_space"
+                android:layout_below="@id/pic"/>
 
-        <Space
-            android:id="@+id/mid_space2"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_below="@+id/sub_text_2"/>
+            <TextView
+                android:id="@+id/sub_text_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/depression_note2"
+                android:fontFamily="@font/yantramanav"
+                android:textSize="18dp"
+                android:textColor="@android:color/black"
+                android:layout_below="@id/mid_space"
+                android:layout_centerHorizontal="true"/>
 
-        <Button
-            android:id="@+id/continue_btn"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_below="@id/mid_space2"
-            android:text="Continue"
-            android:fontFamily="@font/yantramanav"
-            android:textColor="@android:color/white"
-            android:backgroundTint="@color/eating_disorder_purple"
-            android:background="@drawable/buttonselector"
-            android:layout_centerHorizontal="true"/>
+            <Space
+                android:id="@+id/mid_space2"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@+id/sub_text_2"/>
 
-    </RelativeLayout>
+            <Button
+                android:id="@+id/continue_btn"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_below="@id/mid_space2"
+                android:text="Continue"
+                android:fontFamily="@font/yantramanav"
+                android:textColor="@android:color/white"
+                android:backgroundTint="@color/eating_disorder_purple"
+                android:background="@drawable/buttonselector"
+                android:layout_centerHorizontal="true"/>
+
+            <Space
+                android:id="@+id/mid_space3"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/continue_btn"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </LinearLayout>
