@@ -59,6 +59,7 @@
             android:id="@+id/login_password"
             android:textAlignment="center"
             android:hint="Password"
+            android:password="true"
             android:fontFamily="@font/yantramanav"
             android:layout_height="45dp"
             android:layout_width="250dp"

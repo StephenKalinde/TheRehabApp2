@@ -33,8 +33,6 @@ public class SignUp extends AppCompatActivity {
      private ProgressDialog progressDialogBox;
      private String uid;
 
-     private String name, surname, emailAdd, password, confirmPassword , cellNumber;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

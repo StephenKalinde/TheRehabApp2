@@ -45,37 +45,53 @@
 
     </RelativeLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="20dp"/>
-
-    <TextView
-        android:id="@+id/heading_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="TERMS AND CONDITIONS"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:fontFamily="@font/yantramanav"
-        android:textColor="@android:color/black"/>
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="380dp">
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <TextView
+                android:id="@+id/heading_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="TERMS AND CONDITIONS"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:fontFamily="@font/yantramanav"
+                android:textColor="@android:color/black"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="380dp">
+
+            </ScrollView>
+
+            <Button
+                android:id="@+id/agree_btn"
+                android:layout_height="40dp"
+                android:layout_width="100dp"
+                android:text="Agree"
+                android:layout_gravity="center"
+                android:background="@drawable/buttonselector"
+                android:backgroundTint="@color/btn_green"
+                android:fontFamily="@font/yantramanav"
+                android:textColor="@android:color/white"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+        </LinearLayout>
 
     </ScrollView>
-
-    <Button
-        android:id="@+id/agree_btn"
-        android:layout_height="40dp"
-        android:layout_width="100dp"
-        android:text="Agree"
-        android:layout_gravity="center"
-        android:background="@drawable/buttonselector"
-        android:backgroundTint="@color/btn_green"
-        android:fontFamily="@font/yantramanav"
-        android:textColor="@android:color/white"/>
-
 
 </LinearLayout>
