@@ -36,8 +36,11 @@
 
             <TextView
                 android:id="@+id/question_view"
-                android:layout_width="300dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:textAlignment="center"
                 android:text="Have you tried excluding any foods from your diet that you may like in order to influence your shape or weight?"
                 android:fontFamily="@font/yantramanav"
                 android:textStyle="bold"
@@ -111,6 +114,10 @@
                 android:backgroundTint="@color/eating_disorder_purple"
                 android:text="NEXT"
                 android:fontFamily="@font/yantramanav"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
 
         </LinearLayout>
 
