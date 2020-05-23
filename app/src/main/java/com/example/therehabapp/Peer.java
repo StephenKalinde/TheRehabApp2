@@ -5,6 +5,7 @@ public class Peer {
     public String EmailAddress;
     public String InboxId;
     public String UID;
+    public String Name;
 
     public Peer(){}
 

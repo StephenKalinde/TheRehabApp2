@@ -19,31 +19,34 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class PeersList  extends ArrayAdapter<User> {
 
     private Activity context;
-    private List<User> userList;
+    private ArrayList<User> userList;
     private DatabaseReference dbRef;
     private FirebaseAuth mAuth;
     private String uid;
     private String myEmailAddress;
     private String BtnText;
 
-    public PeersList(Activity context, List<User> userList,String BtnText)
+    public PeersList(Activity context, ArrayList<User> userList, String BtnText)
     {
+
         super(context , R.layout.list_view_item, userList);
         this.context = context;
         this.userList = userList;
         this.BtnText = BtnText;
+
         mAuth = FirebaseAuth.getInstance();
         uid = mAuth.getUid();
         myEmailAddress= mAuth.getCurrentUser().getEmail();
 
-
-
         dbRef= FirebaseDatabase.getInstance().getReference("Peers/"+uid);
+
     }
 
     @NonNull
@@ -100,23 +103,10 @@ public class PeersList  extends ArrayAdapter<User> {
 
                         Peer thisPeer = new Peer(myEmailAddress,inboxId,uid); //my reference to them as a peer
 
-                        //DatabaseReference dbRefAlt= FirebaseDatabase.getInstance().getReference("Peers/"+myUser.UID);
                         DatabaseReference requestsRef= FirebaseDatabase.getInstance().getReference("Requests/"+ myUser.UID);
 
                         //sends request
                         requestsRef.push().setValue(thisPeer);
-
-                        /**
-                        //create folder for inbox
-                        String inboxID= uid + myUid;
-
-                        //DatabaseReference dbInbox = FirebaseDatabase.getInstance().getReference("Inboxes/"+inboxID);
-
-                        DatabaseReference myDbInboxId = FirebaseDatabase.getInstance().getReference("InboxIDs/"+uid);
-                        DatabaseReference userDbInboxId =FirebaseDatabase.getInstance().getReference("InboxIDs/"+myUid);
-
-                        myDbInboxId.push().setValue(inboxID);
-                        userDbInboxId.push().setValue(inboxID);  **/
 
                         addBtn.setText("Remove");
                         break;

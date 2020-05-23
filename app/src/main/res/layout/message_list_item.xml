@@ -16,7 +16,6 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
         android:textSize="25dp"
-        android:text="MY Text"
         android:fontFamily="@font/yantramanav"
         android:textStyle="bold"
         android:layout_marginTop="15dp"
@@ -28,7 +27,6 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
         android:textSize="20dp"
-        android:text="My Preview"
         android:fontFamily="@font/yantramanav"
         android:layout_below="@+id/peer_name_view"
         android:layout_marginBottom="15dp"
@@ -42,7 +40,6 @@
         android:fontFamily="@font/yantramanav"
         android:textColor="@android:color/black"
         android:textSize="20dp"
-        android:text="00.00"
         android:layout_centerInParent="true"
         android:layout_marginRight="15dp"/>
 

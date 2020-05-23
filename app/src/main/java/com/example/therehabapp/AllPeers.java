@@ -2,6 +2,7 @@ package com.example.therehabapp;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.InputType;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,10 +12,12 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,13 +46,19 @@ public class AllPeers extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.all_peers);
 
+        //auth and db refs
         mAuth= FirebaseAuth.getInstance();
         uid= mAuth.getUid();
+        mRefPeers = FirebaseDatabase.getInstance().getReference("/Peers/"+uid);
+        mRefUsers = FirebaseDatabase.getInstance().getReference("/Users/");
 
-        mRefPeers = FirebaseDatabase.getInstance().getReference("Peers/"+uid);
-        mRefUsers = FirebaseDatabase.getInstance().getReference("Users");
+        //init peers list and fill
+        allMyPeersList = new ArrayList<>();
+        GetAllPeers();
+
+        //set views
+        setContentView(R.layout.all_peers);
 
         mToolBar =(Toolbar) findViewById(R.id.all_peers_toolbar);
         searchBox=(EditText) findViewById(R.id.peers_search_box);
@@ -62,6 +71,8 @@ public class AllPeers extends AppCompatActivity {
         getSupportActionBar().setTitle("Peers");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(true);
+
+        //onclick events
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,61 +139,61 @@ public class AllPeers extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        allMyPeersList= GetAllPeers();
+        final ProgressDialog progressDialogBox = new ProgressDialog(AllPeers.this, R.style.MyDialogTheme);
+        progressDialogBox.setTitle("Loading");
+        progressDialogBox.setCancelable(false);
+        progressDialogBox.show();
 
-        PeersList adapter=new PeersList(AllPeers.this,allMyPeersList,"Remove");
-        peersListView.setAdapter(adapter);
+        new Handler().postDelayed(new Runnable(){
+            @Override
+            public void run() {
+
+                PeersList adapter=new PeersList(AllPeers.this,allMyPeersList,"Remove");
+                peersListView.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+
+                progressDialogBox.cancel();
+
+            }
+        },3000);
 
     }
 
-    private ArrayList<User> GetAllPeers()
+    private void GetAllPeers()
     {
 
-        final ArrayList<Peer> peerPeerList = new ArrayList<>();
-        final ArrayList<User> peerUserList= new ArrayList<>();
         final ArrayList<User> allUsers= GetAllUsers();
 
-        mRefPeers.addValueEventListener(new ValueEventListener() {
+        mRefPeers.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                for(DataSnapshot user: dataSnapshot.getChildren())
-                {
+                Peer peer = dataSnapshot.getValue(Peer.class);
 
-                    //String userString = user.getValue(String.class);
-                    //peerStringList.add(userString);
+                for(int i =0; i< allUsers.size(); i++){
 
-                    Peer userPeer = user.getValue(Peer.class);
-                    peerPeerList.add(userPeer);
-
-                }
-
-                for(Peer user: peerPeerList)
-                {
-
-                    for(int i =0; i< allUsers.size(); i++){
-
-                        if(user.EmailAddress.equals(allUsers.get(i).EmailAddress))
-                        {
-                            peerUserList.add(allUsers.get(i));
-                        }
-
-                    }
-                }
-
-                /**
-                for(String userEmail : peerStringList)
-                {
-                    for(int i= 0; i< allUsers.size(); i++)
+                    if(peer.EmailAddress.equals(allUsers.get(i).EmailAddress))
                     {
-                        if(userEmail.equals(allUsers.get(i).EmailAddress))
-                        {
-                            peerUserList.add(allUsers.get(i));
-                        }
+                        allMyPeersList.add(allUsers.get(i));
                     }
+
                 }
 
-                 **/
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
             }
 
             @Override
@@ -191,10 +202,6 @@ public class AllPeers extends AppCompatActivity {
             }
         });
 
-
-
-        return peerUserList;
-
     }
 
     private ArrayList<User> GetAllUsers()
@@ -202,17 +209,27 @@ public class AllPeers extends AppCompatActivity {
 
         final ArrayList<User> allUsers= new ArrayList<>();
 
-        mRefUsers.addValueEventListener(new ValueEventListener() {
+        mRefUsers.addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
-                for(DataSnapshot user : dataSnapshot.getChildren())
-                {
+                User myUser= dataSnapshot.getValue(User.class);
+                allUsers.add(myUser);
 
-                    User myUser= user.getValue(User.class);
-                    allUsers.add(myUser);
+            }
 
-                }
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
 
             }
 
