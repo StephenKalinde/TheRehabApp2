@@ -6,185 +6,196 @@
     android:background="@drawable/shape_drawable_dim"
     android:id="@+id/care_pack_activity_view">
 
-    <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
 
-    <RelativeLayout
+        <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:id="@+id/header"
-        android:background="@drawable/header_image">
+        android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/logo"
-            android:elevation="20dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:id="@+id/header"
+                android:background="@drawable/header_image">
 
-        <TextView
-            android:id="@+id/title_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/logo"
-            android:layout_centerHorizontal="true"
-            android:text="THE REHAB"
-            android:textStyle="bold"
-            android:textSize="30dp"
-            android:textColor="@android:color/white"
-            android:layout_marginLeft="30dp"/>
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/logo"
+                    android:elevation="20dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/logo"
-            android:layout_below="@+id/title_view"
-            android:textSize="12dp"
-            android:layout_marginLeft="10dp"
-            android:layout_centerHorizontal="true"
-            android:textColor="@android:color/white"
-            android:text="When I become we , illness becomes wellness"/>
+                <TextView
+                    android:id="@+id/title_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/logo"
+                    android:layout_centerHorizontal="true"
+                    android:text="THE REHAB"
+                    android:textStyle="bold"
+                    android:textSize="30dp"
+                    android:textColor="@android:color/white"
+                    android:layout_marginLeft="30dp"/>
 
-    </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/logo"
+                    android:layout_below="@+id/title_view"
+                    android:textSize="12dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@android:color/white"
+                    android:text="When I become we , illness becomes wellness"/>
 
-    <Space
-        android:id="@+id/space"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_below="@+id/header"/>
+            </RelativeLayout>
 
-    <TextView
-        android:id="@+id/text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="15dp"
-        android:layout_centerHorizontal="true"
-        android:text="Select A Care Pack Of Your Choice"
-        android:fontFamily="@font/yantramanav"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:layout_below="@+id/space"/>
+            <Space
+                android:id="@+id/space"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/header"/>
 
-    <Space
-        android:id="@+id/space2"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@+id/text_view"/>
+            <TextView
+                android:id="@+id/text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="15dp"
+                android:layout_centerHorizontal="true"
+                android:text="Select A Care Pack Of Your Choice"
+                android:fontFamily="@font/yantramanav"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:layout_below="@+id/space"/>
 
-    <RelativeLayout
-        android:id="@+id/care_pack_layout_1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_below="@+id/space2">
+            <Space
+                android:id="@+id/space2"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/text_view"/>
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/care_pack_3"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:id="@+id/btn_1"
-            android:text="Package - 3 Weeks R0000"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="12dp"
-            android:textColor="@android:color/white"/>
+            <RelativeLayout
+                android:id="@+id/care_pack_layout_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@+id/space2">
 
-        <Button
-            android:text="SELECT"
-            android:fontFamily="@font/yantramanav"
-            android:id="@+id/select_btn"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="25dp"
-            android:layout_alignParentLeft="true"
-            android:textColor="@android:color/white"
-            android:background="@color/eating_disorder_purple"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/care_pack_3"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/btn_1"
+                    android:text="Package - 3 Weeks R0000"
+                    android:fontFamily="@font/yantramanav"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/white"/>
+
+                <Button
+                    android:text="SELECT"
+                    android:fontFamily="@font/yantramanav"
+                    android:id="@+id/select_btn"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="@android:color/white"
+                    android:background="@color/eating_disorder_purple"/>
+
+                </RelativeLayout>
+
+            <Space
+                android:id="@+id/space3"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/care_pack_layout_1"/>
+
+            <RelativeLayout
+                android:id="@+id/care_pack_layout_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_below="@+id/space3">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/care_pack_2"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/btn_2"
+                    android:text="Package - 4 Weeks R0000"
+                    android:fontFamily="@font/yantramanav"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/white"/>
+
+                <Button
+                    android:text="SELECT"
+                    android:fontFamily="@font/yantramanav"
+                    android:id="@+id/select_btn_2"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="@android:color/white"
+                    android:background="@color/addiction_blue"/>
+
+            </RelativeLayout>
+
+            <Space
+                android:id="@+id/space4"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:layout_below="@+id/care_pack_layout_2"/>
+
+            <RelativeLayout
+                android:id="@+id/care_pack_layout_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_below="@+id/space4">
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/care_pack_1"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:id="@+id/btn_3"
+                    android:text="Package - 12 Weeks R0000"
+                    android:fontFamily="@font/yantramanav"
+                    android:textSize="12dp"
+                    android:textColor="@android:color/white"/>
+
+                <Button
+                    android:text="SELECT"
+                    android:fontFamily="@font/yantramanav"
+                    android:id="@+id/select_btn_3"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_alignParentLeft="true"
+                    android:textColor="@android:color/white"
+                    android:background="@color/anxiety_orange"/>
+
+            </RelativeLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/care_pack_layout_3"/>
 
         </RelativeLayout>
 
-    <Space
-        android:id="@+id/space3"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_below="@+id/care_pack_layout_1"/>
-
-    <RelativeLayout
-        android:id="@+id/care_pack_layout_2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_below="@+id/space3">
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/care_pack_2"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:id="@+id/btn_2"
-            android:text="Package - 4 Weeks R0000"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="12dp"
-            android:textColor="@android:color/white"/>
-
-        <Button
-            android:text="SELECT"
-            android:fontFamily="@font/yantramanav"
-            android:id="@+id/select_btn_2"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="25dp"
-            android:layout_alignParentLeft="true"
-            android:textColor="@android:color/white"
-            android:background="@color/addiction_blue"/>
-
-    </RelativeLayout>
-
-    <Space
-        android:id="@+id/space4"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_below="@+id/care_pack_layout_2"/>
-
-    <RelativeLayout
-        android:id="@+id/care_pack_layout_3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_below="@+id/space4">
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="@drawable/care_pack_1"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:id="@+id/btn_3"
-            android:text="Package - 12 Weeks R0000"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="12dp"
-            android:textColor="@android:color/white"/>
-
-        <Button
-            android:text="SELECT"
-            android:fontFamily="@font/yantramanav"
-            android:id="@+id/select_btn_3"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginLeft="25dp"
-            android:layout_alignParentLeft="true"
-            android:textColor="@android:color/white"
-            android:background="@color/anxiety_orange"/>
-
-    </RelativeLayout>
-
-</RelativeLayout>
+    </ScrollView>
 
 </FrameLayout>

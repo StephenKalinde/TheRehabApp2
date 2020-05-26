@@ -113,6 +113,10 @@
                 android:backgroundTint="@color/eating_disorder_purple"
                 android:text="NEXT"/>
 
+            <Space
+                android:layout_height="20dp"
+                android:layout_width="match_parent"/>
+
         </LinearLayout>
 
     </ScrollView>

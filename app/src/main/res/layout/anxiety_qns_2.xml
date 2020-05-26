@@ -18,106 +18,110 @@
         android:orientation="vertical"
         android:elevation="20dp">
 
-        <TextView
-            android:id="@+id/heading_view"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_gravity="center"
-            android:background="@color/anxiety_orange"
-            android:text="ANXIETY QUESTIONAIRE"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="30dp"
-            android:textColor="@android:color/white"
-            android:textAlignment="center"/>
+            <TextView
+                android:id="@+id/heading_view"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="@color/anxiety_orange"
+                android:text="ANXIETY QUESTIONAIRE"
+                android:fontFamily="@font/yantramanav"
+                android:textSize="30dp"
+                android:textColor="@android:color/white"
+                android:textAlignment="center"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
 
-        <TextView
-            android:id="@+id/question_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:text="How often would you say you get annoyed or irritable?"
-            android:textAlignment="center"
-            android:fontFamily="@font/yantramanav"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textSize="20dp"
-            android:textColor="@android:color/black"/>
+            <TextView
+                android:id="@+id/question_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text="How often would you say you get annoyed or irritable?"
+                android:textAlignment="center"
+                android:fontFamily="@font/yantramanav"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:textSize="20dp"
+                android:textColor="@android:color/black"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="40dp"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp"/>
 
-        <CheckBox
-            android:layout_marginLeft="10dp"
-            android:buttonTint="@color/anxiety_orange"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:text="NEVER"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="15dp"/>
+            <CheckBox
+                android:layout_marginLeft="10dp"
+                android:buttonTint="@color/anxiety_orange"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:text="NEVER"
+                android:fontFamily="@font/yantramanav"
+                android:textSize="15dp"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
 
-        <CheckBox
-            android:layout_marginLeft="10dp"
-            android:buttonTint="@color/anxiety_orange"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:text="SOMETIMES"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="15dp"/>
+            <CheckBox
+                android:layout_marginLeft="10dp"
+                android:buttonTint="@color/anxiety_orange"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:text="SOMETIMES"
+                android:fontFamily="@font/yantramanav"
+                android:textSize="15dp"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
 
-        <CheckBox
-            android:layout_marginLeft="10dp"
-            android:buttonTint="@color/anxiety_orange"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:text="MORE THAN USUAL"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="15dp"/>
+            <CheckBox
+                android:layout_marginLeft="10dp"
+                android:buttonTint="@color/anxiety_orange"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:text="MORE THAN USUAL"
+                android:fontFamily="@font/yantramanav"
+                android:textSize="15dp"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
 
-        <CheckBox
-            android:layout_marginLeft="10dp"
-            android:buttonTint="@color/anxiety_orange"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_gravity="center"
-            android:text="ALWAYS"
-            android:fontFamily="@font/yantramanav"
-            android:textSize="15dp"/>
+            <CheckBox
+                android:layout_marginLeft="10dp"
+                android:buttonTint="@color/anxiety_orange"
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:text="ALWAYS"
+                android:fontFamily="@font/yantramanav"
+                android:textSize="15dp"/>
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp"/>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="30dp"/>
 
-        <Button
-            android:id="@+id/next_btn2"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:textColor="@android:color/white"
-            android:background="@drawable/buttonselector"
-            android:backgroundTint="@color/anxiety_orange"
-            android:text="NEXT"
-            android:fontFamily="@font/yantramanav"/>
+            <Button
+                android:id="@+id/next_btn2"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:textColor="@android:color/white"
+                android:background="@drawable/buttonselector"
+                android:backgroundTint="@color/anxiety_orange"
+                android:text="NEXT"
+                android:fontFamily="@font/yantramanav"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
 
     </LinearLayout>
 

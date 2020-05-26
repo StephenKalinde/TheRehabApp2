@@ -1,87 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/login_view"
-    android:background="@drawable/background_gradient"
-    android:paddingTop="30dp">
-
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/logo"
-        android:layout_gravity="center"
-        android:textColor="@android:color/black"/>
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:id="@+id/space2" />
+    android:layout_width="match_parent"
+    android:background="@drawable/background_gradient">
 
     <LinearLayout
-        android:layout_gravity="center"
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
-        android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:backgroundTint="@color/colorAccent"
-        android:background="@drawable/form_bgrnd">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/login_view"
+        android:paddingTop="30dp">
 
-        <TextView
-            android:id="@+id/heading_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LOGIN"
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo"
+            android:layout_gravity="center"
+            android:textColor="@android:color/black"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:id="@+id/space2" />
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_width="300dp"
+            android:layout_height="200dp"
+            android:backgroundTint="@color/colorAccent"
+            android:background="@drawable/form_bgrnd">
+
+            <TextView
+                android:id="@+id/heading_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LOGIN"
+                android:fontFamily="@font/yantramanav"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                android:textSize="35dp"
+                android:layout_gravity="center"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <EditText
+                android:id="@+id/emailAdd"
+                android:hint="Email"
+                android:textAlignment="center"
+                android:fontFamily="@font/yantramanav"
+                android:layout_height="45dp"
+                android:layout_width="250dp"
+                android:layout_gravity="center"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/black"
+                android:background="@null"/>
+
+            <EditText
+                android:id="@+id/login_password"
+                android:textAlignment="center"
+                android:hint="Password"
+                android:password="true"
+                android:fontFamily="@font/yantramanav"
+                android:layout_height="45dp"
+                android:layout_width="250dp"
+                android:layout_gravity="center"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/black"
+                android:background="@null"/>
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+        <Button
+            android:id="@+id/login_btn"
+            android:text="Continue"
+            android:textColor="@android:color/white"
             android:fontFamily="@font/yantramanav"
-            android:textStyle="bold"
-            android:textColor="@android:color/black"
-            android:textSize="35dp"
+            android:backgroundTint="@color/btn_green"
+            android:background="@drawable/buttonselector"
+            android:layout_height="50dp"
+            android:layout_width="120dp"
             android:layout_gravity="center"/>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
 
-        <EditText
-            android:id="@+id/emailAdd"
-            android:hint="Email"
-            android:textAlignment="center"
-            android:fontFamily="@font/yantramanav"
-            android:layout_height="45dp"
-            android:layout_width="250dp"
-            android:layout_gravity="center"
-            android:textColor="@android:color/black"
-            android:textColorHint="@android:color/black"
-            android:background="@null"/>
-
-        <EditText
-            android:id="@+id/login_password"
-            android:textAlignment="center"
-            android:hint="Password"
-            android:password="true"
-            android:fontFamily="@font/yantramanav"
-            android:layout_height="45dp"
-            android:layout_width="250dp"
-            android:layout_gravity="center"
-            android:textColor="@android:color/black"
-            android:textColorHint="@android:color/black"
-            android:background="@null"/>
     </LinearLayout>
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="50dp"/>
-
-    <Button
-        android:id="@+id/login_btn"
-        android:text="Continue"
-        android:textColor="@android:color/white"
-        android:fontFamily="@font/yantramanav"
-        android:backgroundTint="@color/btn_green"
-        android:background="@drawable/buttonselector"
-        android:layout_height="50dp"
-        android:layout_width="120dp"
-        android:layout_gravity="center"/>
-
-</LinearLayout>
+</ScrollView>

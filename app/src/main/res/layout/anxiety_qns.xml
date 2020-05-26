@@ -120,6 +120,10 @@
                 android:text="NEXT"
                 android:fontFamily="@font/yantramanav"/>
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
         </LinearLayout>
 
     </ScrollView>

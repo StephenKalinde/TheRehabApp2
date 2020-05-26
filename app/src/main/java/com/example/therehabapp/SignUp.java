@@ -31,7 +31,6 @@ public class SignUp extends AppCompatActivity {
 
      private static final String TAG="SignUpActivity";
      private ProgressDialog progressDialogBox;
-     private String uid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,8 +75,10 @@ public class SignUp extends AppCompatActivity {
                         progressDialogBox.setCancelable(false);
                         progressDialogBox.show();
 
-                        CreateAccount(nameView.getText().toString(), surnameView.getText().toString(), cellNumberView.getText().toString(), emailAddView.getText().toString(), passwordView.getText().toString(), confirmPasswordView.getText().toString());
-
+                        Intent intent = new Intent(SignUp.this,TermsAndConditions.class);
+                        intent.putExtra("emailAddress",emailAddView.getText().toString());
+                        intent.putExtra("password",passwordView.getText().toString());
+                        startActivity(intent);
 
                     }
 
@@ -100,69 +101,19 @@ public class SignUp extends AppCompatActivity {
 
     }
 
-    private void CreateAccount(String name, String surname , String cellNumber, String emailAdd, String password, String confirmPassword)
-    {
-            mAuth.createUserWithEmailAndPassword(emailAdd, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>(){
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task){
-                            if (task.isSuccessful())
-                            {
-                                Log.d(TAG, "createUserWithEmail: successful");
-                                FirebaseUser user =mAuth.getCurrentUser();
-                                uid = user.getUid();
-                                initFCM();
-                                progressDialogBox.cancel();
-                                Toast.makeText(SignUp.this, "Sign Up Successful!", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(SignUp.this, TermsAndConditions.class ));
-                            }
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-                            else {
-                                Log.w(TAG,"createUserWithEmail: failure");
-                                progressDialogBox.cancel();
-                                Toast.makeText(SignUp.this, "Sign Up failed. Try Again.",Toast.LENGTH_LONG).show();
-                            }
+        if(getIntent().getStringExtra("Error").equals("error"))
+        {
 
-                        }
+            Toast.makeText(SignUp.this,"Failed To Register. Check Connection and try again",Toast.LENGTH_LONG).show();
 
-                    });
+        }
 
     }
 
-    private void initFCM()
-    {
-
-        String token = FirebaseInstanceId.getInstance().getToken();
-        Log.d("DebuggMe: ",token);
-        sendRegistrationTokenToServer(token);
-    }
-
-    //save fcm token to server
-    private void sendRegistrationTokenToServer(String token)
-    {
-
-        DatabaseReference tokenRef = FirebaseDatabase.getInstance().getReference("Tokens/"+uid);
-        tokenRef.setValue(token).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-
-                if(task.isSuccessful())
-                {
-
-                    Log.d("DebuggMe: ","Token saved successfully");
-
-                }
-
-                else{
-
-                    Log.d("DebuggMe: "," Token failed to save");
-
-                }
-
-            }
-        });
-
-    }
 
 
 }

@@ -78,6 +78,7 @@ public class Login extends AppCompatActivity {
                             progressDialogBox.cancel();
                             Toast.makeText(Login.this, "Login Successful", Toast.LENGTH_LONG);
                             startActivity(new Intent(Login.this, Home.class));
+                            finishAffinity();
                         }
                         else{
                             Log.w(TAG, "signInWithEmail: failure",task.getException());

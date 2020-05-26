@@ -189,7 +189,9 @@ public class Home extends AppCompatActivity implements FragmentHome.OnFragmentIn
 
                         FirebaseMessaging.getInstance().unsubscribeFromTopic(uid);
                         auth.signOut();
-                        startActivity(new Intent(Home.this,SignUp.class));
+                        Intent intent = new Intent(Home.this,SignUp.class);
+                        intent.putExtra("Error","none");
+                        startActivity(intent);
                         finishAffinity();
                         break;
 

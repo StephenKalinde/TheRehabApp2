@@ -21,7 +21,10 @@ public class Introduction extends AppCompatActivity {
         continueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Introduction.this, SignUp.class ));
+
+                Intent intent =  new Intent(Introduction.this, SignUp.class);
+                intent.putExtra("Error","none");
+                startActivity(intent);
             }
         });
 

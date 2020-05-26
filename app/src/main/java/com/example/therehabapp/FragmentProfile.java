@@ -169,7 +169,12 @@ public class FragmentProfile extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 Thought thought = dataSnapshot.getValue(Thought.class);
-                moodView.setText(thought.ThoughtMessage);
+                if(thought!=null){
+
+                    moodView.setText(thought.ThoughtMessage);
+
+                }
+
 
             }
 
